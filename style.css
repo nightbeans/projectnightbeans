@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #1A4957;
+}
+
+.navbar {
+    background-color: #1A4957;
+    border-bottom: 1px solid #2d6575;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.tagline {
+    font-size: 0.95rem;
+    color: #b0d4dd;
+    font-weight: 300;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #b0d4dd;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.welcome {
+    margin-bottom: 3rem;
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.welcome p {
+    font-size: 1.1rem;
+    color: #b0d4dd;
+}
+
+/* Page styling */
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.page-intro {
+    font-size: 1.2rem;
+    color: #b0d4dd;
+    margin-bottom: 3rem;
+}
+
+/* Blog post list */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.post-preview {
+    border-bottom: 1px solid #2d6575;
+    padding-bottom: 2rem;
+}
+
+.post-preview:last-child {
+    border-bottom: none;
+}
+
+.post-preview h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-preview h2 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-preview h2 a:hover {
+    color: #7fc8e0;
+}
+
+.post-preview time {
+    display: block;
+    font-size: 0.9rem;
+    color: #7fb3c4;
+    margin-bottom: 1rem;
+}
+
+.post-preview .excerpt {
+    color: #b0d4dd;
+    line-height: 1.7;
+}
+
+/* Individual post styling */
+.post {
+    max-width: 700px;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2d6575;
+}
+
+.post-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.post-header time {
+    font-size: 0.95rem;
+    color: #7fb3c4;
+}
+
+.post-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #ffffff;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.post-content ul, .post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
+.post-content blockquote {
+    border-left: 4px solid #7fc8e0;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #b0d4dd;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 4px;
+}
+
+.post-content a {
+    color: #7fc8e0;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.post-content a:hover {
+    border-bottom-color: #7fc8e0;
+}
+
+.post-nav {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #2d6575;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.post-nav a {
+    color: #7fc8e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.post-nav a:hover {
+    color: #ffffff;
+}
+
+/* Brand link styling */
+.brand a {
+    text-decoration: none;
+}
+
+.brand a h1 {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.brand a:hover h1 {
+    color: #7fc8e0;
+}
+
+/* Homepage latest post */
+.latest-post {
+    max-width: 700px;
+}
+
+.latest-post h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.latest-post h2 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.latest-post h2 a:hover {
+    color: #7fc8e0;
+}
+
+.latest-post time {
+    display: block;
+    font-size: 0.95rem;
+    color: #7fb3c4;
+    margin-bottom: 2rem;
+}
+
+.post-preview-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.post-preview-content p {
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    color: #7fc8e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #ffffff;
+}
+
+/* Work page */
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.work-item {
+    padding: 2rem;
+    border: 1px solid #2d6575;
+    border-radius: 8px;
+    background-color: #0f3340;
+}
+
+.work-item h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.work-item p {
+    color: #b0d4dd;
+    line-height: 1.7;
+}
+
+/* Benedict reviews */
+.benedict-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.benedict-review {
+    padding: 2rem;
+    border: 1px solid #2d6575;
+    border-radius: 8px;
+    background-color: #0f3340;
+}
+
+.benedict-review h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.benedict-review p {
+    color: #b0d4dd;
+    line-height: 1.7;
+}
+
+footer {
+    background-color: #0f3340;
+    text-align: center;
+    padding: 2rem;
+    color: #7fb3c4;
+    font-size: 0.9rem;
+    border-top: 1px solid #2d6575;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+}

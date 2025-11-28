@@ -1,0 +1,9 @@
+# Build scripts
+parse-wordpress.py
+parse-wordpress.js
+
+# Source files
+*.xml
+
+# System files
+.DS_Store
