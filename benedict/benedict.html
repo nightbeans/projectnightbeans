@@ -41,11 +41,15 @@
         <div id="benedict-map"></div>
 
         <div class="benedict-list">
-            <!-- Add your eggs benedict reviews here -->
             <article class="benedict-review">
-                <h2>Coming Soon</h2>
-                <p>Reviews will be added here.</p>
+                <h2><a href="benedict/tamper-sellers-wheel.html">Tamper, Sellers Wheel</a></h2>
+                <div style="font-size: 20px; color: #ffc107; margin: 5px 0;">🍳🍳🍳 3/10</div>
+                <time datetime="2024-03-30 15:29:00">March 30 2024</time>
+                <p>It seems to be a common issue with a lot of eggs benedicts I am seeing recently. It’s unbalanced. A good eggs benedict – like most of life’s great pleasures – is an exercise in restraint, not excess.
+...</p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 8px;"><strong>Fellow:</strong> Joel Delaney</p>
             </article>
+
         </div>
     </main>
 
@@ -56,7 +60,15 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Benedict review locations
-        const locations = [];
+        const locations = [
+            {
+                title: 'Tamper, Sellers Wheel',
+                lat: 53.37713155,
+                lng: -1.467229574460243,
+                rating: '🍳🍳🍳 3/10',
+                url: 'benedict/tamper-sellers-wheel.html'
+            }
+        ];
 
         // Initialize map
         const map = L.map('benedict-map').setView([51.505, -0.09], 6);

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish Blog - joeldelaney</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #1A4957;
+        }
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1.page-title {
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        textarea {
+            min-height: 300px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            resize: vertical;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: #ffc107;
+            color: #333;
+            flex: 1;
+        }
+        .btn-primary:hover {
+            background: #e0a800;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        .output {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+        .output.show {
+            display: block;
+        }
+        .output h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .output pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 4px;
+            color: #856404;
+        }
+        .instructions ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .instructions li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="index.html"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="benedict.html">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h1 class="page-title">Publish Blog</h1>
+
+        <form id="postForm">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date & Time</label>
+            <input type="datetime-local" id="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content (HTML)</label>
+            <textarea id="content" required placeholder="<p>Your content here...</p>"></textarea>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn-primary">Generate Files</button>
+            <button type="button" class="btn-secondary" onclick="setCurrentDateTime()">Use Current Date/Time</button>
+        </div>
+    </form>
+
+    <div id="output" class="output">
+        <h2>Files Generated!</h2>
+        <div class="instructions">
+            <strong>Instructions:</strong>
+            <ol>
+                <li>Click "Download Files" to get a ZIP containing your new post and updated index</li>
+                <li>Extract the ZIP file</li>
+                <li>Copy the files to your project:
+                    <ul>
+                        <li><code>blog.html</code> → replace the existing blog.html</li>
+                        <li><code>[post-name].html</code> → add to the posts/ folder</li>
+                    </ul>
+                </li>
+                <li>Commit and push to GitHub</li>
+            </ol>
+        </div>
+        <div class="button-group">
+            <button type="button" class="btn-primary" onclick="downloadFiles()">Download Files</button>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        let generatedPost = '';
+        let generatedIndex = '';
+        let postFilename = '';
+
+        function setCurrentDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            document.getElementById('date').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function slugify(text) {
+            return text.toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/--+/g, '-')
+                .trim();
+        }
+
+        function formatDateTime(dateStr) {
+            const date = new Date(dateStr);
+            const options = { year: 'numeric', month: 'long', day: '2-digit' };
+            return date.toLocaleDateString('en-US', options).replace(',', '');
+        }
+
+        function generateExcerpt(content) {
+            const temp = document.createElement('div');
+            temp.innerHTML = content;
+            const text = temp.textContent || temp.innerText || '';
+            return text.substring(0, 200) + (text.length > 200 ? '...' : '');
+        }
+
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const dateTime = document.getElementById('date').value;
+            const content = document.getElementById('content').value;
+
+            const slug = slugify(title);
+            postFilename = `${slug}.html`;
+            const formattedDate = formatDateTime(dateTime);
+            const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
+            const excerpt = generateExcerpt(content);
+
+            // Generate post file
+            generatedPost = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} - joeldelaney</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../index.html"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../work.html">Work</a></li>
+                <li><a href="../benedict.html">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1>${title}</h1>
+                <time datetime="${isoDateTime}">${formattedDate}</time>
+            </header>
+            <div class="post-content">
+                ${content}
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+</body>
+</html>`;
+
+            // Generate new post preview HTML
+            const newPostPreview = `        <article class="post-preview">
+            <h2><a href="posts/${postFilename}">${title}</a></h2>
+            <time datetime="${isoDateTime}">${formattedDate}</time>
+            <p class="excerpt">${excerpt}</p>
+        </article>
+
+`;
+
+            // Generate updated blog.html
+            const blogIndexStart = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - joeldelaney</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="index.html"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="benedict.html">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Blog</h1>
+        <div class="posts-list">
+`;
+
+            const blogIndexEnd = `        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+</body>
+</html>`;
+
+            // Get existing posts from form (you'll need to paste them)
+            const existingPosts = prompt("Paste the existing post previews from blog.html (or leave empty for first post):", "");
+
+            generatedIndex = blogIndexStart + newPostPreview + existingPosts + blogIndexEnd;
+
+            // Show output
+            document.getElementById('output').classList.add('show');
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        async function downloadFiles() {
+            const zip = new JSZip();
+
+            zip.file(postFilename, generatedPost);
+            zip.file('blog.html', generatedIndex);
+
+            const content = await zip.generateAsync({ type: 'blob' });
+            const url = window.URL.createObjectURL(content);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'blog-update.zip';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        // Set current date/time on load
+        setCurrentDateTime();
+    </script>
+</body>
+</html>

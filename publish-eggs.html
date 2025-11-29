@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish Eggs - joeldelaney</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            background: #1A4957;
+        }
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1.page-title {
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        textarea {
+            min-height: 200px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            resize: vertical;
+        }
+        .location-box {
+            background: #0f3340;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #2d6575;
+            margin-top: 20px;
+        }
+        .location-box h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .location-instructions {
+            color: #b0d4dd;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .location-instructions a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .location-instructions a:hover {
+            text-decoration: underline;
+        }
+        .location-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .search-box {
+            background: #0f3340;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #2d6575;
+            margin-top: 20px;
+        }
+        .search-box h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .search-input-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .search-input-wrapper input {
+            flex: 1;
+        }
+        .search-results-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .search-result {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #1A4957;
+            border: 1px solid #2d6575;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .search-result:hover {
+            background: #2d6575;
+            border-color: #ffc107;
+        }
+        .search-result-name {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .search-result-address {
+            color: #b0d4dd;
+            font-size: 0.9rem;
+        }
+        .search-result-coords {
+            color: #7fb3c4;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+        .search-status {
+            color: #b0d4dd;
+            padding: 10px;
+            text-align: center;
+        }
+        .location-selected {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        #preview-map {
+            height: 400px;
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 2px solid #2d6575;
+            display: none;
+        }
+        #preview-map.show {
+            display: block;
+        }
+        .rating-display {
+            font-size: 24px;
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: #ffc107;
+            color: #333;
+            flex: 1;
+        }
+        .btn-primary:hover {
+            background: #e0a800;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        .output {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: none;
+        }
+        .output.show {
+            display: block;
+        }
+        .output h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .output {
+            color: #333;
+        }
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 4px;
+            color: #856404;
+        }
+        .instructions ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .instructions li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="index.html"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="benedict.html">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h1 class="page-title">Publish Eggs</h1>
+
+        <form id="postForm">
+        <div class="form-group">
+            <label for="title">Title (Restaurant/Place Name)</label>
+            <input type="text" id="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rating">Rating (0-10 Bennys)</label>
+            <input type="number" id="rating" min="0" max="10" step="0.5" required>
+            <div class="rating-display" id="ratingDisplay"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date & Time</label>
+            <input type="datetime-local" id="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Review Content (HTML)</label>
+            <textarea id="content" required placeholder="<p>Your review here...</p>"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fellow">Benedict Fellow</label>
+            <input type="text" id="fellow" required placeholder="Name of reviewer">
+        </div>
+
+        <input type="hidden" id="lat">
+        <input type="hidden" id="lng">
+
+        <div class="button-group">
+            <button type="submit" class="btn-primary">Generate Files</button>
+            <button type="button" class="btn-secondary" onclick="setCurrentDateTime()">Use Current Date/Time</button>
+        </div>
+    </form>
+
+    <div id="output" class="output">
+        <h2>Files Generated!</h2>
+        <div class="instructions">
+            <strong>Instructions:</strong>
+            <ol>
+                <li>Click "Download Files" to get a ZIP containing your new review and updated index</li>
+                <li>Extract the ZIP file</li>
+                <li>Copy the files to your project:
+                    <ul>
+                        <li><code>benedict.html</code> → replace the existing benedict.html</li>
+                        <li><code>[review-name].html</code> → add to the benedict/ folder</li>
+                    </ul>
+                </li>
+                <li>Commit and push to GitHub</li>
+            </ol>
+        </div>
+        <div class="button-group">
+            <button type="button" class="btn-primary" onclick="downloadFiles()">Download Files</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="search-box">
+        <h3>🔍 Search for Location</h3>
+        <p style="color: #b0d4dd; margin-bottom: 15px; font-size: 0.95rem;">
+            Type a restaurant name and location (e.g., "The Ivy Tower Bridge London")
+        </p>
+        <div class="search-input-wrapper">
+            <input type="text" id="locationSearchInput" placeholder="Search for a place..." />
+            <button type="button" class="btn-primary" onclick="searchForLocation()" style="flex: none; padding: 12px 24px;">Search</button>
+        </div>
+        <div id="searchResultsList" class="search-results-list"></div>
+        <div id="locationSelectedMsg"></div>
+        <div id="preview-map"></div>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        let generatedPost = '';
+        let generatedIndex = '';
+        let postFilename = '';
+        let previewMap = null;
+        let previewMarker = null;
+
+        // Update rating display
+        document.getElementById('rating').addEventListener('input', function() {
+            const rating = parseFloat(this.value);
+            const bennys = '🍳'.repeat(Math.floor(rating));
+            const halfBenny = (rating % 1 >= 0.5) ? '🥚' : '';
+            document.getElementById('ratingDisplay').textContent = bennys + halfBenny + ` (${rating}/10)`;
+        });
+
+        function setCurrentDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            document.getElementById('date').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function slugify(text) {
+            return text.toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/--+/g, '-')
+                .trim();
+        }
+
+        function formatDateTime(dateStr) {
+            const date = new Date(dateStr);
+            const options = { year: 'numeric', month: 'long', day: '2-digit' };
+            return date.toLocaleDateString('en-US', options).replace(',', '');
+        }
+
+        function generateExcerpt(content) {
+            const temp = document.createElement('div');
+            temp.innerHTML = content;
+            const text = temp.textContent || temp.innerText || '';
+            return text.substring(0, 200) + (text.length > 200 ? '...' : '');
+        }
+
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const rating = parseFloat(document.getElementById('rating').value);
+            const dateTime = document.getElementById('date').value;
+            const content = document.getElementById('content').value;
+            const fellow = document.getElementById('fellow').value;
+            const lat = parseFloat(document.getElementById('lat').value);
+            const lng = parseFloat(document.getElementById('lng').value);
+
+            // Validate coordinates
+            if (isNaN(lat) || isNaN(lng)) {
+                alert('Please enter valid latitude and longitude coordinates');
+                return;
+            }
+
+            if (lat < -90 || lat > 90) {
+                alert('Latitude must be between -90 and 90');
+                return;
+            }
+
+            if (lng < -180 || lng > 180) {
+                alert('Longitude must be between -180 and 180');
+                return;
+            }
+
+            const slug = slugify(title);
+            postFilename = `${slug}.html`;
+            const formattedDate = formatDateTime(dateTime);
+            const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
+            const excerpt = generateExcerpt(content);
+
+            const bennys = '🍳'.repeat(Math.floor(rating));
+            const halfBenny = (rating % 1 >= 0.5) ? '🥚' : '';
+            const ratingDisplay = bennys + halfBenny;
+
+            // Generate post file
+            generatedPost = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} - joeldelaney</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .benedict-rating {
+            font-size: 32px;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .benedict-map {
+            height: 400px;
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .benedict-fellow {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }
+        .benedict-fellow strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../index.html"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="../work.html">Work</a></li>
+                <li><a href="../benedict.html" class="active">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1>${title}</h1>
+                <div class="benedict-rating">${ratingDisplay} <span style="font-size: 0.6em; color: #666;">${rating}/10 Bennys</span></div>
+                <time datetime="${isoDateTime}">${formattedDate}</time>
+            </header>
+            <div class="post-content">
+                ${content}
+            </div>
+            <div id="map" class="benedict-map"></div>
+            <div class="benedict-fellow">
+                <strong>Benedict Fellow:</strong> ${fellow}
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <scr` + `ipt src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></scr` + `ipt>
+    <scr` + `ipt>
+        const map = L.map('map').setView([${lat}, ${lng}], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([${lat}, ${lng}]).addTo(map)
+            .bindPopup('${title}').openPopup();
+    </scr` + `ipt>
+</body>
+</html>`;
+
+            // Generate new review item HTML
+            const newReviewItem = `            <article class="benedict-review">
+                <h2><a href="benedict/${postFilename}">${title}</a></h2>
+                <div style="font-size: 20px; color: #ffc107; margin: 5px 0;">${ratingDisplay} ${rating}/10</div>
+                <time datetime="${isoDateTime}">${formattedDate}</time>
+                <p>${excerpt}</p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 8px;"><strong>Fellow:</strong> ${fellow}</p>
+            </article>
+
+`;
+
+            // Generate updated benedict.html
+            generatedIndex = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benedict - joeldelaney</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #benedict-map {
+            height: 500px;
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .benedict-list {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="index.html"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="benedict.html" class="active">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Benedict Fellowship</h1>
+        <p class="page-intro">Those who have joined the Benedict Fellowship have accepted what a truly great eggs benedict is in search of and demonstrates - balance. The application to become a Fellow is simple, bring me an egg.</p>
+
+        <div id="benedict-map"></div>
+
+        <div class="benedict-list">
+${newReviewItem}        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <scr` + `ipt src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></scr` + `ipt>
+    <scr` + `ipt>
+        // Benedict review locations
+        const locations = [
+            {
+                title: '${title}',
+                lat: ${lat},
+                lng: ${lng},
+                rating: '${ratingDisplay} ${rating}/10',
+                url: 'benedict/${postFilename}'
+            }
+        ];
+
+        // Initialize map
+        const map = L.map('benedict-map').setView([51.505, -0.09], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers for each location
+        if (locations.length > 0) {
+            const bounds = [];
+            locations.forEach(loc => {
+                const marker = L.marker([loc.lat, loc.lng]).addTo(map);
+                marker.bindPopup('<strong>' + loc.title + '</strong><br>' + loc.rating + '<br><a href="' + loc.url + '">Read Review</a>');
+                marker.on('click', function() {
+                    window.location.href = loc.url;
+                });
+                bounds.push([loc.lat, loc.lng]);
+            });
+            // Fit map to show all markers
+            if (bounds.length === 1) {
+                map.setView(bounds[0], 13);
+            } else {
+                map.fitBounds(bounds);
+            }
+        }
+    </scr` + `ipt>
+</body>
+</html>`;
+
+            // Show output
+            document.getElementById('output').classList.add('show');
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        async function downloadFiles() {
+            const zip = new JSZip();
+
+            zip.file(postFilename, generatedPost);
+            zip.file('benedict.html', generatedIndex);
+
+            const content = await zip.generateAsync({ type: 'blob' });
+            const url = window.URL.createObjectURL(content);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'benedict-update.zip';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        // Search for location using Photon API
+        async function searchForLocation() {
+            const query = document.getElementById('locationSearchInput').value.trim();
+            const resultsDiv = document.getElementById('searchResultsList');
+            const msgDiv = document.getElementById('locationSelectedMsg');
+
+            if (!query) {
+                alert('Please enter a location to search');
+                return;
+            }
+
+            // Show loading state
+            resultsDiv.innerHTML = '<div class="search-status">Searching...</div>';
+            msgDiv.innerHTML = '';
+
+            try {
+                // Using Photon API - free geocoding service
+                const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&limit=5`;
+
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error('Search failed');
+                }
+
+                const data = await response.json();
+
+                if (!data.features || data.features.length === 0) {
+                    resultsDiv.innerHTML = '<div class="search-status">No results found. Try a different search term or be more specific (e.g., include city name).</div>';
+                    return;
+                }
+
+                // Display results
+                resultsDiv.innerHTML = '';
+                data.features.forEach((feature, index) => {
+                    const props = feature.properties;
+                    const coords = feature.geometry.coordinates; // [lng, lat]
+
+                    const resultDiv = document.createElement('div');
+                    resultDiv.className = 'search-result';
+
+                    const name = props.name || 'Unknown';
+                    const street = props.street || '';
+                    const city = props.city || '';
+                    const country = props.country || '';
+
+                    let addressParts = [street, city, country].filter(p => p);
+                    const address = addressParts.join(', ');
+
+                    resultDiv.innerHTML = `
+                        <div class="search-result-name">${name}</div>
+                        <div class="search-result-address">${address}</div>
+                        <div class="search-result-coords">📍 ${coords[1].toFixed(6)}, ${coords[0].toFixed(6)}</div>
+                    `;
+
+                    resultDiv.onclick = () => selectLocation(coords[1], coords[0], name);
+                    resultsDiv.appendChild(resultDiv);
+                });
+
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsDiv.innerHTML = '<div class="search-status">Search failed. Please try again or use manual coordinates.</div>';
+            }
+        }
+
+        // Select a location from search results
+        function selectLocation(lat, lng, name) {
+            document.getElementById('lat').value = lat;
+            document.getElementById('lng').value = lng;
+            document.getElementById('searchResultsList').innerHTML = '';
+            document.getElementById('locationSelectedMsg').innerHTML = `<div class="location-selected">✓ Selected: ${name} (${lat.toFixed(6)}, ${lng.toFixed(6)})</div>`;
+            document.getElementById('locationSearchInput').value = '';
+
+            // Show and update preview map
+            const mapDiv = document.getElementById('preview-map');
+            mapDiv.classList.add('show');
+
+            // Initialize map if not already done
+            if (!previewMap) {
+                previewMap = L.map('preview-map').setView([lat, lng], 15);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(previewMap);
+            } else {
+                previewMap.setView([lat, lng], 15);
+            }
+
+            // Remove old marker if exists
+            if (previewMarker) {
+                previewMap.removeLayer(previewMarker);
+            }
+
+            // Add new marker
+            previewMarker = L.marker([lat, lng]).addTo(previewMap);
+            previewMarker.bindPopup(`<strong>${name}</strong><br>${lat.toFixed(6)}, ${lng.toFixed(6)}`).openPopup();
+
+            // Force map to resize properly
+            setTimeout(() => previewMap.invalidateSize(), 100);
+        }
+
+        // Allow Enter key to search
+        document.getElementById('locationSearchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                searchForLocation();
+            }
+        });
+
+        // Set current date/time on load
+        setCurrentDateTime();
+    </script>
+</body>
+</html>
