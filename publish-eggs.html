@@ -242,8 +242,8 @@
         </div>
 
         <div class="form-group">
-            <label for="rating">Rating (0-10 Bennys)</label>
-            <input type="number" id="rating" min="0" max="10" step="0.5" required>
+            <label for="rating">Rating (1-5 eggs)</label>
+            <input type="number" id="rating" min="1" max="5" step="1" required>
             <div class="rating-display" id="ratingDisplay"></div>
         </div>
 
@@ -323,10 +323,9 @@
 
         // Update rating display
         document.getElementById('rating').addEventListener('input', function() {
-            const rating = parseFloat(this.value);
-            const bennys = '🍳'.repeat(Math.floor(rating));
-            const halfBenny = (rating % 1 >= 0.5) ? '🥚' : '';
-            document.getElementById('ratingDisplay').textContent = bennys + halfBenny + ` (${rating}/10)`;
+            const rating = parseInt(this.value);
+            const eggs = '🍳'.repeat(rating);
+            document.getElementById('ratingDisplay').textContent = eggs;
         });
 
         function setCurrentDateTime() {
@@ -394,9 +393,7 @@
             const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
             const excerpt = generateExcerpt(content);
 
-            const bennys = '🍳'.repeat(Math.floor(rating));
-            const halfBenny = (rating % 1 >= 0.5) ? '🥚' : '';
-            const ratingDisplay = bennys + halfBenny;
+            const ratingDisplay = '🍳'.repeat(parseInt(rating));
 
             // Generate post file
             generatedPost = `<!DOCTYPE html>
@@ -426,6 +423,7 @@
             background: #f8f9fa;
             border-left: 4px solid #ffc107;
             border-radius: 4px;
+            color: #333;
         }
         .benedict-fellow strong {
             color: #856404;
@@ -451,7 +449,7 @@
         <article class="post">
             <header class="post-header">
                 <h1>${title}</h1>
-                <div class="benedict-rating">${ratingDisplay} <span style="font-size: 0.6em; color: #666;">${rating}/10 Bennys</span></div>
+                <div class="benedict-rating">${ratingDisplay}</div>
                 <time datetime="${isoDateTime}">${formattedDate}</time>
             </header>
             <div class="post-content">
@@ -483,7 +481,7 @@
             // Generate new review item HTML
             const newReviewItem = `            <article class="benedict-review">
                 <h2><a href="benedict/${postFilename}">${title}</a></h2>
-                <div style="font-size: 20px; color: #ffc107; margin: 5px 0;">${ratingDisplay} ${rating}/10</div>
+                <div style="font-size: 20px; color: #ffc107; margin: 5px 0;">${ratingDisplay}</div>
                 <time datetime="${isoDateTime}">${formattedDate}</time>
                 <p>${excerpt}</p>
                 <p style="font-size: 0.9em; color: #666; margin-top: 8px;"><strong>Fellow:</strong> ${fellow}</p>
@@ -550,7 +548,7 @@ ${newReviewItem}        </div>
                 title: '${title}',
                 lat: ${lat},
                 lng: ${lng},
-                rating: '${ratingDisplay} ${rating}/10',
+                rating: '${ratingDisplay}',
                 url: 'benedict/${postFilename}'
             }
         ];

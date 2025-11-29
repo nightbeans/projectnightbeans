@@ -40,12 +40,8 @@
 
         <div id="benedict-map"></div>
 
-        <div class="benedict-list">
-            <!-- Add your eggs benedict reviews here -->
-            <article class="benedict-review">
-                <h2>Coming Soon</h2>
-                <p>Reviews will be added here.</p>
-            </article>
+        <div class="benedict-list" id="reviews-container">
+            <!-- Reviews are automatically loaded from benedict-reviews.js -->
         </div>
     </main>
 
@@ -54,9 +50,19 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="benedict-reviews.js"></script>
     <script>
-        // Benedict review locations
-        const locations = [];
+        // Sort reviews by date (newest first)
+        const sortedReviews = benedictReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // Convert to locations format for map
+        const locations = sortedReviews.map(review => ({
+            title: review.title,
+            lat: review.lat,
+            lng: review.lng,
+            rating: review.ratingDisplay,
+            url: review.url
+        }));
 
         // Initialize map
         const map = L.map('benedict-map').setView([51.505, -0.09], 6);
@@ -82,6 +88,24 @@
                 map.fitBounds(bounds);
             }
         }
+
+        // Populate reviews list (already sorted newest first)
+        const reviewsContainer = document.getElementById('reviews-container');
+        sortedReviews.forEach(review => {
+            const article = document.createElement('article');
+            article.className = 'benedict-review';
+
+            const eggIcons = '🍳'.repeat(review.rating);
+
+            article.innerHTML = `
+                <h2><a href="${review.url}">${review.title}</a></h2>
+                <div class="benedict-rating">${eggIcons}</div>
+                <time datetime="${review.date}">${review.dateDisplay}</time>
+                <p>${review.summary}</p>
+            `;
+
+            reviewsContainer.appendChild(article);
+        });
     </script>
 </body>
 </html>

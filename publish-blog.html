@@ -153,19 +153,16 @@
         <div class="instructions">
             <strong>Instructions:</strong>
             <ol>
-                <li>Click "Download Files" to get a ZIP containing your new post and updated index</li>
-                <li>Extract the ZIP file</li>
-                <li>Copy the files to your project:
-                    <ul>
-                        <li><code>blog.html</code> → replace the existing blog.html</li>
-                        <li><code>[post-name].html</code> → add to the posts/ folder</li>
-                    </ul>
-                </li>
+                <li>Save the generated blog post HTML file to the posts/ folder</li>
+                <li>Add a new entry to <code>blog-posts.js</code> with the post details (see code output below)</li>
+                <li>The post will automatically appear at the top of blog.html</li>
                 <li>Commit and push to GitHub</li>
             </ol>
+            <strong>Code to add to blog-posts.js:</strong>
+            <pre id="dataFileCode"></pre>
         </div>
         <div class="button-group">
-            <button type="button" class="btn-primary" onclick="downloadFiles()">Download Files</button>
+            <button type="button" class="btn-primary" onclick="downloadFiles()">Download HTML File</button>
         </div>
     </div>
     </div>
@@ -222,6 +219,7 @@
             const slug = slugify(title);
             postFilename = `${slug}.html`;
             const formattedDate = formatDateTime(dateTime);
+            const isoDate = new Date(dateTime).toISOString().split('T')[0]; // YYYY-MM-DD
             const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
             const excerpt = generateExcerpt(content);
 
@@ -267,74 +265,30 @@
 </body>
 </html>`;
 
-            // Generate new post preview HTML
-            const newPostPreview = `        <article class="post-preview">
-            <h2><a href="posts/${postFilename}">${title}</a></h2>
-            <time datetime="${isoDateTime}">${formattedDate}</time>
-            <p class="excerpt">${excerpt}</p>
-        </article>
+            // Generate blog-posts.js entry code
+            const dataFileCode = `{
+    title: '${title}',
+    url: 'posts/${postFilename}',
+    date: '${isoDate}',
+    dateDisplay: '${formattedDate}',
+    excerpt: '${excerpt.replace(/'/g, "\\'")}'
+}`;
 
-`;
-
-            // Generate updated blog.html
-            const blogIndexStart = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - joeldelaney</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="brand">
-                <a href="index.html"><h1>joeldelaney</h1></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="benedict.html">Benedict</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <h1 class="page-title">Blog</h1>
-        <div class="posts-list">
-`;
-
-            const blogIndexEnd = `        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Joel Delaney</p>
-    </footer>
-</body>
-</html>`;
-
-            // Get existing posts from form (you'll need to paste them)
-            const existingPosts = prompt("Paste the existing post previews from blog.html (or leave empty for first post):", "");
-
-            generatedIndex = blogIndexStart + newPostPreview + existingPosts + blogIndexEnd;
+            // Show code in output
+            document.getElementById('dataFileCode').textContent = dataFileCode;
 
             // Show output
             document.getElementById('output').classList.add('show');
             document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
         });
 
-        async function downloadFiles() {
-            const zip = new JSZip();
-
-            zip.file(postFilename, generatedPost);
-            zip.file('blog.html', generatedIndex);
-
-            const content = await zip.generateAsync({ type: 'blob' });
-            const url = window.URL.createObjectURL(content);
+        function downloadFiles() {
+            // Create a download link for the HTML file
+            const blob = new Blob([generatedPost], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'blog-update.zip';
+            a.download = postFilename;
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);

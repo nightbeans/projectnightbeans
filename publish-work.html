@@ -153,20 +153,16 @@
         <div class="instructions">
             <strong>Instructions:</strong>
             <ol>
-                <li>Click "Download Files" to get a ZIP containing your new post and updated index</li>
-                <li>Extract the ZIP file</li>
-                <li>Create a "work" folder if it doesn't exist</li>
-                <li>Copy the files to your project:
-                    <ul>
-                        <li><code>work.html</code> → replace the existing work.html</li>
-                        <li><code>[post-name].html</code> → add to the work/ folder</li>
-                    </ul>
-                </li>
+                <li>Save the generated work item HTML file to the work/ folder (optional - only if you want a detail page)</li>
+                <li>Add a new entry to <code>work-items.js</code> with the item details (see code output below)</li>
+                <li>The work item will automatically appear at the top of work.html</li>
                 <li>Commit and push to GitHub</li>
             </ol>
+            <strong>Code to add to work-items.js:</strong>
+            <pre id="dataFileCode"></pre>
         </div>
         <div class="button-group">
-            <button type="button" class="btn-primary" onclick="downloadFiles()">Download Files</button>
+            <button type="button" class="btn-primary" onclick="downloadFiles()">Download HTML File</button>
         </div>
     </div>
     </div>
@@ -223,8 +219,9 @@
             const slug = slugify(title);
             postFilename = `${slug}.html`;
             const formattedDate = formatDateTime(dateTime);
+            const isoDate = new Date(dateTime).toISOString().split('T')[0]; // YYYY-MM-DD
             const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
-            const excerpt = generateExcerpt(content);
+            const description = generateExcerpt(content);
 
             // Generate post file
             generatedPost = `<!DOCTYPE html>
@@ -268,69 +265,29 @@
 </body>
 </html>`;
 
-            // Generate new post item HTML
-            const newPostItem = `            <article class="work-item">
-                <h2><a href="work/${postFilename}">${title}</a></h2>
-                <time datetime="${isoDateTime}">${formattedDate}</time>
-                <p>${excerpt}</p>
-            </article>
+            // Generate work-items.js entry code
+            const dataFileCode = `{
+    title: '${title}',
+    url: 'work/${postFilename}',  // Optional - remove or leave empty if no detail page
+    date: '${isoDate}',
+    description: '${description.replace(/'/g, "\\'")}'
+}`;
 
-`;
-
-            // Generate updated work.html
-            generatedIndex = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work - joeldelaney</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="brand">
-                <a href="index.html"><h1>joeldelaney</h1></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="work.html" class="active">Work</a></li>
-                <li><a href="benedict.html">Benedict</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <h1 class="page-title">Work</h1>
-        <p class="page-intro">Projects and professional work.</p>
-
-        <div class="work-list">
-${newPostItem}        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Joel Delaney</p>
-    </footer>
-</body>
-</html>`;
+            // Show code in output
+            document.getElementById('dataFileCode').textContent = dataFileCode;
 
             // Show output
             document.getElementById('output').classList.add('show');
             document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
         });
 
-        async function downloadFiles() {
-            const zip = new JSZip();
-
-            zip.file(postFilename, generatedPost);
-            zip.file('work.html', generatedIndex);
-
-            const content = await zip.generateAsync({ type: 'blob' });
-            const url = window.URL.createObjectURL(content);
+        function downloadFiles() {
+            // Create a download link for the HTML file
+            const blob = new Blob([generatedPost], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'work-update.zip';
+            a.download = postFilename;
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);

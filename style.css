@@ -339,6 +339,16 @@ main {
     color: #ffffff;
 }
 
+.benedict-review h2 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.benedict-review h2 a:hover {
+    color: #7fc8e0;
+}
+
 .benedict-review p {
     color: #b0d4dd;
     line-height: 1.7;
