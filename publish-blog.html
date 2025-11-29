@@ -112,13 +112,13 @@
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="index.html"><h1>joeldelaney</h1></a>
+                <a href="/"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="benedict.html">Benedict</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/benedict/">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -138,8 +138,15 @@
         </div>
 
         <div class="form-group">
-            <label for="content">Content (HTML)</label>
-            <textarea id="content" required placeholder="<p>Your content here...</p>"></textarea>
+            <label for="content">Content (Markdown)</label>
+            <textarea id="content" required placeholder="# Heading
+
+Your content here in markdown...
+
+- List item 1
+- List item 2
+
+**Bold text** and *italic text*"></textarea>
         </div>
 
         <div class="button-group">
@@ -153,9 +160,10 @@
         <div class="instructions">
             <strong>Instructions:</strong>
             <ol>
-                <li>Save the generated blog post HTML file to the posts/ folder</li>
-                <li>Add a new entry to <code>blog-posts.js</code> with the post details (see code output below)</li>
-                <li>The post will automatically appear at the top of blog.html</li>
+                <li>Download the generated index.html file</li>
+                <li>Create a folder named <code id="folderName"></code> inside the <code>posts/</code> directory</li>
+                <li>Save the downloaded index.html file into that folder</li>
+                <li>Add the entry below to <code>blog-posts.js</code></li>
                 <li>Commit and push to GitHub</li>
             </ol>
             <strong>Code to add to blog-posts.js:</strong>
@@ -171,10 +179,10 @@
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         let generatedPost = '';
-        let generatedIndex = '';
+        let postSlug = '';
         let postFilename = '';
 
         function setCurrentDateTime() {
@@ -214,14 +222,18 @@
 
             const title = document.getElementById('title').value;
             const dateTime = document.getElementById('date').value;
-            const content = document.getElementById('content').value;
+            const markdownContent = document.getElementById('content').value;
+
+            // Convert markdown to HTML
+            const htmlContent = marked.parse(markdownContent);
 
             const slug = slugify(title);
-            postFilename = `${slug}.html`;
+            postSlug = slug;
+            postFilename = `index.html`;
             const formattedDate = formatDateTime(dateTime);
             const isoDate = new Date(dateTime).toISOString().split('T')[0]; // YYYY-MM-DD
             const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
-            const excerpt = generateExcerpt(content);
+            const excerpt = generateExcerpt(htmlContent);
 
             // Generate post file
             generatedPost = `<!DOCTYPE html>
@@ -230,19 +242,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title} - joeldelaney</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="../index.html"><h1>joeldelaney</h1></a>
+                <a href="../../"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../blog.html" class="active">Blog</a></li>
-                <li><a href="../work.html">Work</a></li>
-                <li><a href="../benedict.html">Benedict</a></li>
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/" class="active">Blog</a></li>
+                <li><a href="../../work/">Work</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -254,7 +266,7 @@
                 <time datetime="${isoDateTime}">${formattedDate}</time>
             </header>
             <div class="post-content">
-                ${content}
+                ${htmlContent}
             </div>
         </article>
     </main>
@@ -268,7 +280,7 @@
             // Generate blog-posts.js entry code
             const dataFileCode = `{
     title: '${title}',
-    url: 'posts/${postFilename}',
+    url: '/posts/${postSlug}/',
     date: '${isoDate}',
     dateDisplay: '${formattedDate}',
     excerpt: '${excerpt.replace(/'/g, "\\'")}'
@@ -276,6 +288,7 @@
 
             // Show code in output
             document.getElementById('dataFileCode').textContent = dataFileCode;
+            document.getElementById('folderName').textContent = postSlug;
 
             // Show output
             document.getElementById('output').classList.add('show');

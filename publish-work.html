@@ -112,13 +112,13 @@
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="index.html"><h1>joeldelaney</h1></a>
+                <a href="/"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="benedict.html">Benedict</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/benedict/">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -138,8 +138,16 @@
         </div>
 
         <div class="form-group">
-            <label for="content">Content (HTML)</label>
-            <textarea id="content" required placeholder="<p>Your content here...</p>"></textarea>
+            <label for="content">Content (Markdown)</label>
+            <textarea id="content" required placeholder="# About the Project
+
+Your content here in markdown...
+
+## Key Features
+- Feature 1
+- Feature 2
+
+**Technologies used:** TypeScript, React"></textarea>
         </div>
 
         <div class="button-group">
@@ -153,9 +161,10 @@
         <div class="instructions">
             <strong>Instructions:</strong>
             <ol>
-                <li>Save the generated work item HTML file to the work/ folder (optional - only if you want a detail page)</li>
-                <li>Add a new entry to <code>work-items.js</code> with the item details (see code output below)</li>
-                <li>The work item will automatically appear at the top of work.html</li>
+                <li>Download the generated index.html file</li>
+                <li>Create a folder named <code id="folderName"></code> inside the <code>work/</code> directory (optional - only if you want a detail page)</li>
+                <li>Save the downloaded index.html file into that folder</li>
+                <li>Add the entry below to <code>work-items.js</code></li>
                 <li>Commit and push to GitHub</li>
             </ol>
             <strong>Code to add to work-items.js:</strong>
@@ -171,10 +180,10 @@
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         let generatedPost = '';
-        let generatedIndex = '';
+        let postSlug = '';
         let postFilename = '';
 
         function setCurrentDateTime() {
@@ -214,10 +223,14 @@
 
             const title = document.getElementById('title').value;
             const dateTime = document.getElementById('date').value;
-            const content = document.getElementById('content').value;
+            const markdownContent = document.getElementById('content').value;
+
+            // Convert markdown to HTML
+            const content = marked.parse(markdownContent);
 
             const slug = slugify(title);
-            postFilename = `${slug}.html`;
+            postSlug = slug;
+            postFilename = `index.html`;
             const formattedDate = formatDateTime(dateTime);
             const isoDate = new Date(dateTime).toISOString().split('T')[0]; // YYYY-MM-DD
             const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
@@ -230,19 +243,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title} - joeldelaney</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="../index.html"><h1>joeldelaney</h1></a>
+                <a href="../../"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../blog.html">Blog</a></li>
-                <li><a href="../work.html" class="active">Work</a></li>
-                <li><a href="../benedict.html">Benedict</a></li>
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../work/" class="active">Work</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -268,13 +281,14 @@
             // Generate work-items.js entry code
             const dataFileCode = `{
     title: '${title}',
-    url: 'work/${postFilename}',  // Optional - remove or leave empty if no detail page
+    url: '/work/${slug}/',  // Optional - remove or leave empty if no detail page
     date: '${isoDate}',
     description: '${description.replace(/'/g, "\\'")}'
 }`;
 
             // Show code in output
             document.getElementById('dataFileCode').textContent = dataFileCode;
+            document.getElementById('folderName').textContent = postSlug;
 
             // Show output
             document.getElementById('output').classList.add('show');

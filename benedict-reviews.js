@@ -10,7 +10,7 @@ const benedictReviews = [
         rating: 1,
         ratingDisplay: '🍳',
         summary: 'Unbalanced and unconfident. Too much meat, unnecessary salt-beef, and questionable yuzu hollandaise.',
-        url: 'benedict/tamper-sellers-wheel.html',
+        url: '/benedict/tamper-sellers-wheel/',
         lat: 53.37713155,
         lng: -1.467229574460243,
         fellow: 'Joel Delaney'

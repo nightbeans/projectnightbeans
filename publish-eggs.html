@@ -221,13 +221,13 @@
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="index.html"><h1>joeldelaney</h1></a>
+                <a href="/"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="benedict.html">Benedict</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/benedict/">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -253,8 +253,16 @@
         </div>
 
         <div class="form-group">
-            <label for="content">Review Content (HTML)</label>
-            <textarea id="content" required placeholder="<p>Your review here...</p>"></textarea>
+            <label for="content">Review Content (Markdown)</label>
+            <textarea id="content" required placeholder="# Review
+
+Your review here in markdown...
+
+## Food Quality
+- List item 1
+- List item 2
+
+**Bold text** and *italic text*"></textarea>
         </div>
 
         <div class="form-group">
@@ -280,12 +288,15 @@
                 <li>Extract the ZIP file</li>
                 <li>Copy the files to your project:
                     <ul>
-                        <li><code>benedict.html</code> → replace the existing benedict.html</li>
-                        <li><code>[review-name].html</code> → add to the benedict/ folder</li>
+                        <li><code>benedict/index.html</code> → replace the existing benedict/index.html</li>
+                        <li>Create folder <code>benedict/<span id="reviewFolderName"></span>/</code> and add the <code>index.html</code> file inside it</li>
                     </ul>
                 </li>
+                <li>Add entry to <code>benedict-reviews.js</code> (see console output)</li>
                 <li>Commit and push to GitHub</li>
             </ol>
+            <strong>Code to add to benedict-reviews.js:</strong>
+            <pre id="dataFileCode"></pre>
         </div>
         <div class="button-group">
             <button type="button" class="btn-primary" onclick="downloadFiles()">Download Files</button>
@@ -314,10 +325,12 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         let generatedPost = '';
         let generatedIndex = '';
         let postFilename = '';
+        let postSlug = '';
         let previewMap = null;
         let previewMarker = null;
 
@@ -366,10 +379,13 @@
             const title = document.getElementById('title').value;
             const rating = parseFloat(document.getElementById('rating').value);
             const dateTime = document.getElementById('date').value;
-            const content = document.getElementById('content').value;
+            const markdownContent = document.getElementById('content').value;
             const fellow = document.getElementById('fellow').value;
             const lat = parseFloat(document.getElementById('lat').value);
             const lng = parseFloat(document.getElementById('lng').value);
+
+            // Convert markdown to HTML
+            const content = marked.parse(markdownContent);
 
             // Validate coordinates
             if (isNaN(lat) || isNaN(lng)) {
@@ -388,7 +404,8 @@
             }
 
             const slug = slugify(title);
-            postFilename = `${slug}.html`;
+            postFilename = `index.html`;
+            postSlug = slug;
             const formattedDate = formatDateTime(dateTime);
             const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
             const excerpt = generateExcerpt(content);
@@ -402,7 +419,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title} - joeldelaney</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         .benedict-rating {
@@ -434,13 +451,13 @@
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="../index.html"><h1>joeldelaney</h1></a>
+                <a href="../../"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../blog.html">Blog</a></li>
-                <li><a href="../work.html">Work</a></li>
-                <li><a href="../benedict.html" class="active">Benedict</a></li>
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../work/">Work</a></li>
+                <li><a href="../../benedict/" class="active">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -480,7 +497,7 @@
 
             // Generate new review item HTML
             const newReviewItem = `            <article class="benedict-review">
-                <h2><a href="benedict/${postFilename}">${title}</a></h2>
+                <h2><a href="/benedict/${slug}/">${title}</a></h2>
                 <div style="font-size: 20px; color: #ffc107; margin: 5px 0;">${ratingDisplay}</div>
                 <time datetime="${isoDateTime}">${formattedDate}</time>
                 <p>${excerpt}</p>
@@ -515,13 +532,13 @@
     <header>
         <nav class="navbar">
             <div class="brand">
-                <a href="index.html"><h1>joeldelaney</h1></a>
+                <a href="/"><h1>joeldelaney</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="benedict.html" class="active">Benedict</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/benedict/" class="active">Benedict</a></li>
             </ul>
         </nav>
     </header>
@@ -581,6 +598,25 @@ ${newReviewItem}        </div>
 </body>
 </html>`;
 
+            // Generate benedict-reviews.js entry code
+            const isoDate = new Date(dateTime).toISOString().split('T')[0];
+            const dataFileCode = `{
+    title: '${title}',
+    date: '${isoDate}',
+    dateDisplay: '${formattedDate}',
+    rating: ${rating},
+    ratingDisplay: '${ratingDisplay}',
+    summary: '${excerpt.replace(/'/g, "\\'")}',
+    url: '/benedict/${slug}/',
+    lat: ${lat},
+    lng: ${lng},
+    fellow: '${fellow}'
+}`;
+
+            // Show code in output
+            document.getElementById('dataFileCode').textContent = dataFileCode;
+            document.getElementById('reviewFolderName').textContent = slug;
+
             // Show output
             document.getElementById('output').classList.add('show');
             document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
@@ -589,8 +625,8 @@ ${newReviewItem}        </div>
         async function downloadFiles() {
             const zip = new JSZip();
 
-            zip.file(postFilename, generatedPost);
-            zip.file('benedict.html', generatedIndex);
+            zip.file(`benedict/${postSlug}/index.html`, generatedPost);
+            zip.file('benedict/index.html', generatedIndex);
 
             const content = await zip.generateAsync({ type: 'blob' });
             const url = window.URL.createObjectURL(content);
