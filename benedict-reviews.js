@@ -9,7 +9,7 @@ const benedictReviews = [
         "dateDisplay": "November 30 2025",
         "rating": 1,
         "ratingDisplay": "🍳",
-        "summary": "Avoid.",
+        "summary": "Coffika do not sell a good eggs benedict. I also do not like the ambience of the place. There is very little about it that I enjoy. But this is not a note on the aesthetics of the spot. Note that it has been a long while since I have visited but I recently heard from someone that they had been and liked it. However, they also noted that which has always been true at Coffika - \"quite a lot of ham.\" Yes, yes I am afraid so.",
         "url": "/benedict/coffika-ecclesall-road/",
         "lat": 53.3699832,
         "lng": -1.4932826,
@@ -21,22 +21,10 @@ const benedictReviews = [
         "dateDisplay": "March 30 2024",
         "rating": 1,
         "ratingDisplay": "🍳",
-        "summary": "",
+        "summary": "It seems to be a common issue with a lot of eggs benedicts I am seeing recently. It's unbalanced. A good eggs benedict – like most of life – is about finding the right balance.",
         "url": "/benedict/tamper-sellers-wheel/",
         "lat": 53.37713155,
         "lng": -1.467229574460243,
-        "fellow": "Joel Delaney"
-    },
-    {
-        "title": "Benedict Fellowship",
-        "date": "2024-03-30",
-        "dateDisplay": "March 30 2024",
-        "rating": 1,
-        "ratingDisplay": "🍳",
-        "summary": "",
-        "url": "/benedict/benedict/",
-        "lat": 51.505,
-        "lng": -0.09,
         "fellow": "Joel Delaney"
     }
 ];

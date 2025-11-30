@@ -59,11 +59,11 @@ function generateBenedictReviews() {
             const rating = (ratingText.match(/🍳/g) || []).length;
             const ratingDisplay = '🍳';
 
-            // Extract summary (last paragraph before the map, or first paragraph)
+            // Extract summary (first paragraph)
             const contentDiv = doc.querySelector('.post-content');
             const paragraphs = contentDiv ? Array.from(contentDiv.querySelectorAll('p')) : [];
-            const lastPara = paragraphs.filter(p => p.textContent.trim().length > 0).pop();
-            const summary = lastPara ? lastPara.textContent.trim() : '';
+            const firstPara = paragraphs.filter(p => p.textContent.trim().length > 0)[0];
+            const summary = firstPara ? firstPara.textContent.trim() : '';
 
             // Extract coordinates from map script
             const scripts = Array.from(doc.querySelectorAll('script'));

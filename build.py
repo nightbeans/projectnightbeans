@@ -134,9 +134,9 @@ def generate_benedict_reviews():
             rating_text = data.get('rating_text', '🍳')
             rating = rating_text.count('🍳')
 
-            # Get summary (last non-empty paragraph)
+            # Get summary (first paragraph)
             paragraphs = data.get('paragraphs', [])
-            summary = paragraphs[-1] if paragraphs else ''
+            summary = paragraphs[0] if paragraphs else ''
 
             # Extract fellow name
             fellow_text = data.get('fellow_text', '')
