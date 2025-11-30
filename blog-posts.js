@@ -200,18 +200,18 @@ const blogPosts = [
         "excerpt": "My legs were bound, I made a hop-ker-shuffle closer and closer to the edge. My toes were set over the side of one of the highest bridges in the world. I would fall for five seconds. One Mississippi, two Mississippi, three Mississippi, four Mississippi, five."
     },
     {
-        "title": "A poem about eczema",
-        "url": "/posts/a-poem-about-eczema/",
-        "date": "2024-04-27",
-        "dateDisplay": "April 27 2024",
-        "excerpt": "Are you serious? Who cares about your eczema? So what if it’s hot? So what if it’s itchy? No one cares. Quite right. What would even make this a poem? Ask me about it to my face. Maybe a five-year-old will reply. He usually does. Leave it alone, you’ll only make it worse."
-    },
-    {
         "title": "Rednaz reflects",
         "url": "/posts/rednaz-reflects/",
         "date": "2024-04-27",
         "dateDisplay": "April 27 2024",
         "excerpt": "“Yes I know he and I are much the same.”"
+    },
+    {
+        "title": "A poem about eczema",
+        "url": "/posts/a-poem-about-eczema/",
+        "date": "2024-04-27",
+        "dateDisplay": "April 27 2024",
+        "excerpt": "Are you serious? Who cares about your eczema? So what if it’s hot? So what if it’s itchy? No one cares. Quite right. What would even make this a poem? Ask me about it to my face. Maybe a five-year-old will reply. He usually does. Leave it alone, you’ll only make it worse."
     },
     {
         "title": "Snerol’s studio",
@@ -291,11 +291,11 @@ const blogPosts = [
         "excerpt": "It’s dark out, who is home? Let them come in, they are alone. It’s a cliff they are on, I don’t think they know. There really is nowhere else to go, let’s wait. We’ll see. Which of them will come to me."
     },
     {
-        "title": "EBI: Tamper, Sellers Wheel: 3/10",
-        "url": "/posts/ebi-tamper-sellers-wheel-3-10/",
+        "title": "I am not calm",
+        "url": "/posts/i-am-not-calm/",
         "date": "2024-04-02",
         "dateDisplay": "April 02 2024",
-        "excerpt": "It seems to be a common issue with a lot of eggs benedicts I am seeing recently. It’s unbalanced. A good eggs benedict – like most of life’s great pleasures – is an exercise in restraint, not excess."
+        "excerpt": "I am filling up, I cannot write. I am jamming the airways, cover my ears. Close my eyes. My mind is full and I am at the limit. I am not calm. I am not ready for quiet."
     },
     {
         "title": "Many uses for a Buff",
@@ -305,11 +305,11 @@ const blogPosts = [
         "excerpt": "He is an excellent runner. He is an exceptional runner. He has run the Dragons Back and the Spine."
     },
     {
-        "title": "I am not calm",
-        "url": "/posts/i-am-not-calm/",
+        "title": "EBI: Tamper, Sellers Wheel: 3/10",
+        "url": "/posts/ebi-tamper-sellers-wheel-3-10/",
         "date": "2024-04-02",
         "dateDisplay": "April 02 2024",
-        "excerpt": "I am filling up, I cannot write. I am jamming the airways, cover my ears. Close my eyes. My mind is full and I am at the limit. I am not calm. I am not ready for quiet."
+        "excerpt": "It seems to be a common issue with a lot of eggs benedicts I am seeing recently. It’s unbalanced. A good eggs benedict – like most of life’s great pleasures – is an exercise in restraint, not excess."
     },
     {
         "title": "22:22",
@@ -326,18 +326,18 @@ const blogPosts = [
         "excerpt": "‘Scar’ from The Lion King is probably not a model to be emulated."
     },
     {
-        "title": "What?",
-        "url": "/posts/what/",
-        "date": "2024-03-21",
-        "dateDisplay": "March 21 2024",
-        "excerpt": "Daniel Kaluuya told an excellent story in an interview with Rick Rubin. It was from his time acting opposite Josh Brolin in Sicario. I have not seen the film at the time of writing."
-    },
-    {
         "title": "EBI - A brunch index you cant trust",
         "url": "/posts/ebi-a-brunch-index-you-cant-trust/",
         "date": "2024-03-21",
         "dateDisplay": "March 21 2024",
         "excerpt": "Here’s the vision. You’re in Barcelona. You wake up naturally at 9:17. You have a shower and put on your Birks, shorts and a short sleeve shirt with one more button undone than your comfy with and head out the door."
+    },
+    {
+        "title": "What?",
+        "url": "/posts/what/",
+        "date": "2024-03-21",
+        "dateDisplay": "March 21 2024",
+        "excerpt": "Daniel Kaluuya told an excellent story in an interview with Rick Rubin. It was from his time acting opposite Josh Brolin in Sicario. I have not seen the film at the time of writing."
     },
     {
         "title": "We butchered a model",
