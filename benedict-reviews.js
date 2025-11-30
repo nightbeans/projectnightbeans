@@ -26,5 +26,17 @@ const benedictReviews = [
         "lat": 53.37713155,
         "lng": -1.467229574460243,
         "fellow": "Joel Delaney"
+    },
+    {
+        "title": "Long Lee Manor, Shamwari Game Reserve",
+        "date": "2014-12-09",
+        "dateDisplay": "December 09 2014",
+        "rating": 5,
+        "ratingDisplay": "🍳",
+        "summary": "The one that started it all. A once-in-a-lifetime trip with my Mum and Dad. A truly remarkable place and experience. Yes, we were fortunate to see the 'Big Five' most dangerous animals here in South Africa - lions, elephants, rhino, buffalo and even a leopard, as well as many other beautiful creatures.",
+        "url": "/benedict/long-lee-manor-shamwari-game-reserve/",
+        "lat": -33.450177800000006,
+        "lng": 26.08565896192775,
+        "fellow": "Joel Delaney"
     }
 ];
