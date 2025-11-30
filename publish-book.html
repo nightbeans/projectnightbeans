@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publish Work - joeldelaney</title>
+    <title>Publish Book Chapter - joeldelaney</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -27,7 +27,7 @@
             color: #fff;
         }
         input[type="text"],
-        input[type="datetime-local"],
+        input[type="number"],
         textarea {
             width: 100%;
             padding: 12px;
@@ -37,7 +37,7 @@
             font-family: inherit;
         }
         textarea {
-            min-height: 300px;
+            min-height: 400px;
             font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
             resize: vertical;
         }
@@ -62,13 +62,6 @@
         }
         .btn-primary:hover {
             background: #e0a800;
-        }
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
-        }
-        .btn-secondary:hover {
-            background: #545b62;
         }
         .output {
             margin-top: 30px;
@@ -125,54 +118,49 @@
     </header>
 
     <div class="content-wrapper">
-        <h1 class="page-title">publish-work</h1>
+        <h1 class="page-title">publish-book</h1>
 
-        <form id="postForm">
+        <form id="chapterForm">
         <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" required>
+            <label for="chapterNumber">Chapter Number</label>
+            <input type="number" id="chapterNumber" required min="1" placeholder="1">
         </div>
 
         <div class="form-group">
-            <label for="date">Date & Time</label>
-            <input type="datetime-local" id="date" required>
+            <label for="title">Chapter Title (optional)</label>
+            <input type="text" id="title" placeholder="The Beginning">
         </div>
 
         <div class="form-group">
             <label for="content">Content (Markdown)</label>
-            <textarea id="content" required placeholder="# About the Project
+            <textarea id="content" required placeholder="Your chapter content here in markdown...
 
-Your content here in markdown...
+This is a paragraph.
 
-## Key Features
-- Feature 1
-- Feature 2
+This is another paragraph.
 
-**Technologies used:** TypeScript, React"></textarea>
+**Bold text** and *italic text*"></textarea>
         </div>
 
         <div class="button-group">
-            <button type="submit" class="btn-primary">Generate Files</button>
-            <button type="button" class="btn-secondary" onclick="setCurrentDateTime()">Use Current Date/Time</button>
+            <button type="submit" class="btn-primary">Generate Chapter</button>
         </div>
     </form>
 
     <div id="output" class="output">
-        <h2>Files Generated!</h2>
+        <h2>Chapter Generated!</h2>
         <div class="instructions">
             <strong>Instructions:</strong>
             <ol>
-                <li>Download the generated index.html file</li>
-                <li>Create a folder named <code id="folderName"></code> inside the <code>work/</code> directory (optional - only if you want a detail page)</li>
-                <li>Save the downloaded index.html file into that folder</li>
-                <li>Add the entry below to <code>work-items.js</code></li>
+                <li>Click "Download Chapter" to get a ZIP file</li>
+                <li>Extract the ZIP file</li>
+                <li>Copy the <code id="folderName"></code> folder into your <code>book/</code> directory</li>
+                <li>Run <code>python3 build.py</code> to regenerate book-chapters.js</li>
                 <li>Commit and push to GitHub</li>
             </ol>
-            <strong>Code to add to work-items.js:</strong>
-            <pre id="dataFileCode"></pre>
         </div>
         <div class="button-group">
-            <button type="button" class="btn-primary" onclick="downloadFiles()">Download HTML File</button>
+            <button type="button" class="btn-primary" onclick="downloadFiles()">Download Chapter</button>
         </div>
     </div>
     </div>
@@ -181,22 +169,12 @@ Your content here in markdown...
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        let generatedPost = '';
-        let postSlug = '';
-        let postFilename = '';
-
-        function setCurrentDateTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-
-            document.getElementById('date').value = `${year}-${month}-${day}T${hours}:${minutes}`;
-        }
+        let generatedChapter = '';
+        let chapterSlug = '';
+        let chapterFilename = '';
 
         function slugify(text) {
             return text.toLowerCase()
@@ -206,45 +184,52 @@ Your content here in markdown...
                 .trim();
         }
 
-        function formatDateTime(dateStr) {
-            const date = new Date(dateStr);
-            const options = { year: 'numeric', month: 'long', day: '2-digit' };
-            return date.toLocaleDateString('en-US', options).replace(',', '');
-        }
-
-        function generateExcerpt(content) {
-            const temp = document.createElement('div');
-            temp.innerHTML = content;
-            const text = temp.textContent || temp.innerText || '';
-            return text.substring(0, 200) + (text.length > 200 ? '...' : '');
-        }
-
-        document.getElementById('postForm').addEventListener('submit', function(e) {
+        document.getElementById('chapterForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
+            const chapterNumber = document.getElementById('chapterNumber').value;
             const title = document.getElementById('title').value;
-            const dateTime = document.getElementById('date').value;
             const markdownContent = document.getElementById('content').value;
 
             // Convert markdown to HTML
-            const content = marked.parse(markdownContent);
+            const htmlContent = marked.parse(markdownContent);
 
-            const slug = slugify(title);
-            postSlug = slug;
-            postFilename = `index.html`;
-            const formattedDate = formatDateTime(dateTime);
-            const isoDate = new Date(dateTime).toISOString().split('T')[0]; // YYYY-MM-DD
-            const isoDateTime = new Date(dateTime).toISOString().replace('T', ' ').substring(0, 19);
-            const description = generateExcerpt(content);
+            // Create slug from chapter number and title
+            const slug = title ? `chapter-${chapterNumber}-${slugify(title)}` : `chapter-${chapterNumber}`;
+            chapterSlug = slug;
+            chapterFilename = `index.html`;
 
-            // Generate post file
-            generatedPost = `<!DOCTYPE html>
+            const displayTitle = title ? `Chapter ${chapterNumber}: ${title}` : `Chapter ${chapterNumber}`;
+
+            // Generate chapter file
+            generatedChapter = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} - joeldelaney</title>
+    <title>${displayTitle} - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .chapter-nav a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .chapter-nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -255,8 +240,9 @@ Your content here in markdown...
             <ul class="nav-links">
                 <li><a href="../../">Home</a></li>
                 <li><a href="../../blog/">Blog</a></li>
-                <li><a href="../../work/" class="active">Work</a></li>
+                <li><a href="../../work/">Work</a></li>
                 <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../book/" class="active">Book</a></li>
             </ul>
         </nav>
     </header>
@@ -264,11 +250,13 @@ Your content here in markdown...
     <main>
         <article class="post">
             <header class="post-header">
-                <h1>${title}</h1>
-                <time datetime="${isoDateTime}">${formattedDate}</time>
+                <h1>${displayTitle}</h1>
             </header>
             <div class="post-content">
-                ${content}
+                ${htmlContent}
+            </div>
+            <div class="chapter-nav">
+                <a href="../../book/">&larr; Back to Chapters</a>
             </div>
         </article>
     </main>
@@ -279,38 +267,30 @@ Your content here in markdown...
 </body>
 </html>`;
 
-            // Generate work-items.js entry code
-            const dataFileCode = `{
-    title: '${title}',
-    url: '/work/${slug}/',  // Optional - remove or leave empty if no detail page
-    date: '${isoDate}',
-    description: '${description.replace(/'/g, "\\'")}'
-}`;
-
-            // Show code in output
-            document.getElementById('dataFileCode').textContent = dataFileCode;
-            document.getElementById('folderName').textContent = postSlug;
+            // Show folder name
+            document.getElementById('folderName').textContent = chapterSlug;
 
             // Show output
             document.getElementById('output').classList.add('show');
             document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
         });
 
-        function downloadFiles() {
-            // Create a download link for the HTML file
-            const blob = new Blob([generatedPost], { type: 'text/html' });
-            const url = window.URL.createObjectURL(blob);
+        async function downloadFiles() {
+            const zip = new JSZip();
+
+            // Add the chapter HTML file inside the properly named folder
+            zip.file(`${chapterSlug}/index.html`, generatedChapter);
+
+            const content = await zip.generateAsync({ type: 'blob' });
+            const url = window.URL.createObjectURL(content);
             const a = document.createElement('a');
             a.href = url;
-            a.download = postFilename;
+            a.download = `${chapterSlug}.zip`;
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
         }
-
-        // Set current date/time on load
-        setCurrentDateTime();
     </script>
 </body>
 </html>

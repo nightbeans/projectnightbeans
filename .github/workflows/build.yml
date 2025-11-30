@@ -7,6 +7,7 @@ on:
     paths:
       - 'posts/*/index.html'
       - 'benedict/*/index.html'
+      - 'book/*/index.html'
       - 'build.py'
 
 jobs:
@@ -31,5 +32,5 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git add benedict-reviews.js blog-posts.js index.html
+          git add benedict-reviews.js blog-posts.js book-chapters.js index.html
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-build: Update generated files" && git push)
