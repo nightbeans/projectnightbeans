@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book - joeldelaney</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="/"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/benedict/">Benedict</a></li>
+                <li><a href="/book/" class="active">Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="posts-list" id="chapters-container">
+            <!-- Chapters from book-chapters.js will be inserted here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script src="/book-chapters.js"></script>
+    <script>
+        // Sort chapters by chapter number
+        const sortedChapters = bookChapters.sort((a, b) => a.chapterNumber - b.chapterNumber);
+
+        // Insert chapters
+        const chaptersContainer = document.getElementById('chapters-container');
+
+        sortedChapters.forEach(chapter => {
+            const article = document.createElement('article');
+            article.className = 'post-preview';
+
+            article.innerHTML = `
+                <h2><a href="${chapter.url}">${chapter.title}</a></h2>
+                <p class="excerpt">${chapter.excerpt}</p>
+            `;
+
+            chaptersContainer.appendChild(article);
+        });
+    </script>
+</body>
+</html>
