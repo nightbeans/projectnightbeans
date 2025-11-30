@@ -1,0 +1,33 @@
+name: Build Site
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'posts/*/index.html'
+      - 'benedict/*/index.html'
+      - 'build.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Run build script
+        run: python3 build.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add benedict-reviews.js blog-posts.js index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-build: Update generated files" && git push)

@@ -4,17 +4,39 @@
 
 const benedictReviews = [
     {
-        title: 'Tamper, Sellers Wheel',
-        date: '2024-03-30',
-        dateDisplay: 'March 30 2024',
-        rating: 1,
-        ratingDisplay: '🍳',
-        summary: 'Unbalanced and unconfident. Too much meat, unnecessary salt-beef, and questionable yuzu hollandaise.',
-        url: '/benedict/tamper-sellers-wheel/',
-        lat: 53.37713155,
-        lng: -1.467229574460243,
-        fellow: 'Joel Delaney'
+        "title": "Coffika, Ecclesall Road",
+        "date": "2025-11-30",
+        "dateDisplay": "November 30 2025",
+        "rating": 1,
+        "ratingDisplay": "🍳",
+        "summary": "Avoid.",
+        "url": "/benedict/coffika-ecclesall-road/",
+        "lat": 53.3699832,
+        "lng": -1.4932826,
+        "fellow": "Joel Delaney"
+    },
+    {
+        "title": "Tamper, Sellers Wheel",
+        "date": "2024-03-30",
+        "dateDisplay": "March 30 2024",
+        "rating": 1,
+        "ratingDisplay": "🍳",
+        "summary": "",
+        "url": "/benedict/tamper-sellers-wheel/",
+        "lat": 53.37713155,
+        "lng": -1.467229574460243,
+        "fellow": "Joel Delaney"
+    },
+    {
+        "title": "Benedict Fellowship",
+        "date": "2024-03-30",
+        "dateDisplay": "March 30 2024",
+        "rating": 1,
+        "ratingDisplay": "🍳",
+        "summary": "",
+        "url": "/benedict/benedict/",
+        "lat": 51.505,
+        "lng": -0.09,
+        "fellow": "Joel Delaney"
     }
-    // Add new reviews here following the same format
-    // Rating is out of 5 (1-5 eggs)
 ];
