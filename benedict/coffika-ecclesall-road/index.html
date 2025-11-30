@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffika, Ecclesall Road - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .benedict-rating {
+            font-size: 32px;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .benedict-map {
+            height: 400px;
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .benedict-fellow {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            color: #333;
+        }
+        .benedict-fellow strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../work/">Work</a></li>
+                <li><a href="../../benedict/" class="active">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1>Coffika, Ecclesall Road</h1>
+                <div class="benedict-rating">🍳</div>
+                <time datetime="2025-11-30 20:44:00">November 30 2025</time>
+            </header>
+            <div class="post-content">
+                <p>Coffika do not sell a good eggs benedict. I also do not like the ambience of the place. There is very little about it that I enjoy. But this is not a note on the aesthetics of the spot. Note that it has been a long while since I have visited but I recently heard from someone that they had been and liked it. However, they also noted that which has always been true at Koffika - <em>&quot;quite a lot of ham.&quot;</em> Yes, yes I am afraid so.</p>
+<p>The eggs benedict at Coffika always has far too much ham, and the bun they serve it on, it&#39;s just, big. Big and bready. As we all know, eggs benedict should be an exercise in restraint. Restraint leading to that rarest form of breakfast beauty - balance. </p>
+<p>Too bready, too hammy. No redemptive aspect. </p>
+<p>Avoid.</p>
+
+            </div>
+            <div id="map" class="benedict-map"></div>
+            <div class="benedict-fellow">
+                <strong>Benedict Fellow:</strong> Joel Delaney
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([53.3699832, -1.4932826], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([53.3699832, -1.4932826]).addTo(map)
+            .bindPopup('Coffika, Ecclesall Road').openPopup();
+    </script>
+</body>
+</html>
