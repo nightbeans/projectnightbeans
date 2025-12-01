@@ -240,6 +240,93 @@ const blogPosts = {json.dumps(posts, indent=4, ensure_ascii=False)};
     print(f'✅ Generated blog-posts.js with {len(posts)} posts\n')
     return posts
 
+def update_blog_post_files(posts):
+    """Update all blog post HTML files with proper navigation and Book link"""
+    print('Updating blog post HTML files...')
+
+    if not posts:
+        print('No posts found, skipping...')
+        return
+
+    # Create a mapping of post URLs to indices for navigation
+    post_index = {post['url']: i for i, post in enumerate(posts)}
+
+    posts_dir = Path('posts')
+    if not posts_dir.exists():
+        print('Posts directory not found, skipping...')
+        return
+
+    updated_count = 0
+
+    for item in posts_dir.iterdir():
+        if not item.is_dir():
+            continue
+
+        index_path = item / 'index.html'
+        if not index_path.exists():
+            continue
+
+        try:
+            with open(index_path, 'r', encoding='utf-8') as f:
+                html = f.read()
+
+            # Find current post in the sorted list
+            current_url = f'/posts/{item.name}/'
+            if current_url not in post_index:
+                continue
+
+            idx = post_index[current_url]
+
+            # Determine next and previous posts
+            prev_post = posts[idx - 1] if idx > 0 else None
+            next_post = posts[idx + 1] if idx < len(posts) - 1 else None
+
+            # Build navigation HTML
+            nav_html = '        <nav class="post-nav">\n'
+            if prev_post:
+                prev_slug = prev_post['url'].strip('/').split('/')[-1]
+                nav_html += f'            <a href="../{prev_slug}/">← {prev_post["title"]}</a>\n'
+            else:
+                nav_html += '            <span></span>\n'
+
+            if next_post:
+                next_slug = next_post['url'].strip('/').split('/')[-1]
+                nav_html += f'            <a href="../{next_slug}/">{next_post["title"]} →</a>\n'
+            else:
+                nav_html += '            <span></span>\n'
+
+            nav_html += '        </nav>'
+
+            # Update navigation if it exists
+            nav_pattern = r'<nav class="post-nav">.*?</nav>'
+            if re.search(nav_pattern, html, re.DOTALL):
+                html = re.sub(nav_pattern, nav_html, html, flags=re.DOTALL)
+
+            # Add Book link to navigation if not present
+            nav_links_pattern = r'(<ul class="nav-links">.*?<li><a href="../../benedict/">Benedict</a></li>)(.*?</ul>)'
+            if re.search(nav_links_pattern, html, re.DOTALL):
+                def add_book_link(match):
+                    before = match.group(1)
+                    after = match.group(2)
+                    # Check if Book link already exists
+                    if 'book' not in after.lower():
+                        return before + '\n                <li><a href="../../book/">Book</a></li>' + after
+                    return match.group(0)
+
+                html = re.sub(nav_links_pattern, add_book_link, html, flags=re.DOTALL)
+
+            # Write updated HTML
+            with open(index_path, 'w', encoding='utf-8') as f:
+                f.write(html)
+
+            updated_count += 1
+            print(f'  ✓ Updated: {item.name}')
+
+        except Exception as e:
+            print(f'  ✗ Error updating {item.name}: {e}')
+
+    print(f'✅ Updated {updated_count} blog post files\n')
+
 def update_homepage(posts):
     """Update homepage with latest blog post"""
     print('Updating homepage...')
@@ -345,6 +432,7 @@ if __name__ == '__main__':
     print('🔨 Building site...\n')
     generate_benedict_reviews()
     posts = generate_blog_posts()
+    update_blog_post_files(posts)
     update_homepage(posts)
     generate_book_chapters()
     print('✅ Build complete!\n')

@@ -388,12 +388,12 @@ That’s a problem for us. So we set the ideal. We butchered th...</p>
 
     <script src="/blog-posts.js"></script>
     <script>
-        // Sort new posts by date (newest first)
+        // Sort posts by date (newest first)
         const sortedPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        // Insert new posts at the top of the list
+        // Clear container and populate with posts from blog-posts.js
         const postsContainer = document.getElementById('posts-container');
-        const firstExistingPost = postsContainer.querySelector('.post-preview');
+        postsContainer.innerHTML = '';
 
         sortedPosts.forEach(post => {
             const article = document.createElement('article');
@@ -405,12 +405,7 @@ That’s a problem for us. So we set the ideal. We butchered th...</p>
                 <p class="excerpt">${post.excerpt}</p>
             `;
 
-            // Insert before the first existing post
-            if (firstExistingPost) {
-                postsContainer.insertBefore(article, firstExistingPost);
-            } else {
-                postsContainer.appendChild(article);
-            }
+            postsContainer.appendChild(article);
         });
     </script>
 </body>
