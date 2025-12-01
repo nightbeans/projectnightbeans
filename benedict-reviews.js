@@ -16,6 +16,18 @@ const benedictReviews = [
         "fellow": "Joel Delaney"
     },
     {
+        "title": "Federal",
+        "date": "2025-05-02",
+        "dateDisplay": "May 02 2025",
+        "rating": 4,
+        "ratingDisplay": "🍳",
+        "summary": "Midweek midmorning meeting? Let it be here. Let it be the benedict.",
+        "url": "/benedict/federal/",
+        "lat": 53.4842432,
+        "lng": -2.2384454,
+        "fellow": "Joel Delaney"
+    },
+    {
         "title": "Tamper, Sellers Wheel",
         "date": "2024-03-30",
         "dateDisplay": "March 30 2024",
