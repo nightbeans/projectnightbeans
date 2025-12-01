@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made by Jonty - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .benedict-rating {
+            font-size: 32px;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .benedict-map {
+            height: 400px;
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .benedict-fellow {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            color: #333;
+        }
+        .benedict-fellow strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../work/">Work</a></li>
+                <li><a href="../../benedict/" class="active">Benedict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1>Made by Jonty</h1>
+                <div class="benedict-rating">🍳🍳🍳🍳</div>
+                <time datetime="2025-10-19 14:26:00">October 19 2025</time>
+            </header>
+            <div class="post-content">
+                <p>Very good, nice jammy yolks, excellent sourdough, really smooth hollandaise sauce; couldn’t quite tell what the seasoning on the top was but it was very tasty.</p>
+<p>I couldn’t have asked for a better eggs Benedict at that moment in my life.</p>
+
+            </div>
+            <div id="map" class="benedict-map"></div>
+            <div class="benedict-fellow">
+                <strong>Benedict Fellow:</strong> Joseph Collins
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([53.36720872335988, -1.500567913591401], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([53.36720872335988, -1.500567913591401]).addTo(map)
+            .bindPopup('Made by Jonty').openPopup();
+    </script>
+</body>
+</html>
