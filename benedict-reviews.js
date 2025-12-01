@@ -16,6 +16,18 @@ const benedictReviews = [
         "fellow": "Joel Delaney"
     },
     {
+        "title": "Made by Jonty",
+        "date": "2025-10-19",
+        "dateDisplay": "October 19 2025",
+        "rating": 4,
+        "ratingDisplay": "🍳",
+        "summary": "Very good, nice jammy yolks, excellent sourdough, really smooth hollandaise sauce; couldn’t quite tell what the seasoning on the top was but it was very tasty.",
+        "url": "/benedict/made-by-jonty/",
+        "lat": 53.36720872335988,
+        "lng": -1.500567913591401,
+        "fellow": "Joseph Collins"
+    },
+    {
         "title": "Federal, Nicholas Croft",
         "date": "2025-05-02",
         "dateDisplay": "May 02 2025",
