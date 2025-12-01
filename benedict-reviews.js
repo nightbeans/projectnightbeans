@@ -16,11 +16,11 @@ const benedictReviews = [
         "fellow": "Joel Delaney"
     },
     {
-        "title": "Federal",
+        "title": "Federal, Nicholas Croft",
         "date": "2025-05-02",
         "dateDisplay": "May 02 2025",
         "rating": 4,
-        "ratingDisplay": "🍳",
+        "ratingDisplay": "🍳🍳🍳🍳",
         "summary": "Midweek midmorning meeting? Let it be here. Let it be the benedict.",
         "url": "/benedict/federal/",
         "lat": 53.4842432,
