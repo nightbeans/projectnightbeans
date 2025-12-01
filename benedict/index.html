@@ -53,14 +53,19 @@
         // Sort reviews by date (newest first)
         const sortedReviews = benedictReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        // Convert to locations format for map
-        const locations = sortedReviews.map(review => ({
-            title: review.title,
-            lat: review.lat,
-            lng: review.lng,
-            rating: review.ratingDisplay,
-            url: review.url
-        }));
+        // Group reviews by location (lat/lng)
+        const locationGroups = {};
+        sortedReviews.forEach(review => {
+            const key = `${review.lat},${review.lng}`;
+            if (!locationGroups[key]) {
+                locationGroups[key] = {
+                    lat: review.lat,
+                    lng: review.lng,
+                    reviews: []
+                };
+            }
+            locationGroups[key].reviews.push(review);
+        });
 
         // Initialize map
         const map = L.map('benedict-map').setView([51.505, -0.09], 6);
@@ -69,15 +74,26 @@
         }).addTo(map);
 
         // Add markers for each location
-        if (locations.length > 0) {
+        const locationGroupsArray = Object.values(locationGroups);
+        if (locationGroupsArray.length > 0) {
             const bounds = [];
-            locations.forEach(loc => {
-                const marker = L.marker([loc.lat, loc.lng]).addTo(map);
-                marker.bindPopup('<strong>' + loc.title + '</strong><br>' + loc.rating + '<br><a href="' + loc.url + '">Read Review</a>');
-                marker.on('click', function() {
-                    window.location.href = loc.url;
-                });
-                bounds.push([loc.lat, loc.lng]);
+            locationGroupsArray.forEach(locGroup => {
+                const marker = L.marker([locGroup.lat, locGroup.lng]).addTo(map);
+
+                // Build popup content with all reviews at this location
+                let popupContent = '';
+                if (locGroup.reviews.length === 1) {
+                    const review = locGroup.reviews[0];
+                    popupContent = `<strong>${review.title}</strong><br>${review.ratingDisplay}<br><a href="${review.url}">Read Review</a>`;
+                } else {
+                    popupContent = '<strong>Reviews at this location:</strong><br><br>';
+                    locGroup.reviews.forEach(review => {
+                        popupContent += `<a href="${review.url}">${review.title}</a> ${review.ratingDisplay}<br>`;
+                    });
+                }
+
+                marker.bindPopup(popupContent);
+                bounds.push([locGroup.lat, locGroup.lng]);
             });
             // Fit map to show all markers
             if (bounds.length === 1) {
