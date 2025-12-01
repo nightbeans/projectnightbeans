@@ -21,7 +21,7 @@ const benedictReviews = [
         "dateDisplay": "May 02 2025",
         "rating": 4,
         "ratingDisplay": "🍳",
-        "summary": "Midweek midmorning meeting? Let it be here. Let it be the benedict.",
+        "summary": "Midweek midmorning meeting in Manchester? Let it be here. Let it be the benedict.",
         "url": "/benedict/federal/",
         "lat": 53.4842432,
         "lng": -2.2384454,
