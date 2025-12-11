@@ -136,6 +136,12 @@ const bookChapters = [
         "excerpt": "The man without eyelids had been silent a long time, he was vastly less patient up here than down in the deeps. It must have been because he’d spent s..."
     },
     {
+        "title": "Part II",
+        "chapterNumber": 999,
+        "url": "/book/part-2/",
+        "excerpt": ""
+    },
+    {
         "title": "6",
         "chapterNumber": 999,
         "url": "/book/6/",
@@ -208,6 +214,12 @@ const bookChapters = [
         "excerpt": "It was the drop of a mug that brought Mr Armitage back. He’d slept the entire night on Sara’s bed. His legs numb from hanging off the end. Left him st..."
     },
     {
+        "title": "Part I",
+        "chapterNumber": 999,
+        "url": "/book/part-1/",
+        "excerpt": ""
+    },
+    {
         "title": "84",
         "chapterNumber": 999,
         "url": "/book/84/",
@@ -262,6 +274,12 @@ const bookChapters = [
         "excerpt": "His Ella flashed before Calum’s eyes. Not now! He begged the demon to drown her, and thankfully she did. The valkyrie he’d spent the last two days wit..."
     },
     {
+        "title": "Part III",
+        "chapterNumber": 999,
+        "url": "/book/part-3/",
+        "excerpt": ""
+    },
+    {
         "title": "62",
         "chapterNumber": 999,
         "url": "/book/62/",
@@ -278,6 +296,12 @@ const bookChapters = [
         "chapterNumber": 999,
         "url": "/book/9/",
         "excerpt": "Mr Armitage stood up tall and stepped over to put another log on the burner outside. He was finally ready to speak to Mrs Careen, mummified in two of ..."
+    },
+    {
+        "title": "Part V",
+        "chapterNumber": 999,
+        "url": "/book/part-5/",
+        "excerpt": ""
     },
     {
         "title": "52",
@@ -376,6 +400,12 @@ const bookChapters = [
         "excerpt": "Mr Armitage fell then, clutching his neck. Calum figured an asthma attack. Wesley figured Thadodaho. Mary figured pretence. He coughed and sputtered. ..."
     },
     {
+        "title": "Part IV",
+        "chapterNumber": 999,
+        "url": "/book/part-4/",
+        "excerpt": ""
+    },
+    {
         "title": "55",
         "chapterNumber": 999,
         "url": "/book/55/",
@@ -470,6 +500,12 @@ const bookChapters = [
         "chapterNumber": 999,
         "url": "/book/4/",
         "excerpt": "All of time passed for Calum as he stood there looking at his father. Years drained away. Years and miles. He was looking at him from binoculars, comi..."
+    },
+    {
+        "title": "Epilogue",
+        "chapterNumber": 999,
+        "url": "/book/epilogue/",
+        "excerpt": ""
     },
     {
         "title": "50",
