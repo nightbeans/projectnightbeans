@@ -8,5 +8,563 @@ const bookChapters = [
         "chapterNumber": 1,
         "url": "/book/chapter-1/",
         "excerpt": "The poor lads were left wondering if they had ever really known her at all. They didn't speak to each other about any of it, it never seemed necessary..."
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/40/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/36/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/58/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/20/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/35/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/80/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/70/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/30/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/92/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/18/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/19/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/83/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/41/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/76/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/61/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/63/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/44/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/26/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/64/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/33/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/79/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/6/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/72/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/87/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/27/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/89/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/53/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/23/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/73/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/5/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/13/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/8/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/32/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/84/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/46/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/82/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/74/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/75/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/81/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/31/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/51/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/57/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/62/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/39/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/9/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/52/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/7/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/48/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/65/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/43/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/54/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/15/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/25/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/24/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/47/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/88/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/29/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/42/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/1/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/16/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/90/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/55/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/12/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/86/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/66/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/59/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/56/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/78/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/69/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/49/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/68/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/60/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/34/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/71/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/38/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/2/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/4/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/50/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/85/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/10/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/67/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/21/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/3/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/11/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/77/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/17/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/22/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/14/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/28/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/45/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/37/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/93/",
+        "excerpt": ""
+    },
+    {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/91/",
+        "excerpt": ""
     }
 ];
