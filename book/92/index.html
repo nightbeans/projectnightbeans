@@ -6,24 +6,6 @@
     <title>92 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .nav-btn {
-            padding: 12px 24px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .nav-btn:hover {
-            background: #0056b3;
-        }
-        .nav-btn.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
         .book-navigation {
             display: flex;
             justify-content: space-between;
@@ -32,9 +14,35 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .nav-arrow:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         .page-number {
             color: #666;
             font-weight: 600;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -71,9 +79,9 @@
         <p>Wesley knew he had to return for the planting on his own land. He had agreed with many of the townsfolk to plant the three sisters this year in memory of their old friend and guardian, in an attempt to reclaim some of the traditions he’d loved and to tie them once again to their history and stories. The only protection they had against the warlord, who continued to make his silent offers whenever he travelled in his deep.</p>
 
                 <div class="book-navigation">
-                    <a href="../91/" class="nav-btn prev-btn">← Previous</a>
+                    <a href="../91/" class="nav-arrow">←</a>
                     <span class="page-number">92 of 92</span>
-                    <span class="nav-btn disabled">Next →</span>
+                    <span class="nav-arrow disabled">→</span>
                 </div>
             </div>
         </article>

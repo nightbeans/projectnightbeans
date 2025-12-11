@@ -6,24 +6,6 @@
     <title>4 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .nav-btn {
-            padding: 12px 24px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .nav-btn:hover {
-            background: #0056b3;
-        }
-        .nav-btn.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
         .book-navigation {
             display: flex;
             justify-content: space-between;
@@ -32,9 +14,35 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .nav-arrow:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         .page-number {
             color: #666;
             font-weight: 600;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -64,9 +72,9 @@
         <p>He turned and ran to the bathroom and locked the door. He was screaming. He had never practiced the turn inwards as Conor was accustomed to. So he was left here, in the horrific reality of the world in front of him. He begged to be silent but couldn't. He wailed and waited. For her. Huge footsteps echoed in the corridor outside the bathroom. Great pounding on the door. The bath started bubbling up, and the toilet. She was in the drains. All the sewage of the world, in here, with him. She was an ancient sea-snake. She was as large as the centre of the earth. The floorboards bulged and creaked, the windows blew out and walls crumbled as the earthquake started. Then the boiler blew up the house and the street. All England was burning and so was he.</p>
 
                 <div class="book-navigation">
-                    <a href="../3/" class="nav-btn prev-btn">← Previous</a>
+                    <a href="../3/" class="nav-arrow">←</a>
                     <span class="page-number">4 of 92</span>
-                    <a href="../5/" class="nav-btn next-btn">Next →</a>
+                    <a href="../5/" class="nav-arrow">→</a>
                 </div>
             </div>
         </article>

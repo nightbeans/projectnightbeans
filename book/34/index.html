@@ -6,24 +6,6 @@
     <title>34 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .nav-btn {
-            padding: 12px 24px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .nav-btn:hover {
-            background: #0056b3;
-        }
-        .nav-btn.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
         .book-navigation {
             display: flex;
             justify-content: space-between;
@@ -32,9 +14,35 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .nav-arrow:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         .page-number {
             color: #666;
             font-weight: 600;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -70,9 +78,9 @@
         <p>The lines always helped the men understand the true nature of the hardships they faced. His were all maladies. He thought again of Calum - young enough to perhaps discover a different truth than he found. The boy still hoped for remedies, perhaps there was one at Number Seven, so Mr Armitage settled in himself to introduce the boy to their neighbour.</p>
 
                 <div class="book-navigation">
-                    <a href="../33/" class="nav-btn prev-btn">← Previous</a>
+                    <a href="../33/" class="nav-arrow">←</a>
                     <span class="page-number">34 of 92</span>
-                    <a href="../35/" class="nav-btn next-btn">Next →</a>
+                    <a href="../35/" class="nav-arrow">→</a>
                 </div>
             </div>
         </article>

@@ -6,24 +6,6 @@
     <title>40 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .nav-btn {
-            padding: 12px 24px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .nav-btn:hover {
-            background: #0056b3;
-        }
-        .nav-btn.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
         .book-navigation {
             display: flex;
             justify-content: space-between;
@@ -32,9 +14,35 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .nav-arrow:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         .page-number {
             color: #666;
             font-weight: 600;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -65,9 +73,9 @@
         <p>He moved one chair out and gestured to Ella to approach, she did so and sat as he shuffled the chair in behind her. He repeated this with Conor. He walked around the two plastic tables to the other side and took his seat facing them. He gestured for them to eat. The meal was a ceremony they were familiar with. They had had this meal every year with Mr Armitage. It was the three sisters' harvest.</p>
 
                 <div class="book-navigation">
-                    <a href="../39/" class="nav-btn prev-btn">← Previous</a>
+                    <a href="../39/" class="nav-arrow">←</a>
                     <span class="page-number">40 of 92</span>
-                    <a href="../41/" class="nav-btn next-btn">Next →</a>
+                    <a href="../41/" class="nav-arrow">→</a>
                 </div>
             </div>
         </article>

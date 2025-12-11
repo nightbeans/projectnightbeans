@@ -6,24 +6,6 @@
     <title>33 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .nav-btn {
-            padding: 12px 24px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .nav-btn:hover {
-            background: #0056b3;
-        }
-        .nav-btn.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
         .book-navigation {
             display: flex;
             justify-content: space-between;
@@ -32,9 +14,35 @@
             padding-top: 30px;
             border-top: 1px solid #ddd;
         }
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .nav-arrow:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         .page-number {
             color: #666;
             font-weight: 600;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -63,9 +71,9 @@
         <p>The neighbour had woken up after first falling asleep on the floor of the antechamber, which wasn’t allowed, checked the case and saw he’d been there until a little after three, before moving out the northward door, to his bedroom. He’d slalomed in the dark, feeling everything as he manoeuvred to the section of available mattress. When he woke up with the dim morning light clawing at his curtains his mind flashed a question that he could have sworn he’d had killed - <em>shall we go outside?</em></p>
 
                 <div class="book-navigation">
-                    <a href="../32/" class="nav-btn prev-btn">← Previous</a>
+                    <a href="../32/" class="nav-arrow">←</a>
                     <span class="page-number">33 of 92</span>
-                    <a href="../34/" class="nav-btn next-btn">Next →</a>
+                    <a href="../34/" class="nav-arrow">→</a>
                 </div>
             </div>
         </article>
