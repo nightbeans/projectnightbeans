@@ -6,60 +6,35 @@
     <title>Book - joeldelaney</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        .book-intro {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .book-intro h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .book-intro p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-        .start-reading {
-            display: inline-block;
-            padding: 16px 32px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        .start-reading:hover {
-            background: #0056b3;
-        }
         .page-grid {
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1000px;
+            margin: 60px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 15px;
         }
         .page-link {
-            display: block;
-            padding: 15px;
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
             text-decoration: none;
             color: #333;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .page-link:hover {
             background: #007bff;
             color: white;
-            transform: translateY(-2px);
+            border-color: #007bff;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,123,255,0.3);
         }
     </style>
 </head>
@@ -80,12 +55,6 @@
     </header>
 
     <main>
-        <div class="book-intro">
-            <h1>My Novel</h1>
-            <p>A story in 93 parts. Start from the beginning or jump to any page.</p>
-            <a href="1/" class="start-reading">Start Reading →</a>
-        </div>
-
         <div class="page-grid">
             <a href="1/" class="page-link">1</a>
             <a href="2/" class="page-link">2</a>
