@@ -19,7 +19,7 @@ const bookChapters = [
         "title": "36",
         "chapterNumber": 999,
         "url": "/book/36/",
-        "excerpt": "Hag. Hag\\! You hated the girls, you hated them because he loved them. I know everything you want. Everything. You wounded mother, you want to eat ever..."
+        "excerpt": "Hag. Hag! You hated the girls, you hated them because he loved them. I know everything you want. Everything. You wounded mother, you want to eat every..."
     },
     {
         "title": "58",
@@ -79,7 +79,7 @@ const bookChapters = [
         "title": "83",
         "chapterNumber": 999,
         "url": "/book/83/",
-        "excerpt": "Concluding his opening remarks, the Hemlock Creek council began \\- “To start with the worst of it, you have made it plain, Armitage, that you were a t..."
+        "excerpt": "Concluding his opening remarks, the Hemlock Creek council began - “To start with the worst of it, you have made it plain, Armitage, that you were a te..."
     },
     {
         "title": "41",
@@ -115,7 +115,7 @@ const bookChapters = [
         "title": "26",
         "chapterNumber": 999,
         "url": "/book/26/",
-        "excerpt": "He’d fed his cruelty a little too long and it had blossomed into familiar rage \\- “Another two missing children, and you’re just going to stay in here..."
+        "excerpt": "He’d fed his cruelty a little too long and it had blossomed into familiar rage - “Another two missing children, and you’re just going to stay in here?..."
     },
     {
         "title": "64",
@@ -139,13 +139,13 @@ const bookChapters = [
         "title": "6",
         "chapterNumber": 999,
         "url": "/book/6/",
-        "excerpt": "\"Ella, I can't see anything. What did you do to me? God my eyes hurt. Seriously what the fuck did you do? You. You scalped him, Ella. What does \\- whe..."
+        "excerpt": "\"Ella, I can't see anything. What did you do to me? God my eyes hurt. Seriously what the fuck did you do? You. You scalped him, Ella. What does - wher..."
     },
     {
         "title": "72",
         "chapterNumber": 999,
         "url": "/book/72/",
-        "excerpt": "Hugs and handshakes and greetings for “Armitage\\! Armitage\\!” Rang out across the small gathering space beside Hemlock Creek. A good number had turned..."
+        "excerpt": "Hugs and handshakes and greetings for “Armitage! Armitage!” Rang out across the small gathering space beside Hemlock Creek. A good number had turned o..."
     },
     {
         "title": "87",
@@ -217,7 +217,7 @@ const bookChapters = [
         "title": "46",
         "chapterNumber": 999,
         "url": "/book/46/",
-        "excerpt": "“What kind of question is that, boy? Jesus\\!” The neighbour reproached the lad then, looking at him wondering what sort of sick mind he had. Until he ..."
+        "excerpt": "“What kind of question is that, boy? Jesus!” The neighbour reproached the lad then, looking at him wondering what sort of sick mind he had. Until he r..."
     },
     {
         "title": "82",
@@ -229,7 +229,7 @@ const bookChapters = [
         "title": "74",
         "chapterNumber": 999,
         "url": "/book/74/",
-        "excerpt": "Wesley hit his stride with the invocation of Thadodaho. Any remaining mutterings were silenced. The council were cast back to nights by the fire \\- th..."
+        "excerpt": "Wesley hit his stride with the invocation of Thadodaho. Any remaining mutterings were silenced. The council were cast back to nights by the fire - the..."
     },
     {
         "title": "75",
@@ -259,7 +259,7 @@ const bookChapters = [
         "title": "57",
         "chapterNumber": 999,
         "url": "/book/57/",
-        "excerpt": "His Ella flashed before Calum’s eyes. Not now\\! He begged the demon to drown her, and thankfully she did. The valkyrie he’d spent the last two days wi..."
+        "excerpt": "His Ella flashed before Calum’s eyes. Not now! He begged the demon to drown her, and thankfully she did. The valkyrie he’d spent the last two days wit..."
     },
     {
         "title": "62",
@@ -343,19 +343,19 @@ const bookChapters = [
         "title": "88",
         "chapterNumber": 999,
         "url": "/book/88/",
-        "excerpt": "“Conor\\! You are magnificent my boy\\!” Cried the man without eyelids \\- “of course I accept your gift\\! Anything to keep this little one with us\\!” He..."
+        "excerpt": "“Conor! You are magnificent my boy!” Cried the man without eyelids - “of course I accept your gift! Anything to keep this little one with us!” He ran ..."
     },
     {
         "title": "29",
         "chapterNumber": 999,
         "url": "/book/29/",
-        "excerpt": "“Fucking Bear, look what it did to me\\! Owh, that really fucking stings.” The neighbour was standing at the bathroom mirror. Refusing to turn the ligh..."
+        "excerpt": "“Fucking Bear, look what it did to me! Owh, that really fucking stings.” The neighbour was standing at the bathroom mirror. Refusing to turn the light..."
     },
     {
         "title": "42",
         "chapterNumber": 999,
         "url": "/book/42/",
-        "excerpt": "Reaching again for the wax jacket, Mr Armitage arose and walked into his garden. He made his way up, keeping his eyes ahead, searching for the boy \\- ..."
+        "excerpt": "Reaching again for the wax jacket, Mr Armitage arose and walked into his garden. He made his way up, keeping his eyes ahead, searching for the boy - t..."
     },
     {
         "title": "1",
@@ -391,7 +391,7 @@ const bookChapters = [
         "title": "86",
         "chapterNumber": 999,
         "url": "/book/86/",
-        "excerpt": "“You don’t know?” Asked Conor, “we’re in the neighbours deep. You know \\- Number Seven.”"
+        "excerpt": "“You don’t know?” Asked Conor, “we’re in the neighbours deep. You know - Number Seven.”"
     },
     {
         "title": "66",
@@ -433,7 +433,7 @@ const bookChapters = [
         "title": "68",
         "chapterNumber": 999,
         "url": "/book/68/",
-        "excerpt": "“Stop, stop, fuck \\- please \\- Jesus”. The hand holding the shard of glass was perfectly still, but the neighbours trembling pulled at the edges of th..."
+        "excerpt": "“Stop, stop, fuck - please - Jesus”. The hand holding the shard of glass was perfectly still, but the neighbours trembling pulled at the edges of the ..."
     },
     {
         "title": "60",
@@ -457,7 +457,7 @@ const bookChapters = [
         "title": "38",
         "chapterNumber": 999,
         "url": "/book/38/",
-        "excerpt": "Hours had passed since Bedgellert. Ella had sung a little \\- songs she knew Conor enjoyed \\- but none like Mr Bojangles, none that helped constitute w..."
+        "excerpt": "Hours had passed since Bedgellert. Ella had sung a little - songs she knew Conor enjoyed - but none like Mr Bojangles, none that helped constitute who..."
     },
     {
         "title": "2",
@@ -499,7 +499,7 @@ const bookChapters = [
         "title": "21",
         "chapterNumber": 999,
         "url": "/book/21/",
-        "excerpt": "“I said open your fucking eyes, Conor\\! Now\\!”"
+        "excerpt": "“I said open your fucking eyes, Conor! Now!”"
     },
     {
         "title": "3",
@@ -554,12 +554,6 @@ const bookChapters = [
         "chapterNumber": 999,
         "url": "/book/37/",
         "excerpt": "Calum was looking out Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much shorter than Mr Armitage, though tha..."
-    },
-    {
-        "title": "93",
-        "chapterNumber": 999,
-        "url": "/book/93/",
-        "excerpt": "News of Mr Armitage’s death made its way back to Mrs Careen from Wesley swiftly since she’d been making calls to inform Mr Armitage of Conor’s return...."
     },
     {
         "title": "91",
