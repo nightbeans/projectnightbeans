@@ -17,26 +17,15 @@
             gap: 8px;
         }
         .nav-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(176, 212, 221, 0.4);
-            border-radius: 50%;
             text-decoration: none;
             color: #7fc8e0;
-            font-size: 1.3rem;
+            font-size: 2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1;
         }
         .nav-arrow:hover {
-            background: #7fc8e0;
-            color: white;
-            border-color: #7fc8e0;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);
+            color: #5ab0d0;
+            transform: scale(1.1);
         }
         .nav-arrow.disabled {
             opacity: 0.2;
@@ -50,9 +39,7 @@
         }
         @media (max-width: 768px) {
             .nav-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 1.1rem;
+                font-size: 1.5rem;
             }
         }
     </style>
