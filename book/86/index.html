@@ -6,20 +6,15 @@
     <title>86 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../87/" class="nav-arrow">→</a>
-        <a href="../85/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>86</h1>
+                <div class="nav-arrows">
+                    <a href="../87/" class="nav-arrow">→</a>
+                    <a href="../85/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p><em>“You don’t know?”</em> Asked Conor, <em>“we’re in the neighbours deep. You know - Number Seven.”</em></p>
@@ -99,15 +89,15 @@
         <p>Conor felt the urgency and the import of the moment. Ella would strike in a moment unless he did. He slowly reached for the knife and pulled it slowly from its shoelace sheath. He prayed the man without eyelids would accept his sacrifice as he leapt forwards. Ella and he had been of one mind. He plunged his knife into Catherine’s left eye. It went straight through the great clear eyelid and into the white. Ella had been more successful, her knife had gone straight into the great slitting pupil of her right eye. They held onto their knives as the serpent threw its great body and pulled them both off the branch. Ella had dug her knife in far, twisting and burrowing it further and through to the soft nerves behind it. The other two serpents threw themselves at them but they were too late. Ella and Conor were hurtling down towards the earth. As Conor could see himself about to plunge headfirst into the ground below, and feel his chin snap back through his jaw and out the back of his neck, everything went black as he was pulled straight down through the earth. Instead of the neighbours spiral staircase, they were pulled right through and landed beside the neighbour next to a pair of beds he didn’t recognise. He’d never been upstairs in Mr Armitage’s house before.</p>
         <p>He watched then as two small snakes, their white skin dripping red as they emerged from the reopened wound in the neighbours hip crept down and over his legs, across the floor and up the trouser legs of the man without eyelids. Sat across the room from him, he heard his laugh. It made Conor feel ill. He reached to his left and grabbed his sister's hand.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../87/" class="nav-arrow">→</a>
+                        <a href="../85/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../87/" class="nav-arrow">→</a>
-        <a href="../85/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

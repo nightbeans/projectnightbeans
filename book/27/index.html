@@ -6,20 +6,15 @@
     <title>27 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../28/" class="nav-arrow">→</a>
-        <a href="../26/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>27</h1>
+                <div class="nav-arrows">
+                    <a href="../28/" class="nav-arrow">→</a>
+                    <a href="../26/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>As soon as they landed in his deep Conor set off running. Straight off the road and he was hopping fences. He caught himself thinking how much of a mockery Ella would make of the world down here. So like the one above. He heard her come to in the distance. Right on cue - laughter. Her voice thundered as he ran -</p>
@@ -99,15 +89,15 @@
         <p><em>“Your imagination is fucking embarrassing, Con, does this even count as imagination?”</em> The PA clicked off. He burst through the front doors of the school and out the gate. He was sprinting, chest heaving as he ran down the lane, he refused to look back. He saw the junction, knew there was a bus stop away to his right that would take him back to the viaduct. He heard it before he saw it, another deep breath and he held it as he ran straight out into the road, it wasn’t slowing yet. He passed in front of it - the front dipped when the brakes finally engaged. No payment yet, he took his seat. Conor breathed a sigh of relief as the doors closed behind him, first smooth inhale as the hydraulic doors closed perfectly together.</p>
         <p>Three stops later - sweaty and out of breath, wild-eyed but evidently amused - Ella stretched out her hand as the bus came to a stop.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../28/" class="nav-arrow">→</a>
+                        <a href="../26/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../28/" class="nav-arrow">→</a>
-        <a href="../26/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

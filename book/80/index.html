@@ -6,20 +6,15 @@
     <title>80 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../81/" class="nav-arrow">→</a>
-        <a href="../79/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>80</h1>
+                <div class="nav-arrows">
+                    <a href="../81/" class="nav-arrow">→</a>
+                    <a href="../79/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>As Conor neared the tree, the smallest turned to him. It was clear there would be no repeating themselves. Ella had the eyes of the valkyrie again. She looked like she had conjured from far within her the unerring confidence that if it came to it, she could kill these three beasts, eat their flesh and leave no left-overs. Conor prayed it would not be necessary since, on this occasion, he knew she was wrong.</p>
@@ -100,15 +90,15 @@
         <p>Ella, still without breaking eye contact with the largest of the three, spoke -</p>
         <p><em>“Found them.”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../81/" class="nav-arrow">→</a>
+                        <a href="../79/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../81/" class="nav-arrow">→</a>
-        <a href="../79/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

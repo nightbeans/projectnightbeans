@@ -6,20 +6,15 @@
     <title>84 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../85/" class="nav-arrow">→</a>
-        <a href="../83/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>84</h1>
+                <div class="nav-arrows">
+                    <a href="../85/" class="nav-arrow">→</a>
+                    <a href="../83/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Conor knew he had a matter of seconds to convince Ella that he would not carry out his offering. He hoped she would not hurt him, but the memory of their father floated before him and he knew he was in mortal danger if he was her only way up.</p>
@@ -102,15 +92,15 @@
         <p><em>“Some empty took our mothers from us. But the warlord, the man we know as Thadodaho, made us his promises. Vowed to take us to their deep, let us drain it. So we made our offering, but there has been no reward. Instead he sent us here, left us here to rot.”</em></p>
         <p>Conor replied - <em>“I don’t think our mutual friend left you here. He sent us down here to find you. Do you even know who’s deep this is?”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../85/" class="nav-arrow">→</a>
+                        <a href="../83/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../85/" class="nav-arrow">→</a>
-        <a href="../83/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

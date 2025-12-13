@@ -6,20 +6,15 @@
     <title>26 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../27/" class="nav-arrow">→</a>
-        <a href="../25/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>26</h1>
+                <div class="nav-arrows">
+                    <a href="../27/" class="nav-arrow">→</a>
+                    <a href="../25/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>He’d fed his cruelty a little too long and it had blossomed into familiar rage - <em>“Another two missing children, and you’re just going to stay in here? Rot in here?!”</em> Bellowed Mr Armitage.</p>
@@ -100,15 +90,15 @@
         <p>The eyes turned away, and he began to walk upstairs to the antechamber, he’d had enough of the Bear’s pleas. But he started running when he heard more boxes crashing in the kitchen, the sound of Mr Armitage finding his footing and crashing down as he lost it again. He heard the first step on the wooden stairs where he'd stood moments earlier and knew he was gaining on him. He threw all manner of detritus back towards the Bear as it continued to crash through everything. He stretched for the handle of the door to the antechamber, felt the Bears great paw wrap around his calf. His hand scratched the door as he slid down and smacked his chin on the floor, dull pain rang through his teeth. The Bear turned him over.</p>
         <p><em>“I’m sorry”</em> said Mr Armitage, looking into his face and bloody chin. The neighbour was what he’d always been. A terrorised boy, desperately clawing for a locked room without windows. <em>“I’m sorry about the girls”</em>.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../27/" class="nav-arrow">→</a>
+                        <a href="../25/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../27/" class="nav-arrow">→</a>
-        <a href="../25/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

@@ -6,20 +6,15 @@
     <title>34 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../35/" class="nav-arrow">→</a>
-        <a href="../33/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>34</h1>
+                <div class="nav-arrows">
+                    <a href="../35/" class="nav-arrow">→</a>
+                    <a href="../33/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>As he stood washing the dishes, after dismissing the lad, Mr Armitage had time to think further through exactly what he’d hoped to achieve yesterday with his neighbour, and whether Calum was right. When the girls went missing, the neighbour had been his greatest support. Of course the authorities suspected him of something dreadful, but there was no evidence. The bodies were never found, and besides, Mr Armitage hadn’t even been in the country.</p>
@@ -102,15 +92,15 @@
         <p><em>there was no malady</em>.</p>
         <p>The lines always helped the men understand the true nature of the hardships they faced. His were all maladies. He thought again of Calum - young enough to perhaps discover a different truth than he found. The boy still hoped for remedies, perhaps there was one at Number Seven, so Mr Armitage settled in himself to introduce the boy to their neighbour.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../35/" class="nav-arrow">→</a>
+                        <a href="../33/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../35/" class="nav-arrow">→</a>
-        <a href="../33/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

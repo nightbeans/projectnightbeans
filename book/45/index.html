@@ -6,20 +6,15 @@
     <title>45 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../46/" class="nav-arrow">→</a>
-        <a href="../44/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>45</h1>
+                <div class="nav-arrows">
+                    <a href="../46/" class="nav-arrow">→</a>
+                    <a href="../44/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Conor felt a jolt of pain through his back as they landed. He had slammed into a small log by a forgotten firepit. The spot was familiar, it was on the hills out beyond Glyder Fawr in Snowdonia. Far from any trails, but he knew it. He, Ella and Calum had camped here several times.</p>
@@ -110,15 +100,15 @@
         <p><em>“I accept your offering because you understand this truth, that the sacrifice of the older at the hand of the younger is right. You are entering your time to build, Conor - you can remove all that stands in your way. The sacrifice of a child is the way of the old to maintain life as they had it. But an offering is not meant to maintain, but to advance”.</em></p>
         <p>Looking at his sister Conor said - <em>“our tasks are bound - right, Ella”</em> before turning back to the man without eyelids, who was prodding the fire as the logs collapsed and embers rose. He continued - <em>“if the offerings we make are for ourselves, and I have promised you mine, who sacrificed the three sisters?”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../46/" class="nav-arrow">→</a>
+                        <a href="../44/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../46/" class="nav-arrow">→</a>
-        <a href="../44/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

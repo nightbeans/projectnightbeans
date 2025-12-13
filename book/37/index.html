@@ -6,20 +6,15 @@
     <title>37 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../38/" class="nav-arrow">→</a>
-        <a href="../36/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>37</h1>
+                <div class="nav-arrows">
+                    <a href="../38/" class="nav-arrow">→</a>
+                    <a href="../36/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Calum was looking out Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much shorter than Mr Armitage, though that didn’t make him short. He had round glasses. Barefoot. His hair was wispy and scraped back across his head. He looked younger than Calum had anticipated, but not well. <em>Preserved</em>, perhaps. He could hear Mr Armitage downstairs, he hadn’t yet mastered the art of knowing from the creaks and shuffles where he was exactly, though he suspected it wouldn’t be long before he could. He supposed he was exactly where he wished he wasn’t - in the chair by his little bookcase - looking out on the sisters field. He didn’t have long. The neighbour was likely to turn around at any moment, he was making a play of looking relaxed, but Calum could see his terror all over him. His feet were tapping, though Calum doubted that it was from the cold, and his left hand was pulling at the cord that wrapped around his gown, the pale hand was squeezing so tight Calum could see all the blood in his veins.</p>
@@ -108,15 +98,15 @@
         <p>He moved slowly, finding plenty of debris to hide himself behind as he moved nearer, aiming to be seen only when he was ready. It was most likely for nothing, he reckoned - assuming the neighbour, quivering as he was, had moved back inside as soon as Calum had moved away from his window. Midway down the garden, he moved his head slightly from behind a stack of glass, metal and terracotta shards he assumed were the remnants of a torn down greenhouse. He looked up and met the eyes of the gowned man - ten metres away - stood pulling hard on either side of the knot at the belt with both hands. He saw his wounded chin. It would definitely need stitches.</p>
         <p>He held his eye on the lad for a moment, before turning and stepping over the threshold through the red door. It stayed open.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../38/" class="nav-arrow">→</a>
+                        <a href="../36/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../38/" class="nav-arrow">→</a>
-        <a href="../36/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

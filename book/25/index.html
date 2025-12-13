@@ -6,20 +6,15 @@
     <title>25 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../26/" class="nav-arrow">→</a>
-        <a href="../24/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>25</h1>
+                <div class="nav-arrows">
+                    <a href="../26/" class="nav-arrow">→</a>
+                    <a href="../24/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Mrs Careen sat down on the chair beside Calum and set the tray with the teapot and their cups on the coffee table that lay between them. Calum had glanced about this lounge while she’d got the drinks. It was dark outside now, but inside was lit well, it looked like it had been decorated by someone younger than Mrs Careen. Put simply, there was nothing garishly silver or reflective that you tend to see in the homes of most older women in England. It was just - warm.</p>
@@ -109,15 +99,15 @@
         <p><em>“Do you think I’ll see Conor again?”</em> He continued - quietly - so as not to conjure her - <em>“Ella?”</em></p>
         <p><em>“I hope so,”</em> she replied <em>“but for now you’re the only one we have here to protect”.</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../26/" class="nav-arrow">→</a>
+                        <a href="../24/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../26/" class="nav-arrow">→</a>
-        <a href="../24/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

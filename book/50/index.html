@@ -6,20 +6,15 @@
     <title>50 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../51/" class="nav-arrow">→</a>
-        <a href="../49/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>50</h1>
+                <div class="nav-arrows">
+                    <a href="../51/" class="nav-arrow">→</a>
+                    <a href="../49/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p><em>“Thank you.”</em> The man without eyelids had passed Conor the watch, and manners mandated his gratitude before his mind had a chance to mark the man unworthy of appreciation and shutter his lips. Too late. He stood gazing at the watch a short while, looking as one does at a beautiful piece of craftsmanship, checking it from every angle. He slid it over his hand onto his wrist. He sealed the clasp and it clamped gently into place. Conor noted how in a few days, perhaps sooner, the attention it warranted now would be lost to familiarity. He turned back to the man, who was facing away from him. The boy saw then just how tall he was, and took in more of his body, since he was so often seemingly just a pair of cold unblinking eyes to him. He saw the wisps of his thin grey hair pulled back across the pale head. The dark, well-fitted jacket that wrapped around his broad shoulders. He had the shape of a man that had done a lot of heavy lifting a long time ago. He bade Conor and Ella walk with him in the emerging light as they moved away from the fire and towards the edge of Glyder Fawr and onwards toward a set of sharp rocks set out like a dragon's back. He spoke again.</p>
@@ -98,15 +88,15 @@
         <p>Conor felt ill. The man continued.</p>
         <p><em>“The empties consumed the three sisters. Took them in and devoured them. They dig their faces in and feast. The empties are grotesque creatures, Conor. They don’t mind scraps, mould or rot. I will not accept your offering yet. First you must choose your empty.“</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../51/" class="nav-arrow">→</a>
+                        <a href="../49/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../51/" class="nav-arrow">→</a>
-        <a href="../49/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

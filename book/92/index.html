@@ -6,20 +6,15 @@
     <title>92 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="#" class="nav-arrow disabled">→</a>
-        <a href="../91/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>92</h1>
+                <div class="nav-arrows">
+                    <a href="#" class="nav-arrow disabled">→</a>
+                    <a href="../91/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Epilogue</p>
@@ -103,15 +93,15 @@
         <p>He stayed for a few weeks, stayed for the planting. Showed Calum and Conor how to plant the three sisters. Mrs Careen noted how the pair of them mirrored this man exactly, even better than Calum’s Armitage impression. She wished he’d stay to help the boys, but only time would test their trouble. He reminded her of Mr Armitage, but more present in his body, fuller somehow.</p>
         <p>Wesley knew he had to return for the planting on his own land. He had agreed with many of the townsfolk to plant the three sisters this year in memory of their old friend and guardian, in an attempt to reclaim some of the traditions he’d loved and to tie them once again to their history and stories. The only protection they had against the warlord, who continued to make his silent offers whenever he travelled in his deep.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="#" class="nav-arrow disabled">→</a>
+                        <a href="../91/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="#" class="nav-arrow disabled">→</a>
-        <a href="../91/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

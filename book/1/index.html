@@ -6,20 +6,15 @@
     <title>1 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../2/" class="nav-arrow">→</a>
-        <a href="#" class="nav-arrow disabled">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>1</h1>
+                <div class="nav-arrows">
+                    <a href="../2/" class="nav-arrow">→</a>
+                    <a href="#" class="nav-arrow disabled">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>The poor lads were left wondering if they had ever really known her at all. They didn't speak to each other about any of it, it never seemed necessary nor likely to help. Being together seemed ample respite and refuge. I suppose it’s unfair to say who it was harder on, Calum certainly cried more. He was crying now, quietly, bar the fragmented coughs it was forcing up from his shallow breaths.</p>
@@ -106,15 +96,15 @@
         <p><em>"Na, all gone. I'm bloody freezing - you ready?"</em></p>
         <p><em>"Sure."</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../2/" class="nav-arrow">→</a>
+                        <a href="#" class="nav-arrow disabled">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../2/" class="nav-arrow">→</a>
-        <a href="#" class="nav-arrow disabled">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

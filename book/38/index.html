@@ -6,20 +6,15 @@
     <title>38 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../39/" class="nav-arrow">→</a>
-        <a href="../37/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>38</h1>
+                <div class="nav-arrows">
+                    <a href="../39/" class="nav-arrow">→</a>
+                    <a href="../37/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Hours had passed since Bedgellert. Ella had sung a little - songs she knew Conor enjoyed - but none like Mr Bojangles, none that helped constitute who he was. He couldn’t help his thankfulness. Her gentlest mercies still giving rise to his detestable reverence.</p>
@@ -99,15 +89,15 @@
         <p>He ran through his plan again and realised it had one step. One step and no contingencies.He renamed the plan <em>“shit-show”</em> and opted for prayer. He laid his elbows on his thighs and turned his hands upwards. He leant forward and pressed his face into his hands. His closed eyes pressed hard onto the hard meaty section of his palm. He felt a suction on them, pressed harder until his vision moved from complete black to flashes and rolls of light moving across his entombed field of vision. He released the pressure slightly, felt the suction click and listened to the noises as his soft eyes pressed inwards. He pressed again and made that simple request. He prayed he wouldn’t die.</p>
         <p>Lifting his head the light of the bus rushed in and he saw nothing. His eyes adjusted and he looked out to see the huge arches of the viaduct rolling past. Here. The bus pulled in and under the next arch. Glancing ahead they moved by parked buses in the bays, the bus from Bay 1 now reversing to commence its journey. The bus dipped as the absent driver hit the brakes, pulling into Bay Six. The doors opened, and then the key turned as the engine clicked off. Ella’s shoulders were pumping, her whole body lightly reverberating. Not nerves - excitement. She saw him first. Stepping out from the bench where he’d been waiting. The bus was silent but for the creaking of Ella’s seat and the cold meeting of silver and plastic as the man dropped his payment and the coins wrestled to make their way into the slot.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../39/" class="nav-arrow">→</a>
+                        <a href="../37/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../39/" class="nav-arrow">→</a>
-        <a href="../37/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

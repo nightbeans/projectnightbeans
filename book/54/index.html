@@ -6,20 +6,15 @@
     <title>54 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,30 +73,28 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../55/" class="nav-arrow">→</a>
-        <a href="../53/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>54</h1>
+                <div class="nav-arrows">
+                    <a href="../55/" class="nav-arrow">→</a>
+                    <a href="../53/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>The Neighbour moved straight to his antechamber and pulled out the empty band holder in the corner. He took the new watch and slowly placed it and pressed the clamp closed. He put it back in its place. Like for like. The case was full again. He looked at all of the pieces, thought of each of the quiet homes they had come from. Those stolen from gain acuity. Everything heightens. Creaking floorboards, twisting latches, even a dripping tap come together to be a thunderstorm. He moved to his room, found his serpentine patch of available mattress and wound his way upon it and lay beside them - the ones from whom he’d taken the watches. He heard them breathing; aware of every familiar sound received as completely alien. Felt their cortisol rise as they clawed and bit for that Illusive state - to be unafraid. He lay awake with them, aware as they were, of all their fears. He pictured his muddy feet on their bedroom floors, the drawers left open. The batteries he’d sometimes take out of their wall clocks. He was not interested in being inconspicuous. His message screamed from the empty space where a single watch had been - <em>I was in your fucking house.</em> He cast his eyes over Mrs Careen again. Without ever taking a watch from her she had nevertheless joined the others, lay awake, ears attuned to even the changing of the wind outside.</p>
         <p>Number Seven lay deadly still. The snake in its nest, until a low rip removed the cardboard covering the rear door. The neighbour opened his eyes and turned out towards the staircase. He heard the padding of a hand on the brass of his door knob as it twisted. A loud click then as he unwillingly welcomed an intruder of his own. It was not the Bear, far too delicate. Nor was it Mrs Careen, she was incapacitated, begging for the light of morning when she would have eighteen hours to pull herself together and sort out this nonsense worry so she could sleep better. That was a futility the neighbour knew would last several weeks or more. This guest was new. He placed his bet.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../55/" class="nav-arrow">→</a>
+                        <a href="../53/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../55/" class="nav-arrow">→</a>
-        <a href="../53/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

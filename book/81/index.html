@@ -6,20 +6,15 @@
     <title>81 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../82/" class="nav-arrow">→</a>
-        <a href="../80/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>81</h1>
+                <div class="nav-arrows">
+                    <a href="../82/" class="nav-arrow">→</a>
+                    <a href="../80/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Mr Armitage looked smaller there, at the centre of the small amphitheatre by Hemlock Creek, than he ever had in Calum’s life. He always looked smaller next to Wesley, who had only grown through the night's proceedings, but Mr Armitage, standing for this public interrogation, was shrinking by the second. Calum watched as his chest heaved heavily and fast. Wesley held out his arm to him as he took his position, he laid a hand upon his chest and touched Mr Armitage’s forehead with his own. Calum watched Wesley’s hand rise slowly as Mr Armitage took one long breath. Stood together as the woman sought to begin her questioning. Wesley whispered something to him and then, at last, he lifted his chin off his great chest and faced the gathering. Before the woman could speak, Mr Armitage began.</p>
@@ -98,15 +88,15 @@
         <p><em>I returned home with them and planted the three sisters in memory of their mothers and the three girls. I still do. I raised them to know their heritage, they knew where they came from. They knew why they were with me. Many nights they cried for their mothers. You were right - I saw it on them - had they stayed they would have found whoever locked that door. They would have gone to the ends of the earth to find them. You would not have known it to look at them, they were always calm, peaceful, funny. Our community loved them. But I saw their hunger.</em></p>
         <p><em>They disappeared while I was here with you. I stayed, Wesley and I waiting to see whether and when one of the leaders of your neighbour tribes raised an alarm of some great violence. But none came. I believed they had embarked in search of retribution, the return of the warlord, but I saw no evidence. At least not until I saw what happened to this boy's father.  I know I failed you all and for that I am sorry. I see that Wesley’s tale is lofty. It surely is. Though I looked in the eyes of those girls each night before they went to sleep and I saw everything. Every dream for the future, cut short by their desire to go back, to go back and burn whoever stole their mothers from them.”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../82/" class="nav-arrow">→</a>
+                        <a href="../80/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../82/" class="nav-arrow">→</a>
-        <a href="../80/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

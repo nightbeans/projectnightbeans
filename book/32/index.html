@@ -6,20 +6,15 @@
     <title>32 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../33/" class="nav-arrow">→</a>
-        <a href="../31/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>32</h1>
+                <div class="nav-arrows">
+                    <a href="../33/" class="nav-arrow">→</a>
+                    <a href="../31/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>It was the drop of a mug that brought Mr Armitage back. He’d slept the entire night on Sara’s bed. His legs numb from hanging off the end. Left him stumbling even worse than usual on his way downstairs.</p>
@@ -112,15 +102,15 @@
         <p><em>“Why not?”</em></p>
         <p><em>“Because he’s not safe, lad, he’s far worse than he used to be. Plus I might just lose you in that bloody house of his”.</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../33/" class="nav-arrow">→</a>
+                        <a href="../31/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../33/" class="nav-arrow">→</a>
-        <a href="../31/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

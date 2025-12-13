@@ -6,20 +6,15 @@
     <title>59 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,30 +73,28 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../60/" class="nav-arrow">→</a>
-        <a href="../58/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>59</h1>
+                <div class="nav-arrows">
+                    <a href="../60/" class="nav-arrow">→</a>
+                    <a href="../58/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>He’d had trouble sleeping the past two nights, so here at perhaps four Mr Armitage sat up, threw his legs down over the side of his bed and began moving downstairs. He walked the whole way with an arm tracing one of the walls, to assist him in moving more slowly and carefully. He had no desire to wake the boy. He made it downstairs and to his chair, staring out into the blackness outside. The sun wouldn’t arrive for another couple of hours. He reached beside him and started the old Dell laptop Mrs Careen had given him. It powered on. A little while later Internet Explorer croaked and breathed again. He typed with the very tip of his right index finger. <em>s–k-y-s-c-a—n-n–e-r-.c-o-m</em>. He put in his dates. Calum wanted answers, so did he. He picked out their flights. To Toronto, across the border and down to the Onondaga Nation,  the fire-keepers, just outside of Syracuse - where his girls were from - it was time to meet their fathers.</p>
         <p>He paid the fares and sat back in his chair. He thought he heard something like wailing outside. But the wind was heavy, and his shoulders were already too loaded to pick up anything more. So he lied, knowing his old friend was screaming in anguish and torment. <em>A windy night</em> he thought, as he returned quietly to his room and packed a bag for the few days he had booked for him and the boy.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../60/" class="nav-arrow">→</a>
+                        <a href="../58/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../60/" class="nav-arrow">→</a>
-        <a href="../58/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

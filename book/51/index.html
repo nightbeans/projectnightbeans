@@ -6,20 +6,15 @@
     <title>51 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../52/" class="nav-arrow">→</a>
-        <a href="../50/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>51</h1>
+                <div class="nav-arrows">
+                    <a href="../52/" class="nav-arrow">→</a>
+                    <a href="../50/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Calum arrived back at Mr Armitage's, looking like he was approaching a cliff edge. He did not look at the man, in his high-back chair. The boy was on the verge of tears, making his way straight past his new guardian. Mr Armitage hinged forward and stretched his long arm, wrapping his great hand around the skinny forearm and gently pulled him towards himself. The boy toppled over the edge. A gentle headbutt at first, into his chest, before his head craned upwards and pressed his face in. His whole body heaved as heavy tears reached through the tattersall shirt, pooling and running down Mr Armitage’s body like sweat. He leant the left side of his face gently upon the top of his head as the boy sat crouched upon him. He applied great pressure to the boy, he needed to be surrounded, and Mr Armitage’s structure was able to oblige. They waited together for a long time. This cry was not short-breathed panic. The fear was subsiding. His breathing was steady and deep, this was not mere sadness either. Mr Armitage knew well what he was embracing, the boy was truly mourning. He heard Calum’s grief doing that most challenging work, somehow reconciling the irreconcilable. The boy was pulling his gaping wounds together and attempting sutures with his teeth. Mr Armitage felt a rush of admiration for this boy as he wept hard through controlled, heavy breaths. They remained this way deep into the evening.</p>
@@ -112,15 +102,15 @@
         <p><em>“I just missed my friend.”</em></p>
         <p>Calum sat quietly for a while. The warm wind was gone - winter was back in earnest - how could anyone be friends with that man? The boy spoke again, <em>“he told me about what happened to them. Your girls. Where they came from I mean. You were very brave.”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../52/" class="nav-arrow">→</a>
+                        <a href="../50/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../52/" class="nav-arrow">→</a>
-        <a href="../50/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

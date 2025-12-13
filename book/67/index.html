@@ -6,20 +6,15 @@
     <title>67 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../68/" class="nav-arrow">→</a>
-        <a href="../66/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>67</h1>
+                <div class="nav-arrows">
+                    <a href="../68/" class="nav-arrow">→</a>
+                    <a href="../66/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Calum walked behind the two great muddy beasts into the house. Wesley pointed the boy to a seat by the kitchen as the two men went their separate ways to get clean. They both arrived back in the room to find the boy dozing.</p>
@@ -106,15 +96,15 @@
         <p>The boy and the new largest presence in the house sat beside one another, palming the wampum belt. The belt this was modeled after is stored in some gallery or University or library in New York. But Wesley had made his own to recall the Great Law that his people had made years ago. It commemorated the agreement that brought together warring tribes and six nations - of which Onondaga were the eldest brothers,  the fire keepers. He brought to mind the strength of the leaders who had managed to bind together those disparate nations, able to maim and kill and scalp their fellow brothers. He thought mainly of the war priest Thadodaho, the monstrous force that had for ages held back the peace until he was persuaded by Hiawatha, the orator-student of the Peace Maker. He felt his dark hand reaching out to choke the roots of the tree of peace. Saw the world pulled once more and further into brutal, bloody hand-to-hand combat. He laid his hand upon Calum’s head, felt his orenda - his life-force, and leant in close.</p>
         <p><em>“I am sorry for all you have been through. I am glad you are here now. Shall we find you somewhere to sleep, dear boy?”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../68/" class="nav-arrow">→</a>
+                        <a href="../66/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../68/" class="nav-arrow">→</a>
-        <a href="../66/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

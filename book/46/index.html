@@ -6,20 +6,15 @@
     <title>46 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../47/" class="nav-arrow">→</a>
-        <a href="../45/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>46</h1>
+                <div class="nav-arrows">
+                    <a href="../47/" class="nav-arrow">→</a>
+                    <a href="../45/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p><em>“What kind of question is that, boy? Jesus!”</em> The neighbour reproached the lad then, looking at him wondering what sort of sick mind he had. Until he recalled the very reason the boy had plucked up the courage to come to his antechamber in the first place - <em>“why would you ask me that?”</em></p>
@@ -106,15 +96,15 @@
         <p>The neighbour watched from the staircase window as the boy made his way back out and through his garden, this time he decided to not crawl through the brambles back to the sisters field. He passed back through the hedge hole to his new guardian.  The news of the demented manner of the boy’s father left his body quaking with excitement. The sheer fucking lunacy. He grabbed his eyelashes, pulled them forwards, felt the globby <em>pluck</em> as the suction plucked his eyelids from his eyeballs and then the stickiness as he dropped them back in place, felt how wet they were. Ran his hands through his thin hair, felt the wet grease. Again, this time running his sharp nails across his scalp, scraping hard until he felt it nick and little pool of blood come up to meet his finger.</p>
         <p>His mind changed clothes; this girl, Ella, had given the tormented license to torment. He decided it was time to visit the Hag.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../47/" class="nav-arrow">→</a>
+                        <a href="../45/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../47/" class="nav-arrow">→</a>
-        <a href="../45/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

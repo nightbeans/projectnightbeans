@@ -6,20 +6,15 @@
     <title>52 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../53/" class="nav-arrow">→</a>
-        <a href="../51/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>52</h1>
+                <div class="nav-arrows">
+                    <a href="../53/" class="nav-arrow">→</a>
+                    <a href="../51/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>The neighbours bare feet practically danced out and onto the soft wet grass of Mrs Careen’s garden. He made his way slowly down the garden before he turned back. The lights at the back were all off and the curtains now drawn. He drew a grimacing smile upon his lips as he realised he had sent her further inwards. Her locked doors were delicious.</p>
@@ -100,15 +90,15 @@
         <p>Past the art installation on the mattress was the walk-in closet. Opening the drawer nearest him was their fathers underpants, beautifully arranged like ornamental napkins. At the back of the open drawer, was the small silver clasp. He clicked it and pulled in open. Above the underpants now stood another tray, eighteen watches laid out in three rows. He laughed when he saw it, the girl's father had replaced it.</p>
         <p>“<em>Like for like, you fucking motherfucker”</em> he whispered through clenched teeth. He reached his bloody fingers through the band and lifted it up gently, tucking it away into the pocket of the tartan dressing gown. He made his way back through the silent house, through the rear door and into the night. He heard one officer mention some ‘<em>right ‘orrible bastard’</em> as he passed by the outhouse on his way back through the hedge-holes and into his beloved filth.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../53/" class="nav-arrow">→</a>
+                        <a href="../51/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../53/" class="nav-arrow">→</a>
-        <a href="../51/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

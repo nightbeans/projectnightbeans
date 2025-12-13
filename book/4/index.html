@@ -6,20 +6,15 @@
     <title>4 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,30 +73,28 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../5/" class="nav-arrow">→</a>
-        <a href="../3/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>4</h1>
+                <div class="nav-arrows">
+                    <a href="../5/" class="nav-arrow">→</a>
+                    <a href="../3/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>All of time passed for Calum as he stood there looking at his father. Years drained away. Years and miles. He was looking at him from binoculars, coming into focus he saw the marks of black etched and crusted against the white of his skull. He adjusted them again and looked closer at his face. You could see where the blood had been wiped clean, or relocated, it had all darkened around his ears and jawline. Looking back at his fathers eyes he saw the jagged and imprecise mark where they should have been. Calum had never met the man without eyelids before.</p>
         <p>He turned and ran to the bathroom and locked the door. He was screaming. He had never practiced the turn inwards as Conor was accustomed to. So he was left here, in the horrific reality of the world in front of him. He begged to be silent but couldn't. He wailed and waited. For her. Huge footsteps echoed in the corridor outside the bathroom. Great pounding on the door. The bath started bubbling up, and the toilet. She was in the drains. All the sewage of the world, in here, with him. She was an ancient sea-snake. She was as large as the centre of the earth. The floorboards bulged and creaked, the windows blew out and walls crumbled as the earthquake started. Then the boiler blew up the house and the street. All England was burning and so was he.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../5/" class="nav-arrow">→</a>
+                        <a href="../3/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../5/" class="nav-arrow">→</a>
-        <a href="../3/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

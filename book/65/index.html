@@ -6,20 +6,15 @@
     <title>65 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../66/" class="nav-arrow">→</a>
-        <a href="../64/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>65</h1>
+                <div class="nav-arrows">
+                    <a href="../66/" class="nav-arrow">→</a>
+                    <a href="../64/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>The rental Dodge crunched as Mr Armitage passed too quickly from the smooth asphalt onto the dirt roads of the reserve. The sound and jolt woke Calum in time for him to glimpse the sign -</p>
@@ -99,15 +89,15 @@
         <p>He hit the brakes, placed his hand on Calum’s chest and told him to wait there until he turned and told him to come out. He stepped out of the car. He started running, Calum watched as his shadow joined the first that had caused the house to split in two. Mr Armitage was running then. Right at him. A metre from him he dove forward, catching the second man's legs, wrapped around them and crashed him heavily into the ground. The second man howled a laugh and quickly rolled to take Mr Armitage’s back, but he scurried free. Mr Armitage went for the legs again but the second man just parried with his arms before ducking his own head down. He was fast, very fast and he had him now, gripping his side he twisted quickly and rolled him back down to the ground. In the sharp ice and mud at the bottom of the stairs, gazing back towards the lights, Calum watched Mr Armitage tap the man’s arm. Calum had enjoyed the show, never once feeling his guardian to be in any real danger. The men stood and Mr Armitage, still hunched slightly, gestured with his hand for him to come out and meet them. Calum leant over and flicked the lights off and took the key out of the car. Didn’t want them to end up locked out without a way back in.</p>
         <p>Mr Armitage, still out of breath, tried to introduce Calum to the man, but failing to do so, the second man coolly held out his giant paw to him - <em>“Pleasure to meet ya - I’m Wesley”</em> he said.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../66/" class="nav-arrow">→</a>
+                        <a href="../64/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../66/" class="nav-arrow">→</a>
-        <a href="../64/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

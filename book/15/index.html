@@ -6,20 +6,15 @@
     <title>15 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../16/" class="nav-arrow">→</a>
-        <a href="../14/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>15</h1>
+                <div class="nav-arrows">
+                    <a href="../16/" class="nav-arrow">→</a>
+                    <a href="../14/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>The boy lay down to rest once more. Leaving Mr Armitage to reflect on all he’d said. He decided a walk out would be the best approach. No good thinking ever gets done inside. He crouched down and out the low back door, around the pond, zig-zagging his way between the flower beds. On to the fence at the end of the garden. He opened the gate, bending beneath the branch that hangs above it. He was once again in the sisters' field. He snaked between the mounds of earth and thanked them as he went. He asked them - not for comfort this time - but for guidance. He carried on to the centre of the field and looked east. Out and up he could see her branch. He pictured Ella there then, waving at him and the girls. The sisters' field was bare today, but in a few months he would once more become scarcely visible in the sea of green and gold.</p>
@@ -100,15 +90,15 @@
         <p><em>“No!”</em></p>
         <p>The icy snow whipped around his hands. Watched as flecks of ice alighted on his jacket and melted. His mind turned back towards Conor again. <em>You’re not here, are you, lad,</em> he thought.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../16/" class="nav-arrow">→</a>
+                        <a href="../14/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../16/" class="nav-arrow">→</a>
-        <a href="../14/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

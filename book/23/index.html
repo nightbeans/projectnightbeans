@@ -6,20 +6,15 @@
     <title>23 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../24/" class="nav-arrow">→</a>
-        <a href="../22/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>23</h1>
+                <div class="nav-arrows">
+                    <a href="../24/" class="nav-arrow">→</a>
+                    <a href="../22/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p><em>“Number Seven, hey”</em> said Mrs Careen as she laid a bowl of mushroom soup before the boy with three thick slices of bread at the side on the plate the bowl stood on. Calum had never been in Mrs Careen’s house before, but it was beautiful and the food smelt incredible. He dipped a corner of his bread in it. His head leant back as he swallowed it. His mind immediately raced ahead to whether he’d be allowed to ask for seconds.</p>
@@ -119,15 +109,15 @@
         <p>Mr Armitage held his gaze for a moment longer before looking away back into Number Sevens garden. He considered leaving, but, seeing his neighbour rooted to the spot, further trapped in his own home, fed a little cruelty in him. He wished for fury, but received none.</p>
         <p>The neighbour stared out at him. This conversation had been a rich dialogue for him, and would feed him for many days. He stored it all away, his anger at the smashed window, the new disorder of the lounge with his files and materials toppled and rearranged for the Bear to have a place to sit. And the very fact of his visit, more fucking missing children. Him - central in it all again. Saviour of the boy, Calum, no doubt the one to chase down and try to find the boy, Conor, and ultimately, as always, he would be the one to be swooned over for how hard it is on him. Oh, the depth of his love for them. First the sisters, and now Conor. Oh look how he cares for Calum. But ask again - who is at the centre of it all? Him, the fucking Bear. Sat there, leaving behind a mess again. Yes, there would be plenty for the neighbour to chew on here. He silently offered him bitter thanks, the man at the centre of everything shit. Nobody sees it but him - the generous, open-hearted man - nothing but a destroyer.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../24/" class="nav-arrow">→</a>
+                        <a href="../22/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../24/" class="nav-arrow">→</a>
-        <a href="../22/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

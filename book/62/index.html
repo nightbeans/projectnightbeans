@@ -6,20 +6,15 @@
     <title>62 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,31 +73,29 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../63/" class="nav-arrow">→</a>
-        <a href="../61/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>62</h1>
+                <div class="nav-arrows">
+                    <a href="../63/" class="nav-arrow">→</a>
+                    <a href="../61/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>Mrs Careen was the taxi to Heathrow. She’d been awake when they’d knocked at the door. She always drove him to the airport, easier than parking somewhere for the week, and she got the sense he wanted her to witness his bravery. She paid him little notice. The brave one resided in the back of the car. She’d grown wildly impressed with this young lad. He was evidently worried about their onward journey, but was clearly pleased to have Mr Armitage firmly in the game with him.</p>
         <p>Neither she nor Mr Armitage spoke much on that drive. She was still shaken by the neighbour's visit last night, and the cries she’d heard from him in the dead of the night that had woken her. Neither of them mentioned it. It was hardly a mark of bravery to say you had heard what they had and done nothing. But she counted him a mutt. Whatever self-imposed torture he’d inflicted last night was earned. She hadn’t been sleeping well, woken by any and every noise. She’d gone to the bathroom in the middle of the night and cracked the window to be nearer his screams of agony. Only when he’d finished did she return to bed.</p>
         <p>They arrived at Heathrow drop-off. The two of them had carry-ons and a backpack each. Calum was wrapped and geared up for an even greater cold when they landed. Mr Armitage wore what he always did. But she knew he’d have packed a couple fleeces too. She leant down and hugged Calum, before turning to Mr Armitage, who gave her a hug with his right arm only, already turning away towards the doors of Terminal 2.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../63/" class="nav-arrow">→</a>
+                        <a href="../61/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../63/" class="nav-arrow">→</a>
-        <a href="../61/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

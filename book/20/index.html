@@ -6,20 +6,15 @@
     <title>20 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../21/" class="nav-arrow">→</a>
-        <a href="../19/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>20</h1>
+                <div class="nav-arrows">
+                    <a href="../21/" class="nav-arrow">→</a>
+                    <a href="../19/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>A knock on the dark red door at the rear of Number Seven. Mr Armitage had not spoken to his neighbour since he’d asked him about the disappearance of his girls. No answer. He knocked again, louder this time, and rattled the kitchen window also. The owner of Number Seven never left the house, but the fact he was in did nothing to increase the likelihood he would make himself available to a visitor. His knees and back cracked as he knelt and put his face to the letterbox. Something rank hit his nose as he did so. A flash of primal concern before he glanced one more through the kitchen to the sink and the counters, home to what looked like a hundred half-finished plates - the culprits - <em>you filthy bastard</em>.</p>
@@ -99,15 +89,15 @@
         <p>The neighbour peered out from the staircase window, through the ivy he could spy Mr Armitage. <em>What does the Bear want</em>, he wondered. <em>Let me guess - more missing children?</em> He stepped away from the window, for fear of being seen. Not that it was possible, thanks to both the overgrowth and his choice to omit any light in rooms other than the upstairs antechamber. Number Seven was set out as a perfect square, three rooms encircled the antechambers, and a staircase spiralled up the eastward side where he now stood, squinting out at Mr Armitage from behind the circle frames of his small silver glasses. He had no interest traversing the bulwarks of his hoarding and turned back towards the upstairs antechamber. Its sister room directly below had been the latest to become uninhabitable. He moved gracefully back upstairs through his accidental barricades towards the unencumbered space and cleanliness of the antechamber. The cool green light welcomed his return, as he called back to the beast at the door -</p>
         <p><em>“Not today, Bear!”</em></p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../21/" class="nav-arrow">→</a>
+                        <a href="../19/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../21/" class="nav-arrow">→</a>
-        <a href="../19/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

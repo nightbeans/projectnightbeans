@@ -6,20 +6,15 @@
     <title>48 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,30 +73,28 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../49/" class="nav-arrow">→</a>
-        <a href="../47/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>48</h1>
+                <div class="nav-arrows">
+                    <a href="../49/" class="nav-arrow">→</a>
+                    <a href="../47/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p><em>“So that’s what you do, then? You just sit there staring into space? I think you’re fu-, you’re useless.”</em> Calum barked at Mr Armitage as he moved rapidly through the room towards the stairs. He felt bad as soon as he’d said it. Just a child seeking intimacy in punishment. He waited for his guardian to march after him, say ‘<em>who the hell do you think you’re talking to?!’</em>. No one came. He didn’t blame him, figured the old man thought what the boy wanted was to be left alone. That’s what he told himself at least, though what he heard was that the old man regretted ever letting him or his brother in his house.</p>
         <p>Lying in Catherine’s bed he was pressing again, determined to keep all his organs. Recalled what the man had said to Ella at Bethesda - <em>you can do what you like with the empties</em>. He thought about the three of them; Mr Armitage, Mrs Careen, Number Seven. He needed a way to check them all.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../49/" class="nav-arrow">→</a>
+                        <a href="../47/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../49/" class="nav-arrow">→</a>
-        <a href="../47/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

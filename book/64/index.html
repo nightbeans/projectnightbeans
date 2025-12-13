@@ -6,20 +6,15 @@
     <title>64 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../65/" class="nav-arrow">→</a>
-        <a href="../63/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>64</h1>
+                <div class="nav-arrows">
+                    <a href="../65/" class="nav-arrow">→</a>
+                    <a href="../63/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>The neighbour awoke several hours later. The green light above him gently warmed his eyelids before he slowly opened them. He lay flat beside the birdbath pedestal that his watches sat on. He sensed his tormentor - the one with the ashes - present in the antechamber also, tainting it. He cried in agony as he attempted to sit up, the wound above his hip burning again as he tightened his core to move. He dropped his head back down to the floor with a thud. He wondered for a moment whether this man was a friend of the Bears. Whether he’d put him up to it, to scare him, until he recalled again the ember eyes he had. They hadn’t blinked. Not once. He’d been in such agony that he hadn’t realised at the time - only now as he rewound the old tape - the man had no eyelids. He was no acquaintance of the Bear. This man was from some deep.</p>
@@ -107,15 +97,15 @@
         <p>The visitor lifted the neighbour's head with his left hand and placed the shard of glass against the crown of his forehead and pressed in and up. Pulling towards him. He felt his skin tighten and begin to fold before the tension gave and he drew a single deep cut across the crown of his head.</p>
         <p><em>“Think. Quickly”</em> said the ember eyes as they disappeared behind the shower of warm thick blood pouring down into the neighbours eyes.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../65/" class="nav-arrow">→</a>
+                        <a href="../63/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../65/" class="nav-arrow">→</a>
-        <a href="../63/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

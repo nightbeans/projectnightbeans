@@ -6,20 +6,15 @@
     <title>5 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../6/" class="nav-arrow">→</a>
-        <a href="../4/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>5</h1>
+                <div class="nav-arrows">
+                    <a href="../6/" class="nav-arrow">→</a>
+                    <a href="../4/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p>He heard Calum then. A faint but continuing cry. Mr Armitage, aware of their route and accustomed to crouching, ran towards it. Making each hedge-hole far larger as he did so. Mrs Careen had heard it too and stepped outside. She gave him a look as he passed by her garden that seemed to implore him to settle her fears once he'd settled Calum's. He crossed into their garden, and looked up at this strange and incongruous home. He'd led the group that had opposed the planning permission to build this hideous modern annex on the westward side of their beautiful cottage. A testament to the total incompatibility of their parents. Their mother, a perfect country woman. The house had been in her family for years. Some <em>'great'</em> or <em>'great-great'</em> had surely built the place. The boys had been Ella's shadow as she had been her mother’s. They all seemed to agree with Mr Armitage that - no matter what - there was never enough room inside.</p>
@@ -107,15 +97,15 @@
         <p>He carried on past Number Seven, looking disdainfully at what had once been the best kept garden on the street before continuing through to his own. He moved much more gently and carefully holding the lad than he ever did usually. Through the kitchen, down the corridor, upstairs, past his own room and into the room that had belonged to Bethany and Catherine. Two thirds. The boys had never been upstairs in Mr Armitage's house. He suspected Calum would awake terrified again shortly, but that was a problem to be dealt with when it arrived.</p>
         <p>He set the vacant array of limbs down in Bethany’s bed, wondering what of him would survive the night before there was a knock at the door.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../6/" class="nav-arrow">→</a>
+                        <a href="../4/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../6/" class="nav-arrow">→</a>
-        <a href="../4/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>

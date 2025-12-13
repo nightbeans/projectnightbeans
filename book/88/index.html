@@ -6,20 +6,15 @@
     <title>88 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .nav-arrows {
-            position: fixed;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            z-index: 100;
-        }
-        .nav-arrows.top-right {
-            top: 80px;
-            right: 20px;
-        }
-        .nav-arrows.bottom-left {
-            bottom: 20px;
-            left: 20px;
         }
         .nav-arrow {
             display: flex;
@@ -48,15 +43,12 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
         @media (max-width: 768px) {
-            .nav-arrows.top-right {
-                top: 60px;
-                right: 10px;
-            }
-            .nav-arrows.bottom-left {
-                bottom: 10px;
-                left: 10px;
-            }
             .nav-arrow {
                 width: 36px;
                 height: 36px;
@@ -81,16 +73,14 @@
         </nav>
     </header>
 
-    <!-- Navigation Arrows - Top Right -->
-    <div class="nav-arrows top-right">
-        <a href="../89/" class="nav-arrow">→</a>
-        <a href="../87/" class="nav-arrow">←</a>
-    </div>
-
     <main>
         <article class="post">
             <header class="post-header">
                 <h1>88</h1>
+                <div class="nav-arrows">
+                    <a href="../89/" class="nav-arrow">→</a>
+                    <a href="../87/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
         <p><em>“Conor! You are magnificent my boy!”</em> Cried the man without eyelids - <em>“of course I accept your gift! Anything to keep this little one with us!”</em> He ran across to Ella. Grabbing her by the hand and lifting her up. Conor had never seen him this animated, he found it somehow grotesque. He continued;</p>
@@ -102,15 +92,15 @@
         <p><em>“Him? All bonds are lost to you there, girl. He cannot look at you without seeing what you did. His debt is paid, I accept his offering. You have no brothers, now, Ella. Take your place as one of the three sisters. This is what I promised, this is your freedom.”</em></p>
         <p>Ella remained silent a while. Conor bade her stay with him. Tried to fill his eyes with all the forgiveness he couldn’t yet voice. Her terror faded. No, she’d practiced this, she took her fear and threw it off a very high building as she took the man's hand.</p>
 
+                <div class="bottom-nav">
+                    <div class="nav-arrows">
+                        <a href="../89/" class="nav-arrow">→</a>
+                        <a href="../87/" class="nav-arrow">←</a>
+                    </div>
+                </div>
             </div>
         </article>
     </main>
-
-    <!-- Navigation Arrows - Bottom Left -->
-    <div class="nav-arrows bottom-left">
-        <a href="../89/" class="nav-arrow">→</a>
-        <a href="../87/" class="nav-arrow">←</a>
-    </div>
 
     <footer>
         <p>&copy; 2025 Joel Delaney</p>
