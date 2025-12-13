@@ -6,43 +6,62 @@
     <title>75 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .book-navigation {
+        .nav-arrows {
+            position: fixed;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #ddd;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav-arrows.top-right {
+            top: 80px;
+            right: 20px;
+        }
+        .nav-arrows.bottom-left {
+            bottom: 20px;
+            left: 20px;
         }
         .nav-arrow {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: #fff;
-            border: 2px solid #e0e0e0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(176, 212, 221, 0.4);
             border-radius: 50%;
             text-decoration: none;
-            color: #333;
-            font-size: 1.5rem;
-            transition: all 0.2s ease;
+            color: #7fc8e0;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         .nav-arrow:hover {
-            background: #007bff;
+            background: #7fc8e0;
             color: white;
-            border-color: #007bff;
-            transform: scale(1.1);
+            border-color: #7fc8e0;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);
         }
         .nav-arrow.disabled {
-            opacity: 0.3;
+            opacity: 0.2;
             cursor: not-allowed;
             pointer-events: none;
         }
-        .page-number {
-            color: #666;
-            font-weight: 600;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            .nav-arrows.top-right {
+                top: 60px;
+                right: 10px;
+            }
+            .nav-arrows.bottom-left {
+                bottom: 10px;
+                left: 10px;
+            }
+            .nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -62,6 +81,12 @@
         </nav>
     </header>
 
+    <!-- Navigation Arrows - Top Right -->
+    <div class="nav-arrows top-right">
+        <a href="../76/" class="nav-arrow">→</a>
+        <a href="../74/" class="nav-arrow">←</a>
+    </div>
+
     <main>
         <article class="post">
             <header class="post-header">
@@ -72,17 +97,27 @@
         <p>The neighbour went to speak but the man without eyelids held out a hand and commanded silence. No stuttering attempts at justification.</p>
         <p><em>“I was the very first person to meet Ella. Born with the umbilical cord wrapped around her neck. Nearly another sacrificed first-born. She visited her deep every day, built everything she had ever seen or thought of there. It was vast and marvellous. I loved her like a father. Like I did the other three. The three you stole from me. Ella wanted to travel as I did, traversing deeps. She would ask constantly about how to get to Conor’s, and whether her other brother even had one, shallow boy. She made many pledges of valueless things for passage, getting ever nearer to something I truly wanted. When she did, I brought her up and told her that she could have what she wanted, if she made her payment and brought me that which was taken from me. My harvest. You and your bumbling neighbour - hiding them all these years. Tell me, surely you can feel it, are they close?</em></p>
 
-                <div class="book-navigation">
-                    <a href="../74/" class="nav-arrow">←</a>
-                    <span class="page-number">75 of 92</span>
-                    <a href="../76/" class="nav-arrow">→</a>
-                </div>
             </div>
         </article>
     </main>
 
+    <!-- Navigation Arrows - Bottom Left -->
+    <div class="nav-arrows bottom-left">
+        <a href="../76/" class="nav-arrow">→</a>
+        <a href="../74/" class="nav-arrow">←</a>
+    </div>
+
     <footer>
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 75,
+            part: 5,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
 </body>
 </html>

@@ -68,6 +68,13 @@
     </header>
 
     <main class="parts-container">
+        <!-- Continue Reading Button -->
+        <div id="continueReading" style="display: none; margin-bottom: 30px; text-align: center;">
+            <a id="continueLink" href="#" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #7fc8e0 0%, #5ab0d0 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);">
+                <span id="continueText"></span>
+            </a>
+        </div>
+
         <div class="parts-grid">
             <a href="part-1/" class="part-card">
                 <span class="part-number">Part I</span>
@@ -104,5 +111,32 @@
     <footer>
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
+
+    <script>
+        // Check for saved reading progress
+        const progress = localStorage.getItem('bookProgress');
+        if (progress) {
+            try {
+                const data = JSON.parse(progress);
+                const partNames = ['I', 'II', 'III', 'IV', 'V'];
+                let partNum = data.part;
+
+                // Determine part based on page number if not set correctly
+                if (data.page <= 15) partNum = 1;
+                else if (data.page <= 30) partNum = 2;
+                else if (data.page <= 50) partNum = 3;
+                else if (data.page <= 64) partNum = 4;
+                else partNum = 5;
+
+                const partName = data.page === 92 ? 'Epilogue' : `Part ${partNames[partNum - 1]}`;
+
+                document.getElementById('continueText').textContent = `Continue from ${partName}, ${data.page}`;
+                document.getElementById('continueLink').href = `${data.page}/`;
+                document.getElementById('continueReading').style.display = 'block';
+            } catch (e) {
+                // Invalid data, ignore
+            }
+        }
+    </script>
 </body>
 </html>

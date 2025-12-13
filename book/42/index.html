@@ -6,43 +6,62 @@
     <title>42 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .book-navigation {
+        .nav-arrows {
+            position: fixed;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #ddd;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav-arrows.top-right {
+            top: 80px;
+            right: 20px;
+        }
+        .nav-arrows.bottom-left {
+            bottom: 20px;
+            left: 20px;
         }
         .nav-arrow {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: #fff;
-            border: 2px solid #e0e0e0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(176, 212, 221, 0.4);
             border-radius: 50%;
             text-decoration: none;
-            color: #333;
-            font-size: 1.5rem;
-            transition: all 0.2s ease;
+            color: #7fc8e0;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         .nav-arrow:hover {
-            background: #007bff;
+            background: #7fc8e0;
             color: white;
-            border-color: #007bff;
-            transform: scale(1.1);
+            border-color: #7fc8e0;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);
         }
         .nav-arrow.disabled {
-            opacity: 0.3;
+            opacity: 0.2;
             cursor: not-allowed;
             pointer-events: none;
         }
-        .page-number {
-            color: #666;
-            font-weight: 600;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            .nav-arrows.top-right {
+                top: 60px;
+                right: 10px;
+            }
+            .nav-arrows.bottom-left {
+                bottom: 10px;
+                left: 10px;
+            }
+            .nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -62,6 +81,12 @@
         </nav>
     </header>
 
+    <!-- Navigation Arrows - Top Right -->
+    <div class="nav-arrows top-right">
+        <a href="../43/" class="nav-arrow">→</a>
+        <a href="../41/" class="nav-arrow">←</a>
+    </div>
+
     <main>
         <article class="post">
             <header class="post-header">
@@ -72,17 +97,27 @@
         <p>The Haudosaunee had better ways - the three sisters. In another month or so, once the frost cleared, and the sun spent enough time bathing the field, even while a chill remained, he would tend again to the mounds, and lay down the first of the sisters - the corn. The corn always sprouted quickly, incredibly so. It would break through the softening ground and begin rushing to the sky. Though, remaining but one sister, the land would limit its gifts and the table would be plain. So when the stalks began to show, Mr Armitage would bed in the second sister. They would come up a little slower, but the beans, who would usually require a trellis, some dead sticks with which to bind them themselves, would instead hug their sister, the stretching corn. A remarkable girl, doing for free what agri-businesses make millions on - even managing to crystallise the nitrogen in the atmosphere for food for her older sister, and the younger - a quieter, slower girl. Lastly, Mr Armitage laid the pumpkin seeds on top of and between the mounds, and their great leaves would stretch out, protecting the moisture needed for the roots, and protecting their older sisters from pests that would damage them at their more tender height.</p>
         <p>These three sisters each ensured their mutual benefit. They kept themselves and the land well with practically no input from Mr Armitage at all. He thanked them again for their harmony and generosity. He never ate meals with these ingredients save their coming from his field. He had not eaten of it for a number of months. He felt his stomach groan slightly. He was hungry.</p>
 
-                <div class="book-navigation">
-                    <a href="../41/" class="nav-arrow">←</a>
-                    <span class="page-number">42 of 92</span>
-                    <a href="../43/" class="nav-arrow">→</a>
-                </div>
             </div>
         </article>
     </main>
 
+    <!-- Navigation Arrows - Bottom Left -->
+    <div class="nav-arrows bottom-left">
+        <a href="../43/" class="nav-arrow">→</a>
+        <a href="../41/" class="nav-arrow">←</a>
+    </div>
+
     <footer>
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 42,
+            part: 3,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
 </body>
 </html>

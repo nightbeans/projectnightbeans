@@ -6,43 +6,62 @@
     <title>69 - joeldelaney</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        .book-navigation {
+        .nav-arrows {
+            position: fixed;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #ddd;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav-arrows.top-right {
+            top: 80px;
+            right: 20px;
+        }
+        .nav-arrows.bottom-left {
+            bottom: 20px;
+            left: 20px;
         }
         .nav-arrow {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: #fff;
-            border: 2px solid #e0e0e0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(176, 212, 221, 0.4);
             border-radius: 50%;
             text-decoration: none;
-            color: #333;
-            font-size: 1.5rem;
-            transition: all 0.2s ease;
+            color: #7fc8e0;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         .nav-arrow:hover {
-            background: #007bff;
+            background: #7fc8e0;
             color: white;
-            border-color: #007bff;
-            transform: scale(1.1);
+            border-color: #7fc8e0;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);
         }
         .nav-arrow.disabled {
-            opacity: 0.3;
+            opacity: 0.2;
             cursor: not-allowed;
             pointer-events: none;
         }
-        .page-number {
-            color: #666;
-            font-weight: 600;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            .nav-arrows.top-right {
+                top: 60px;
+                right: 10px;
+            }
+            .nav-arrows.bottom-left {
+                bottom: 10px;
+                left: 10px;
+            }
+            .nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -62,6 +81,12 @@
         </nav>
     </header>
 
+    <!-- Navigation Arrows - Top Right -->
+    <div class="nav-arrows top-right">
+        <a href="../70/" class="nav-arrow">→</a>
+        <a href="../68/" class="nav-arrow">←</a>
+    </div>
+
     <main>
         <article class="post">
             <header class="post-header">
@@ -72,17 +97,27 @@
         <p><em>“This is fucking stupid Ella, seriously.”</em> His sister just laughed in agreement. He wasn’t wrong.  Bizarrely they were both thoroughly enjoying themselves. Neither party were claustrophobic, and this was precisely the rare brand of stupid and unwise thing that they loved doing together. The two of them were kind of like a pair of happy drunks in their best moments together. That sweet spot where there are no bad ideas, and before the consequences make their vain attempts to redefine the experience. They were the drunks now. They had managed to shimmy alongside one another, clamped between the two tightening slabs of rock at their front and back. They turned their heads to each other and howled laughing, filling their lungs they pressed hard against the rock. It hurt. That made them laugh more. Conor watched Ella’s eyes in the dim light and loved her despairingly. They were screaming the heart-laugh that only siblings know. This went on for some time, until the painful pressure from their full chests began to subside as the passage ahead seemed to widen slightly. This made the whole thing less funny, but at least they could move forwards again. They pressed their hands down and wriggled. Their toes pressing down and back as they moved forward, eventually cresting over the edge they reached their arms out and down. They emerged from the sliver of rock they’d crawled through and let themselves topple out and down. They stood on soil. They looked up from the pit. It was unbearably deep. They had no way of knowing how far down they had travelled through the tunnel. Far above them, towering over them from out the pit was an enormous tree. There was no way of knowing this from down here by looking up at it, but all around the pit wrapped great roots. Huge and white they twisted like bolts of lightning breaking through the edges of the earthen cylinder they were in. Conor opened his mouth wide and popped the seal on his ears. Ella did the same.</p>
         <p><em>“I’ve never been this far down,”</em> said Ella. She was excited. <em>“I’ll wager our neighbour has never crawled down here either.”</em> Conor saw as soon as she placed her hands on the first of the white twisted roots above her and hauled herself up why she was so excited - she loved to climb.</p>
 
-                <div class="book-navigation">
-                    <a href="../68/" class="nav-arrow">←</a>
-                    <span class="page-number">69 of 92</span>
-                    <a href="../70/" class="nav-arrow">→</a>
-                </div>
             </div>
         </article>
     </main>
 
+    <!-- Navigation Arrows - Bottom Left -->
+    <div class="nav-arrows bottom-left">
+        <a href="../70/" class="nav-arrow">→</a>
+        <a href="../68/" class="nav-arrow">←</a>
+    </div>
+
     <footer>
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 69,
+            part: 5,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
 </body>
 </html>
