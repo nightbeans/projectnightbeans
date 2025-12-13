@@ -126,6 +126,7 @@ main {
 .post-preview .excerpt {
     color: #b0d4dd;
     line-height: 1.7;
+    text-align: justify;
 }
 
 /* Individual post styling */
@@ -159,6 +160,7 @@ main {
 
 .post-content p {
     margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
 .post-content h2 {
