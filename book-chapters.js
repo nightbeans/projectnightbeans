@@ -61,7 +61,7 @@ const bookChapters = [
         "title": "92",
         "chapterNumber": 999,
         "url": "/book/92/",
-        "excerpt": "Ella stood behind the two of them as they crouched over him, pouring more and more soil into his mouth, it looked like a grotesque version of when Cal..."
+        "excerpt": "Ella was running. Just ahead of her were Sara and Bethany. They were sprinting. Fuck, they’re fast, she thought. One slow breath. Then she tipped her ..."
     },
     {
         "title": "18",
@@ -116,6 +116,12 @@ const bookChapters = [
         "chapterNumber": 999,
         "url": "/book/26/",
         "excerpt": "Mrs Careen sat down on the chair beside Calum and set the tray with the teapot and their cups on the coffee table that lay between them. Calum had gla..."
+    },
+    {
+        "title": "94",
+        "chapterNumber": 999,
+        "url": "/book/94/",
+        "excerpt": "Ella stood behind the two of them as they crouched over him, pouring more and more soil into his mouth, it looked like a grotesque version of when Cal..."
     },
     {
         "title": "64",
@@ -490,6 +496,12 @@ const bookChapters = [
         "excerpt": "Calum was looking out Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much shorter than Mr Armitage, though tha..."
     },
     {
+        "title": "95",
+        "chapterNumber": 999,
+        "url": "/book/95/",
+        "excerpt": "Epilogue"
+    },
+    {
         "title": "2",
         "chapterNumber": 999,
         "url": "/book/2/",
@@ -595,12 +607,12 @@ const bookChapters = [
         "title": "93",
         "chapterNumber": 999,
         "url": "/book/93/",
-        "excerpt": "Epilogue"
+        "excerpt": "Mr Armitage fell then, clutching his neck. Calum figured an asthma attack. Wesley figured Thadodaho. Mary figured pretence. He coughed and sputtered. ..."
     },
     {
         "title": "91",
         "chapterNumber": 999,
         "url": "/book/91/",
-        "excerpt": "Mr Armitage fell then, clutching his neck. Calum figured an asthma attack. Wesley figured Thadodaho. Mary figured pretence. He coughed and sputtered. ..."
+        "excerpt": "Conor watched as Ella had taken the hands of their mutual friend. He saw how he must have passed into Ella in the bloody diamond. A river running into..."
     }
 ];
