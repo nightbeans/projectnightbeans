@@ -98,12 +98,12 @@
 
             <a href="part-5/" class="part-card">
                 <span class="part-number">Part V</span>
-                <span class="part-info">66–92</span>
+                <span class="part-info">66–94</span>
             </a>
 
             <a href="epilogue/" class="part-card epilogue-card">
                 <span class="part-number">Epilogue</span>
-                <span class="part-info">93</span>
+                <span class="part-info">95</span>
             </a>
         </div>
 
@@ -135,7 +135,7 @@
                 else if (data.page <= 65) partNum = 4;
                 else partNum = 5;
 
-                const partName = data.page === 93 ? 'Epilogue' : `Part ${partNames[partNum - 1]}`;
+                const partName = data.page === 95 ? 'Epilogue' : `Part ${partNames[partNum - 1]}`;
 
                 document.getElementById('continueText').textContent = `Continue from ${partName}, ${data.page}`;
                 document.getElementById('continueLink').href = `${data.page}/`;
