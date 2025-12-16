@@ -99,6 +99,21 @@
         <p>&copy; 2025 Joel Delaney</p>
     </footer>
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 43,
+            'part': 3
+        });
+    </script>
+
     <script>
         // Save reading progress to localStorage
         localStorage.setItem('bookProgress', JSON.stringify({
