@@ -13,7 +13,7 @@ const bookChapters = [
         "title": "40",
         "chapterNumber": 999,
         "url": "/book/40/",
-        "excerpt": "The entry to Number Seven seemed to swell and constrict as Calum stared at it. A moment ago it had grown teeth all around its edges, the red door a to..."
+        "excerpt": "The entry to Number Seven seemed to swell and constrict as Calum stared at it. A moment ago, it had grown teeth all around its edges, the red door a t..."
     },
     {
         "title": "36",
@@ -67,7 +67,7 @@ const bookChapters = [
         "title": "18",
         "chapterNumber": 999,
         "url": "/book/18/",
-        "excerpt": "Mrs Careen watched from her first floor deck as the two of them passed through the field back towards Mr Armitage’s. Calum practically sprinting to ke..."
+        "excerpt": "Mrs Careen watched from her first-floor deck as the two of them passed through the field back towards Mr Armitage’s. Calum practically sprinting to ke..."
     },
     {
         "title": "19",
@@ -85,7 +85,7 @@ const bookChapters = [
         "title": "41",
         "chapterNumber": 999,
         "url": "/book/41/",
-        "excerpt": "Once payment was made, the man without eyelids gestured to Conor. He rose from the back seats and approached his old friend. Same as always, Conor and..."
+        "excerpt": "Once payment was made, the man without eyelids gestured to Conor. He rose from the back seat and approached his old friend. Same as always, Conor and ..."
     },
     {
         "title": "76",
@@ -169,13 +169,13 @@ const bookChapters = [
         "title": "27",
         "chapterNumber": 999,
         "url": "/book/27/",
-        "excerpt": "He’d fed his cruelty a little too long and it had blossomed into familiar rage - “Another two missing children, and you’re just going to stay in here?..."
+        "excerpt": "He’d fed his cruelty a little too long, and it had blossomed into familiar rage - “Another two missing children, and you’re just going to stay in here..."
     },
     {
         "title": "89",
         "chapterNumber": 999,
         "url": "/book/89/",
-        "excerpt": "“Conor! You are magnificent my boy!” Cried the man without eyelids - “of course I accept your gift! Anything to keep this little one with us!” He ran ..."
+        "excerpt": "“Conor! You are magnificent, my boy!” Cried the man without eyelids - “Of course I accept your gift! Anything to keep this little one with us!” He ran..."
     },
     {
         "title": "53",
@@ -187,7 +187,7 @@ const bookChapters = [
         "title": "23",
         "chapterNumber": 999,
         "url": "/book/23/",
-        "excerpt": "“Number Seven, hey,” said Mrs Careen as she laid a bowl of mushroom soup before the boy with three thick slices of bread at the side on the plate the ..."
+        "excerpt": "“Number Seven, hey,” said Mrs Careen as she laid a bowl of mushroom soup before the boy with three thick slices of bread on the side of the plate the ..."
     },
     {
         "title": "73",
@@ -217,7 +217,7 @@ const bookChapters = [
         "title": "32",
         "chapterNumber": 999,
         "url": "/book/32/",
-        "excerpt": "Ella stepped onto the bus, Conor saw that she was far calmer here than last she’d stood before him. More human. That made it worse. She knew he needed..."
+        "excerpt": "Ella stepped onto the bus, and Conor saw that she was far calmer here than last she’d stood before him. More human. That made it worse. She knew he ne..."
     },
     {
         "title": "Part I",
@@ -235,7 +235,7 @@ const bookChapters = [
         "title": "46",
         "chapterNumber": 999,
         "url": "/book/46/",
-        "excerpt": "Conor felt a jolt of pain through his back as they landed back up top. He had slammed into a small log by a forgotten firepit. The spot was familiar, ..."
+        "excerpt": "Conor felt a jolt of pain through his back as they landed back up top. He had slammed into a small log by a forgotten firepit. The spot was familiar; ..."
     },
     {
         "title": "82",
@@ -337,7 +337,7 @@ const bookChapters = [
         "title": "43",
         "chapterNumber": 999,
         "url": "/book/43/",
-        "excerpt": "Reaching again for the wax jacket, Mr Armitage arose and walked into his garden. He made his way up, keeping his eyes ahead, searching for the boy - t..."
+        "excerpt": "Reaching again for the wax jacket, Mr Armitage arose and walked into his garden. He made his way up, keeping his eyes ahead, searching for the boy, to..."
     },
     {
         "title": "54",
@@ -355,7 +355,7 @@ const bookChapters = [
         "title": "25",
         "chapterNumber": 999,
         "url": "/book/25/",
-        "excerpt": "Conor turned away from the man without eyelids, at his sister. Tending the fire in the centre aisle. Conor had been aware of the dried blood around El..."
+        "excerpt": "Conor turned away from the man without eyelids, to his sister. Tending the fire in the centre aisle. Conor had been aware of the dried blood around El..."
     },
     {
         "title": "24",
@@ -385,7 +385,7 @@ const bookChapters = [
         "title": "42",
         "chapterNumber": 999,
         "url": "/book/42/",
-        "excerpt": "Calum felt weak hands awkwardly slip into his armpits, they tried to slide him in. The hands readjusted and attempted to reach under him, lifting him ..."
+        "excerpt": "Calum felt weak hands awkwardly slip into his armpits; they tried to slide him in. The hands readjusted and attempted to reach under him, lifting him ..."
     },
     {
         "title": "1",
@@ -493,7 +493,7 @@ const bookChapters = [
         "title": "38",
         "chapterNumber": 999,
         "url": "/book/38/",
-        "excerpt": "Calum was looking out Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much smaller than Mr Armitage, though tha..."
+        "excerpt": "Calum was looking out of Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much smaller than Mr Armitage, though ..."
     },
     {
         "title": "95",
@@ -577,7 +577,7 @@ const bookChapters = [
         "title": "22",
         "chapterNumber": 999,
         "url": "/book/22/",
-        "excerpt": "“Let me in, for God's sake, man” yelled Mr Armitage to the muffled refusal from the neighbour within."
+        "excerpt": "“Let me in, for God's sake, man”, yelled Mr Armitage to the muffled refusal from the neighbour within."
     },
     {
         "title": "14",
@@ -589,7 +589,7 @@ const bookChapters = [
         "title": "28",
         "chapterNumber": 999,
         "url": "/book/28/",
-        "excerpt": "As soon as they landed in his deep Conor set off running. Straight off the road and he was hopping fences. He caught himself thinking how much of a mo..."
+        "excerpt": "As soon as they landed in his deep Conor set off running. Straight off the road, and he was hopping fences. He caught himself thinking how much of a m..."
     },
     {
         "title": "45",
