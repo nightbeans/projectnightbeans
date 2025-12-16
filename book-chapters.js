@@ -235,7 +235,7 @@ const bookChapters = [
         "title": "46",
         "chapterNumber": 999,
         "url": "/book/46/",
-        "excerpt": "Conor felt a jolt of pain through his back as they landed. He had slammed into a small log by a forgotten firepit. The spot was familiar, it was on th..."
+        "excerpt": "Conor felt a jolt of pain through his back as they landed back up top. He had slammed into a small log by a forgotten firepit. The spot was familiar, ..."
     },
     {
         "title": "82",
@@ -493,7 +493,7 @@ const bookChapters = [
         "title": "38",
         "chapterNumber": 999,
         "url": "/book/38/",
-        "excerpt": "Calum was looking out Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much shorter than Mr Armitage, though tha..."
+        "excerpt": "Calum was looking out Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much smaller than Mr Armitage, though tha..."
     },
     {
         "title": "95",
