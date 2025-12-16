@@ -151,7 +151,7 @@ const bookChapters = [
         "title": "6",
         "chapterNumber": 999,
         "url": "/book/6/",
-        "excerpt": "\"Ella, I can't see anything. What did you do to me? God my eyes hurt. Seriously what the fuck did you do? You. You scalped him, Ella. What does - wher..."
+        "excerpt": "\"Ella, I can't see anything. What did you do to me? God, my eyes hurt. Seriously, what the fuck did you do? You. You scalped him, Ella. What does - wh..."
     },
     {
         "title": "72",
@@ -199,7 +199,7 @@ const bookChapters = [
         "title": "5",
         "chapterNumber": 999,
         "url": "/book/5/",
-        "excerpt": "He heard Calum then. A faint but continuing cry. Mr Armitage, aware of their route and accustomed to crouching, ran towards it. Making each hedge-hole..."
+        "excerpt": "He heard Calum then - a faint but continuing cry. Mr Armitage, aware of their route and accustomed to crouching, ran towards it. Making each hedge-hol..."
     },
     {
         "title": "13",
@@ -349,7 +349,7 @@ const bookChapters = [
         "title": "15",
         "chapterNumber": 999,
         "url": "/book/15/",
-        "excerpt": "The boy lay down to rest once more. Leaving Mr Armitage to reflect on all he’d said. He decided a walk out would be the best approach. No good thinkin..."
+        "excerpt": "The boy lay down to rest once more. Leaving Mr Armitage to reflect on all he’d said. He decided a walk outside would be the best approach. No good thi..."
     },
     {
         "title": "25",
@@ -421,7 +421,7 @@ const bookChapters = [
         "title": "12",
         "chapterNumber": 999,
         "url": "/book/12/",
-        "excerpt": "Conor wasn’t telling the truth here, he remembered it well. It was the second passenger who had first dragged him inwards. He remembered the day, the ..."
+        "excerpt": "Conor wasn’t telling the truth here; he remembered it well. It was the second passenger who had first dragged him inwards. He remembered the day, the ..."
     },
     {
         "title": "86",
@@ -505,7 +505,7 @@ const bookChapters = [
         "title": "2",
         "chapterNumber": 999,
         "url": "/book/2/",
-        "excerpt": "They had stripped down to their thermals in the outhouse and stepped inside. The foil covering the bacon tray remained undisturbed. Their fathers fail..."
+        "excerpt": "They had stripped down to their thermals in the outhouse and stepped inside. The foil covering the bacon tray remained undisturbed. Their father's fai..."
     },
     {
         "title": "4",
@@ -535,7 +535,7 @@ const bookChapters = [
         "title": "10",
         "chapterNumber": 999,
         "url": "/book/10/",
-        "excerpt": "Calum's world had been unzipped and everything poured out onto the floor. He had been left with absolutely nothing to hold onto. The first thing he di..."
+        "excerpt": "Calum's world had been unzipped, and everything poured out onto the floor. He had been left with absolutely nothing to hold onto. The first thing he d..."
     },
     {
         "title": "67",
@@ -583,7 +583,7 @@ const bookChapters = [
         "title": "14",
         "chapterNumber": 999,
         "url": "/book/14/",
-        "excerpt": "“Nope,” Calum replied “I’ve never seen any of them before”."
+        "excerpt": "“Nope,” Calum replied, “I’ve never seen any of them before”."
     },
     {
         "title": "28",
