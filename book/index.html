@@ -78,17 +78,17 @@
         <div class="parts-grid">
             <a href="part-1/" class="part-card">
                 <span class="part-number">Part I</span>
-                <span class="part-info">1–16</span>
+                <span class="part-info">1–15</span>
             </a>
 
             <a href="part-2/" class="part-card">
                 <span class="part-number">Part II</span>
-                <span class="part-info">17–31</span>
+                <span class="part-info">16–32</span>
             </a>
 
             <a href="part-3/" class="part-card">
                 <span class="part-number">Part III</span>
-                <span class="part-info">32–51</span>
+                <span class="part-info">33–51</span>
             </a>
 
             <a href="part-4/" class="part-card">
@@ -146,8 +146,8 @@
                 let partNum = data.part;
 
                 // Determine part based on page number if not set correctly
-                if (data.page <= 16) partNum = 1;
-                else if (data.page <= 31) partNum = 2;
+                if (data.page <= 15) partNum = 1;
+                else if (data.page <= 32) partNum = 2;
                 else if (data.page <= 51) partNum = 3;
                 else if (data.page <= 65) partNum = 4;
                 else partNum = 5;
