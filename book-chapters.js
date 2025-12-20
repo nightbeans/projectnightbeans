@@ -25,7 +25,7 @@ const bookChapters = [
         "title": "58",
         "chapterNumber": 999,
         "url": "/book/58/",
-        "excerpt": "His Ella flashed before Calum’s eyes. Not now! He begged the demon to drown her, and thankfully she did. The valkyrie he’d spent the last two days wit..."
+        "excerpt": "His Ella flashed before Calum’s eyes. Not now! He begged the demon to drown her, and thankfully, she did. The valkyrie he’d spent the last two days wi..."
     },
     {
         "title": "20",
@@ -43,7 +43,7 @@ const bookChapters = [
         "title": "80",
         "chapterNumber": 999,
         "url": "/book/80/",
-        "excerpt": "The man without eyelids had been silent a long time, he was vastly less patient up here than down in the deeps. It must have been because he’d spent s..."
+        "excerpt": "The man without eyelids had been silent a long time; he was vastly less patient up here than down in the deeps. It must have been because he’d spent s..."
     },
     {
         "title": "70",
@@ -91,7 +91,7 @@ const bookChapters = [
         "title": "76",
         "chapterNumber": 999,
         "url": "/book/76/",
-        "excerpt": "“Theft and sacrifice mark the same coin. You know it well. You sacrifice nothing. Look at this house. You would give nothing up. Nothing of your own. ..."
+        "excerpt": "“Theft and sacrifice mark the same coin. You know it well. You sacrifice nothing. Look at this house. You would give nothing up - nothing of your own...."
     },
     {
         "title": "61",
@@ -103,7 +103,7 @@ const bookChapters = [
         "title": "63",
         "chapterNumber": 999,
         "url": "/book/63/",
-        "excerpt": "Mrs Careen was the taxi to Heathrow. She’d been awake when they’d knocked at the door. She always drove him to the airport, easier than parking somewh..."
+        "excerpt": "Mrs Careen was the taxi to Heathrow. She’d been awake when they’d knocked at the door. She always drove him to the airport, which was easier than park..."
     },
     {
         "title": "44",
@@ -163,7 +163,7 @@ const bookChapters = [
         "title": "87",
         "chapterNumber": 999,
         "url": "/book/87/",
-        "excerpt": "“You don’t know?” Asked Conor, “we’re in the neighbours deep. You know - Number Seven.”"
+        "excerpt": "“You don’t know?” Asked Conor, “We’re in the neighbours' deep. You know - Number Seven.”"
     },
     {
         "title": "27",
@@ -181,7 +181,7 @@ const bookChapters = [
         "title": "53",
         "chapterNumber": 999,
         "url": "/book/53/",
-        "excerpt": "The neighbours bare feet practically danced out and onto the soft wet grass of Mrs Careen’s garden. He made his way slowly down the garden before he t..."
+        "excerpt": "The neighbours' bare feet practically danced out and onto the soft, wet grass of Mrs Careen’s garden. He made his way slowly down the garden before he..."
     },
     {
         "title": "23",
@@ -211,7 +211,7 @@ const bookChapters = [
         "title": "8",
         "chapterNumber": 999,
         "url": "/book/8/",
-        "excerpt": "Conor only fully realised the strangeness of his surroundings, not when he saw the odd jungle that surrounded him, but when his head had emerged from ..."
+        "excerpt": "“We did it, Con, we fucking did it.”"
     },
     {
         "title": "32",
@@ -367,13 +367,13 @@ const bookChapters = [
         "title": "47",
         "chapterNumber": 999,
         "url": "/book/47/",
-        "excerpt": "“What kind of question is that, boy? Jesus!” The neighbour reproached the lad then, looking at him wondering what sort of sick mind he had. Until he r..."
+        "excerpt": "“What kind of question is that, boy? Jesus!” The neighbour reproached the lad then, looking at him, wondering what sort of sick mind he had. Until he ..."
     },
     {
         "title": "88",
         "chapterNumber": 999,
         "url": "/book/88/",
-        "excerpt": "Mr Armitage looked out at the gathering, making vows to one another to tell their old stories. He considered how it was only fear of violence that wou..."
+        "excerpt": "Mr Armitage looked out at the gathering, making vows to one another to tell their old stories. He considered how it was only the fear of violence that..."
     },
     {
         "title": "29",
@@ -427,7 +427,7 @@ const bookChapters = [
         "title": "86",
         "chapterNumber": 999,
         "url": "/book/86/",
-        "excerpt": "The neighbour knew that his time was limited. Soon enough the girl and the lad would find their way back up, ripping through the wound. His visitor wo..."
+        "excerpt": "The neighbour knew that his time was limited. Soon enough, the girl and the lad would find their way back up, ripping through the wound. His visitor w..."
     },
     {
         "title": "66",
@@ -439,7 +439,7 @@ const bookChapters = [
         "title": "59",
         "chapterNumber": 999,
         "url": "/book/59/",
-        "excerpt": "A moment later the neighbour leant over the top rail of the staircase looking straight down at her. The faint moonlight reflecting from a cracked curt..."
+        "excerpt": "A moment later, the neighbour leant over the top rail of the staircase, looking straight down at her. The faint moonlight reflecting from a cracked cu..."
     },
     {
         "title": "56",
@@ -457,7 +457,7 @@ const bookChapters = [
         "title": "69",
         "chapterNumber": 999,
         "url": "/book/69/",
-        "excerpt": "“Stop, stop, fuck - please - Jesus”. The hand holding the shard of glass was perfectly still, but the neighbours trembling pulled at the edges of the ..."
+        "excerpt": "“Stop, stop, fuck - please - Jesus.” The hand holding the shard of glass was perfectly still, but the neighbour's trembling pulled at the edges of the..."
     },
     {
         "title": "49",
@@ -475,7 +475,7 @@ const bookChapters = [
         "title": "60",
         "chapterNumber": 999,
         "url": "/book/60/",
-        "excerpt": "He’d had trouble sleeping the past two nights, so here at perhaps four Mr Armitage sat up, threw his legs down over the side of his bed and began movi..."
+        "excerpt": "He’d had trouble sleeping the past two nights, so here at perhaps four, Mr Armitage sat up, threw his legs down over the side of his bed and began mov..."
     },
     {
         "title": "34",
@@ -565,7 +565,7 @@ const bookChapters = [
         "title": "77",
         "chapterNumber": 999,
         "url": "/book/77/",
-        "excerpt": "Ella hadn’t listened. Of course it had been a race. And she had wiped the floor with her brother. She looked down at the crawling speck below her as s..."
+        "excerpt": "Ella hadn’t listened. Of course, it had been a race. And she had wiped the floor with her brother. She looked down at the crawling speck below her as ..."
     },
     {
         "title": "17",
@@ -577,13 +577,13 @@ const bookChapters = [
         "title": "22",
         "chapterNumber": 999,
         "url": "/book/22/",
-        "excerpt": "“Let me in, for God's sake, man”, yelled Mr Armitage to the muffled refusal from the neighbour within."
+        "excerpt": "“Let me in, for God's sake, man,” yelled Mr Armitage to the muffled refusal from the neighbour within."
     },
     {
         "title": "14",
         "chapterNumber": 999,
         "url": "/book/14/",
-        "excerpt": "“Nope,” Calum replied, “I’ve never seen any of them before”."
+        "excerpt": "“Nope,” Calum replied, “I’ve never seen any of them before.”"
     },
     {
         "title": "28",
@@ -613,6 +613,6 @@ const bookChapters = [
         "title": "91",
         "chapterNumber": 999,
         "url": "/book/91/",
-        "excerpt": "Conor watched as Ella had taken the hands of their mutual friend. He saw how he must have passed into Ella in the bloody diamond. A river running into..."
+        "excerpt": "Conor watched as Ella took the hands of their mutual friend. He saw how he must have passed into Ella in the bloody diamond. A river running into the ..."
     }
 ];
