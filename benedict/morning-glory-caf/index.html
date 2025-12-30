@@ -35,8 +35,39 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
         .post-header h1 a:hover {
             color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover:not(.disabled) {
+            color: #ffffff;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -59,9 +90,15 @@
     <main>
         <article class="post">
             <header class="post-header">
-                <h1><a href="../../benedict/">Morning Glory Café</a></h1>
-                <div class="benedict-rating">🍳🍳🍳🍳</div>
-                <time datetime="2024-04-17 14:59:00">April 17 2024</time>
+                <div>
+                    <h1><a href="../../benedict/">Morning Glory Café</a></h1>
+                    <div class="benedict-rating">🍳🍳🍳🍳</div>
+                    <time datetime="2024-04-17 14:59:00">April 17 2024</time>
+                </div>
+                <div class="nav-arrows">
+                    <a href="../tamper-sellers-wheel/" class="nav-arrow">→</a>
+                    <a href="../federal/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
                 <p>Tough one. For taste and consistency etc it&#39;s a 5 egger, but I wish it was bigger! It&#39;s more snack-size. But it was incredible. Probably the best hollandaise I&#39;ve had. </p>

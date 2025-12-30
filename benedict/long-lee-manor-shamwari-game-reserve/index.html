@@ -35,8 +35,39 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
         .post-header h1 a:hover {
             color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover:not(.disabled) {
+            color: #ffffff;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -59,9 +90,15 @@
     <main>
         <article class="post">
             <header class="post-header">
-                <h1><a href="../../benedict/">Long Lee Manor, Shamwari Game Reserve</a></h1>
-                <div class="benedict-rating">🍳🍳🍳🍳🍳</div>
-                <time datetime="2014-12-09 18:50:00">December 09 2014</time>
+                <div>
+                    <h1><a href="../../benedict/">Long Lee Manor, Shamwari Game Reserve</a></h1>
+                    <div class="benedict-rating">🍳🍳🍳🍳🍳</div>
+                    <time datetime="2014-12-09 18:50:00">December 09 2014</time>
+                </div>
+                <div class="nav-arrows">
+                    <a href="#" class="nav-arrow disabled">→</a>
+                    <a href="../tamper-sellers-wheel/" class="nav-arrow">←</a>
+                </div>
             </header>
             <div class="post-content">
                 <p>The one that started it all. A once-in-a-lifetime trip with my Mum and Dad. A truly remarkable place and experience. Yes, we were fortunate to see the &#39;Big Five&#39; most dangerous animals here in South Africa - lions, elephants, rhino, buffalo and even a leopard, as well as many other beautiful creatures. </p>
