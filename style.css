@@ -249,18 +249,20 @@ main {
 /* Homepage sections */
 .home-section {
     max-width: 700px;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 
 .section-header {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    color: #7fb3c4;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .section-header a {
-    color: #ffffff;
+    color: #7fb3c4;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -270,19 +272,22 @@ main {
 }
 
 .section-description {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #b0d4dd;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 .section-description a {
-    color: #7fc8e0;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 500;
     transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 .section-description a:hover {
-    color: #ffffff;
+    color: #7fc8e0;
+    border-bottom-color: #7fc8e0;
 }
 
 /* Homepage latest post */
@@ -292,8 +297,9 @@ main {
 
 .latest-post h2,
 .latest-post h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .latest-post h2 a,
