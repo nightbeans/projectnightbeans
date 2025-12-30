@@ -31,26 +31,30 @@ def update_blog_post(file_path):
 
     if nav_match:
         nav_content = nav_match.group(1)
-        # Find previous link (← link)
-        prev_match = re.search(r'<a href="([^"]+)/">← (.+?)</a>', nav_content)
+        # Find previous link (← at start) - extract just the folder name
+        prev_match = re.search(r'<a href="\.\./([^"]+)/">←', nav_content)
         if prev_match:
             prev_link = prev_match.group(1)
+            print(f"  Found prev: {prev_link}")
 
-        # Find next link (link →)
-        next_match = re.search(r'<a href="([^"]+)/">(.+?) →</a>', nav_content)
+        # Find next link (→ at end) - extract just the folder name
+        next_match = re.search(r'<a href="\.\./([^"]+)/">[^<]*→</a>', nav_content)
         if next_match:
             next_link = next_match.group(1)
+            print(f"  Found next: {next_link}")
+    else:
+        print(f"  No nav-match found in {file_path}")
 
     # Build navigation arrows HTML
     arrows_html = '<div class="nav-arrows">\n                    '
 
     if next_link:
-        arrows_html += f'<a href="{next_link}/" class="nav-arrow">→</a>\n                    '
+        arrows_html += f'<a href="../{next_link}/" class="nav-arrow">→</a>\n                    '
     else:
         arrows_html += '<a href="#" class="nav-arrow disabled">→</a>\n                    '
 
     if prev_link:
-        arrows_html += f'<a href="{prev_link}/" class="nav-arrow">←</a>\n                '
+        arrows_html += f'<a href="../{prev_link}/" class="nav-arrow">←</a>\n                '
     else:
         arrows_html += '<a href="#" class="nav-arrow disabled">←</a>\n                '
 
@@ -79,11 +83,33 @@ def update_blog_post(file_path):
                 {arrows_html}
             </header>'''
 
+    # Build bottom navigation HTML (same arrows but horizontal)
+    bottom_nav_html = '\n                <div class="bottom-nav">\n                    '
+
+    if prev_link:
+        bottom_nav_html += f'<a href="../{prev_link}/" class="nav-arrow">←</a>\n                    '
+    else:
+        bottom_nav_html += '<a href="#" class="nav-arrow disabled">←</a>\n                    '
+
+    if next_link:
+        bottom_nav_html += f'<a href="../{next_link}/" class="nav-arrow">→</a>\n                '
+    else:
+        bottom_nav_html += '<a href="#" class="nav-arrow disabled">→</a>\n                '
+
+    bottom_nav_html += '</div>'
+
     # Replace the old header with the new one
     content = content.replace(old_header.group(0), new_header)
 
     # Remove the old post-nav section at the bottom
     content = re.sub(r'\s*<nav class="post-nav">.*?</nav>', '', content, flags=re.DOTALL)
+
+    # Add bottom navigation before the closing </div> of post-content
+    content = re.sub(
+        r'(</div>\s*</article>)',
+        bottom_nav_html + r'\n            \1',
+        content
+    )
 
     # Write the updated content
     with open(file_path, 'w', encoding='utf-8') as f:

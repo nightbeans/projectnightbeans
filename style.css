@@ -184,6 +184,19 @@ main {
     pointer-events: none;
 }
 
+.bottom-nav {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #2d6575;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-nav .nav-arrow {
+    font-size: 1.8rem;
+}
+
 .post-header time {
     font-size: 0.95rem;
     color: #7fb3c4;
