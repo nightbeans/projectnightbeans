@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Glory Café - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .benedict-rating {
+            font-size: 32px;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .benedict-map {
+            height: 400px;
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .benedict-fellow {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            color: #333;
+        }
+        .benedict-fellow strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../work/">Work</a></li>
+                <li><a href="../../benedict/" class="active">Benedict</a></li>
+                <li><a href="../../book/">Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1>Morning Glory Café</h1>
+                <div class="benedict-rating">🍳🍳🍳🍳</div>
+                <time datetime="2024-04-17 14:59:00">April 17 2024</time>
+            </header>
+            <div class="post-content">
+                <p>Tough one. For taste and consistency etc it&#39;s a 5 egger, but I wish it was bigger! It&#39;s more snack-size. But it was incredible. Probably the best hollandaise I&#39;ve had. </p>
+<p>It&#39;s also near Les Halles Market in Dijon which is lovely. </p>
+
+            </div>
+            <div id="map" class="benedict-map"></div>
+            <div class="benedict-fellow">
+                <strong>Benedict Fellow:</strong> Rachel Delaney
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([47.3241955, 5.0388667], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([47.3241955, 5.0388667]).addTo(map)
+            .bindPopup('Morning Glory Café').openPopup();
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+    </script>
+</body>
+</html>

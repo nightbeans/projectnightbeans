@@ -40,6 +40,18 @@ const benedictReviews = [
         "fellow": "Joel Delaney"
     },
     {
+        "title": "Morning Glory Café",
+        "date": "2024-04-17",
+        "dateDisplay": "April 17 2024",
+        "rating": 4,
+        "ratingDisplay": "🍳",
+        "summary": "Tough one. For taste and consistency etc it's a 5 egger, but I wish it was bigger! It's more snack-size. But it was incredible. Probably the best hollandaise I've had. It's also near Les Halles Market in Dijon which is lovely.",
+        "url": "/benedict/morning-glory-caf/",
+        "lat": 47.3241955,
+        "lng": 5.0388667,
+        "fellow": "Rachel Delaney"
+    },
+    {
         "title": "Tamper, Sellers Wheel",
         "date": "2024-03-30",
         "dateDisplay": "March 30 2024",
