@@ -93,11 +93,13 @@
                 let popupContent = '';
                 if (locGroup.reviews.length === 1) {
                     const review = locGroup.reviews[0];
-                    popupContent = `<strong>${review.title}</strong><br>${review.ratingDisplay}<br><a href="${review.url}">Read Review</a>`;
+                    const eggs = '🍳'.repeat(review.rating);
+                    popupContent = `<strong>${review.title}</strong><br>${eggs}<br><a href="${review.url}">Read Review</a>`;
                 } else {
                     popupContent = '<strong>Reviews at this location:</strong><br><br>';
                     locGroup.reviews.forEach(review => {
-                        popupContent += `<a href="${review.url}">${review.title}</a> ${review.ratingDisplay}<br>`;
+                        const eggs = '🍳'.repeat(review.rating);
+                        popupContent += `<a href="${review.url}">${review.title}</a> ${eggs}<br>`;
                     });
                 }
 
