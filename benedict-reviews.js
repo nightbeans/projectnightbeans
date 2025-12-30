@@ -45,7 +45,7 @@ const benedictReviews = [
         "dateDisplay": "April 17 2024",
         "rating": 4,
         "ratingDisplay": "🍳",
-        "summary": "Tough one. For taste and consistency etc it's a 5 egger, but I wish it was bigger! It's more snack-size. But it was incredible. Probably the best hollandaise I've had. It's also near Les Halles Market in Dijon which is lovely.",
+        "summary": "Tough one. For taste and consistency etc it's a 5 egger, but I wish it was bigger! It's more snack-size. But it was incredible. Probably the best hollandaise I've had.",
         "url": "/benedict/morning-glory-caf/",
         "lat": 47.3241955,
         "lng": 5.0388667,
