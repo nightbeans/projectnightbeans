@@ -253,7 +253,7 @@ main {
 }
 
 .section-header {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 1.2rem;
     color: #7fb3c4;
     font-weight: 500;
@@ -325,7 +325,7 @@ main {
     font-size: 1.05rem;
     line-height: 1.8;
     color: #ffffff;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .post-preview-content p {
