@@ -68,6 +68,27 @@
     </header>
 
     <main class="parts-container">
+        <!-- Book Title and Blurb -->
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 style="color: #7fc8e0; font-size: 3rem; margin-bottom: 30px;">Eyelids</h1>
+            <div style="max-width: 700px; margin: 0 auto; text-align: justify;">
+                <p style="color: #b0d4dd; line-height: 1.7; margin-bottom: 1rem;">
+                    Conor and Calum have long-worshipped their sister, Ella. But something in her has changed, and for the first time, they're afraid of her.
+                </p>
+                <p style="color: #b0d4dd; line-height: 1.7; margin-bottom: 1rem;">
+                    What follows forces the boys apart; Conor travelling inward to his 'deep' for refuge, while Calum remains in the world above.
+                </p>
+                <p style="color: #b0d4dd; line-height: 1.7; margin-bottom: 2rem;">
+                    They each have their guardians, the people they must trust to survive.
+                </p>
+            </div>
+
+            <!-- Download First 10k Words Button -->
+            <a href="eyelids-first-10k.pdf" download id="pdfDownload10k" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #7fc8e0 0%, #5ab0d0 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3); margin-bottom: 60px;">
+                Download First 10k Words
+            </a>
+        </div>
+
         <!-- Continue Reading Button -->
         <div id="continueReading" style="display: none; margin-bottom: 30px; text-align: center;">
             <a id="continueLink" href="#" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #7fc8e0 0%, #5ab0d0 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);">
@@ -106,13 +127,6 @@
                 <span class="part-info">95</span>
             </a>
         </div>
-
-        <!-- PDF Download Button -->
-        <div style="margin-top: 40px; text-align: center;">
-            <a href="book.pdf" download id="pdfDownload" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #7fc8e0 0%, #5ab0d0 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);">
-                Download PDF
-            </a>
-        </div>
     </main>
 
     <footer>
@@ -127,11 +141,11 @@
         gtag('js', new Date());
         gtag('config', 'G-FRT76XL460');
 
-        // Track PDF download
-        document.getElementById('pdfDownload').addEventListener('click', function() {
+        // Track PDF download (first 10k words)
+        document.getElementById('pdfDownload10k').addEventListener('click', function() {
             gtag('event', 'pdf_download', {
                 'event_category': 'engagement',
-                'event_label': 'book_pdf'
+                'event_label': 'first_10k_words'
             });
         });
     </script>
