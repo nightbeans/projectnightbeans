@@ -246,23 +246,65 @@ main {
     color: #7fc8e0;
 }
 
-/* Homepage latest post */
-.latest-post {
+/* Homepage sections */
+.home-section {
     max-width: 700px;
+    margin-bottom: 4rem;
 }
 
-.latest-post h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+.section-header {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
 }
 
-.latest-post h2 a {
+.section-header a {
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.latest-post h2 a:hover {
+.section-header a:hover {
+    color: #7fc8e0;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #b0d4dd;
+    line-height: 1.7;
+}
+
+.section-description a {
+    color: #7fc8e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.section-description a:hover {
+    color: #ffffff;
+}
+
+/* Homepage latest post */
+.latest-post {
+    max-width: 700px;
+}
+
+.latest-post h2,
+.latest-post h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.latest-post h2 a,
+.latest-post h3 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.latest-post h2 a:hover,
+.latest-post h3 a:hover {
     color: #7fc8e0;
 }
 
