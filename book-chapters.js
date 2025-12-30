@@ -562,6 +562,12 @@ const bookChapters = [
         "excerpt": "Ella squatted down. A perfect squat with flat heels. She ran her hand through the tall grass surrounding the tree. There were all manner of wildflower..."
     },
     {
+        "title": "joeldelaney",
+        "chapterNumber": 999,
+        "url": "/book/parts/",
+        "excerpt": ""
+    },
+    {
         "title": "77",
         "chapterNumber": 999,
         "url": "/book/77/",
