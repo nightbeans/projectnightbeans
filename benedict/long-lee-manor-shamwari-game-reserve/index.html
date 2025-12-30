@@ -95,9 +95,8 @@
                     <div class="benedict-rating">🍳🍳🍳🍳🍳</div>
                     <time datetime="2014-12-09 18:50:00">December 09 2014</time>
                 </div>
-                <div class="nav-arrows">
-                    <a href="#" class="nav-arrow disabled">→</a>
-                    <a href="../tamper-sellers-wheel/" class="nav-arrow">←</a>
+                <div class="nav-arrows" id="nav-arrows">
+                    <!-- Navigation arrows populated by JavaScript -->
                 </div>
             </header>
             <div class="post-content">
@@ -119,6 +118,7 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../../benedict-reviews.js"></script>
     <script>
         const map = L.map('map').setView([-33.450177800000006, 26.08565896192775], 15);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -126,6 +126,31 @@
         }).addTo(map);
         L.marker([-33.450177800000006, 26.08565896192775]).addTo(map)
             .bindPopup('Long Lee Manor, Shamwari Game Reserve').openPopup();
+
+        // Dynamically generate navigation arrows
+        const currentUrl = window.location.pathname;
+        const sortedReviews = benedictReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const currentIndex = sortedReviews.findIndex(review => currentUrl.includes(review.url));
+
+        if (currentIndex !== -1) {
+            const navArrows = document.getElementById('nav-arrows');
+            const nextReview = sortedReviews[currentIndex + 1];
+            const prevReview = sortedReviews[currentIndex - 1];
+
+            // Forward arrow (to older review)
+            if (nextReview) {
+                navArrows.innerHTML += `<a href="${nextReview.url}" class="nav-arrow">→</a>`;
+            } else {
+                navArrows.innerHTML += `<a href="#" class="nav-arrow disabled">→</a>`;
+            }
+
+            // Back arrow (to newer review)
+            if (prevReview) {
+                navArrows.innerHTML += `<a href="${prevReview.url}" class="nav-arrow">←</a>`;
+            } else {
+                navArrows.innerHTML += `<a href="#" class="nav-arrow disabled">←</a>`;
+            }
+        }
     </script>
 </body>
 </html>
