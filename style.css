@@ -299,12 +299,12 @@ main {
 /* Homepage sections */
 .home-section {
     max-width: 700px;
-    margin-bottom: 5rem;
+    margin-bottom: 3.5rem;
 }
 
 .section-header {
     font-size: 1rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     color: #7fb3c4;
     font-weight: 500;
     text-transform: uppercase;
