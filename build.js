@@ -212,11 +212,9 @@ function updateHomepage(posts) {
     if (latestPostEl) {
         latestPostEl.innerHTML = `
             <h2><a href="${latestPost.url}">${latestPost.title}</a></h2>
-            <time datetime="${latestPost.date}">${latestPost.dateDisplay}</time>
             <div class="post-preview-content">
                 <p>${latestPost.excerpt}</p>
             </div>
-            <a href="${latestPost.url}" class="read-more">Read more →</a>
         `.trim();
 
         // Write updated HTML
