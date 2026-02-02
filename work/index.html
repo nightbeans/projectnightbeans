@@ -49,20 +49,26 @@
             `;
         } else {
             sortedWork.forEach(item => {
-                const article = document.createElement('article');
-                article.className = 'work-item';
-
-                const linkHTML = item.url
-                    ? `<a href="${item.url}" class="view-link">View Project →</a>`
-                    : '';
-
-                article.innerHTML = `
-                    <h2>${item.title}</h2>
-                    <p>${item.description}</p>
-                    ${linkHTML}
-                `;
-
-                workContainer.appendChild(article);
+                if (item.url) {
+                    const link = document.createElement('a');
+                    link.href = item.url;
+                    link.className = 'work-item-link';
+                    link.innerHTML = `
+                        <article class="work-item">
+                            <h2>${item.title}</h2>
+                            <p>${item.description}</p>
+                        </article>
+                    `;
+                    workContainer.appendChild(link);
+                } else {
+                    const article = document.createElement('article');
+                    article.className = 'work-item';
+                    article.innerHTML = `
+                        <h2>${item.title}</h2>
+                        <p>${item.description}</p>
+                    `;
+                    workContainer.appendChild(article);
+                }
             });
         }
     </script>
