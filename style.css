@@ -414,9 +414,32 @@ main {
     color: #ffffff;
 }
 
+.work-item h2 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.work-item h2 a:hover {
+    color: #7fc8e0;
+}
+
 .work-item p {
     color: #b0d4dd;
     line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.work-item .view-link {
+    display: inline-block;
+    color: #7fc8e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.work-item .view-link:hover {
+    color: #ffffff;
 }
 
 /* Benedict reviews */

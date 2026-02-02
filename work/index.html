@@ -52,13 +52,14 @@
                 const article = document.createElement('article');
                 article.className = 'work-item';
 
-                const titleHTML = item.url
-                    ? `<h2><a href="${item.url}">${item.title}</a></h2>`
-                    : `<h2>${item.title}</h2>`;
+                const linkHTML = item.url
+                    ? `<a href="${item.url}" class="view-link">View Project →</a>`
+                    : '';
 
                 article.innerHTML = `
-                    ${titleHTML}
+                    <h2>${item.title}</h2>
                     <p>${item.description}</p>
+                    ${linkHTML}
                 `;
 
                 workContainer.appendChild(article);
