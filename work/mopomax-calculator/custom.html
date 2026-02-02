@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MOPOMax Custom Calculator - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+        .calculator-container {
+            font-family: 'Open Sans', sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .logo-box {
+            background: #662C83;
+            color: white;
+            padding: 10px 35px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .calc-title {
+            font-size: 1.2rem;
+            color: #662C83;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .calc-sub {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .runtime-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .runtime-label {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .runtime-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #662C83;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .runtime-value.empty {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #662C83;
+        }
+
+        .add-appliance-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .select-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #662C83;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .add-button {
+            background: linear-gradient(135deg, #662C83 0%, #8a4ba8 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(102, 44, 131, 0.3);
+            width: 100%;
+        }
+
+        .add-button:active {
+            transform: scale(0.98);
+        }
+
+        .add-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .appliances-list {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .list-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #662C83;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .appliance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .appliance-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .appliance-info {
+            flex: 1;
+        }
+
+        .appliance-type {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .appliance-watts {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .remove-button {
+            background: none;
+            border: none;
+            color: #f44336;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .remove-button:active {
+            transform: scale(0.9);
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        .watt-input {
+            text-align: right;
+        }
+
+        @media (max-width: 380px) {
+            .runtime-value {
+                font-size: 1.6rem;
+            }
+            .stat-value {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../work/">Work</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../book/">Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="calculator-container">
+            <div class="calc-header">
+                <div class="logo-box">mopo</div>
+                <div class="calc-title">MOPOMax Custom Calculator</div>
+                <p class="calc-sub">Enter your appliance wattages for precise runtime</p>
+            </div>
+
+            <div class="runtime-card">
+                <div class="runtime-label">Your Runtime</div>
+                <div class="runtime-value empty" id="rt">Add appliances below</div>
+                <div class="stats-row">
+                    <div class="stat">
+                        <div class="stat-label">Total Load</div>
+                        <div class="stat-value" id="load">0W</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Items</div>
+                        <div class="stat-value" id="cnt">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-appliance-card">
+                <label class="form-label">Appliance Type</label>
+                <div class="select-wrapper">
+                    <select id="applianceType">
+                        <option value="">Select appliance...</option>
+                        <option value="TV">TV</option>
+                        <option value="Fridge/Freezer">Fridge/Freezer</option>
+                        <option value="Fan">Fan</option>
+                        <option value="POS Terminal">POS Terminal</option>
+                        <option value="Washing Machine">Washing Machine</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Phone Charger">Phone Charger</option>
+                        <option value="Lottery Terminal">Lottery Terminal</option>
+                        <option value="Lighting">Lighting</option>
+                        <option value="Sound System">Sound System</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <label class="form-label">Wattage (W)</label>
+                <div class="input-row">
+                    <input type="number" id="wattage" placeholder="Enter watts" min="1" max="2000" class="watt-input">
+                </div>
+
+                <button class="add-button" onclick="addAppliance()">Add Appliance</button>
+            </div>
+
+            <div class="appliances-list">
+                <div class="list-title">Connected Appliances</div>
+                <div id="appliancesList">
+                    <div class="empty-state">No appliances added yet</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script>
+        const EFFECTIVE_CAPACITY = 850;
+        let appliances = [];
+        let nextId = 1;
+
+        function addAppliance() {
+            const type = document.getElementById('applianceType').value;
+            const wattage = parseInt(document.getElementById('wattage').value);
+
+            if (!type || !wattage || wattage < 1) {
+                alert('Please select an appliance type and enter a valid wattage');
+                return;
+            }
+
+            appliances.push({
+                id: nextId++,
+                type: type,
+                wattage: wattage
+            });
+
+            // Reset form
+            document.getElementById('applianceType').value = '';
+            document.getElementById('wattage').value = '';
+
+            updateDisplay();
+        }
+
+        function removeAppliance(id) {
+            appliances = appliances.filter(a => a.id !== id);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            // Update appliances list
+            const listEl = document.getElementById('appliancesList');
+
+            if (appliances.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No appliances added yet</div>';
+            } else {
+                listEl.innerHTML = appliances.map(a => `
+                    <div class="appliance-item">
+                        <div class="appliance-info">
+                            <div class="appliance-type">${a.type}</div>
+                            <div class="appliance-watts">${a.wattage}W</div>
+                        </div>
+                        <button class="remove-button" onclick="removeAppliance(${a.id})">×</button>
+                    </div>
+                `).join('');
+            }
+
+            // Calculate totals
+            const totalWattage = appliances.reduce((sum, a) => sum + a.wattage, 0);
+            const runtime = totalWattage === 0 ? 0 : EFFECTIVE_CAPACITY / totalWattage;
+
+            // Update runtime
+            const rtEl = document.getElementById('rt');
+            if (runtime === 0) {
+                rtEl.textContent = 'Add appliances below';
+                rtEl.classList.add('empty');
+            } else {
+                rtEl.textContent = formatRuntime(runtime);
+                rtEl.classList.remove('empty');
+            }
+
+            // Update stats
+            document.getElementById('load').textContent = totalWattage + 'W';
+            document.getElementById('cnt').textContent = appliances.length;
+        }
+
+        function formatRuntime(hours) {
+            if (hours >= 24) {
+                const days = Math.floor(hours / 24);
+                return `${days}+ day${days > 1 ? 's' : ''}`;
+            }
+            if (hours >= 1) {
+                const h = Math.floor(hours);
+                const m = Math.round((hours - h) * 60);
+                return m === 0 ? `${h}h` : `${h}h ${m}m`;
+            }
+            const minutes = Math.round(hours * 60);
+            return `${minutes}m`;
+        }
+
+        // Allow Enter key to add appliance
+        document.getElementById('wattage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addAppliance();
+            }
+        });
+
+        updateDisplay();
+    </script>
+</body>
+</html>
