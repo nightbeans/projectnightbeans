@@ -3,6 +3,12 @@
 // Items are automatically sorted by date (newest first)
 
 const workItems = [
+    {
+        title: 'MOPOMax Calculator',
+        url: '/work/mopomax-calculator/',
+        date: '2026-02-02',
+        description: 'Interactive battery runtime calculator for MOPOMax portable power station. Shows customers exactly how long their appliances will run on a single charge.'
+    }
     // Add new work items here following this format:
     // {
     //     title: 'Project Name',

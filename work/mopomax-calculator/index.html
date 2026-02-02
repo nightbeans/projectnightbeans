@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MOPOMax Calculator - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+        .calculator-container {
+            font-family: 'Open Sans', sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .logo-box {
+            background: #662C83;
+            color: white;
+            padding: 10px 35px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .calc-title {
+            font-size: 1.2rem;
+            color: #662C83;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .calc-sub {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .runtime-label {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .runtime-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #662C83;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .runtime-value.empty {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .battery {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .battery-img {
+            width: 90px;
+            height: auto;
+            margin: 0 auto 8px;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(102, 44, 131, 0.2));
+        }
+
+        .battery-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #662C83;
+            margin-bottom: 3px;
+        }
+
+        .battery-cap {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #662C83;
+        }
+
+        .appliances {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .app {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 10px 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .app:active {
+            transform: scale(0.92);
+        }
+
+        .app.on {
+            background: linear-gradient(135deg, #662C83 0%, #8a4ba8 100%);
+            border-color: #662C83;
+            box-shadow: 0 3px 10px rgba(102, 44, 131, 0.35);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 4px;
+        }
+
+        .app.on .icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+            line-height: 1.1;
+        }
+
+        .app.on .name {
+            color: white;
+        }
+
+        .watts {
+            font-size: 0.65rem;
+            color: #999;
+        }
+
+        .app.on .watts {
+            color: rgba(255,255,255,0.85);
+        }
+
+        @media (max-width: 380px) {
+            .appliances {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .runtime-value {
+                font-size: 1.5rem;
+            }
+            .stat-value {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../book/">Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="calculator-container">
+            <div class="calc-header">
+                <div class="logo-box">mopo</div>
+                <div class="calc-title">MOPOMax Runtime Calculator</div>
+                <p class="calc-sub">Tap appliances below to see your runtime</p>
+            </div>
+
+            <div class="main-grid">
+                <div class="panel">
+                    <div class="runtime-label">Your Runtime</div>
+                    <div class="runtime-value empty" id="rt">Tap items</div>
+                    <div class="battery">
+                        <img src="MaxC TB 240116.png" alt="MOPOMax Battery" class="battery-img">
+                        <div class="battery-name">MOPOMax</div>
+                        <div class="battery-cap">1000Wh</div>
+                    </div>
+                </div>
+
+                <div class="panel right-panel">
+                    <div class="stat">
+                        <div class="stat-label">Total Load</div>
+                        <div class="stat-value" id="load">0W</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Items Connected</div>
+                        <div class="stat-value" id="cnt">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="appliances" id="grid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <script>
+        const apps = [
+            {id:'tv',name:'TV',w:80,i:'📺'},
+            {id:'fridge',name:'Fridge',w:150,i:'🧊'},
+            {id:'fan',name:'Fan',w:60,i:'🪭'},
+            {id:'pos',name:'POS',w:25,i:'💳'},
+            {id:'wash',name:'Washer',w:450,i:'🧺'},
+            {id:'laptop',name:'Laptop',w:60,i:'💻'},
+            {id:'phone',name:'Phone',w:10,i:'📱'},
+            {id:'lotto',name:'Lottery',w:35,i:'🎰'},
+            {id:'light',name:'Lights',w:20,i:'💡'},
+            {id:'sound',name:'Sound',w:80,i:'🔊'}
+        ];
+        let on = new Set();
+
+        function init() {
+            document.getElementById('grid').innerHTML = apps.map(a =>
+                `<div class="app" data-id="${a.id}" onclick="toggle('${a.id}')">
+                    <div class="icon">${a.i}</div>
+                    <div class="name">${a.name}</div>
+                    <div class="watts">${a.w}W</div>
+                </div>`
+            ).join('');
+            update();
+        }
+
+        function toggle(id) {
+            const el = document.querySelector(`[data-id="${id}"]`);
+            if (on.has(id)) {
+                on.delete(id);
+                el.classList.remove('on');
+            } else {
+                on.add(id);
+                el.classList.add('on');
+            }
+            update();
+        }
+
+        function update() {
+            const w = Array.from(on).reduce((t, id) => t + apps.find(a => a.id === id).w, 0);
+            const h = w === 0 ? 0 : 850 / w;
+            let txt = null;
+
+            if (h === 0) txt = null;
+            else if (h >= 24) txt = `${Math.floor(h/24)}+ day${Math.floor(h/24)>1?'s':''}`;
+            else if (h >= 1) {
+                const hh = Math.floor(h);
+                const mm = Math.round((h - hh) * 60);
+                txt = mm === 0 ? `${hh}h` : `${hh}h ${mm}m`;
+            } else txt = `${Math.round(h * 60)}m`;
+
+            const rtEl = document.getElementById('rt');
+            if (txt) {
+                rtEl.textContent = txt;
+                rtEl.classList.remove('empty');
+            } else {
+                rtEl.textContent = 'Tap items';
+                rtEl.classList.add('empty');
+            }
+
+            document.getElementById('load').textContent = w + 'W';
+            document.getElementById('cnt').textContent = on.size;
+        }
+
+        init();
+    </script>
+</body>
+</html>
