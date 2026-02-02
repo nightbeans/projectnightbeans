@@ -46,13 +46,18 @@
             color: #666;
         }
 
-        .runtime-card {
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .panel {
             background: white;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 10px;
+            padding: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            text-align: center;
         }
 
         .runtime-label {
@@ -60,195 +65,142 @@
             color: #999;
             text-transform: uppercase;
             margin-bottom: 8px;
+            text-align: center;
             letter-spacing: 0.5px;
         }
 
         .runtime-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #662C83;
             min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             white-space: nowrap;
         }
 
         .runtime-value.empty {
             color: #ccc;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
-        .stats-row {
-            display: flex;
-            gap: 10px;
+        .battery {
+            text-align: center;
             margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid #f0f0f0;
+        }
+
+        .battery-img {
+            width: 90px;
+            height: auto;
+            margin: 0 auto 8px;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(102, 44, 131, 0.2));
+        }
+
+        .battery-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #662C83;
+            margin-bottom: 3px;
+        }
+
+        .battery-cap {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
 
         .stat {
-            flex: 1;
             text-align: center;
+            padding: 10px 0;
         }
 
         .stat-label {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: #999;
             margin-bottom: 5px;
         }
 
         .stat-value {
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #662C83;
         }
 
-        .add-appliance-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .form-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .select-wrapper {
-            position: relative;
-            margin-bottom: 15px;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Open Sans', sans-serif;
-            background: white;
-            transition: border-color 0.2s;
-        }
-
-        select:focus, input:focus {
-            outline: none;
-            border-color: #662C83;
-        }
-
-        .input-row {
+        .appliances {
             display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 10px;
-            margin-bottom: 15px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
-        .add-button {
-            background: linear-gradient(135deg, #662C83 0%, #8a4ba8 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: 600;
+        .app {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 10px 5px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(102, 44, 131, 0.3);
-            width: 100%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
-        .add-button:active {
-            transform: scale(0.98);
+        .app:active {
+            transform: scale(0.92);
         }
 
-        .add-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .app.on {
+            background: linear-gradient(135deg, #662C83 0%, #8a4ba8 100%);
+            border-color: #662C83;
+            box-shadow: 0 3px 10px rgba(102, 44, 131, 0.35);
         }
 
-        .appliances-list {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 4px;
         }
 
-        .list-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #662C83;
-            margin-bottom: 12px;
-            text-align: center;
+        .app.on .icon {
+            filter: brightness(0) invert(1);
         }
 
-        .appliance-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: #f8f8f8;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .appliance-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .appliance-info {
-            flex: 1;
-        }
-
-        .appliance-type {
-            font-size: 0.9rem;
+        .name {
+            font-size: 0.7rem;
             font-weight: 600;
             color: #333;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
+            line-height: 1.1;
         }
 
-        .appliance-watts {
-            font-size: 0.75rem;
+        .app.on .name {
+            color: white;
+        }
+
+        .watts {
+            font-size: 0.65rem;
             color: #999;
         }
 
-        .remove-button {
-            background: none;
-            border: none;
-            color: #f44336;
-            font-size: 1.3rem;
-            cursor: pointer;
-            padding: 5px 10px;
-            transition: all 0.2s;
-        }
-
-        .remove-button:active {
-            transform: scale(0.9);
-        }
-
-        .empty-state {
-            text-align: center;
-            color: #999;
-            font-size: 0.85rem;
-            padding: 20px;
-            font-style: italic;
-        }
-
-        .watt-input {
-            text-align: right;
+        .app.on .watts {
+            color: rgba(255,255,255,0.85);
         }
 
         @media (max-width: 380px) {
+            .appliances {
+                grid-template-columns: repeat(4, 1fr);
+            }
             .runtime-value {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .stat-value {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -274,57 +226,33 @@
             <div class="calc-header">
                 <div class="logo-box">mopo</div>
                 <div class="calc-title">MOPOMax Custom Calculator</div>
-                <p class="calc-sub">Enter your appliance wattages for precise runtime</p>
+                <p class="calc-sub">Tap appliances and enter your wattage</p>
             </div>
 
-            <div class="runtime-card">
-                <div class="runtime-label">Your Runtime</div>
-                <div class="runtime-value empty" id="rt">Add appliances below</div>
-                <div class="stats-row">
+            <div class="main-grid">
+                <div class="panel">
+                    <div class="runtime-label">Your Runtime</div>
+                    <div class="runtime-value empty" id="rt">Tap items</div>
+                    <div class="battery">
+                        <img src="MaxC TB 240116.png" alt="MOPOMax Battery" class="battery-img">
+                        <div class="battery-name">MOPOMax</div>
+                        <div class="battery-cap">1000Wh</div>
+                    </div>
+                </div>
+
+                <div class="panel right-panel">
                     <div class="stat">
                         <div class="stat-label">Total Load</div>
                         <div class="stat-value" id="load">0W</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-label">Items</div>
+                        <div class="stat-label">Items Connected</div>
                         <div class="stat-value" id="cnt">0</div>
                     </div>
                 </div>
             </div>
 
-            <div class="add-appliance-card">
-                <label class="form-label">Appliance Type</label>
-                <div class="select-wrapper">
-                    <select id="applianceType">
-                        <option value="">Select appliance...</option>
-                        <option value="TV">TV</option>
-                        <option value="Fridge/Freezer">Fridge/Freezer</option>
-                        <option value="Fan">Fan</option>
-                        <option value="POS Terminal">POS Terminal</option>
-                        <option value="Washing Machine">Washing Machine</option>
-                        <option value="Laptop">Laptop</option>
-                        <option value="Phone Charger">Phone Charger</option>
-                        <option value="Lottery Terminal">Lottery Terminal</option>
-                        <option value="Lighting">Lighting</option>
-                        <option value="Sound System">Sound System</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <label class="form-label">Wattage (W)</label>
-                <div class="input-row">
-                    <input type="number" id="wattage" placeholder="Enter watts" min="1" max="2000" class="watt-input">
-                </div>
-
-                <button class="add-button" onclick="addAppliance()">Add Appliance</button>
-            </div>
-
-            <div class="appliances-list">
-                <div class="list-title">Connected Appliances</div>
-                <div id="appliancesList">
-                    <div class="empty-state">No appliances added yet</div>
-                </div>
-            </div>
+            <div class="appliances" id="grid"></div>
         </div>
     </main>
 
@@ -333,96 +261,81 @@
     </footer>
 
     <script>
-        const EFFECTIVE_CAPACITY = 850;
-        let appliances = [];
-        let nextId = 1;
+        const apps = [
+            {id:'tv',name:'TV',i:'📺'},
+            {id:'fridge',name:'Fridge',i:'🧊'},
+            {id:'fan',name:'Fan',i:'🪭'},
+            {id:'pos',name:'POS',i:'💳'},
+            {id:'wash',name:'Washer',i:'🧺'},
+            {id:'laptop',name:'Laptop',i:'💻'},
+            {id:'phone',name:'Phone',i:'📱'},
+            {id:'lotto',name:'Lottery',i:'🎰'},
+            {id:'light',name:'Lights',i:'💡'},
+            {id:'sound',name:'Sound',i:'🔊'}
+        ];
 
-        function addAppliance() {
-            const type = document.getElementById('applianceType').value;
-            const wattage = parseInt(document.getElementById('wattage').value);
+        let connected = {}; // Store {id: wattage}
 
-            if (!type || !wattage || wattage < 1) {
-                alert('Please select an appliance type and enter a valid wattage');
-                return;
-            }
-
-            appliances.push({
-                id: nextId++,
-                type: type,
-                wattage: wattage
-            });
-
-            // Reset form
-            document.getElementById('applianceType').value = '';
-            document.getElementById('wattage').value = '';
-
-            updateDisplay();
+        function init() {
+            document.getElementById('grid').innerHTML = apps.map(a =>
+                `<div class="app" data-id="${a.id}" onclick="toggle('${a.id}')">
+                    <div class="icon">${a.i}</div>
+                    <div class="name">${a.name}</div>
+                    <div class="watts" id="watts-${a.id}">-</div>
+                </div>`
+            ).join('');
+            update();
         }
 
-        function removeAppliance(id) {
-            appliances = appliances.filter(a => a.id !== id);
-            updateDisplay();
-        }
+        function toggle(id) {
+            const el = document.querySelector(`[data-id="${id}"]`);
+            const app = apps.find(a => a.id === id);
 
-        function updateDisplay() {
-            // Update appliances list
-            const listEl = document.getElementById('appliancesList');
-
-            if (appliances.length === 0) {
-                listEl.innerHTML = '<div class="empty-state">No appliances added yet</div>';
+            if (connected[id]) {
+                // Already connected - disconnect it
+                delete connected[id];
+                el.classList.remove('on');
+                document.getElementById(`watts-${id}`).textContent = '-';
             } else {
-                listEl.innerHTML = appliances.map(a => `
-                    <div class="appliance-item">
-                        <div class="appliance-info">
-                            <div class="appliance-type">${a.type}</div>
-                            <div class="appliance-watts">${a.wattage}W</div>
-                        </div>
-                        <button class="remove-button" onclick="removeAppliance(${a.id})">×</button>
-                    </div>
-                `).join('');
+                // Not connected - prompt for wattage
+                const wattage = prompt(`Enter Wattage (W) for ${app.name}:`);
+                if (wattage && !isNaN(wattage) && wattage > 0) {
+                    connected[id] = parseInt(wattage);
+                    el.classList.add('on');
+                    document.getElementById(`watts-${id}`).textContent = wattage + 'W';
+                }
             }
 
-            // Calculate totals
-            const totalWattage = appliances.reduce((sum, a) => sum + a.wattage, 0);
-            const runtime = totalWattage === 0 ? 0 : EFFECTIVE_CAPACITY / totalWattage;
+            update();
+        }
 
-            // Update runtime
+        function update() {
+            const totalW = Object.values(connected).reduce((sum, w) => sum + w, 0);
+            const h = totalW === 0 ? 0 : 850 / totalW;
+            let txt = null;
+
+            if (h === 0) txt = null;
+            else if (h >= 24) txt = `${Math.floor(h/24)}+ day${Math.floor(h/24)>1?'s':''}`;
+            else if (h >= 1) {
+                const hh = Math.floor(h);
+                const mm = Math.round((h - hh) * 60);
+                txt = mm === 0 ? `${hh}h` : `${hh}h ${mm}m`;
+            } else txt = `${Math.round(h * 60)}m`;
+
             const rtEl = document.getElementById('rt');
-            if (runtime === 0) {
-                rtEl.textContent = 'Add appliances below';
-                rtEl.classList.add('empty');
-            } else {
-                rtEl.textContent = formatRuntime(runtime);
+            if (txt) {
+                rtEl.textContent = txt;
                 rtEl.classList.remove('empty');
+            } else {
+                rtEl.textContent = 'Tap items';
+                rtEl.classList.add('empty');
             }
 
-            // Update stats
-            document.getElementById('load').textContent = totalWattage + 'W';
-            document.getElementById('cnt').textContent = appliances.length;
+            document.getElementById('load').textContent = totalW + 'W';
+            document.getElementById('cnt').textContent = Object.keys(connected).length;
         }
 
-        function formatRuntime(hours) {
-            if (hours >= 24) {
-                const days = Math.floor(hours / 24);
-                return `${days}+ day${days > 1 ? 's' : ''}`;
-            }
-            if (hours >= 1) {
-                const h = Math.floor(hours);
-                const m = Math.round((hours - h) * 60);
-                return m === 0 ? `${h}h` : `${h}h ${m}m`;
-            }
-            const minutes = Math.round(hours * 60);
-            return `${minutes}m`;
-        }
-
-        // Allow Enter key to add appliance
-        document.getElementById('wattage').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addAppliance();
-            }
-        });
-
-        updateDisplay();
+        init();
     </script>
 </body>
 </html>
