@@ -6,7 +6,6 @@
     "build": "node build.js"
   },
   "dependencies": {
-    "jsdom": "^23.0.0",
-    "node-fetch": "^2.6.7"
+    "jsdom": "^23.0.0"
   }
 }
