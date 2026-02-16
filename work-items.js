@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'Report Summariser',
+        url: '/work/summariser/',
+        date: '2026-02-02',
+        description: 'AI-powered tool to analyze PDF reports from Nigeria team. Drop a report and get instant summaries, key action items, and red flags that need attention.'
+    },
+    {
         title: 'MOPOMax Calculator',
         url: '/work/mopomax-calculator/',
         date: '2026-02-02',
