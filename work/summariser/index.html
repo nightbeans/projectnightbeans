@@ -466,52 +466,21 @@
                 // Convert PDF to base64
                 const base64PDF = await fileToBase64(selectedFile);
 
-                // Call Claude API
-                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                // Call Netlify Function (which proxies to Claude API)
+                const response = await fetch('/.netlify/functions/analyze-pdf', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': apiKey,
-                        'anthropic-version': '2023-06-01'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        model: 'claude-3-5-sonnet-20241022',
-                        max_tokens: 2048,
-                        messages: [{
-                            role: 'user',
-                            content: [
-                                {
-                                    type: 'document',
-                                    source: {
-                                        type: 'base64',
-                                        media_type: 'application/pdf',
-                                        data: base64PDF
-                                    }
-                                },
-                                {
-                                    type: 'text',
-                                    text: `Please analyze this report from my Nigeria team and provide:
-
-1. **Executive Summary**: A brief 2-3 sentence overview of what this report is about
-
-2. **Key Points**: The main findings or updates in bullet points
-
-3. **Action Items**: What specifically needs my attention or requires follow-up action
-
-4. **Red Flags**: Any concerns, issues, or problems that stand out
-
-5. **Questions to Ask**: Suggested questions I should ask the team based on this report
-
-Please format your response with clear headings and be concise but thorough.`
-                                }
-                            ]
-                        }]
+                        pdfBase64: base64PDF,
+                        apiKey: apiKey
                     })
                 });
 
                 if (!response.ok) {
                     const error = await response.json();
-                    throw new Error(error.error?.message || 'API request failed');
+                    throw new Error(error.error || 'API request failed');
                 }
 
                 const data = await response.json();
