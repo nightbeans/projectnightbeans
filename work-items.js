@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'MOPO Hub Target Calculator',
+        url: '/work/hub-target-calculator.html',
+        date: '2026-02-23',
+        description: 'Hub performance calculator for MOPO battery rental operations. Calculates daily rental targets for agents to hit ₦340 DRR, with ASP duration breakdown and a yesterday-vs-target checker.'
+    },
+    {
         title: 'MOPOMax Calculator',
         url: '/work/mopomax-calculator/',
         date: '2026-02-02',

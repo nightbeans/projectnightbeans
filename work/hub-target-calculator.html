@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOPO Hub Target Calculator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #f4f3f0;
+    --surface: #ffffff;
+    --surface2: #f0eeeb;
+    --border: #dddbd7;
+    --text: #1a1916;
+    --muted: #8a8880;
+    --accent: #1a6b45;
+    --accent-light: #e8f4ee;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --amber: #b7690a;
+    --amber-light: #fef8ee;
+    --green: #1a6b45;
+    --green-light: #e8f4ee;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 32px 24px;
+    font-size: 14px;
+  }
+
+  header {
+    max-width: 1200px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.2px;
+  }
+
+  header p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 20px;
+    max-width: 1200px;
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .panel + .panel { margin-top: 16px; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .field-group { margin-bottom: 16px; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  select, input[type="number"], input[type="text"] {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 8px 10px;
+    outline: none;
+    transition: border-color .15s;
+    appearance: none;
+  }
+
+  select:focus, input:focus { border-color: var(--accent); }
+
+  .agents-grid { display: flex; flex-direction: column; gap: 8px; }
+
+  .agent-row {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .agent-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  /* Target output */
+  .target-bar {
+    background: var(--surface2);
+    border-radius: 7px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .target-number {
+    font-family: var(--mono);
+    font-size: 52px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .target-text .tl {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .target-text .ts {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Explainer */
+  .explainer {
+    background: var(--accent-light);
+    border: 1px solid #c8e6d6;
+    border-radius: 7px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    line-height: 1.8;
+    color: #2d5a3d;
+  }
+
+  /* Metrics row */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .metric-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px;
+  }
+
+  .metric-card .val {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .metric-card .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ASP table */
+  .table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .table-header {
+    background: var(--surface2);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .table-header .th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .table-header .ts {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    padding: 8px 14px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  th:first-child { text-align: left; }
+
+  td {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 9px 14px;
+    border-top: 1px solid var(--border);
+    text-align: right;
+    color: var(--text);
+  }
+
+  td:first-child { text-align: left; color: var(--muted); }
+  .row-active td { color: var(--accent); font-weight: 500; }
+  .row-active td:first-child { color: var(--accent); }
+
+  /* Checker */
+  .checker-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+
+  .checker-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 60px;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .clabel {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .checker-hint {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* Result boxes */
+  .result-box {
+    border-radius: 7px;
+    padding: 12px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    border: 1px solid;
+  }
+
+  .result-box.green { background: var(--green-light); border-color: #c8e6d6; color: #1a4a2e; }
+  .result-box.amber { background: var(--amber-light); border-color: #f5d9a8; color: #7a4500; }
+  .result-box.red   { background: var(--red-light);   border-color: #f5c8c0; color: #8b1a10; }
+
+  /* Gauge */
+  .gauge-wrap { margin-top: 14px; }
+  .gauge-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 8px 0; }
+  .gauge-fill { height: 100%; border-radius: 3px; transition: width .4s ease, background .4s ease; }
+  .gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* Policy builder */
+  .policy-builder { margin-top: 0; }
+
+  .policy-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr 28px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .policy-row-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .remove-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s;
+  }
+
+  .remove-btn:hover { border-color: var(--red); color: var(--red); }
+
+  .add-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 7px 12px;
+    margin-top: 4px;
+    transition: all .15s;
+  }
+
+  .add-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .custom-policy-result {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    display: none;
+  }
+
+  .policy-name-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 10px;
+  }
+
+  .tab-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .tab {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all .15s;
+  }
+
+  .tab.active {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .metrics-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MOPO Hub Target Calculator</h1>
+  <p>WIG: ₦340 DRR / BATTERY / DAY &nbsp;·&nbsp; 50% OF STANDARD 24HR AGENT PRICE (₦680)</p>
+</header>
+
+<div class="layout">
+  <!-- LEFT -->
+  <div>
+    <div class="panel">
+      <div class="section-label">Hub Setup</div>
+
+      <div class="field-group">
+        <label>Pricing Policy</label>
+        <select id="policy" onchange="calculate()">
+          <optgroup label="Standard Policies">
+            <option value="800_standard">₦800 Standard — 24hr only</option>
+            <option value="800_asp" selected>₦800 ASP — 6hr / 12hr / 24hr</option>
+            <option value="700_asp">₦700 ASP — 6hr / 12hr / 24hr</option>
+            <option value="600_standard">₦600 Standard — 24hr only</option>
+            <option value="500_standard">₦500 Standard — Kano, 24hr only</option>
+            <option value="400_promo">₦400 Promo — Kano, 24hr only</option>
+          </optgroup>
+          <optgroup label="Custom" id="customOptGroup"></optgroup>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Number of Agents</label>
+        <select id="agentCount" onchange="onAgentCountChange()">
+          <option value="2">2 agents</option>
+          <option value="3" selected>3 agents</option>
+          <option value="4">4 agents</option>
+          <option value="5">5 agents</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Batteries per Agent</label>
+        <div class="agents-grid" id="agentsGrid"></div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section-label">Check Yesterday's Performance</div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Enter actual rentals by duration to see where this hub stood against the ₦340 target.</p>
+      <div class="checker-inputs" id="checkerInputs"></div>
+      <div id="checkerResult" style="display:none;"></div>
+    </div>
+
+    <!-- Policy Builder -->
+    <div class="panel policy-builder">
+      <div class="section-label">Custom Policy Builder</div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Build a new pricing policy to see what a hub would need to hit ₦340. Add it to the policy list above.</p>
+
+      <div class="policy-name-row">
+        <input type="text" id="customPolicyName" placeholder="Policy name (e.g. ₦750 ASP Trial)" style="margin-bottom:10px;">
+      </div>
+
+      <div style="display:grid;grid-template-columns:60px 1fr 1fr;gap:8px;margin-bottom:6px;">
+        <span class="policy-row-label" style="font-size:10px;">DURATION</span>
+        <span class="policy-row-label" style="font-size:10px;">CUSTOMER ₦</span>
+        <span class="policy-row-label" style="font-size:10px;">AGENT ₦</span>
+      </div>
+
+      <div id="customRows"></div>
+
+      <button class="add-btn" onclick="addCustomRow()">+ Add duration tier</button>
+
+      <button class="add-btn" onclick="buildCustomPolicy()" style="margin-left:8px;border-color:var(--accent);color:var(--accent);">Add to policy list →</button>
+
+      <div class="custom-policy-result" id="customPolicyResult"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div>
+    <div class="panel">
+      <div class="section-label">What This Hub Needs to Hit ₦340</div>
+
+      <div class="target-bar">
+        <div class="target-number" id="targetRentals">—</div>
+        <div class="target-text">
+          <div class="tl" id="targetLabel">—</div>
+          <div class="ts" id="targetSub">—</div>
+        </div>
+      </div>
+
+      <div class="explainer" id="explainerBox"></div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="val" id="totalBatteries">—</div>
+          <div class="lbl">Total Batteries</div>
+        </div>
+        <div class="metric-card">
+          <div class="val" id="targetDailyRev">—</div>
+          <div class="lbl">Target Revenue / Day</div>
+        </div>
+        <div class="metric-card">
+          <div class="val" id="targetMonthlyRev">—</div>
+          <div class="lbl">Target Revenue / Month</div>
+        </div>
+      </div>
+
+      <div class="table-wrap" id="aspTableWrap" style="display:none;">
+        <div class="table-header">
+          <div class="th">ASP: How Each Rental Duration Counts</div>
+          <div class="ts" id="aspSub"></div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Duration</th>
+              <th>Agent Price</th>
+              <th>% of a 24hr rental</th>
+              <th>To equal one 24hr rental</th>
+            </tr>
+          </thead>
+          <tbody id="aspTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="gaugeSection" style="display:none;">
+        <hr class="divider">
+        <div class="section-label">Yesterday vs Target</div>
+        <div id="gaugeResultBox"></div>
+        <div class="gauge-wrap">
+          <div class="gauge-track"><div class="gauge-fill" id="gaugeFill"></div></div>
+          <div class="gauge-labels">
+            <span>₦0</span><span>₦170</span><span>₦340 target</span><span></span>
+          </div>
+        </div>
+        <div id="gaugeVerdict" style="margin-top:12px;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const POLICIES = {
+  '800_standard':{ label:'₦800 Standard', asp:false, options:[{h:24,customer:800,agent:680}] },
+  '800_asp':     { label:'₦800 ASP',      asp:true,  options:[{h:24,customer:800,agent:680},{h:12,customer:600,agent:540},{h:6,customer:400,agent:350}] },
+  '700_asp':     { label:'₦700 ASP',      asp:true,  options:[{h:24,customer:700,agent:600},{h:12,customer:600,agent:540},{h:6,customer:400,agent:350}] },
+  '600_standard':{ label:'₦600 Standard', asp:false, options:[{h:24,customer:600,agent:500}] },
+  '500_standard':{ label:'₦500 Standard', asp:false, options:[{h:24,customer:500,agent:420}] },
+  '400_promo':   { label:'₦400 Promo',    asp:false, options:[{h:24,customer:400,agent:320}] },
+};
+const TARGET = 340;
+let agentBatteries = [75,75,75];
+let customPolicies = {};
+let customRowCount = 0;
+
+function getPolicy(){
+  const k = document.getElementById('policy').value;
+  return POLICIES[k] || customPolicies[k];
+}
+
+function onAgentCountChange(){
+  const n = parseInt(document.getElementById('agentCount').value);
+  while(agentBatteries.length < n) agentBatteries.push(75);
+  agentBatteries = agentBatteries.slice(0,n);
+  renderAgentInputs();
+  calculate();
+}
+
+function renderAgentInputs(){
+  const grid = document.getElementById('agentsGrid');
+  grid.innerHTML='';
+  agentBatteries.forEach((b,i)=>{
+    const row = document.createElement('div');
+    row.className='agent-row';
+    row.innerHTML=`<span class="agent-label">Agent ${i+1}</span><input type="number" min="1" max="200" value="${b}" oninput="agentBatteries[${i}]=parseInt(this.value)||0;calculate()">`;
+    grid.appendChild(row);
+  });
+}
+
+function renderCheckerInputs(){
+  const policy = getPolicy();
+  if(!policy) return;
+  const c = document.getElementById('checkerInputs');
+  c.innerHTML='';
+  const durations = policy.asp
+    ? policy.options.slice().sort((a,b)=>b.h-a.h)
+    : [{h:24}];
+  durations.forEach(d=>{
+    const row = document.createElement('div');
+    row.className='checker-row';
+    row.innerHTML=`<span class="clabel">${d.h}hr</span><input type="number" min="0" value="0" id="act_${d.h}" oninput="updateChecker()" placeholder="0"><span class="checker-hint">rentals</span>`;
+    c.appendChild(row);
+  });
+  document.getElementById('checkerResult').style.display='none';
+  document.getElementById('gaugeSection').style.display='none';
+}
+
+function updateChecker(){
+  const policy = getPolicy();
+  if(!policy) return;
+  const total = agentBatteries.reduce((a,b)=>a+b,0);
+  const opt24 = policy.options.find(o=>o.h===24);
+  let rev=0, equivRentals=0;
+
+  policy.options.forEach(opt=>{
+    const el = document.getElementById('act_'+opt.h);
+    if(!el) return;
+    const count = parseInt(el.value)||0;
+    rev += count*opt.agent;
+    equivRentals += count*(opt.agent/opt24.agent);
+  });
+
+  const hasInput = policy.options.some(opt=>{ const el=document.getElementById('act_'+opt.h); return el && parseInt(el.value)>0; });
+  if(!hasInput){ document.getElementById('checkerResult').style.display='none'; document.getElementById('gaugeSection').style.display='none'; return; }
+
+  const drr = total>0 ? rev/total : 0;
+  const targetRentals = total>0 ? Math.ceil((TARGET*total)/opt24.agent) : 0;
+  const gap = TARGET - drr;
+  const pct = Math.round((drr/TARGET)*100);
+  const cls = gap<=0?'green':gap<TARGET*0.2?'amber':'red';
+
+  const statusText = gap<=0?'On target':'Below target';
+  let html = `<strong>${statusText}</strong> — ₦${Math.round(drr)} DRR &nbsp;/&nbsp; ₦${TARGET} target &nbsp;(${pct}%)<br>`;
+  if(gap>0){
+    const shortfall = Math.ceil(targetRentals - equivRentals);
+    html += `Needs ${shortfall} more 24hr-equivalent rental${shortfall!==1?'s':''} to hit target today`;
+  } else {
+    html += `₦${Math.round(-gap)} above target`;
+  }
+
+  const resultEl = document.getElementById('checkerResult');
+  resultEl.style.display='block';
+  resultEl.innerHTML=`<div class="result-box ${cls}">${html}</div>`;
+
+  // Gauge
+  document.getElementById('gaugeSection').style.display='block';
+  const fill = document.getElementById('gaugeFill');
+  fill.style.width=Math.min(pct,100)+'%';
+  fill.style.background = cls==='green'?'#1a6b45':cls==='amber'?'#b7690a':'#c0392b';
+
+  const gaugeResultBox = document.getElementById('gaugeResultBox');
+  gaugeResultBox.innerHTML=`<div class="result-box ${cls}" style="margin-bottom:10px;"><strong>₦${Math.round(drr)} DRR — ${pct}% of ₦${TARGET} target</strong></div>`;
+
+  // Verdict
+  let verdict='';
+  if(gap<=0){
+    verdict=`<div class="result-box green">Revenue: ₦${Math.round(rev).toLocaleString()} across ${total} batteries. ₦${Math.round(-gap)} per battery above target.</div>`;
+  } else if(policy.asp){
+    const missingRev = Math.round(gap*total);
+    const lines = policy.options.map(opt=>{
+      const extra = Math.ceil(missingRev/opt.agent);
+      return `${extra} more ${opt.h}hr rental${extra!==1?'s':''} (₦${opt.agent} each)`;
+    }).join('<br>— or ');
+    verdict=`<div class="result-box ${cls}">Gap: ₦${Math.round(gap)} DRR &nbsp;/&nbsp; ₦${missingRev.toLocaleString()} total revenue shortfall<br>To close it:<br>— ${lines}</div>`;
+  } else {
+    const missingRev = Math.round(gap*total);
+    const extra = Math.ceil(missingRev/opt24.agent);
+    verdict=`<div class="result-box ${cls}">Gap: ₦${Math.round(gap)} DRR. Needs ${extra} more rental${extra!==1?'s':''} to close.</div>`;
+  }
+  document.getElementById('gaugeVerdict').innerHTML=verdict;
+}
+
+function calculate(){
+  const policy = getPolicy();
+  if(!policy) return;
+  const total = agentBatteries.reduce((a,b)=>a+b,0);
+  const opt24 = policy.options.find(o=>o.h===24);
+  const targetDailyRev = TARGET*total;
+  const targetRentals = total>0 ? Math.ceil(targetDailyRev/opt24.agent) : 0;
+  const targetPct = total>0 ? Math.round((targetRentals/total)*100) : 0;
+
+  document.getElementById('totalBatteries').textContent=total;
+  document.getElementById('targetRentals').textContent=targetRentals;
+  document.getElementById('targetDailyRev').textContent='₦'+targetDailyRev.toLocaleString();
+  document.getElementById('targetMonthlyRev').textContent='₦'+(targetDailyRev*30).toLocaleString();
+
+  if(policy.asp){
+    document.getElementById('targetLabel').textContent='24hr-equivalent rentals needed per day';
+    document.getElementById('targetSub').textContent=`${targetPct}% of ${total} batteries — shorter ASP rentals count for less than one equivalent each`;
+    document.getElementById('explainerBox').innerHTML=`<strong>What is a "24hr-equivalent rental"?</strong> On ASP, not all rentals earn the same. A 6hr rental earns ₦${policy.options.find(o=>o.h===6)?.agent||'—'} and a 12hr earns ₦${policy.options.find(o=>o.h===12)?.agent||'—'} — both less than a 24hr at ₦${opt24.agent}. Rather than tracking mix, we convert everything into <strong>24hr-equivalent rentals</strong> — the number of full-price 24hr rentals that would generate the same revenue. The target is always <strong>${targetRentals} equivalents per day</strong>. Any mix of durations that gets you there counts equally.`;
+    document.getElementById('aspTableWrap').style.display='block';
+    document.getElementById('aspSub').textContent=`A 24hr rental at ₦${opt24.agent} is the benchmark. Shorter durations earn less — here is what each is worth.`;
+    const tbody=document.getElementById('aspTableBody');
+    tbody.innerHTML='';
+    policy.options.slice().sort((a,b)=>b.h-a.h).forEach(opt=>{
+      const ratio=opt.agent/opt24.agent;
+      const tr=document.createElement('tr');
+      if(opt.h===24) tr.className='row-active';
+      tr.innerHTML=`<td>${opt.h}hr</td><td>₦${opt.agent}</td><td>${Math.round(ratio*100)}%</td><td>${opt.h===24?'1 rental':(1/ratio).toFixed(2)+' rentals'}</td>`;
+      tbody.appendChild(tr);
+    });
+  } else {
+    document.getElementById('targetLabel').textContent='rentals needed per day';
+    document.getElementById('targetSub').textContent=`${targetPct}% of ${total} batteries — one rental type, 24hr at ₦${opt24.agent} agent price`;
+    document.getElementById('explainerBox').innerHTML=`<strong>Simple.</strong> One rental option at ₦${opt24.agent} agent price. Rent <strong>${targetRentals} batteries per day</strong> and this hub hits ₦${TARGET} DRR — ${targetPct}% of the ${total}-battery fleet, every day.`;
+    document.getElementById('aspTableWrap').style.display='none';
+  }
+
+  renderCheckerInputs();
+  updateChecker();
+}
+
+// Custom policy builder
+function addCustomRow(){
+  customRowCount++;
+  const id = customRowCount;
+  const wrap = document.getElementById('customRows');
+  const row = document.createElement('div');
+  row.className='policy-row';
+  row.id='crow_'+id;
+  row.innerHTML=`
+    <input type="number" placeholder="24" min="1" max="48" id="ch_${id}" style="text-align:center;">
+    <input type="number" placeholder="800" min="1" id="cc_${id}">
+    <input type="number" placeholder="680" min="1" id="ca_${id}">
+    <button class="remove-btn" onclick="removeCustomRow(${id})">×</button>
+  `;
+  wrap.appendChild(row);
+}
+
+function removeCustomRow(id){
+  const el = document.getElementById('crow_'+id);
+  if(el) el.remove();
+}
+
+function buildCustomPolicy(){
+  const name = document.getElementById('customPolicyName').value.trim() || 'Custom Policy';
+  const rows = document.querySelectorAll('#customRows .policy-row');
+  if(rows.length===0){ alert('Add at least one duration tier.'); return; }
+
+  const options=[];
+  let valid=true;
+  rows.forEach(row=>{
+    const id=row.id.replace('crow_','');
+    const h=parseInt(document.getElementById('ch_'+id).value);
+    const c=parseInt(document.getElementById('cc_'+id).value);
+    const a=parseInt(document.getElementById('ca_'+id).value);
+    if(!h||!c||!a){ valid=false; return; }
+    options.push({h,customer:c,agent:a});
+  });
+
+  if(!valid){ alert('Please fill in all fields for each tier.'); return; }
+  if(!options.find(o=>o.h===24)){ alert('Must include a 24hr tier.'); return; }
+
+  const key = 'custom_'+Date.now();
+  const asp = options.length > 1;
+  customPolicies[key] = { label:name, asp, options };
+
+  const optGroup = document.getElementById('customOptGroup');
+  const opt = document.createElement('option');
+  opt.value=key; opt.textContent=name;
+  optGroup.appendChild(opt);
+  document.getElementById('policy').value=key;
+
+  const opt24=options.find(o=>o.h===24);
+  const total=agentBatteries.reduce((a,b)=>a+b,0);
+  const targetRentals=total>0?Math.ceil((TARGET*total)/opt24.agent):0;
+  const targetPct=total>0?Math.round((targetRentals/total)*100):0;
+
+  const resultEl=document.getElementById('customPolicyResult');
+  resultEl.style.display='block';
+  resultEl.innerHTML=`<strong>${name}</strong> added to policy list.<br>24hr agent price: ₦${opt24.agent} &nbsp;·&nbsp; Target: ${targetRentals} rentals/day (${targetPct}% of ${total} batteries)`;
+
+  calculate();
+}
+
+// Init
+addCustomRow();
+renderAgentInputs();
+renderCheckerInputs();
+calculate();
+</script>
+</body>
+</html>
