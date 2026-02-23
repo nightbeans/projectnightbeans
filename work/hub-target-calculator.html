@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOPO Hub Target Calculator</title>
+<title>MOPO Hub Target Calculator - joeldelaney</title>
+<link rel="stylesheet" href="../style.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
@@ -22,36 +23,65 @@
     --amber-light: #fef8ee;
     --green: #1a6b45;
     --green-light: #e8f4ee;
-    --blue: #1a4a8a;
-    --blue-light: #eef2fb;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'IBM Plex Sans', sans-serif;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* Override site main constraints for this full-width tool */
+  main {
+    max-width: none;
+    padding: 0;
+  }
 
-  body {
+  .calc-wrap {
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    min-height: 100vh;
     padding: 32px 24px;
     font-size: 14px;
   }
 
-  header {
+  .calc-wrap * {
+    box-sizing: border-box;
+  }
+
+  .calc-header {
     max-width: 1200px;
     margin-bottom: 32px;
     border-bottom: 1px solid var(--border);
     padding-bottom: 20px;
   }
 
-  header h1 { font-size: 18px; font-weight: 600; letter-spacing: -0.2px; }
-  header p { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: 0.3px; }
+  .calc-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.2px;
+    margin-bottom: 0;
+  }
 
-  .layout { display: grid; grid-template-columns: 340px 1fr; gap: 20px; max-width: 1200px; }
+  .calc-header p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
 
-  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 20px;
+    max-width: 1200px;
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
   .panel + .panel { margin-top: 16px; }
 
   .section-label {
@@ -66,9 +96,17 @@
 
   .field-group { margin-bottom: 16px; }
 
-  label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+  .calc-wrap label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
 
-  select, input[type="number"], input[type="text"] {
+  .calc-wrap select,
+  .calc-wrap input[type="number"],
+  .calc-wrap input[type="text"] {
     width: 100%;
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -82,57 +120,29 @@
     appearance: none;
   }
 
-  select:focus, input:focus { border-color: var(--accent); }
+  .calc-wrap select:focus,
+  .calc-wrap input:focus { border-color: var(--accent); }
 
   .agents-grid { display: flex; flex-direction: column; gap: 8px; }
-  .agent-row { display: grid; grid-template-columns: 72px 1fr; gap: 8px; align-items: center; }
-  .agent-label { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 
-  .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
-
-  /* Toggle */
-  .mode-toggle {
-    display: flex;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 4px;
-    margin-bottom: 20px;
-    gap: 4px;
+  .agent-row {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 8px;
+    align-items: center;
   }
 
-  .mode-btn {
-    flex: 1;
-    padding: 8px 10px;
-    border-radius: 5px;
-    border: none;
-    background: transparent;
+  .agent-label {
     font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 12px;
     color: var(--muted);
-    cursor: pointer;
-    transition: all .2s;
-    text-align: center;
-    line-height: 1.4;
   }
 
-  .mode-btn.active {
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
   }
-
-  .mode-btn span {
-    display: block;
-    font-size: 9px;
-    color: var(--muted);
-    font-weight: 400;
-    margin-top: 2px;
-  }
-
-  .mode-btn.active span { color: var(--muted); }
 
   /* Target output */
   .target-bar {
@@ -146,113 +156,303 @@
     gap: 20px;
   }
 
-  .target-number { font-family: var(--mono); font-size: 52px; font-weight: 500; color: var(--text); line-height: 1; flex-shrink: 0; }
-  .target-text .tl { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .target-text .ts { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.6; }
+  .target-number {
+    font-family: var(--mono);
+    font-size: 52px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .target-text .tl {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .target-text .ts {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
 
   /* Explainer */
   .explainer {
+    background: var(--accent-light);
+    border: 1px solid #c8e6d6;
     border-radius: 7px;
     padding: 14px 16px;
     margin-bottom: 16px;
     font-family: var(--mono);
     font-size: 11.5px;
     line-height: 1.8;
+    color: #2d5a3d;
   }
 
-  .explainer.drr { background: var(--accent-light); border: 1px solid #c8e6d6; color: #2d5a3d; }
-  .explainer.hrutil { background: var(--blue-light); border: 1px solid #c0d0e8; color: #1a3060; }
-
-  /* Two-metric summary */
-  .dual-summary {
+  /* Metrics row */
+  .metrics-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 16px;
   }
 
-  .summary-card {
+  .metric-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
     border-radius: 7px;
     padding: 14px;
-    border: 1px solid var(--border);
   }
 
-  .summary-card.drr-card { background: var(--accent-light); border-color: #c8e6d6; }
-  .summary-card.util-card { background: var(--blue-light); border-color: #c0d0e8; }
+  .metric-card .val {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+  }
 
-  .summary-card .sc-label { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .summary-card .sc-val { font-family: var(--mono); font-size: 22px; font-weight: 500; color: var(--text); line-height: 1; }
-  .summary-card .sc-sub { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .metric-card .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+  }
 
-  /* Metrics row */
-  .metrics-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-  .metric-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 14px; }
-  .metric-card .val { font-family: var(--mono); font-size: 16px; font-weight: 500; color: var(--text); line-height: 1; }
-  .metric-card .lbl { font-size: 11px; color: var(--muted); margin-top: 5px; }
+  /* ASP table */
+  .table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
 
-  /* Table */
-  .table-wrap { border: 1px solid var(--border); border-radius: 7px; overflow: hidden; margin-bottom: 16px; }
-  .table-header { background: var(--surface2); padding: 10px 14px; border-bottom: 1px solid var(--border); }
-  .table-header .th { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-  .table-header .ts { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .table-header {
+    background: var(--surface2);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
 
-  table { width: 100%; border-collapse: collapse; }
-  th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px 14px; background: var(--surface2); border-bottom: 1px solid var(--border); font-weight: 500; }
-  th:first-child { text-align: left; }
-  td { font-family: var(--mono); font-size: 12.5px; padding: 9px 14px; border-top: 1px solid var(--border); text-align: right; color: var(--text); }
-  td:first-child { text-align: left; color: var(--muted); }
+  .table-header .th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .table-header .ts {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .calc-wrap table { width: 100%; border-collapse: collapse; }
+
+  .calc-wrap th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    padding: 8px 14px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  .calc-wrap th:first-child { text-align: left; }
+
+  .calc-wrap td {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 9px 14px;
+    border-top: 1px solid var(--border);
+    text-align: right;
+    color: var(--text);
+  }
+
+  .calc-wrap td:first-child { text-align: left; color: var(--muted); }
   .row-active td { color: var(--accent); font-weight: 500; }
   .row-active td:first-child { color: var(--accent); }
 
   /* Checker */
   .checker-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-  .checker-row { display: grid; grid-template-columns: 48px 1fr 60px; gap: 8px; align-items: center; }
-  .clabel { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .checker-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  .checker-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 60px;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .clabel {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .checker-hint {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
 
   /* Result boxes */
-  .result-box { border-radius: 7px; padding: 12px 14px; font-family: var(--mono); font-size: 12px; line-height: 1.8; border: 1px solid; }
+  .result-box {
+    border-radius: 7px;
+    padding: 12px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    border: 1px solid;
+  }
+
   .result-box.green { background: var(--green-light); border-color: #c8e6d6; color: #1a4a2e; }
   .result-box.amber { background: var(--amber-light); border-color: #f5d9a8; color: #7a4500; }
   .result-box.red   { background: var(--red-light);   border-color: #f5c8c0; color: #8b1a10; }
-  .result-box.blue  { background: var(--blue-light);  border-color: #c0d0e8; color: #1a3060; }
 
   /* Gauge */
-  .gauge-section { display: none; }
+  .gauge-wrap { margin-top: 14px; }
   .gauge-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 8px 0; }
   .gauge-fill { height: 100%; border-radius: 3px; transition: width .4s ease, background .4s ease; }
-  .gauge-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--muted); }
-
-  /* Dual gauge */
-  .dual-gauge { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-  .gauge-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 14px; }
-  .gauge-card .gc-label { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .gauge-card .gc-val { font-family: var(--mono); font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+  .gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
 
   /* Policy builder */
-  .policy-row { display: grid; grid-template-columns: 60px 1fr 1fr 28px; gap: 8px; align-items: center; margin-bottom: 8px; }
-  .policy-row-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
-  .remove-btn { background: none; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); cursor: pointer; font-size: 14px; padding: 0; height: 28px; width: 28px; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+  .policy-builder { margin-top: 0; }
+
+  .policy-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr 28px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .policy-row-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .remove-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s;
+  }
+
   .remove-btn:hover { border-color: var(--red); color: var(--red); }
-  .add-btn { background: none; border: 1px solid var(--border); border-radius: 5px; color: var(--muted); cursor: pointer; font-family: var(--mono); font-size: 11px; padding: 7px 12px; margin-top: 4px; transition: all .15s; }
+
+  .add-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 7px 12px;
+    margin-top: 4px;
+    transition: all .15s;
+  }
+
   .add-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  .mode-content { display: none; }
-  .mode-content.active { display: block; }
+  .custom-policy-result {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    display: none;
+  }
+
+  .policy-name-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 10px;
+  }
+
+  .tab-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .tab {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all .15s;
+  }
+
+  .tab.active {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 
   @media (max-width: 860px) {
     .layout { grid-template-columns: 1fr; }
     .metrics-row { grid-template-columns: 1fr 1fr; }
-    .dual-summary, .dual-gauge { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>MOPO Hub Target Calculator</h1>
-  <p>TWO METRICS &nbsp;·&nbsp; LOCAL DRR TARGET: ₦340/BATTERY/DAY &nbsp;·&nbsp; HOURLY UTILISATION TARGET: 50%</p>
+  <nav class="navbar">
+    <div class="brand">
+      <a href="../"><h1>joeldelaney</h1></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../">Home</a></li>
+      <li><a href="../blog/">Blog</a></li>
+      <li><a href="../work/" class="active">Work</a></li>
+      <li><a href="../benedict/">Benedict</a></li>
+      <li><a href="../book/">Book</a></li>
+    </ul>
+  </nav>
 </header>
+
+<main>
+<div class="calc-wrap">
+
+<div class="calc-header">
+  <h2>MOPO Hub Target Calculator</h2>
+  <p>WIG: ₦340 DRR / BATTERY / DAY &nbsp;·&nbsp; 50% OF STANDARD 24HR AGENT PRICE (₦680)</p>
+</div>
 
 <div class="layout">
   <!-- LEFT -->
@@ -268,8 +468,8 @@
             <option value="800_asp" selected>₦800 ASP — 6hr / 12hr / 24hr</option>
             <option value="700_asp">₦700 ASP — 6hr / 12hr / 24hr</option>
             <option value="600_standard">₦600 Standard — 24hr only</option>
-            <option value="500_standard">₦500 Standard — Kano</option>
-            <option value="400_promo">₦400 Promo — Kano</option>
+            <option value="500_standard">₦500 Standard — Kano, 24hr only</option>
+            <option value="400_promo">₦400 Promo — Kano, 24hr only</option>
           </optgroup>
           <optgroup label="Custom" id="customOptGroup"></optgroup>
         </select>
@@ -293,199 +493,107 @@
       <hr class="divider">
 
       <div class="section-label">Check Yesterday's Performance</div>
-      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Enter actual rentals by duration. Both metrics update simultaneously.</p>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Enter actual rentals by duration to see where this hub stood against the ₦340 target.</p>
       <div class="checker-inputs" id="checkerInputs"></div>
-      <div id="checkerResult" style="display:none;margin-bottom:0;"></div>
+      <div id="checkerResult" style="display:none;"></div>
     </div>
 
     <!-- Policy Builder -->
-    <div class="panel">
+    <div class="panel policy-builder">
       <div class="section-label">Custom Policy Builder</div>
-      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Build a policy to see what it demands across both metrics.</p>
-      <input type="text" id="customPolicyName" placeholder="Policy name e.g. ₦750 ASP Trial" style="margin-bottom:10px;">
-      <div style="display:grid;grid-template-columns:60px 1fr 1fr 28px;gap:8px;margin-bottom:6px;">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">DURATION</span>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">CUSTOMER ₦</span>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">AGENT ₦</span>
-        <span></span>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Build a new pricing policy to see what a hub would need to hit ₦340. Add it to the policy list above.</p>
+
+      <div class="policy-name-row">
+        <input type="text" id="customPolicyName" placeholder="Policy name (e.g. ₦750 ASP Trial)" style="margin-bottom:10px;">
       </div>
+
+      <div style="display:grid;grid-template-columns:60px 1fr 1fr;gap:8px;margin-bottom:6px;">
+        <span class="policy-row-label" style="font-size:10px;">DURATION</span>
+        <span class="policy-row-label" style="font-size:10px;">CUSTOMER ₦</span>
+        <span class="policy-row-label" style="font-size:10px;">AGENT ₦</span>
+      </div>
+
       <div id="customRows"></div>
+
       <button class="add-btn" onclick="addCustomRow()">+ Add duration tier</button>
+
       <button class="add-btn" onclick="buildCustomPolicy()" style="margin-left:8px;border-color:var(--accent);color:var(--accent);">Add to policy list →</button>
-      <div id="customPolicyResult" style="display:none;margin-top:12px;font-family:var(--mono);font-size:11px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:12px;line-height:1.8;color:var(--muted);"></div>
+
+      <div class="custom-policy-result" id="customPolicyResult"></div>
     </div>
   </div>
 
   <!-- RIGHT -->
   <div>
     <div class="panel">
+      <div class="section-label">What This Hub Needs to Hit ₦340</div>
 
-      <!-- Mode Toggle -->
-      <div class="mode-toggle">
-        <button class="mode-btn active" id="btn_both" onclick="setMode('both')">
-          Both Metrics
-          <span>DRR + Hourly Util.</span>
-        </button>
-        <button class="mode-btn" id="btn_drr" onclick="setMode('drr')">
-          Local DRR
-          <span>Revenue / battery</span>
-        </button>
-        <button class="mode-btn" id="btn_util" onclick="setMode('util')">
-          Hourly Utilisation
-          <span>Battery-hours used</span>
-        </button>
-      </div>
-
-      <!-- BOTH mode -->
-      <div class="mode-content active" id="mode_both">
-        <div class="dual-summary">
-          <div class="summary-card drr-card">
-            <div class="sc-label">Local DRR Target</div>
-            <div class="sc-val" id="both_drrTarget">—</div>
-            <div class="sc-sub" id="both_drrSub">—</div>
-          </div>
-          <div class="summary-card util-card">
-            <div class="sc-label">Hourly Util. Target</div>
-            <div class="sc-val" id="both_utilTarget">50%</div>
-            <div class="sc-sub" id="both_utilSub">—</div>
-          </div>
-        </div>
-
-        <div class="explainer drr" id="both_explainer"></div>
-
-        <div class="metrics-row">
-          <div class="metric-card">
-            <div class="val" id="both_batteries">—</div>
-            <div class="lbl">Total Batteries</div>
-          </div>
-          <div class="metric-card">
-            <div class="val" id="both_battHours">—</div>
-            <div class="lbl">Available Battery-Hours / Day</div>
-          </div>
-          <div class="metric-card">
-            <div class="val" id="both_targetRev">—</div>
-            <div class="lbl">Target Revenue / Day</div>
-          </div>
-        </div>
-
-        <div class="table-wrap" id="both_aspTable" style="display:none;">
-          <div class="table-header">
-            <div class="th">How Each Rental Duration Counts — Both Metrics</div>
-            <div class="ts" id="both_aspSub"></div>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Duration</th>
-                <th>Agent ₦</th>
-                <th>Battery-Hours Used</th>
-                <th>DRR Equiv. (of 24hr)</th>
-                <th>Hourly Util. Equiv. (of 24hr)</th>
-              </tr>
-            </thead>
-            <tbody id="both_aspBody"></tbody>
-          </table>
-        </div>
-
-        <!-- Yesterday dual gauge -->
-        <div id="both_gaugeSection" style="display:none;">
-          <hr class="divider">
-          <div class="section-label">Yesterday vs Both Targets</div>
-          <div class="dual-gauge">
-            <div class="gauge-card">
-              <div class="gc-label">Local DRR</div>
-              <div class="gc-val" id="both_drrActual">—</div>
-              <div class="gauge-track"><div class="gauge-fill" id="both_drrGauge"></div></div>
-              <div class="gauge-labels"><span>₦0</span><span>₦170</span><span>₦340</span></div>
-              <div id="both_drrStatus" style="font-family:var(--mono);font-size:11px;margin-top:8px;"></div>
-            </div>
-            <div class="gauge-card">
-              <div class="gc-label">Hourly Utilisation</div>
-              <div class="gc-val" id="both_utilActual">—</div>
-              <div class="gauge-track"><div class="gauge-fill" id="both_utilGauge"></div></div>
-              <div class="gauge-labels"><span>0%</span><span>25%</span><span>50%</span></div>
-              <div id="both_utilStatus" style="font-family:var(--mono);font-size:11px;margin-top:8px;"></div>
-            </div>
-          </div>
-          <div id="both_verdict"></div>
+      <div class="target-bar">
+        <div class="target-number" id="targetRentals">—</div>
+        <div class="target-text">
+          <div class="tl" id="targetLabel">—</div>
+          <div class="ts" id="targetSub">—</div>
         </div>
       </div>
 
-      <!-- DRR mode -->
-      <div class="mode-content" id="mode_drr">
-        <div class="target-bar">
-          <div class="target-number" id="drr_targetRentals">—</div>
-          <div class="target-text">
-            <div class="tl" id="drr_targetLabel">—</div>
-            <div class="ts" id="drr_targetSub">—</div>
-          </div>
+      <div class="explainer" id="explainerBox"></div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="val" id="totalBatteries">—</div>
+          <div class="lbl">Total Batteries</div>
         </div>
-        <div class="explainer drr" id="drr_explainer"></div>
-        <div class="metrics-row">
-          <div class="metric-card"><div class="val" id="drr_batteries">—</div><div class="lbl">Total Batteries</div></div>
-          <div class="metric-card"><div class="val" id="drr_dailyRev">—</div><div class="lbl">Target Revenue / Day</div></div>
-          <div class="metric-card"><div class="val" id="drr_monthlyRev">—</div><div class="lbl">Target Revenue / Month</div></div>
+        <div class="metric-card">
+          <div class="val" id="targetDailyRev">—</div>
+          <div class="lbl">Target Revenue / Day</div>
         </div>
-        <div class="table-wrap" id="drr_aspTable" style="display:none;">
-          <div class="table-header">
-            <div class="th">ASP: How Each Rental Duration Counts Toward ₦340</div>
-            <div class="ts" id="drr_aspSub"></div>
-          </div>
-          <table>
-            <thead><tr><th>Duration</th><th>Agent ₦</th><th>% of 24hr rental</th><th>To equal one 24hr rental</th></tr></thead>
-            <tbody id="drr_aspBody"></tbody>
-          </table>
-        </div>
-        <div id="drr_gaugeSection" class="gauge-section">
-          <hr class="divider">
-          <div class="section-label">Yesterday vs ₦340 Target</div>
-          <div id="drr_resultBox" style="margin-bottom:10px;"></div>
-          <div class="gauge-track"><div class="gauge-fill" id="drr_gaugeFill"></div></div>
-          <div class="gauge-labels"><span>₦0</span><span>₦170</span><span>₦340 target</span><span></span></div>
-          <div id="drr_verdict" style="margin-top:12px;"></div>
+        <div class="metric-card">
+          <div class="val" id="targetMonthlyRev">—</div>
+          <div class="lbl">Target Revenue / Month</div>
         </div>
       </div>
 
-      <!-- UTIL mode -->
-      <div class="mode-content" id="mode_util">
-        <div class="target-bar">
-          <div class="target-number" id="util_targetHours">—</div>
-          <div class="target-text">
-            <div class="tl">battery-hours to monetise per day</div>
-            <div class="ts" id="util_targetSub">—</div>
+      <div class="table-wrap" id="aspTableWrap" style="display:none;">
+        <div class="table-header">
+          <div class="th">ASP: How Each Rental Duration Counts</div>
+          <div class="ts" id="aspSub"></div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Duration</th>
+              <th>Agent Price</th>
+              <th>% of a 24hr rental</th>
+              <th>To equal one 24hr rental</th>
+            </tr>
+          </thead>
+          <tbody id="aspTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="gaugeSection" style="display:none;">
+        <hr class="divider">
+        <div class="section-label">Yesterday vs Target</div>
+        <div id="gaugeResultBox"></div>
+        <div class="gauge-wrap">
+          <div class="gauge-track"><div class="gauge-fill" id="gaugeFill"></div></div>
+          <div class="gauge-labels">
+            <span>₦0</span><span>₦170</span><span>₦340 target</span><span></span>
           </div>
         </div>
-        <div class="explainer hrutil" id="util_explainer"></div>
-        <div class="metrics-row">
-          <div class="metric-card"><div class="val" id="util_batteries">—</div><div class="lbl">Total Batteries</div></div>
-          <div class="metric-card"><div class="val" id="util_availHours">—</div><div class="lbl">Available Battery-Hours / Day</div></div>
-          <div class="metric-card"><div class="val" id="util_targetPct">50%</div><div class="lbl">Target Utilisation</div></div>
-        </div>
-
-        <div class="table-wrap" id="util_aspTable">
-          <div class="table-header">
-            <div class="th">How Each Rental Duration Counts Toward 50% Hourly Utilisation</div>
-            <div class="ts" id="util_aspSub"></div>
-          </div>
-          <table>
-            <thead><tr><th>Duration</th><th>Battery-Hours Used</th><th>% of Available Day</th><th>To equal one 24hr rental (in hours)</th></tr></thead>
-            <tbody id="util_aspBody"></tbody>
-          </table>
-        </div>
-
-        <div id="util_gaugeSection" class="gauge-section">
-          <hr class="divider">
-          <div class="section-label">Yesterday vs 50% Hourly Utilisation</div>
-          <div id="util_resultBox" style="margin-bottom:10px;"></div>
-          <div class="gauge-track"><div class="gauge-fill" id="util_gaugeFill"></div></div>
-          <div class="gauge-labels"><span>0%</span><span>25%</span><span>50% target</span><span></span></div>
-          <div id="util_verdict" style="margin-top:12px;"></div>
-        </div>
+        <div id="gaugeVerdict" style="margin-top:12px;"></div>
       </div>
 
     </div>
   </div>
 </div>
+
+</div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Joel Delaney</p>
+</footer>
 
 <script>
 const POLICIES = {
@@ -496,282 +604,187 @@ const POLICIES = {
   '500_standard':{ label:'₦500 Standard', asp:false, options:[{h:24,customer:500,agent:420}] },
   '400_promo':   { label:'₦400 Promo',    asp:false, options:[{h:24,customer:400,agent:320}] },
 };
-const DRR_TARGET = 340;
-const UTIL_TARGET = 0.5;
+const TARGET = 340;
 let agentBatteries = [75,75,75];
 let customPolicies = {};
 let customRowCount = 0;
-let currentMode = 'both';
 
-function getPolicy(){ const k=document.getElementById('policy').value; return POLICIES[k]||customPolicies[k]; }
-
-function setMode(m){
-  currentMode=m;
-  ['both','drr','util'].forEach(mode=>{
-    document.getElementById('mode_'+mode).classList.toggle('active', mode===m);
-    document.getElementById('btn_'+mode).classList.toggle('active', mode===m);
-  });
-  calculateKeepValues();
-}
-
-function calculateKeepValues(){
-  calculate(true);
+function getPolicy(){
+  const k = document.getElementById('policy').value;
+  return POLICIES[k] || customPolicies[k];
 }
 
 function onAgentCountChange(){
-  const n=parseInt(document.getElementById('agentCount').value);
-  while(agentBatteries.length<n) agentBatteries.push(75);
-  agentBatteries=agentBatteries.slice(0,n);
+  const n = parseInt(document.getElementById('agentCount').value);
+  while(agentBatteries.length < n) agentBatteries.push(75);
+  agentBatteries = agentBatteries.slice(0,n);
   renderAgentInputs();
   calculate();
 }
 
 function renderAgentInputs(){
-  const grid=document.getElementById('agentsGrid');
+  const grid = document.getElementById('agentsGrid');
   grid.innerHTML='';
   agentBatteries.forEach((b,i)=>{
-    const row=document.createElement('div');
+    const row = document.createElement('div');
     row.className='agent-row';
     row.innerHTML=`<span class="agent-label">Agent ${i+1}</span><input type="number" min="1" max="200" value="${b}" oninput="agentBatteries[${i}]=parseInt(this.value)||0;calculate()">`;
     grid.appendChild(row);
   });
 }
 
-function renderCheckerInputs(preserveValues){
-  const policy=getPolicy(); if(!policy) return;
-  // Save current values before re-rendering
-  const saved={};
-  [6,12,24].forEach(h=>{ const el=document.getElementById('act_'+h); if(el) saved[h]=el.value; });
-
-  const c=document.getElementById('checkerInputs'); c.innerHTML='';
-  const durations=policy.asp?policy.options.slice().sort((a,b)=>b.h-a.h):[{h:24}];
+function renderCheckerInputs(){
+  const policy = getPolicy();
+  if(!policy) return;
+  const c = document.getElementById('checkerInputs');
+  c.innerHTML='';
+  const durations = policy.asp
+    ? policy.options.slice().sort((a,b)=>b.h-a.h)
+    : [{h:24}];
   durations.forEach(d=>{
-    const row=document.createElement('div'); row.className='checker-row';
-    const savedVal = (preserveValues && saved[d.h]) ? saved[d.h] : '0';
-    row.innerHTML=`<span class="clabel">${d.h}hr</span><input type="number" min="0" value="${savedVal}" id="act_${d.h}" oninput="updateChecker()" placeholder="0"><span class="checker-hint">rentals</span>`;
+    const row = document.createElement('div');
+    row.className='checker-row';
+    row.innerHTML=`<span class="clabel">${d.h}hr</span><input type="number" min="0" value="0" id="act_${d.h}" oninput="updateChecker()" placeholder="0"><span class="checker-hint">rentals</span>`;
     c.appendChild(row);
   });
-  // Only reset results if not preserving
-  if(!preserveValues){
-    document.getElementById('checkerResult').style.display='none';
-    ['drr','util','both'].forEach(m=>{ const g=document.getElementById(m+'_gaugeSection'); if(g) g.style.display='none'; });
-    document.getElementById('both_gaugeSection') && (document.getElementById('both_gaugeSection').style.display='none');
-  }
+  document.getElementById('checkerResult').style.display='none';
+  document.getElementById('gaugeSection').style.display='none';
 }
-
-function getActuals(policy){
-  const total=agentBatteries.reduce((a,b)=>a+b,0);
-  const opt24=policy.options.find(o=>o.h===24);
-  let rev=0, equivDRR=0, battHoursUsed=0;
-  policy.options.forEach(opt=>{
-    const el=document.getElementById('act_'+opt.h); if(!el) return;
-    const count=parseInt(el.value)||0;
-    rev+=count*opt.agent;
-    equivDRR+=count*(opt.agent/opt24.agent);
-    battHoursUsed+=count*opt.h;
-  });
-  const hasInput=policy.options.some(opt=>{ const el=document.getElementById('act_'+opt.h); return el&&parseInt(el.value)>0; });
-  const drr=total>0?rev/total:0;
-  const availHours=total*24;
-  const hrUtil=availHours>0?battHoursUsed/availHours:0;
-  return { total, opt24, rev, equivDRR, battHoursUsed, hasInput, drr, availHours, hrUtil };
-}
-
-function colorClass(val, target){ return val>=target?'green':val>=target*0.8?'amber':'red'; }
-function colorHex(val, target){ return val>=target?'#1a6b45':val>=target*0.8?'#b7690a':'#c0392b'; }
 
 function updateChecker(){
-  const policy=getPolicy(); if(!policy) return;
-  const a=getActuals(policy);
-  if(!a.hasInput){
-    document.getElementById('checkerResult').style.display='none';
-    document.getElementById('both_gaugeSection').style.display='none';
-    ['drr','util'].forEach(m=>{ const g=document.getElementById(m+'_gaugeSection'); if(g) g.style.display='none'; });
-    return;
+  const policy = getPolicy();
+  if(!policy) return;
+  const total = agentBatteries.reduce((a,b)=>a+b,0);
+  const opt24 = policy.options.find(o=>o.h===24);
+  let rev=0, equivRentals=0;
+
+  policy.options.forEach(opt=>{
+    const el = document.getElementById('act_'+opt.h);
+    if(!el) return;
+    const count = parseInt(el.value)||0;
+    rev += count*opt.agent;
+    equivRentals += count*(opt.agent/opt24.agent);
+  });
+
+  const hasInput = policy.options.some(opt=>{ const el=document.getElementById('act_'+opt.h); return el && parseInt(el.value)>0; });
+  if(!hasInput){ document.getElementById('checkerResult').style.display='none'; document.getElementById('gaugeSection').style.display='none'; return; }
+
+  const drr = total>0 ? rev/total : 0;
+  const targetRentals = total>0 ? Math.ceil((TARGET*total)/opt24.agent) : 0;
+  const gap = TARGET - drr;
+  const pct = Math.round((drr/TARGET)*100);
+  const cls = gap<=0?'green':gap<TARGET*0.2?'amber':'red';
+
+  const statusText = gap<=0?'On target':'Below target';
+  let html = `<strong>${statusText}</strong> — ₦${Math.round(drr)} DRR &nbsp;/&nbsp; ₦${TARGET} target &nbsp;(${pct}%)<br>`;
+  if(gap>0){
+    const shortfall = Math.ceil(targetRentals - equivRentals);
+    html += `Needs ${shortfall} more 24hr-equivalent rental${shortfall!==1?'s':''} to hit target today`;
+  } else {
+    html += `₦${Math.round(-gap)} above target`;
   }
 
-  // DRR checker
-  const drrCls=colorClass(a.drr,DRR_TARGET);
-  const drrPct=Math.round((a.drr/DRR_TARGET)*100);
-  const drrGap=DRR_TARGET-a.drr;
-  const drrTargetRentals=a.total>0?Math.ceil((DRR_TARGET*a.total)/a.opt24.agent):0;
-  const drrShortfall=Math.ceil(drrTargetRentals-a.equivDRR);
+  const resultEl = document.getElementById('checkerResult');
+  resultEl.style.display='block';
+  resultEl.innerHTML=`<div class="result-box ${cls}">${html}</div>`;
 
-  // Util checker
-  const utilCls=colorClass(a.hrUtil,UTIL_TARGET);
-  const utilPct=Math.round(a.hrUtil*100);
-  const utilGap=UTIL_TARGET-a.hrUtil;
-  const utilTargetHours=a.total*24*UTIL_TARGET;
-  const utilShortHours=Math.round((utilTargetHours-a.battHoursUsed));
-  const utilShort24=Math.ceil(utilShortHours/24);
+  // Gauge
+  document.getElementById('gaugeSection').style.display='block';
+  const fill = document.getElementById('gaugeFill');
+  fill.style.width=Math.min(pct,100)+'%';
+  fill.style.background = cls==='green'?'#1a6b45':cls==='amber'?'#b7690a':'#c0392b';
 
-  // Update "both" gauge
-  document.getElementById('both_gaugeSection').style.display='block';
-
-  const drrGaugeEl=document.getElementById('both_drrGauge');
-  drrGaugeEl.style.width=Math.min(drrPct,100)+'%';
-  drrGaugeEl.style.background=colorHex(a.drr,DRR_TARGET);
-  document.getElementById('both_drrActual').textContent='₦'+Math.round(a.drr);
-  document.getElementById('both_drrActual').style.color=colorHex(a.drr,DRR_TARGET);
-  document.getElementById('both_drrStatus').innerHTML=`<span style="color:${colorHex(a.drr,DRR_TARGET)}">${drrPct}% of ₦${DRR_TARGET} target${drrGap>0?' — '+drrShortfall+' equiv. rentals short':' ✓'}</span>`;
-
-  const utilGaugeEl=document.getElementById('both_utilGauge');
-  utilGaugeEl.style.width=Math.min(utilPct*2,100)+'%';
-  utilGaugeEl.style.background=colorHex(a.hrUtil,UTIL_TARGET);
-  document.getElementById('both_utilActual').textContent=utilPct+'%';
-  document.getElementById('both_utilActual').style.color=colorHex(a.hrUtil,UTIL_TARGET);
-  document.getElementById('both_utilStatus').innerHTML=`<span style="color:${colorHex(a.hrUtil,UTIL_TARGET)}">${Math.round(a.battHoursUsed).toLocaleString()} / ${a.availHours.toLocaleString()} battery-hrs${utilGap>0?' — '+utilShortHours+' hrs short':' ✓'}</span>`;
+  const gaugeResultBox = document.getElementById('gaugeResultBox');
+  gaugeResultBox.innerHTML=`<div class="result-box ${cls}" style="margin-bottom:10px;"><strong>₦${Math.round(drr)} DRR — ${pct}% of ₦${TARGET} target</strong></div>`;
 
   // Verdict
-  let vHtml='';
-  if(drrGap<=0&&utilGap<=0){
-    vHtml=`<div class="result-box green"><strong>Both metrics on target.</strong> Revenue: ₦${Math.round(a.rev).toLocaleString()} / Battery-hours monetised: ${Math.round(a.battHoursUsed).toLocaleString()}</div>`;
+  let verdict='';
+  if(gap<=0){
+    verdict=`<div class="result-box green">Revenue: ₦${Math.round(rev).toLocaleString()} across ${total} batteries. ₦${Math.round(-gap)} per battery above target.</div>`;
+  } else if(policy.asp){
+    const missingRev = Math.round(gap*total);
+    const lines = policy.options.map(opt=>{
+      const extra = Math.ceil(missingRev/opt.agent);
+      return `${extra} more ${opt.h}hr rental${extra!==1?'s':''} (₦${opt.agent} each)`;
+    }).join('<br>— or ');
+    verdict=`<div class="result-box ${cls}">Gap: ₦${Math.round(gap)} DRR &nbsp;/&nbsp; ₦${missingRev.toLocaleString()} total revenue shortfall<br>To close it:<br>— ${lines}</div>`;
   } else {
-    const parts=[];
-    if(drrGap>0) parts.push(`DRR gap: ₦${Math.round(drrGap)} — needs ${drrShortfall} more 24hr-equivalent rental${drrShortfall!==1?'s':''}`);
-    if(utilGap>0) parts.push(`Hourly util. gap: ${Math.round(utilGap*100)}pp — needs ${utilShortHours} more battery-hours (≈ ${utilShort24} more 24hr rental${utilShort24!==1?'s':''})`);
-    const cls=drrGap>0&&utilGap>0?'red':'amber';
-    vHtml=`<div class="result-box ${cls}">${parts.join('<br>')}</div>`;
+    const missingRev = Math.round(gap*total);
+    const extra = Math.ceil(missingRev/opt24.agent);
+    verdict=`<div class="result-box ${cls}">Gap: ₦${Math.round(gap)} DRR. Needs ${extra} more rental${extra!==1?'s':''} to close.</div>`;
   }
-  document.getElementById('both_verdict').innerHTML=vHtml;
-
-  // DRR mode gauge
-  const drrGS=document.getElementById('drr_gaugeSection'); if(drrGS) drrGS.style.display='block';
-  const drrFill=document.getElementById('drr_gaugeFill');
-  if(drrFill){ drrFill.style.width=Math.min(drrPct,100)+'%'; drrFill.style.background=colorHex(a.drr,DRR_TARGET); }
-  const drrRB=document.getElementById('drr_resultBox');
-  if(drrRB) drrRB.innerHTML=`<div class="result-box ${drrCls}"><strong>₦${Math.round(a.drr)} DRR — ${drrPct}% of ₦${DRR_TARGET} target</strong></div>`;
-  const drrV=document.getElementById('drr_verdict');
-  if(drrV){
-    if(drrGap<=0){
-      drrV.innerHTML=`<div class="result-box green">On target. ₦${Math.round(-drrGap)} per battery above target.</div>`;
-    } else if(policy.asp){
-      const missingRev=Math.round(drrGap*a.total);
-      const lines=policy.options.map(opt=>{ const e=Math.ceil(missingRev/opt.agent); return `${e} more ${opt.h}hr rental${e!==1?'s':''} (₦${opt.agent} each)`; }).join('<br>— or ');
-      drrV.innerHTML=`<div class="result-box ${drrCls}">Gap: ₦${Math.round(drrGap)} DRR / ₦${missingRev.toLocaleString()} total<br>To close it:<br>— ${lines}</div>`;
-    } else {
-      const e=Math.ceil(Math.round(drrGap*a.total)/a.opt24.agent);
-      drrV.innerHTML=`<div class="result-box ${drrCls}">Gap: ₦${Math.round(drrGap)} DRR. Needs ${e} more rental${e!==1?'s':''} today.</div>`;
-    }
-  }
-
-  // Util mode gauge
-  const utilGS=document.getElementById('util_gaugeSection'); if(utilGS) utilGS.style.display='block';
-  const utilFill=document.getElementById('util_gaugeFill');
-  if(utilFill){ utilFill.style.width=Math.min(utilPct*2,100)+'%'; utilFill.style.background=colorHex(a.hrUtil,UTIL_TARGET); }
-  const utilRB=document.getElementById('util_resultBox');
-  if(utilRB) utilRB.innerHTML=`<div class="result-box ${utilCls}"><strong>${utilPct}% hourly utilisation — ${Math.round(a.battHoursUsed).toLocaleString()} of ${a.availHours.toLocaleString()} battery-hours used</strong></div>`;
-  const utilV=document.getElementById('util_verdict');
-  if(utilV){
-    if(utilGap<=0){
-      utilV.innerHTML=`<div class="result-box green">On target. ${Math.round(Math.abs(utilShortHours))} battery-hours above the 50% floor.</div>`;
-    } else {
-      utilV.innerHTML=`<div class="result-box ${utilCls}">Gap: ${utilShortHours} battery-hours short. Equivalent to ${utilShort24} more 24hr rental${utilShort24!==1?'s':''}, or ${Math.ceil(utilShortHours/12)} more 12hr rentals, or ${Math.ceil(utilShortHours/6)} more 6hr rentals.</div>`;
-    }
-  }
-
-  // Summary checker result (left panel)
-  document.getElementById('checkerResult').style.display='block';
-  document.getElementById('checkerResult').innerHTML=`<div class="result-box ${drrCls===utilCls?drrCls:(drrGap>0||utilGap>0?'amber':'green')}"><strong>DRR:</strong> ₦${Math.round(a.drr)} (${drrPct}%) &nbsp;·&nbsp; <strong>Hourly util:</strong> ${utilPct}% &nbsp;·&nbsp; ${drrGap<=0&&utilGap<=0?'Both on target ✓':'See results panel →'}</div>`;
+  document.getElementById('gaugeVerdict').innerHTML=verdict;
 }
 
-function calculate(preserveValues){
-  const policy=getPolicy(); if(!policy) return;
-  const total=agentBatteries.reduce((a,b)=>a+b,0);
-  const opt24=policy.options.find(o=>o.h===24);
-  const availHours=total*24;
-  const targetHours=availHours*UTIL_TARGET;
-  const targetDRRRentals=total>0?Math.ceil((DRR_TARGET*total)/opt24.agent):0;
-  const targetDRRPct=total>0?Math.round((targetDRRRentals/total)*100):0;
-  const targetDailyRev=DRR_TARGET*total;
+function calculate(){
+  const policy = getPolicy();
+  if(!policy) return;
+  const total = agentBatteries.reduce((a,b)=>a+b,0);
+  const opt24 = policy.options.find(o=>o.h===24);
+  const targetDailyRev = TARGET*total;
+  const targetRentals = total>0 ? Math.ceil(targetDailyRev/opt24.agent) : 0;
+  const targetPct = total>0 ? Math.round((targetRentals/total)*100) : 0;
 
-  // BOTH mode
-  document.getElementById('both_batteries').textContent=total;
-  document.getElementById('both_battHours').textContent=availHours.toLocaleString();
-  document.getElementById('both_targetRev').textContent='₦'+targetDailyRev.toLocaleString();
-  document.getElementById('both_drrTarget').textContent='₦'+DRR_TARGET;
-  document.getElementById('both_drrSub').textContent=targetDRRRentals+' rentals/day ('+targetDRRPct+'% of batteries)';
-  document.getElementById('both_utilTarget').textContent='50%';
-  document.getElementById('both_utilSub').textContent=targetHours.toLocaleString()+' battery-hours/day';
-
-  const bothExplainer=`<strong>Two ways to measure the same hub.</strong> Local DRR (₦${DRR_TARGET} target) asks: are we earning enough per battery? Hourly utilisation (50% target) asks: are we deploying our assets well? A hub can fail one and pass the other — that tells you different things. Both green = healthy hub.`;
-  document.getElementById('both_explainer').innerHTML=bothExplainer;
+  document.getElementById('totalBatteries').textContent=total;
+  document.getElementById('targetRentals').textContent=targetRentals;
+  document.getElementById('targetDailyRev').textContent='₦'+targetDailyRev.toLocaleString();
+  document.getElementById('targetMonthlyRev').textContent='₦'+(targetDailyRev*30).toLocaleString();
 
   if(policy.asp){
-    document.getElementById('both_aspTable').style.display='block';
-    document.getElementById('both_aspSub').textContent='Every rental earns revenue and uses battery-hours. Here is how each duration counts toward both targets.';
-    const tbody=document.getElementById('both_aspBody'); tbody.innerHTML='';
-    policy.options.slice().sort((a,b)=>b.h-a.h).forEach(opt=>{
-      const drrRatio=opt.agent/opt24.agent;
-      const hrRatio=opt.h/24;
-      const tr=document.createElement('tr');
-      if(opt.h===24) tr.className='row-active';
-      tr.innerHTML=`<td>${opt.h}hr</td><td>₦${opt.agent}</td><td>${opt.h} hrs</td><td>${Math.round(drrRatio*100)}% &nbsp;(${opt.h===24?'1 rental':(1/drrRatio).toFixed(2)+' needed'})</td><td>${Math.round(hrRatio*100)}% &nbsp;(${opt.h===24?'1 rental':(1/hrRatio).toFixed(2)+' needed'})</td>`;
-      tbody.appendChild(tr);
-    });
-  } else {
-    document.getElementById('both_aspTable').style.display='none';
-  }
-
-  // DRR mode
-  document.getElementById('drr_batteries').textContent=total;
-  document.getElementById('drr_dailyRev').textContent='₦'+targetDailyRev.toLocaleString();
-  document.getElementById('drr_monthlyRev').textContent='₦'+(targetDailyRev*30).toLocaleString();
-  document.getElementById('drr_targetRentals').textContent=targetDRRRentals;
-  document.getElementById('drr_targetLabel').textContent=policy.asp?'24hr-equivalent rentals needed per day':'rentals needed per day';
-  document.getElementById('drr_targetSub').textContent=targetDRRPct+'% of '+total+' batteries — at '+opt24.agent+'₦ agent price';
-  document.getElementById('drr_explainer').innerHTML=policy.asp?`<strong>What is a "24hr-equivalent rental"?</strong> On ASP, shorter rentals earn less. We convert everything into 24hr equivalents so the target stays simple: <strong>${targetDRRRentals} equivalents/day</strong>, however you get there.`:`<strong>Simple.</strong> One rental option at ₦${opt24.agent} agent price. Rent <strong>${targetDRRRentals} batteries/day</strong> to hit ₦${DRR_TARGET} DRR.`;
-  if(policy.asp){
-    document.getElementById('drr_aspTable').style.display='block';
-    document.getElementById('drr_aspSub').textContent='A 24hr rental at ₦'+opt24.agent+' is the benchmark. Here is what each shorter duration is worth in comparison.';
-    const tbody=document.getElementById('drr_aspBody'); tbody.innerHTML='';
+    document.getElementById('targetLabel').textContent='24hr-equivalent rentals needed per day';
+    document.getElementById('targetSub').textContent=`${targetPct}% of ${total} batteries — shorter ASP rentals count for less than one equivalent each`;
+    document.getElementById('explainerBox').innerHTML=`<strong>What is a "24hr-equivalent rental"?</strong> On ASP, not all rentals earn the same. A 6hr rental earns ₦${policy.options.find(o=>o.h===6)?.agent||'—'} and a 12hr earns ₦${policy.options.find(o=>o.h===12)?.agent||'—'} — both less than a 24hr at ₦${opt24.agent}. Rather than tracking mix, we convert everything into <strong>24hr-equivalent rentals</strong> — the number of full-price 24hr rentals that would generate the same revenue. The target is always <strong>${targetRentals} equivalents per day</strong>. Any mix of durations that gets you there counts equally.`;
+    document.getElementById('aspTableWrap').style.display='block';
+    document.getElementById('aspSub').textContent=`A 24hr rental at ₦${opt24.agent} is the benchmark. Shorter durations earn less — here is what each is worth.`;
+    const tbody=document.getElementById('aspTableBody');
+    tbody.innerHTML='';
     policy.options.slice().sort((a,b)=>b.h-a.h).forEach(opt=>{
       const ratio=opt.agent/opt24.agent;
-      const tr=document.createElement('tr'); if(opt.h===24) tr.className='row-active';
+      const tr=document.createElement('tr');
+      if(opt.h===24) tr.className='row-active';
       tr.innerHTML=`<td>${opt.h}hr</td><td>₦${opt.agent}</td><td>${Math.round(ratio*100)}%</td><td>${opt.h===24?'1 rental':(1/ratio).toFixed(2)+' rentals'}</td>`;
       tbody.appendChild(tr);
     });
-  } else { document.getElementById('drr_aspTable').style.display='none'; }
+  } else {
+    document.getElementById('targetLabel').textContent='rentals needed per day';
+    document.getElementById('targetSub').textContent=`${targetPct}% of ${total} batteries — one rental type, 24hr at ₦${opt24.agent} agent price`;
+    document.getElementById('explainerBox').innerHTML=`<strong>Simple.</strong> One rental option at ₦${opt24.agent} agent price. Rent <strong>${targetRentals} batteries per day</strong> and this hub hits ₦${TARGET} DRR — ${targetPct}% of the ${total}-battery fleet, every day.`;
+    document.getElementById('aspTableWrap').style.display='none';
+  }
 
-  // UTIL mode
-  document.getElementById('util_batteries').textContent=total;
-  document.getElementById('util_availHours').textContent=availHours.toLocaleString();
-  document.getElementById('util_targetHours').textContent=targetHours.toLocaleString();
-  document.getElementById('util_targetSub').textContent='50% of '+availHours.toLocaleString()+' available battery-hours across '+total+' batteries';
-  document.getElementById('util_explainer').innerHTML=`<strong>What is a battery-hour?</strong> You have ${total} batteries, each available for 24 hours = <strong>${availHours.toLocaleString()} battery-hours</strong> per day. Every rental consumes hours from that pool — a 24hr rental uses 24, a 6hr rental uses 6. The target is to monetise <strong>50% of the pool (${targetHours.toLocaleString()} hrs)</strong> regardless of price or policy. A hub on ₦600 and a hub on ₦800 both target 50%. Pricing is a separate conversation.`;
-
-  const utilTable=document.getElementById('util_aspTable');
-  document.getElementById('util_aspSub').textContent='A 24hr rental uses all 24 available hours for that battery. Shorter rentals use fewer — and may allow the battery to go out again the same day.';
-  const utilBody=document.getElementById('util_aspBody'); utilBody.innerHTML='';
-  policy.options.slice().sort((a,b)=>b.h-a.h).forEach(opt=>{
-    const pctOfDay=Math.round((opt.h/24)*100);
-    const needed=opt.h===24?'1 rental':(24/opt.h).toFixed(2)+' rentals';
-    const tr=document.createElement('tr'); if(opt.h===24) tr.className='row-active';
-    tr.innerHTML=`<td>${opt.h}hr</td><td>${opt.h} hrs</td><td>${pctOfDay}%</td><td>${needed}</td>`;
-    utilBody.appendChild(tr);
-  });
-
-  renderCheckerInputs(preserveValues);
+  renderCheckerInputs();
   updateChecker();
 }
 
 // Custom policy builder
 function addCustomRow(){
   customRowCount++;
-  const id=customRowCount;
-  const wrap=document.getElementById('customRows');
-  const row=document.createElement('div'); row.className='policy-row'; row.id='crow_'+id;
-  row.innerHTML=`<input type="number" placeholder="24" min="1" max="48" id="ch_${id}" style="text-align:center;"><input type="number" placeholder="800" id="cc_${id}"><input type="number" placeholder="680" id="ca_${id}"><button class="remove-btn" onclick="removeCustomRow(${id})">×</button>`;
+  const id = customRowCount;
+  const wrap = document.getElementById('customRows');
+  const row = document.createElement('div');
+  row.className='policy-row';
+  row.id='crow_'+id;
+  row.innerHTML=`
+    <input type="number" placeholder="24" min="1" max="48" id="ch_${id}" style="text-align:center;">
+    <input type="number" placeholder="800" min="1" id="cc_${id}">
+    <input type="number" placeholder="680" min="1" id="ca_${id}">
+    <button class="remove-btn" onclick="removeCustomRow(${id})">×</button>
+  `;
   wrap.appendChild(row);
 }
 
-function removeCustomRow(id){ const el=document.getElementById('crow_'+id); if(el) el.remove(); }
+function removeCustomRow(id){
+  const el = document.getElementById('crow_'+id);
+  if(el) el.remove();
+}
 
 function buildCustomPolicy(){
-  const name=document.getElementById('customPolicyName').value.trim()||'Custom Policy';
-  const rows=document.querySelectorAll('#customRows .policy-row');
-  if(!rows.length){ alert('Add at least one duration tier.'); return; }
-  const options=[]; let valid=true;
+  const name = document.getElementById('customPolicyName').value.trim() || 'Custom Policy';
+  const rows = document.querySelectorAll('#customRows .policy-row');
+  if(rows.length===0){ alert('Add at least one duration tier.'); return; }
+
+  const options=[];
+  let valid=true;
   rows.forEach(row=>{
     const id=row.id.replace('crow_','');
     const h=parseInt(document.getElementById('ch_'+id).value);
@@ -780,20 +793,29 @@ function buildCustomPolicy(){
     if(!h||!c||!a){ valid=false; return; }
     options.push({h,customer:c,agent:a});
   });
-  if(!valid){ alert('Please fill in all fields.'); return; }
+
+  if(!valid){ alert('Please fill in all fields for each tier.'); return; }
   if(!options.find(o=>o.h===24)){ alert('Must include a 24hr tier.'); return; }
-  const key='custom_'+Date.now();
-  customPolicies[key]={ label:name, asp:options.length>1, options };
-  const og=document.getElementById('customOptGroup');
-  const opt=document.createElement('option'); opt.value=key; opt.textContent=name;
-  og.appendChild(opt);
+
+  const key = 'custom_'+Date.now();
+  const asp = options.length > 1;
+  customPolicies[key] = { label:name, asp, options };
+
+  const optGroup = document.getElementById('customOptGroup');
+  const opt = document.createElement('option');
+  opt.value=key; opt.textContent=name;
+  optGroup.appendChild(opt);
   document.getElementById('policy').value=key;
+
   const opt24=options.find(o=>o.h===24);
   const total=agentBatteries.reduce((a,b)=>a+b,0);
-  const tR=total>0?Math.ceil((DRR_TARGET*total)/opt24.agent):0;
-  const tH=total*24*UTIL_TARGET;
-  document.getElementById('customPolicyResult').style.display='block';
-  document.getElementById('customPolicyResult').innerHTML=`<strong>${name}</strong> added.<br>DRR target: ${tR} rentals/day &nbsp;·&nbsp; Hourly util. target: ${tH.toLocaleString()} battery-hours/day`;
+  const targetRentals=total>0?Math.ceil((TARGET*total)/opt24.agent):0;
+  const targetPct=total>0?Math.round((targetRentals/total)*100):0;
+
+  const resultEl=document.getElementById('customPolicyResult');
+  resultEl.style.display='block';
+  resultEl.innerHTML=`<strong>${name}</strong> added to policy list.<br>24hr agent price: ₦${opt24.agent} &nbsp;·&nbsp; Target: ${targetRentals} rentals/day (${targetPct}% of ${total} batteries)`;
+
   calculate();
 }
 
