@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'Hub DRR Calculator',
+        url: '/work/hub-drr-calculator%20final.html',
+        date: '2026-02-24',
+        description: 'Daily Rental Revenue calculator for MOPO Hubs'
+    },
+    {
         title: 'MOPO Hub Target Calculator',
         url: '/work/hub-target-calculator.html',
         date: '2026-02-23',

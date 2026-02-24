@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub DRR Calculator - joeldelaney</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #f4f3f0;
+    --surface: #ffffff;
+    --surface2: #f0eeeb;
+    --border: #dddbd7;
+    --text: #1a1916;
+    --muted: #8a8880;
+    --purple: #6b3fa0;
+    --purple-light: #f0eaf8;
+    --green: #1a6b45;
+    --green-light: #e8f4ee;
+    --amber: #b7690a;
+    --amber-light: #fef8ee;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --c24: #1a6b45;
+    --c12: #b7690a;
+    --c6: #5a4fcf;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  main { max-width: none; padding: 0; }
+
+  .calc-wrap * { box-sizing: border-box; }
+
+  .calc-wrap {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 32px 24px;
+    font-size: 15px;
+  }
+
+  .calc-header {
+    max-width: 1100px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+  }
+
+  .calc-header h2 { font-size: 18px; font-weight: 600; letter-spacing: -0.2px; margin: 0; }
+  .calc-header p { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  .layout { display: grid; grid-template-columns: 320px 1fr; gap: 20px; max-width: 1100px; }
+
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .panel + .panel { margin-top: 16px; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .field-group { margin-bottom: 16px; }
+  .calc-wrap label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+
+  .calc-wrap select, .calc-wrap input[type="number"], .calc-wrap input[type="text"] {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 8px 10px;
+    outline: none;
+    transition: border-color .15s;
+    appearance: none;
+  }
+
+  .calc-wrap select:focus, .calc-wrap input:focus { border-color: var(--green); }
+
+  .agents-grid { display: flex; flex-direction: column; gap: 8px; }
+  .agent-row { display: grid; grid-template-columns: 72px 1fr; gap: 8px; align-items: center; }
+  .agent-label { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* Thresholds */
+  .threshold-row {
+    display: grid;
+    grid-template-columns: 12px 1fr 90px;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .t-label { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  /* Checker */
+  .checker-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+  .checker-row { display: grid; grid-template-columns: 48px 1fr 60px; gap: 8px; align-items: center; }
+  .clabel { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .checker-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* Big DRR output */
+  .drr-hero {
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border: 2px solid;
+    transition: background .3s, border-color .3s;
+  }
+
+  .drr-hero.purple{ background: var(--purple-light); border-color: #d0b8f0; }
+  .drr-hero.green { background: var(--green-light);  border-color: #b8dfc8; }
+  .drr-hero.amber { background: var(--amber-light);  border-color: #f0d0a0; }
+  .drr-hero.red   { background: var(--red-light);    border-color: #f0c0b8; }
+  .drr-hero.none  { background: var(--surface2);     border-color: var(--border); }
+
+  .hero-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .hero-left {}
+
+  .drr-big {
+    font-family: var(--mono);
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1;
+    transition: color .3s;
+  }
+
+  .drr-big.purple{ color: var(--purple); }
+  .drr-big.green { color: var(--green); }
+  .drr-big.amber { color: var(--amber); }
+  .drr-big.red   { color: var(--red); }
+  .drr-big.none  { color: var(--muted); }
+
+  .hero-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .hero-right {
+    text-align: right;
+  }
+
+  .hero-usd {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--muted);
+    line-height: 1;
+  }
+
+  .hero-drr-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  .hero-status {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .hero-pct {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  /* Traffic lights */
+  .traffic-lights {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .tl-zone {
+    border-radius: 7px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    opacity: 0.4;
+    transition: opacity .2s, border-color .2s;
+    text-align: center;
+  }
+
+  .tl-zone.active { opacity: 1; }
+  .tl-zone.purple{ background: var(--purple-light); }
+  .tl-zone.green { background: var(--green-light); }
+  .tl-zone.amber { background: var(--amber-light); }
+  .tl-zone.red   { background: var(--red-light); }
+  .tl-zone.active.purple{ border-color: var(--purple); }
+  .tl-zone.active.green { border-color: var(--green); }
+  .tl-zone.active.amber { border-color: var(--amber); }
+  .tl-zone.active.red   { border-color: var(--red); }
+
+  .tl-dot { width: 12px; height: 12px; border-radius: 50%; margin: 0 auto 6px; }
+  .purple .tl-dot { background: var(--purple); }
+  .green  .tl-dot { background: var(--green); }
+  .amber  .tl-dot { background: var(--amber); }
+  .red    .tl-dot { background: var(--red); }
+
+  .tl-range { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--text); }
+  .tl-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* What it takes box */
+  .takes-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  .takes-box strong { color: var(--text); }
+  .takes-box .tb-title { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+  /* ASP equiv table */
+  .table-wrap { border: 1px solid var(--border); border-radius: 7px; overflow: hidden; margin-bottom: 16px; }
+  .table-header { background: var(--surface2); padding: 10px 14px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .calc-wrap table { width: 100%; border-collapse: collapse; }
+  .calc-wrap th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px 14px; background: var(--surface2); border-bottom: 1px solid var(--border); font-weight: 500; }
+  .calc-wrap th:first-child { text-align: left; }
+  .calc-wrap td { font-family: var(--mono); font-size: 12.5px; padding: 9px 14px; border-top: 1px solid var(--border); text-align: right; color: var(--text); }
+  .calc-wrap td:first-child { text-align: left; color: var(--muted); }
+  .calc-wrap .row-active td { color: var(--green); font-weight: 500; }
+  .calc-wrap .row-active td:first-child { color: var(--green); }
+
+  /* Mix */
+  .mix-wrap { border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+  .mix-header {
+    background: var(--surface2);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mix-header-title { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .mix-flag { font-family: var(--mono); font-size: 10px; padding: 2px 8px; border-radius: 3px; font-weight: 500; }
+  .mix-flag.warn-6hr  { background: #ede8ff; color: var(--c6); border: 1px solid #c8bff5; }
+  .mix-flag.warn-24hr { background: var(--amber-light); color: var(--amber); border: 1px solid #f0d0a0; }
+  .mix-flag.ok        { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+  .mix-body { padding: 14px; }
+  .mix-bar { height: 18px; border-radius: 5px; overflow: hidden; display: flex; background: var(--surface2); margin-bottom: 10px; }
+  .mix-seg { height: 100%; transition: width .4s ease; }
+  .mix-seg.s24 { background: var(--c24); }
+  .mix-seg.s12 { background: var(--c12); }
+  .mix-seg.s6  { background: var(--c6); }
+  .mix-legend { display: flex; gap: 14px; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .mix-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+  .mix-note { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.7; padding-top: 10px; border-top: 1px solid var(--border); }
+
+  /* Policy preview card */
+  .policy-preview {
+    display: none;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .pp-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 1fr;
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--border);
+    gap: 4px;
+  }
+  .pp-row:last-child { border-bottom: none; }
+  .pp-row.header { font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); background: var(--surface2); }
+  .pp-row.anchor { background: var(--green-light); }
+  .pp-dur { color: var(--muted); }
+  .pp-row.anchor .pp-dur { color: var(--green); font-weight: 500; }
+  .pp-cust { text-align: right; color: var(--text); }
+  .pp-agent { text-align: right; color: var(--green); font-weight: 500; }
+  .pp-row.anchor .pp-agent { color: var(--green); }
+  .pp-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 12px;
+    background: #e0ede7;
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 500;
+    border-top: 1px solid #c8ddd4;
+  }
+
+  /* Right panel tabs */
+  .right-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .right-tab {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 9px 16px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .15s, border-color .15s;
+    letter-spacing: 0.3px;
+  }
+  .right-tab.active { color: var(--text); border-bottom-color: var(--green); }
+  .right-tab:hover { color: var(--text); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Reference table */
+  .ref-country { margin-bottom: 24px; }
+  .ref-country-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .ref-country-name { font-weight: 600; font-size: 13px; }
+  .ref-currency { font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: 3px; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+  .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .ref-card { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+  .ref-card-header { padding: 9px 13px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .ref-card-name { font-weight: 600; font-size: 12px; }
+  .ref-type { font-family: var(--mono); font-size: 10px; padding: 2px 6px; border-radius: 3px; }
+  .ref-type.MOPO50 { background: #e8eef8; color: #2e5fa3; }
+  .ref-type.GENREP { background: #fef8ee; color: var(--amber); }
+  .ref-tier { display: grid; grid-template-columns: 36px 1fr 1fr; padding: 7px 13px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; gap: 4px; }
+  .ref-tier:last-of-type { border-bottom: none; }
+  .ref-tier.anchor { background: var(--green-light); }
+  .ref-tier-h { color: var(--muted); }
+  .ref-tier.anchor .ref-tier-h { color: var(--green); font-weight: 500; }
+  .ref-tier-c { text-align: right; color: var(--text); }
+  .ref-tier-a { text-align: right; color: var(--green); font-weight: 500; }
+  .ref-card-footer { padding: 7px 13px; background: #e0ede7; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--green); border-top: 1px solid #c8ddd4; font-weight: 500; }
+  .policy-row { display: grid; grid-template-columns: 60px 1fr 1fr 28px; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .remove-btn { background: none; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); cursor: pointer; font-size: 14px; height: 28px; width: 28px; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+  .remove-btn:hover { border-color: var(--red); color: var(--red); }
+  .add-btn { background: none; border: 1px solid var(--border); border-radius: 5px; color: var(--muted); cursor: pointer; font-family: var(--mono); font-size: 11px; padding: 7px 12px; margin-top: 4px; transition: all .15s; }
+  .add-btn:hover { border-color: var(--green); color: var(--green); }
+
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="pw-gate" style="position:fixed;inset:0;background:#1A4957;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <div style="text-align:center;padding:2rem;max-width:380px;width:100%;box-sizing:border-box;">
+    <h2 style="color:#fff;font-size:1.6rem;font-weight:600;margin:0 0 0.4rem;">joeldelaney</h2>
+    <p style="color:#b0d4dd;margin:0 0 2rem;font-size:0.95rem;">Enter password to continue</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="current-password" style="width:100%;padding:12px 16px;background:#0f3340;border:1px solid #2d6575;border-radius:6px;color:#fff;font-size:1rem;margin-bottom:0.75rem;outline:none;box-sizing:border-box;" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()" style="width:100%;padding:12px;background:#fff;color:#1A4957;border:none;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer;">Continue</button>
+    <p id="pw-err" style="color:#e07070;margin:1rem 0 0;font-size:0.9rem;display:none;">Incorrect password — try again</p>
+  </div>
+</div>
+<script>
+(function(){
+  const PW_HASH='37afc1f49bee96456c3da066936372f00ad403404c2167405605840ceaba9ec0';
+  if(sessionStorage.getItem('work_auth')==='1'){document.getElementById('pw-gate').style.display='none';return;}
+  async function checkPw(){
+    const val=document.getElementById('pw-input').value;
+    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(val));
+    const hash=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hash===PW_HASH){sessionStorage.setItem('work_auth','1');document.getElementById('pw-gate').style.display='none';}
+    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';document.getElementById('pw-input').focus();}
+  }
+  window.checkPw=checkPw;
+  document.getElementById('pw-input').focus();
+})();
+</script>
+
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../">Home</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../work/" class="active">Work</a></li>
+                <li><a href="../benedict/">Benedict</a></li>
+                <li><a href="../book/">Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="calc-wrap">
+
+<div class="calc-header">
+  <h2>MOPO Hub DRR Calculator</h2>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT -->
+  <div>
+    <div class="panel">
+      <div class="section-label">Hub Setup</div>
+
+      <div class="field-group">
+        <label>Country</label>
+        <select id="country" onchange="onCountryChange()">
+          <option value="NG" selected>🇳🇬 Nigeria (NGN)</option>
+          <option value="CD">🇨🇩 DRC (CDF)</option>
+          <option value="SL">🇸🇱 Sierra Leone (SLE)</option>
+          <option value="LR">🇱🇷 Liberia (LRD)</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Hub Type</label>
+        <select id="hubType" onchange="onHubTypeChange()">
+          <option value="MOPO50" selected>MOPO50</option>
+          <option value="GENREP">GENREP</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Pricing Policy</label>
+        <select id="policy" onchange="renderPolicyPreview();calculate()">
+        </select>
+        <div class="policy-preview" id="policyPreview"></div>
+      </div>
+
+      <div class="field-group">
+        <label>Number of Agents</label>
+        <select id="agentCount" onchange="onAgentCountChange()">
+          <option value="1">1 agent</option>
+          <option value="2">2 agents</option>
+          <option value="3">3 agents</option>
+          <option value="4" selected>4 agents</option>
+          <option value="5">5 agents</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Batteries per Agent</label>
+        <div class="agents-grid" id="agentsGrid"></div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section-label">Rentals</div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Enter example rentals by duration to check DRR.</p>
+      <div class="checker-inputs" id="checkerInputs"></div>
+    </div>
+
+    <!-- Exchange rates -->
+    <div class="panel">
+      <div class="section-label">Exchange Rates</div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Update monthly. Used to show USD equivalent DRR.</p>
+      <div style="display:grid;grid-template-columns:50px 1fr;gap:8px;align-items:center;font-family:var(--mono);font-size:12px;">
+        <label style="color:var(--muted)">🇳🇬 ₦</label>
+        <input type="number" id="fx_NG" value="1350" min="1" oninput="updateCalc()" style="padding:6px 8px;">
+        <label style="color:var(--muted)">🇨🇩 FC</label>
+        <input type="number" id="fx_CD" value="2125" min="1" oninput="updateCalc()" style="padding:6px 8px;">
+        <label style="color:var(--muted)">🇸🇱 SLE</label>
+        <input type="number" id="fx_SL" value="23" min="1" oninput="updateCalc()" style="padding:6px 8px;">
+        <label style="color:var(--muted)">🇱🇷 L$</label>
+        <input type="number" id="fx_LR" value="183" min="1" oninput="updateCalc()" style="padding:6px 8px;">
+      </div>
+      <p style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:10px;">1 USD = above local currency</p>
+      <input type="hidden" id="tGreen" value="270">
+      <input type="hidden" id="tAmber" value="200">
+      <input type="hidden" id="tPurple" value="340">
+    </div>
+
+    <!-- Custom policy builder -->
+    <div class="panel">
+      <div class="section-label">Test a New Policy</div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7;">Add a custom pricing policy to trial against the calculator.</p>
+      <input type="text" id="customPolicyName" placeholder="e.g. ₦750 ASP Trial" style="margin-bottom:10px;">
+      <div style="display:grid;grid-template-columns:50px 1fr 1fr 28px;gap:8px;margin-bottom:6px;">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">HR</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">CUSTOMER</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">AGENT</span>
+        <span></span>
+      </div>
+      <div id="customRows"></div>
+      <button class="add-btn" onclick="addCustomRow()">+ Add tier</button>
+      <button class="add-btn" onclick="buildCustomPolicy()" style="margin-left:8px;border-color:var(--green);color:var(--green);">Add to policy list →</button>
+      <div id="customPolicyResult" style="display:none;margin-top:12px;font-family:var(--mono);font-size:11px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:12px;line-height:1.8;color:var(--muted);"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div>
+    <div class="panel">
+      <div class="right-tabs">
+        <button class="right-tab active" onclick="switchTab('calc')">CALCULATOR</button>
+        <button class="right-tab" onclick="switchTab('ref')">POLICY REFERENCE</button>
+        <button class="right-tab" onclick="switchTab('zones')">PERFORMANCE ZONES</button>
+      </div>
+
+      <div class="tab-content active" id="tab_calc">
+      <div class="drr-hero none" id="drrHero">
+        <div class="hero-top">
+          <div class="hero-left">
+            <div class="drr-big none" id="drrBig">₦—</div>
+            <div class="hero-sub" id="drrFrom">enter rentals below</div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-usd" id="drrUsdLabel">—</div>
+            <div class="hero-drr-label">USD DRR</div>
+          </div>
+        </div>
+        <div class="hero-status" id="drrStatus">Enter rentals to see DRR</div>
+        <div class="hero-pct" id="drrPct"></div>
+        <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;gap:2px;">
+          <div id="segRed"    style="background:var(--red);   transition:flex .4s ease;flex:0"></div>
+          <div id="segAmber"  style="background:var(--amber); transition:flex .4s ease;flex:0"></div>
+          <div id="segGreen"  style="background:var(--green); transition:flex .4s ease;flex:0"></div>
+          <div id="segPurple" style="background:var(--purple);transition:flex .4s ease;flex:0"></div>
+          <div id="segEmpty"  style="background:rgba(0,0,0,0.08);flex:1"></div>
+        </div>
+      </div>
+
+      <!-- Traffic lights -->
+      <div class="traffic-lights" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+        <div class="tl-zone red" id="tl_red">
+          <div class="tl-dot"></div>
+          <div class="tl-range" id="tl_red_range">&lt; 40%</div>
+          <div class="tl-label">Below target</div>
+        </div>
+        <div class="tl-zone amber" id="tl_amber">
+          <div class="tl-dot"></div>
+          <div class="tl-range" id="tl_amber_range">40–50%</div>
+          <div class="tl-label">Approaching</div>
+        </div>
+        <div class="tl-zone green" id="tl_green">
+          <div class="tl-dot"></div>
+          <div class="tl-range" id="tl_green_range">50–60%</div>
+          <div class="tl-label">On target</div>
+        </div>
+        <div class="tl-zone purple" id="tl_purple">
+          <div class="tl-dot"></div>
+          <div class="tl-range" id="tl_purple_range">&gt; 60%</div>
+          <div class="tl-label">Exceptional</div>
+        </div>
+      </div>
+
+      <!-- Inline zones summary -->
+      <div id="inlineZones" style="margin-bottom:16px;font-family:var(--mono);font-size:12px;border:1px solid var(--border);border-radius:8px;overflow:hidden;"></div>
+
+      <!-- Mix -->
+      <div class="mix-wrap" id="mixWrap" style="display:none;">
+        <div class="mix-header">
+          <div class="mix-header-title">Rental Mix</div>
+          <div class="mix-flag ok" id="mixFlag">—</div>
+        </div>
+        <div class="mix-body">
+          <div class="mix-bar" id="mixBar">
+            <div class="mix-seg s24" id="mixSeg24" style="width:0%"></div>
+            <div class="mix-seg s12" id="mixSeg12" style="width:0%"></div>
+            <div class="mix-seg s6"  id="mixSeg6"  style="width:0%"></div>
+          </div>
+          <div class="mix-legend" id="mixLegend"></div>
+          <div class="mix-note" id="mixNote"></div>
+        </div>
+      </div>
+
+      </div><!-- end tab_calc -->
+
+      <div class="tab-content" id="tab_ref">
+        <div id="refContent"></div>
+      </div>
+
+      <div class="tab-content" id="tab_zones">
+        <div id="zonesContent"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        </div><!-- end calc-wrap -->
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+<script>
+const ALL_POLICIES = {
+  'NG_MOPO50_800asp':   { label:'₦800 ASP — 6/12/24hr',      country:'NG', type:'MOPO50', asp:true,  anchor:24, options:[{h:24,customer:800,agent:680},{h:12,customer:600,agent:540},{h:6,customer:400,agent:350}] },
+  'NG_MOPO50_800std':   { label:'₦800 Standard — 24hr',       country:'NG', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:800,agent:680}] },
+  'NG_MOPO50_700asp':   { label:'₦700 ASP — 6/12/24hr',       country:'NG', type:'MOPO50', asp:true,  anchor:24, options:[{h:24,customer:700,agent:600},{h:12,customer:600,agent:540},{h:6,customer:400,agent:350}] },
+  'NG_MOPO50_600std':   { label:'₦600 Standard — 24hr',       country:'NG', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:600,agent:500}] },
+  'NG_MOPO50_500std':   { label:'₦500 Standard — Kano',       country:'NG', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:500,agent:420}] },
+  'NG_MOPO50_400promo': { label:'₦400 Promo — Kano',          country:'NG', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:400,agent:320}] },
+  'NG_GENREP':          { label:'GENREP — 6/12hr',             country:'NG', type:'GENREP', asp:true,  anchor:12, options:[{h:12,customer:4500,agent:4100},{h:6,customer:2500,agent:2100}] },
+  'CD_MOPO50':          { label:'MOPO50 — 24hr',               country:'CD', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:1500,agent:1200}] },
+  'CD_GENREP':          { label:'GENREP — 6/12hr',             country:'CD', type:'GENREP', asp:true,  anchor:12, options:[{h:12,customer:8000,agent:7200},{h:6,customer:6000,agent:5200}] },
+  'SL_MOPO50':          { label:'MOPO50 — 24hr',               country:'SL', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:12,agent:9}] },
+  'SL_GENREP':          { label:'GENREP — 6/12/24hr',          country:'SL', type:'GENREP', asp:true,  anchor:24, options:[{h:24,customer:1000,agent:955},{h:12,customer:600,agent:555},{h:6,customer:400,agent:355}] },
+  'LR_MOPO50_100':      { label:'MOPO50 — 24hr — 100LRD',      country:'LR', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:100,agent:75}] },
+  'LR_MOPO50_150':      { label:'MOPO50 — 24hr — 150LRD',      country:'LR', type:'MOPO50', asp:false, anchor:24, options:[{h:24,customer:150,agent:115}] },
+  'LR_GENREP':          { label:'GENREP — 6/12/24hr',          country:'LR', type:'GENREP', asp:true,  anchor:24, options:[{h:24,customer:1000,agent:955},{h:12,customer:600,agent:555},{h:6,customer:400,agent:355}] },
+};
+
+const CURRENCY = { NG:'₦', CD:'FC', SL:'SLE', LR:'L$' };
+const COUNTRY_THRESHOLDS = {
+  MOPO50: {
+    NG: { purple:340, green:270, amber:200 },
+    CD: { purple:530, green:425, amber:320 },
+    SL: { purple:6,   green:5,   amber:4   },
+    LR: { purple:46,  green:36,  amber:26  },
+  },
+  GENREP: {
+    NG: { purple:2690, green:2150, amber:1600 },
+    CD: { purple:4250, green:3400, amber:2500 },
+    SL: { purple:45,   green:36,   amber:28   },
+    LR: { purple:370,  green:300,  amber:220  },
+  },
+};
+
+function setThresholdsFromPolicy(){
+  const country = document.getElementById('country').value;
+  const type    = document.getElementById('hubType').value;
+  const t = (COUNTRY_THRESHOLDS[type]||COUNTRY_THRESHOLDS.MOPO50)[country] || { purple:340, green:270, amber:200 };
+  document.getElementById('tPurple').value = t.purple;
+  document.getElementById('tGreen').value  = t.green;
+  document.getElementById('tAmber').value  = t.amber;
+}
+
+let agentBatteries = [75,75,75,75];
+let customPolicies = {};
+let customRowCount = 0;
+
+function getPolicy(){
+  const k = document.getElementById('policy').value;
+  return ALL_POLICIES[k] || customPolicies[k];
+}
+function getCurrency(){
+  return CURRENCY[document.getElementById('country').value] || '';
+}
+function formatLocal(val){
+  const country = document.getElementById('country').value;
+  if(country === 'SL') return parseFloat(val.toFixed(2)).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
+  return Math.round(val).toLocaleString();
+}
+function getThresholds(){
+  return {
+    purple: parseFloat(document.getElementById('tPurple').value) || 408,
+    green:  parseFloat(document.getElementById('tGreen').value)  || 340,
+    amber:  parseFloat(document.getElementById('tAmber').value)  || 272,
+  };
+}
+function getColor(drr, t){
+  if(drr >= t.purple) return 'purple';
+  if(drr >= t.green)  return 'green';
+  if(drr >= t.amber)  return 'amber';
+  return 'red';
+}
+
+function getPoliciesFor(country, type){
+  const standard = Object.entries(ALL_POLICIES).filter(([k,v]) => v.country===country && v.type===type);
+  const custom = Object.entries(customPolicies).filter(([k,v]) => v.country===country && v.type===type);
+  return [...standard, ...custom];
+}
+
+function populatePolicyDropdown(){
+  const country = document.getElementById('country').value;
+  const type = document.getElementById('hubType').value;
+  const sel = document.getElementById('policy');
+  sel.innerHTML = '';
+  getPoliciesFor(country, type).forEach(([k,v]) => {
+    const opt = document.createElement('option');
+    opt.value = k; opt.textContent = v.label;
+    sel.appendChild(opt);
+  });
+}
+
+function onCountryChange(){
+  populatePolicyDropdown();
+  onHubTypeChange(true);
+}
+
+function onHubTypeChange(skipDropdown){
+  if(!skipDropdown) populatePolicyDropdown();
+  const type = document.getElementById('hubType').value;
+  const agentSel = document.getElementById('agentCount');
+  if(type === 'MOPO50'){
+    agentBatteries = [75,75,75,75];
+    agentSel.value = '4';
+  } else {
+    agentBatteries = [15];
+    agentSel.value = '1';
+  }
+  setThresholdsFromPolicy();
+  renderPolicyPreview();
+  renderAgentInputs();
+  renderCheckerInputs(false);
+  calculate();
+}
+
+function onAgentCountChange(){
+  const n = parseInt(document.getElementById('agentCount').value);
+  while(agentBatteries.length < n) agentBatteries.push(75);
+  agentBatteries = agentBatteries.slice(0, n);
+  renderAgentInputs();
+  updateCalc();
+}
+
+function renderAgentInputs(){
+  const grid = document.getElementById('agentsGrid');
+  grid.innerHTML = '';
+  agentBatteries.forEach((b,i) => {
+    const row = document.createElement('div'); row.className = 'agent-row';
+    row.innerHTML = `<span class="agent-label">Agent ${i+1}</span><input type="number" min="1" max="200" value="${b}" oninput="agentBatteries[${i}]=parseInt(this.value)||0;updateCalc()">`;
+    grid.appendChild(row);
+  });
+}
+
+function renderCheckerInputs(preserve){
+  const policy = getPolicy(); if(!policy) return;
+  const saved = {};
+  [6,12,24].forEach(h => { const el = document.getElementById('act_'+h); if(el) saved[h] = el.value; });
+  const c = document.getElementById('checkerInputs'); c.innerHTML = '';
+  const durations = policy.asp ? policy.options.slice().sort((a,b) => b.h-a.h) : [{h:policy.anchor}];
+  durations.forEach(d => {
+    const row = document.createElement('div'); row.className = 'checker-row';
+    const val = preserve && saved[d.h] ? saved[d.h] : '0';
+    row.innerHTML = `<span class="clabel">${d.h}hr</span><input type="number" min="0" value="${val}" id="act_${d.h}" oninput="updateCalc()" placeholder="0"><span class="checker-hint">rentals</span>`;
+    c.appendChild(row);
+  });
+}
+
+function calculate(preserve){
+  const policy = getPolicy(); if(!policy) return;
+  const t = getThresholds();
+  const cur = getCurrency();
+  const total = agentBatteries.reduce((a,b) => a+b, 0);
+  const optAnchor = policy.options.find(o => o.h === policy.anchor);
+  const anchorLabel = policy.anchor+'hr';
+
+  // Traffic light label updates
+  document.getElementById('tl_red_range').textContent    = `< ${cur}${formatLocal(t.amber)}`;
+  document.getElementById('tl_amber_range').textContent  = `${cur}${formatLocal(t.amber)}–${cur}${formatLocal(t.green)}`;
+  document.getElementById('tl_green_range').textContent  = `${cur}${formatLocal(t.green)}–${cur}${formatLocal(t.purple)}`;
+  document.getElementById('tl_purple_range').textContent = `> ${cur}${formatLocal(t.purple)}`;
+  const amberPct  = Math.round((t.amber  / t.purple) * 100);
+  const greenPct  = Math.round((t.green  / t.purple) * 100);
+
+  // Inline zones
+  renderInlineZones();
+
+  renderCheckerInputs(preserve !== false);
+  updateCalc();
+}
+
+function getFxRate(){
+  const country = document.getElementById('country').value;
+  return parseFloat(document.getElementById('fx_'+country).value) || 1;
+}
+
+function renderInlineZones(){
+  const t = getThresholds();
+  const cur = getCurrency();
+  const fx = getFxRate();
+  const total = agentBatteries.reduce((a,b) => a+b, 0);
+  const type = document.getElementById('hubType').value;
+  const usdZones = type === 'GENREP'
+    ? { purple:'$2.00', green:'$1.60', amber:'$1.20' }
+    : { purple:'$0.25', green:'$0.20', amber:'$0.15' };
+
+  const row = (bg, dot, label, usd, local) => `
+    <div style="display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:9px 14px;background:${bg};border-bottom:1px solid var(--border);">
+      <span style="width:9px;height:9px;border-radius:50%;background:${dot};display:inline-block;"></span>
+      <span style="font-weight:500;color:${dot};">${label}</span>
+      <span style="color:var(--muted);font-size:11px;">${usd}</span>
+      <span style="font-weight:600;color:${dot};">${cur}${formatLocal(local)}</span>
+    </div>`;
+
+  document.getElementById('inlineZones').innerHTML =
+    row('var(--purple-light)', 'var(--purple)', 'Exceptional', usdZones.purple, t.purple) +
+    row('var(--green-light)',  'var(--green)',  'On target',   usdZones.green,  t.green)  +
+    row('var(--amber-light)', 'var(--amber)',  'Approaching', usdZones.amber,  t.amber)  +
+    `<div style="display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:9px 14px;background:var(--red-light);">
+      <span style="width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;"></span>
+      <span style="font-weight:500;color:var(--red);">Below target</span>
+      <span style="color:var(--muted);font-size:11px;">&lt;${type==='GENREP'?'$1.20':'$0.15'}</span>
+      <span style="font-weight:600;color:var(--red);">&lt;${cur}${formatLocal(t.amber)}</span>
+    </div>`;
+}
+
+// updateCalc: recalculates results without re-rendering checker inputs
+function updateCalc(){
+  const policy = getPolicy(); if(!policy) return;
+  const t = getThresholds();
+  const cur = getCurrency();
+  const total = agentBatteries.reduce((a,b) => a+b, 0);
+  const optAnchor = policy.options.find(o => o.h === policy.anchor);
+
+  const sortedOpts = policy.options.slice().sort((a,b) => b.h-a.h);
+  let rev=0, totalRentals=0;
+  const optCounts = {};
+  policy.options.forEach(opt => {
+    const el = document.getElementById('act_'+opt.h); if(!el) return;
+    const count = parseInt(el.value)||0;
+    rev += count * opt.agent;
+    totalRentals += count;
+    optCounts[opt.h] = count;
+  });
+
+  const hasInput = totalRentals > 0;
+  const drr = total>0 ? rev/total : 0;
+  const cls = hasInput ? getColor(drr, t) : 'none';
+  const pctOfGreen = Math.round((drr/t.green)*100);
+
+  // Hero box
+  const hero = document.getElementById('drrHero');
+  const big  = document.getElementById('drrBig');
+  hero.className = 'drr-hero ' + (hasInput ? cls : 'none');
+  big.className  = 'drr-big '  + (hasInput ? cls : 'none');
+  big.textContent = hasInput ? cur+formatLocal(drr) : cur+'—';
+  const fx = getFxRate();
+  const drrUsd = fx > 0 ? ' · $'+(drr/fx).toFixed(2) : '';
+  document.getElementById('drrFrom').textContent = hasInput ? `${totalRentals} rentals · ${total} batteries` : '—';
+  document.getElementById('drrUsdLabel').textContent = hasInput && fx > 0 ? '$'+(drr/fx).toFixed(2) : '—';
+
+  if(hasInput){
+    const gap = t.green - drr;
+    document.getElementById('drrStatus').textContent = cls==='purple'?'Exceptional':cls==='green'?'On target':cls==='amber'?'Approaching target':'Below target';
+    document.getElementById('drrPct').textContent = `${pctOfGreen}% of ${cur}${formatLocal(t.green)} target · `+(gap>0?`${cur}${formatLocal(gap)} short`:`${cur}${formatLocal(-gap)} above`);
+    const amberFlex  = Math.min(drr, t.amber);
+    const greenFlex  = Math.max(0, Math.min(drr, t.green)  - t.amber);
+    const purpleFlex = Math.max(0, Math.min(drr, t.purple) - t.green);
+    const emptyFlex  = Math.max(0, t.purple - drr);
+    document.getElementById('segRed').style.flex    = t.amber+'';
+    document.getElementById('segAmber').style.flex  = (t.green - t.amber)+'';
+    document.getElementById('segGreen').style.flex  = (t.purple - t.green)+'';
+    document.getElementById('segPurple').style.flex = '0';
+    document.getElementById('segEmpty').style.flex  = '1';
+    // Now fill: colour the actual achieved portion
+    document.getElementById('segRed').style.opacity    = drr > 0 ? '1' : '0.15';
+    document.getElementById('segAmber').style.opacity  = drr > t.amber  ? '1' : drr > 0 ? '0.15' : '0.15';
+    document.getElementById('segGreen').style.opacity  = drr > t.green  ? '1' : '0.15';
+    document.getElementById('segPurple').style.opacity = drr >= t.purple ? '1' : '0.15';
+    // Partial fill for current zone
+    if(drr < t.amber){
+      document.getElementById('segRed').style.flex = drr+'';
+      document.getElementById('segAmber').style.opacity = '0.15';
+      document.getElementById('segAmber').style.flex = (t.amber - drr) + (t.green - t.amber)+'';
+    } else if(drr < t.green){
+      document.getElementById('segAmber').style.flex = (drr - t.amber)+'';
+      document.getElementById('segGreen').style.flex = (t.green - drr) + (t.purple - t.green)+'';
+      document.getElementById('segGreen').style.opacity = '0.15';
+    } else if(drr < t.purple){
+      document.getElementById('segGreen').style.flex = (drr - t.green)+'';
+      document.getElementById('segPurple').style.flex = (t.purple - drr)+'';
+      document.getElementById('segPurple').style.opacity = '0.15';
+    } else {
+      document.getElementById('segPurple').style.flex = (t.purple - t.green)+'';
+    }
+    document.getElementById('segEmpty').style.flex = drr >= t.purple ? '0' : '0.001';
+  } else {
+    document.getElementById('drrStatus').textContent = 'Enter rentals to see DRR';
+    document.getElementById('drrPct').textContent = '';
+    document.getElementById('drrFrom').textContent = 'enter rentals below';
+    document.getElementById('drrUsdLabel').textContent = '—';
+    ['segRed','segAmber','segGreen','segPurple'].forEach(id => {
+      document.getElementById(id).style.flex = '0';
+      document.getElementById(id).style.opacity = '1';
+    });
+    document.getElementById('segEmpty').style.flex = '1';
+  }
+
+  // Traffic lights
+  ['red','amber','green','purple'].forEach(c => {
+    document.getElementById('tl_'+c).classList.toggle('active', hasInput && cls===c);
+  });
+
+  // Rental mix
+  if(hasInput && policy.asp){
+    document.getElementById('mixWrap').style.display = 'block';
+    const colors = ['var(--c24)','var(--c12)','var(--c6)'];
+    const pcts = sortedOpts.map(o => totalRentals>0 ? Math.round((optCounts[o.h]||0)/totalRentals*100) : 0);
+
+    // Map segments by index position, not by duration
+    const segIds = ['mixSeg24','mixSeg12','mixSeg6'];
+    segIds.forEach((id,i) => {
+      document.getElementById(id).style.width = (pcts[i]||0)+'%';
+      document.getElementById(id).style.background = colors[i];
+    });
+
+    document.getElementById('mixLegend').innerHTML = sortedOpts.map((o,i) =>
+      `<span><span class="mix-dot" style="background:${colors[i]}"></span>${pcts[i]}% ${o.h}hr</span>`
+    ).join('');
+
+    const shortPct = pcts[pcts.length-1];
+    const fullPct  = pcts[0];
+    let flagCls='ok', flagLabel='balanced', note='Rental mix looks healthy across durations.';
+    if(shortPct > 60){
+      flagCls='warn-6hr'; flagLabel='short heavy';
+      note=`${shortPct}% of rentals are the shortest duration. Hub is hitting DRR through high volume of shorter rentals. Worth asking: are longer options being offered?`;
+    } else if(fullPct < 20){
+      flagCls='warn-24hr'; flagLabel='full-price light';
+      note=`Only ${fullPct}% of rentals are at the anchor price (${policy.anchor}hr). Could indicate agents defaulting to shorter options.`;
+    }
+    const flagEl = document.getElementById('mixFlag');
+    flagEl.className = 'mix-flag '+flagCls;
+    flagEl.textContent = flagLabel;
+    document.getElementById('mixNote').textContent = note;
+  } else if(hasInput && !policy.asp){
+    document.getElementById('mixWrap').style.display = 'block';
+    document.getElementById('mixSeg24').style.width = '100%';
+    document.getElementById('mixSeg12').style.width = '0%';
+    document.getElementById('mixSeg6').style.width  = '0%';
+    document.getElementById('mixLegend').innerHTML = `<span><span class="mix-dot" style="background:var(--c24)"></span>100% — single option policy</span>`;
+    const flagEl = document.getElementById('mixFlag');
+    flagEl.className = 'mix-flag ok'; flagEl.textContent = 'single option';
+    document.getElementById('mixNote').textContent = 'Standard hub — one rental option.';
+  } else {
+    document.getElementById('mixWrap').style.display = 'none';
+  }
+  renderInlineZones();
+}
+
+// Custom policy builder
+
+function switchTab(tab){
+  document.querySelectorAll('.right-tab').forEach((b,i) => {
+    b.classList.toggle('active', (i===0&&tab==='calc')||(i===1&&tab==='ref')||(i===2&&tab==='zones'));
+  });
+  document.getElementById('tab_calc').classList.toggle('active', tab==='calc');
+  document.getElementById('tab_ref').classList.toggle('active', tab==='ref');
+  document.getElementById('tab_zones').classList.toggle('active', tab==='zones');
+  if(tab==='ref') renderRefTab();
+  if(tab==='zones') renderZonesTab();
+}
+
+function renderZonesTab(){
+  const el = document.getElementById('zonesContent');
+  el.innerHTML = ''; // always re-render in case hub type changed
+  const COUNTRIES = [
+    { code:'NG', flag:'🇳🇬', currency:'NGN', cur:'₦'  },
+    { code:'CD', flag:'🇨🇩', currency:'CDF', cur:'FC' },
+    { code:'SL', flag:'🇸🇱', currency:'SLE', cur:'Le' },
+    { code:'LR', flag:'🇱🇷', currency:'LRD', cur:'L$' },
+  ];
+  const zones = [
+    { key:'purple', color:'var(--purple)', label:'Exceptional', usd:'>$0.25 / >$2.00' },
+    { key:'green',  color:'var(--green)',  label:'On target',   usd:'$0.20 / $1.60'   },
+    { key:'amber',  color:'var(--amber)',  label:'Approaching', usd:'$0.15 / $1.20'   },
+  ];
+
+  function buildTable(type, usdPurple, usdGreen, usdAmber){
+    const T = COUNTRY_THRESHOLDS[type];
+    return `
+      <h3 style="font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">${type}</h3>
+      <table style="width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;margin-bottom:24px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border);">
+            <th style="text-align:left;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">Zone</th>
+            <th style="text-align:center;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">USD</th>
+            ${COUNTRIES.map(c=>`<th style="text-align:right;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">${c.flag} ${c.currency}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--purple-light);border-bottom:1px solid var(--border);">
+            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--purple);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--purple);font-weight:500;">Exceptional</span></td>
+            <td style="text-align:center;padding:9px 10px;color:var(--purple);font-weight:500;">&gt;${usdPurple}</td>
+            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--purple);font-weight:500;">${c.cur}${T[c.code].purple}+</td>`).join('')}
+          </tr>
+          <tr style="background:var(--green-light);border-bottom:1px solid var(--border);">
+            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--green);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--green);font-weight:500;">On target</span></td>
+            <td style="text-align:center;padding:9px 10px;color:var(--green);font-weight:500;">${usdGreen}</td>
+            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--green);font-weight:500;">${c.cur}${T[c.code].green}–${c.cur}${T[c.code].purple}</td>`).join('')}
+          </tr>
+          <tr style="background:var(--amber-light);border-bottom:1px solid var(--border);">
+            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--amber);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--amber);font-weight:500;">Approaching</span></td>
+            <td style="text-align:center;padding:9px 10px;color:var(--amber);font-weight:500;">${usdAmber}</td>
+            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--amber);font-weight:500;">${c.cur}${T[c.code].amber}–${c.cur}${T[c.code].green}</td>`).join('')}
+          </tr>
+          <tr style="background:var(--red-light);">
+            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--red);font-weight:500;">Below target</span></td>
+            <td style="text-align:center;padding:9px 10px;color:var(--red);font-weight:500;">&lt;${usdAmber}</td>
+            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--red);font-weight:500;">&lt;${c.cur}${T[c.code].amber}</td>`).join('')}
+          </tr>
+        </tbody>
+      </table>
+    `;
+  }
+
+  el.innerHTML = `
+    <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Fixed USD-anchored targets. Same standard across all countries.</p>
+    ${buildTable('MOPO50', '$0.25', '$0.20', '$0.15')}
+    ${buildTable('GENREP', '$2.00', '$1.60', '$1.20')}
+  `;
+}
+
+function renderPolicyPreview(){
+  const policy = getPolicy();
+  const preview = document.getElementById('policyPreview');
+  if(!policy){ preview.style.display='none'; return; }
+  const cur = getCurrency();
+  const anchorOpt = policy.options.find(o => o.h === policy.anchor);
+  const drrTarget = Math.round(anchorOpt.agent * 0.5 * 10) / 10;
+  const sorted = policy.options.slice().sort((a,b) => b.h - a.h);
+  preview.style.display = 'block';
+  preview.innerHTML = `
+    <div class="pp-row header">
+      <div>hr</div><div style="text-align:right">customer</div><div style="text-align:right">agent</div>
+    </div>
+    ${sorted.map(opt => `
+      <div class="pp-row ${opt.h===policy.anchor?'anchor':''}">
+        <div class="pp-dur">${opt.h}hr</div>
+        <div class="pp-cust">${cur}${formatLocal(opt.customer)}</div>
+        <div class="pp-agent">${cur}${formatLocal(opt.agent)}</div>
+      </div>
+    `).join('')}
+  `;
+}
+
+const REF_COUNTRIES = [
+  { code:'NG', flag:'🇳🇬', name:'Nigeria',      currency:'NGN' },
+  { code:'CD', flag:'🇨🇩', name:'DRC',          currency:'CDF' },
+  { code:'SL', flag:'🇸🇱', name:'Sierra Leone', currency:'SLE' },
+  { code:'LR', flag:'🇱🇷', name:'Liberia',      currency:'LRD' },
+];
+
+function renderRefTab(){
+  const el = document.getElementById('refContent');
+  if(el.innerHTML) return; // already rendered
+  const policies = Object.values(ALL_POLICIES);
+  el.innerHTML = REF_COUNTRIES.map(c => {
+    const cPolicies = policies.filter(p => p.country === c.code);
+    if(!cPolicies.length) return '';
+    const cur = CURRENCY[c.code];
+    return `
+      <div class="ref-country">
+        <div class="ref-country-header">
+          <span style="font-size:18px">${c.flag}</span>
+          <span class="ref-country-name">${c.name}</span>
+          <span class="ref-currency">${c.currency}</span>
+        </div>
+        <div class="ref-grid">
+          ${cPolicies.map(p => {
+            const anchorOpt = p.options.find(o => o.h === p.anchor);
+            const drrTarget = Math.round(anchorOpt.agent * 0.5 * 10) / 10;
+            const drrAmber  = Math.round(anchorOpt.agent * 0.37 * 10) / 10;
+            const sorted = p.options.slice().sort((a,b) => b.h - a.h);
+            return `
+              <div class="ref-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-name">${p.label.split(' — ')[0]}</div>
+                  <div class="ref-type ${p.type}">${p.type}</div>
+                </div>
+                <div class="ref-tier header" style="display:grid;grid-template-columns:36px 1fr 1fr;padding:6px 13px;font-family:var(--mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">
+                  <div>hr</div><div style="text-align:right">customer</div><div style="text-align:right">agent</div>
+                </div>
+                ${sorted.map(opt => `
+                  <div class="ref-tier ${opt.h===p.anchor?'anchor':''}">
+                    <div class="ref-tier-h">${opt.h}hr</div>
+                    <div class="ref-tier-c">${cur}${formatLocal(opt.customer)}</div>
+                    <div class="ref-tier-a">${cur}${formatLocal(opt.agent)}</div>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Custom policy builder
+
+function addCustomRow(){
+  customRowCount++;
+  const id = customRowCount;
+  const wrap = document.getElementById('customRows');
+  const row = document.createElement('div'); row.className='policy-row'; row.id='crow_'+id;
+  row.innerHTML = `<input type="number" placeholder="24" min="1" max="48" id="ch_${id}" style="text-align:center;"><input type="number" placeholder="800" id="cc_${id}"><input type="number" placeholder="680" id="ca_${id}"><button class="remove-btn" onclick="removeCustomRow(${id})">×</button>`;
+  wrap.appendChild(row);
+}
+
+function removeCustomRow(id){ const el=document.getElementById('crow_'+id); if(el) el.remove(); }
+
+function buildCustomPolicy(){
+  const name = document.getElementById('customPolicyName').value.trim() || 'Custom Policy';
+  const rows = document.querySelectorAll('#customRows .policy-row');
+  if(!rows.length){ alert('Add at least one duration tier.'); return; }
+  const options=[]; let valid=true;
+  rows.forEach(row => {
+    const id = row.id.replace('crow_','');
+    const h=parseInt(document.getElementById('ch_'+id).value);
+    const c=parseInt(document.getElementById('cc_'+id).value);
+    const a=parseInt(document.getElementById('ca_'+id).value);
+    if(!h||!c||!a){ valid=false; return; }
+    options.push({h,customer:c,agent:a});
+  });
+  if(!valid){ alert('Please fill in all fields.'); return; }
+  const maxH = Math.max(...options.map(o=>o.h));
+  const country = document.getElementById('country').value;
+  const type = document.getElementById('hubType').value;
+  const key = 'custom_'+Date.now();
+  customPolicies[key] = { label:name, asp:options.length>1, anchor:maxH, options, country, type };
+  populatePolicyDropdown();
+  document.getElementById('policy').value = key;
+  const countryName = document.getElementById('country').options[document.getElementById('country').selectedIndex].text;
+  const result = document.getElementById('customPolicyResult');
+  result.style.display='block';
+  result.textContent=`"${name}" added for ${countryName} ${type}.`;
+  renderPolicyPreview();
+  calculate();
+}
+
+// Init
+addCustomRow();
+populatePolicyDropdown();
+setThresholdsFromPolicy();
+renderPolicyPreview();
+renderAgentInputs();
+renderCheckerInputs(false);
+calculate();
+</script>
+</body>
+</html>
