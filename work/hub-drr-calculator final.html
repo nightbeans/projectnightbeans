@@ -6,6 +6,7 @@
 <title>Hub DRR Calculator - joeldelaney</title>
 <link rel="stylesheet" href="../style.css">
 <style>
+
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
   :root {
@@ -15,14 +16,20 @@
     --border: #dddbd7;
     --text: #1a1916;
     --muted: #8a8880;
+    --gold:   #b8860b;
+    --gold-light: #fdf9e8;
     --purple: #6b3fa0;
     --purple-light: #f0eaf8;
     --green: #1a6b45;
     --green-light: #e8f4ee;
+    --teal: #0e7490;
+    --teal-light: #e0f4f8;
     --amber: #b7690a;
     --amber-light: #fef8ee;
     --red: #c0392b;
     --red-light: #fdf0ee;
+    --darkred: #7b1a14;
+    --darkred-light: #fae8e7;
     --c24: #1a6b45;
     --c12: #b7690a;
     --c6: #5a4fcf;
@@ -30,9 +37,9 @@
     --sans: 'IBM Plex Sans', sans-serif;
   }
 
-  main { max-width: none; padding: 0; }
-
   .calc-wrap * { box-sizing: border-box; }
+
+  main { max-width: none; padding: 0; }
 
   .calc-wrap {
     background: var(--bg);
@@ -50,7 +57,7 @@
     padding-bottom: 18px;
   }
 
-  .calc-header h2 { font-size: 18px; font-weight: 600; letter-spacing: -0.2px; margin: 0; }
+  .calc-header h1 { font-size: 18px; font-weight: 600; letter-spacing: -0.2px; }
   .calc-header p { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
 
   .layout { display: grid; grid-template-columns: 320px 1fr; gap: 20px; max-width: 1100px; }
@@ -120,11 +127,14 @@
     transition: background .3s, border-color .3s;
   }
 
-  .drr-hero.purple{ background: var(--purple-light); border-color: #d0b8f0; }
-  .drr-hero.green { background: var(--green-light);  border-color: #b8dfc8; }
-  .drr-hero.amber { background: var(--amber-light);  border-color: #f0d0a0; }
-  .drr-hero.red   { background: var(--red-light);    border-color: #f0c0b8; }
-  .drr-hero.none  { background: var(--surface2);     border-color: var(--border); }
+  .drr-hero.gold    { background: var(--gold-light);    border-color: #f0dc80; }
+  .drr-hero.purple  { background: var(--purple-light);  border-color: #d0b8f0; }
+  .drr-hero.green   { background: var(--green-light);   border-color: #b8dfc8; }
+  .drr-hero.teal    { background: var(--teal-light);    border-color: #a0d8e8; }
+  .drr-hero.amber   { background: var(--amber-light);   border-color: #f0d0a0; }
+  .drr-hero.red     { background: var(--red-light);     border-color: #f0c0b8; }
+  .drr-hero.darkred { background: var(--darkred-light); border-color: #e0a0a0; }
+  .drr-hero.none    { background: var(--surface2);      border-color: var(--border); }
 
   .hero-top {
     display: flex;
@@ -143,11 +153,14 @@
     transition: color .3s;
   }
 
-  .drr-big.purple{ color: var(--purple); }
-  .drr-big.green { color: var(--green); }
-  .drr-big.amber { color: var(--amber); }
-  .drr-big.red   { color: var(--red); }
-  .drr-big.none  { color: var(--muted); }
+  .drr-big.gold    { color: var(--gold); }
+  .drr-big.purple  { color: var(--purple); }
+  .drr-big.green   { color: var(--green); }
+  .drr-big.teal    { color: var(--teal); }
+  .drr-big.amber   { color: var(--amber); }
+  .drr-big.red     { color: var(--red); }
+  .drr-big.darkred { color: var(--darkred); }
+  .drr-big.none    { color: var(--muted); }
 
   .hero-sub {
     font-family: var(--mono);
@@ -191,6 +204,43 @@
     margin-bottom: 10px;
   }
 
+  .hero-policy-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .remove-compare {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+  .remove-compare:hover { opacity: 1; color: var(--red); }
+  .compare-policy-select {
+    font-family: var(--mono);
+    font-size: 11px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 2px 6px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    flex: 1;
+    min-width: 0;
+  }
+
   /* Traffic lights */
   .traffic-lights {
     display: grid;
@@ -209,20 +259,29 @@
   }
 
   .tl-zone.active { opacity: 1; }
-  .tl-zone.purple{ background: var(--purple-light); }
-  .tl-zone.green { background: var(--green-light); }
-  .tl-zone.amber { background: var(--amber-light); }
-  .tl-zone.red   { background: var(--red-light); }
-  .tl-zone.active.purple{ border-color: var(--purple); }
-  .tl-zone.active.green { border-color: var(--green); }
-  .tl-zone.active.amber { border-color: var(--amber); }
-  .tl-zone.active.red   { border-color: var(--red); }
+  .tl-zone.gold    { background: var(--gold-light); }
+  .tl-zone.purple  { background: var(--purple-light); }
+  .tl-zone.green   { background: var(--green-light); }
+  .tl-zone.teal    { background: var(--teal-light); }
+  .tl-zone.amber   { background: var(--amber-light); }
+  .tl-zone.red     { background: var(--red-light); }
+  .tl-zone.darkred { background: var(--darkred-light); }
+  .tl-zone.active.gold    { border-color: var(--gold); }
+  .tl-zone.active.purple  { border-color: var(--purple); }
+  .tl-zone.active.green   { border-color: var(--green); }
+  .tl-zone.active.teal    { border-color: var(--teal); }
+  .tl-zone.active.amber   { border-color: var(--amber); }
+  .tl-zone.active.red     { border-color: var(--red); }
+  .tl-zone.active.darkred { border-color: var(--darkred); }
 
   .tl-dot { width: 12px; height: 12px; border-radius: 50%; margin: 0 auto 6px; }
-  .purple .tl-dot { background: var(--purple); }
-  .green  .tl-dot { background: var(--green); }
-  .amber  .tl-dot { background: var(--amber); }
-  .red    .tl-dot { background: var(--red); }
+  .gold    .tl-dot { background: var(--gold); }
+  .purple  .tl-dot { background: var(--purple); }
+  .green   .tl-dot { background: var(--green); }
+  .teal    .tl-dot { background: var(--teal); }
+  .amber   .tl-dot { background: var(--amber); }
+  .red     .tl-dot { background: var(--red); }
+  .darkred .tl-dot { background: var(--darkred); }
 
   .tl-range { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--text); }
   .tl-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
@@ -376,6 +435,7 @@
   .add-btn:hover { border-color: var(--green); color: var(--green); }
 
   @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
@@ -404,6 +464,7 @@
 })();
 </script>
 
+
     <header>
         <nav class="navbar">
             <div class="brand">
@@ -423,7 +484,7 @@
         <div class="calc-wrap">
 
 <div class="calc-header">
-  <h2>MOPO Hub DRR Calculator</h2>
+  <h2>Hub DRR Calculator</h2>
 </div>
 
 <div class="layout">
@@ -496,9 +557,14 @@
         <input type="number" id="fx_LR" value="183" min="1" oninput="updateCalc()" style="padding:6px 8px;">
       </div>
       <p style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:10px;">1 USD = above local currency</p>
-      <input type="hidden" id="tGreen" value="270">
-      <input type="hidden" id="tAmber" value="200">
-      <input type="hidden" id="tPurple" value="340">
+      <input type="hidden" id="tGold"     value="324">
+      <input type="hidden" id="tPurple"   value="283">
+      <input type="hidden" id="tGreen"    value="243">
+      <input type="hidden" id="tTeal"     value="203">
+      <input type="hidden" id="tAmber"    value="162">
+      <input type="hidden" id="tRed"      value="122">
+      <input type="hidden" id="tDarkred"  value="0">
+      <input type="hidden" id="tZoneMode" value="mopo50">
     </div>
 
     <!-- Custom policy builder -->
@@ -529,51 +595,17 @@
       </div>
 
       <div class="tab-content active" id="tab_calc">
-      <div class="drr-hero none" id="drrHero">
-        <div class="hero-top">
-          <div class="hero-left">
-            <div class="drr-big none" id="drrBig">₦—</div>
-            <div class="hero-sub" id="drrFrom">enter rentals below</div>
-          </div>
-          <div class="hero-right">
-            <div class="hero-usd" id="drrUsdLabel">—</div>
-            <div class="hero-drr-label">USD DRR</div>
-          </div>
-        </div>
-        <div class="hero-status" id="drrStatus">Enter rentals to see DRR</div>
-        <div class="hero-pct" id="drrPct"></div>
-        <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;gap:2px;">
-          <div id="segRed"    style="background:var(--red);   transition:flex .4s ease;flex:0"></div>
-          <div id="segAmber"  style="background:var(--amber); transition:flex .4s ease;flex:0"></div>
-          <div id="segGreen"  style="background:var(--green); transition:flex .4s ease;flex:0"></div>
-          <div id="segPurple" style="background:var(--purple);transition:flex .4s ease;flex:0"></div>
-          <div id="segEmpty"  style="background:rgba(0,0,0,0.08);flex:1"></div>
-        </div>
+
+      <!-- Hero cards container -->
+      <div id="heroCards" style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;"></div>
+
+      <!-- Compare controls -->
+      <div id="compareControls" style="margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <button class="add-btn" onclick="addCompareCard()" style="border-color:var(--purple);color:var(--purple);">+ Compare another policy</button>
       </div>
 
       <!-- Traffic lights -->
-      <div class="traffic-lights" style="grid-template-columns:1fr 1fr 1fr 1fr;">
-        <div class="tl-zone red" id="tl_red">
-          <div class="tl-dot"></div>
-          <div class="tl-range" id="tl_red_range">&lt; 40%</div>
-          <div class="tl-label">Below target</div>
-        </div>
-        <div class="tl-zone amber" id="tl_amber">
-          <div class="tl-dot"></div>
-          <div class="tl-range" id="tl_amber_range">40–50%</div>
-          <div class="tl-label">Approaching</div>
-        </div>
-        <div class="tl-zone green" id="tl_green">
-          <div class="tl-dot"></div>
-          <div class="tl-range" id="tl_green_range">50–60%</div>
-          <div class="tl-label">On target</div>
-        </div>
-        <div class="tl-zone purple" id="tl_purple">
-          <div class="tl-dot"></div>
-          <div class="tl-range" id="tl_purple_range">&gt; 60%</div>
-          <div class="tl-label">Exceptional</div>
-        </div>
-      </div>
+      <div class="traffic-lights" id="trafficLights" style="grid-template-columns:1fr 1fr 1fr 1fr;"></div>
 
       <!-- Inline zones summary -->
       <div id="inlineZones" style="margin-bottom:16px;font-family:var(--mono);font-size:12px;border:1px solid var(--border);border-radius:8px;overflow:hidden;"></div>
@@ -609,13 +641,6 @@
   </div>
 </div>
 
-        </div><!-- end calc-wrap -->
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Joel Delaney</p>
-    </footer>
-
 <script>
 const ALL_POLICIES = {
   'NG_MOPO50_800asp':   { label:'₦800 ASP — 6/12/24hr',      country:'NG', type:'MOPO50', asp:true,  anchor:24, options:[{h:24,customer:800,agent:680},{h:12,customer:600,agent:540},{h:6,customer:400,agent:350}] },
@@ -635,12 +660,15 @@ const ALL_POLICIES = {
 };
 
 const CURRENCY = { NG:'₦', CD:'FC', SL:'SLE', LR:'L$' };
+
+// MOPO50: 7 zones (USD: $0.24/$0.21/$0.18/$0.15/$0.12/$0.09 / <$0.09)
+// GENREP: 4 zones (USD: $2.00/$1.60/$1.20)
 const COUNTRY_THRESHOLDS = {
   MOPO50: {
-    NG: { purple:340, green:270, amber:200 },
-    CD: { purple:530, green:425, amber:320 },
-    SL: { purple:6,   green:5,   amber:4   },
-    LR: { purple:46,  green:36,  amber:26  },
+    NG: { gold:324, purple:284, green:243, teal:203, amber:162, red:122 },
+    CD: { gold:510, purple:446, green:383, teal:319, amber:255, red:191 },
+    SL: { gold:5.52, purple:4.83, green:4.14, teal:3.45, amber:2.76, red:2.07 },
+    LR: { gold:43.9, purple:38.4, green:32.9, teal:27.5, amber:21.9, red:16.5 },
   },
   GENREP: {
     NG: { purple:2690, green:2150, amber:1600 },
@@ -650,13 +678,45 @@ const COUNTRY_THRESHOLDS = {
   },
 };
 
+// Ordered zone definitions
+const MOPO50_ZONES = [
+  { key:'gold',    label:'Super Gold',         color:'var(--gold)',    light:'var(--gold-light)'    },
+  { key:'purple',  label:'Exceptional',        color:'var(--purple)',  light:'var(--purple-light)'  },
+  { key:'green',   label:'On target',          color:'var(--green)',   light:'var(--green-light)'   },
+  { key:'teal',    label:'Approaching',        color:'var(--teal)',    light:'var(--teal-light)'    },
+  { key:'amber',   label:'Below target',       color:'var(--amber)',   light:'var(--amber-light)'   },
+  { key:'red',     label:'At Risk',             color:'var(--red)',   light:'var(--red-light)'     },
+  { key:'darkred', label:'Critical',           color:'var(--darkred)', light:'var(--darkred-light)' },
+];
+const GENREP_ZONES = [
+  { key:'purple',  label:'Exceptional',  color:'var(--purple)', light:'var(--purple-light)' },
+  { key:'green',   label:'On target',    color:'var(--green)',  light:'var(--green-light)'  },
+  { key:'amber',   label:'Approaching',  color:'var(--amber)',  light:'var(--amber-light)'  },
+  { key:'red',     label:'Below target', color:'var(--red)',    light:'var(--red-light)'    },
+];
+
+function getZones(){
+  const type = document.getElementById('hubType').value;
+  return type === 'GENREP' ? GENREP_ZONES : MOPO50_ZONES;
+}
+
 function setThresholdsFromPolicy(){
   const country = document.getElementById('country').value;
   const type    = document.getElementById('hubType').value;
-  const t = (COUNTRY_THRESHOLDS[type]||COUNTRY_THRESHOLDS.MOPO50)[country] || { purple:340, green:270, amber:200 };
-  document.getElementById('tPurple').value = t.purple;
-  document.getElementById('tGreen').value  = t.green;
-  document.getElementById('tAmber').value  = t.amber;
+  const t = (COUNTRY_THRESHOLDS[type]||COUNTRY_THRESHOLDS.MOPO50)[country];
+  document.getElementById('tZoneMode').value = type === 'GENREP' ? 'genrep' : 'mopo50';
+  if(type === 'GENREP'){
+    document.getElementById('tPurple').value  = t.purple;
+    document.getElementById('tGreen').value   = t.green;
+    document.getElementById('tAmber').value   = t.amber;
+  } else {
+    document.getElementById('tGold').value    = t.gold;
+    document.getElementById('tPurple').value  = t.purple;
+    document.getElementById('tGreen').value   = t.green;
+    document.getElementById('tTeal').value    = t.teal;
+    document.getElementById('tAmber').value   = t.amber;
+    document.getElementById('tRed').value     = t.red;
+  }
 }
 
 let agentBatteries = [75,75,75,75];
@@ -676,17 +736,37 @@ function formatLocal(val){
   return Math.round(val).toLocaleString();
 }
 function getThresholds(){
+  const mode = document.getElementById('tZoneMode').value;
+  if(mode === 'genrep') return {
+    mode: 'genrep',
+    purple: parseFloat(document.getElementById('tPurple').value) || 2690,
+    green:  parseFloat(document.getElementById('tGreen').value)  || 2150,
+    amber:  parseFloat(document.getElementById('tAmber').value)  || 1600,
+  };
   return {
-    purple: parseFloat(document.getElementById('tPurple').value) || 408,
-    green:  parseFloat(document.getElementById('tGreen').value)  || 340,
-    amber:  parseFloat(document.getElementById('tAmber').value)  || 272,
+    mode: 'mopo50',
+    gold:   parseFloat(document.getElementById('tGold').value)   || 324,
+    purple: parseFloat(document.getElementById('tPurple').value) || 284,
+    green:  parseFloat(document.getElementById('tGreen').value)  || 243,
+    teal:   parseFloat(document.getElementById('tTeal').value)   || 203,
+    amber:  parseFloat(document.getElementById('tAmber').value)  || 162,
+    red:    parseFloat(document.getElementById('tRed').value)    || 122,
   };
 }
 function getColor(drr, t){
+  if(t.mode === 'genrep'){
+    if(drr >= t.purple) return 'purple';
+    if(drr >= t.green)  return 'green';
+    if(drr >= t.amber)  return 'amber';
+    return 'red';
+  }
+  if(drr >= t.gold)   return 'gold';
   if(drr >= t.purple) return 'purple';
   if(drr >= t.green)  return 'green';
+  if(drr >= t.teal)   return 'teal';
   if(drr >= t.amber)  return 'amber';
-  return 'red';
+  if(drr >= t.red)    return 'red';
+  return 'darkred';
 }
 
 function getPoliciesFor(country, type){
@@ -708,12 +788,13 @@ function populatePolicyDropdown(){
 }
 
 function onCountryChange(){
+  compareKeys = [];
   populatePolicyDropdown();
   onHubTypeChange(true);
 }
 
 function onHubTypeChange(skipDropdown){
-  if(!skipDropdown) populatePolicyDropdown();
+  if(!skipDropdown){ compareKeys = []; populatePolicyDropdown(); }
   const type = document.getElementById('hubType').value;
   const agentSel = document.getElementById('agentCount');
   if(type === 'MOPO50'){
@@ -770,17 +851,8 @@ function calculate(preserve){
   const optAnchor = policy.options.find(o => o.h === policy.anchor);
   const anchorLabel = policy.anchor+'hr';
 
-  // Traffic light label updates
-  document.getElementById('tl_red_range').textContent    = `< ${cur}${formatLocal(t.amber)}`;
-  document.getElementById('tl_amber_range').textContent  = `${cur}${formatLocal(t.amber)}–${cur}${formatLocal(t.green)}`;
-  document.getElementById('tl_green_range').textContent  = `${cur}${formatLocal(t.green)}–${cur}${formatLocal(t.purple)}`;
-  document.getElementById('tl_purple_range').textContent = `> ${cur}${formatLocal(t.purple)}`;
-  const amberPct  = Math.round((t.amber  / t.purple) * 100);
-  const greenPct  = Math.round((t.green  / t.purple) * 100);
-
-  // Inline zones
+  // Inline zones + traffic lights (rendered dynamically)
   renderInlineZones();
-
   renderCheckerInputs(preserve !== false);
   updateCalc();
 }
@@ -790,168 +862,270 @@ function getFxRate(){
   return parseFloat(document.getElementById('fx_'+country).value) || 1;
 }
 
-function renderInlineZones(){
-  const t = getThresholds();
+function getZoneUsd(key, mode){
+  const MOPO50_USD = { gold:'$0.24', purple:'$0.21', green:'$0.18', teal:'$0.15', amber:'$0.12', red:'$0.09', darkred:'<$0.09' };
+  const GENREP_USD = { purple:'$2.00', green:'$1.60', amber:'$1.20', red:'<$1.20' };
+  return mode === 'genrep' ? GENREP_USD[key] : MOPO50_USD[key];
+}
+
+function getZoneLabel(key, mode){
+  const z = (mode === 'genrep' ? GENREP_ZONES : MOPO50_ZONES).find(z => z.key === key);
+  return z ? z.label : key;
+}
+
+function getZoneColor(key){
+  return `var(--${key})`;
+}
+function getZoneLight(key){
+  return `var(--${key}-light)`;
+}
+
+function renderTrafficLights(cls, t){
+  const zones = getZones();
   const cur = getCurrency();
-  const fx = getFxRate();
-  const total = agentBatteries.reduce((a,b) => a+b, 0);
-  const type = document.getElementById('hubType').value;
-  const usdZones = type === 'GENREP'
-    ? { purple:'$2.00', green:'$1.60', amber:'$1.20' }
-    : { purple:'$0.25', green:'$0.20', amber:'$0.15' };
+  const thresholdKeys = zones.map(z => z.key).filter(k => k !== 'darkred');
+  const n = zones.length;
+  const tl = document.getElementById('trafficLights');
+  tl.style.gridTemplateColumns = zones.map(() => '1fr').join(' ');
 
-  const row = (bg, dot, label, usd, local) => `
-    <div style="display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:9px 14px;background:${bg};border-bottom:1px solid var(--border);">
-      <span style="width:9px;height:9px;border-radius:50%;background:${dot};display:inline-block;"></span>
-      <span style="font-weight:500;color:${dot};">${label}</span>
-      <span style="color:var(--muted);font-size:11px;">${usd}</span>
-      <span style="font-weight:600;color:${dot};">${cur}${formatLocal(local)}</span>
+  tl.innerHTML = zones.map((z, i) => {
+    const isActive = cls === z.key;
+    // Build range label
+    let range;
+    const val = t[z.key];
+    const nextZone = zones[i+1];
+    const nextVal  = nextZone ? t[nextZone.key] : null;
+    if(z.key === 'darkred'){
+      range = `&lt;${cur}${formatLocal(t.red)}`;
+    } else if(i === 0){
+      range = `&gt;${cur}${formatLocal(val)}`;
+    } else {
+      const prevVal = t[zones[i-1].key];
+      range = `${cur}${formatLocal(val)}–${cur}${formatLocal(prevVal)}`;
+    }
+    return `<div class="tl-zone ${z.key}${isActive?' active':''}" style="opacity:${isActive?'1':'0.5'}">
+      <div class="tl-dot"></div>
+      <div class="tl-range">${range}</div>
+      <div class="tl-label">${z.label}</div>
     </div>`;
+  }).join('');
+}
 
-  document.getElementById('inlineZones').innerHTML =
-    row('var(--purple-light)', 'var(--purple)', 'Exceptional', usdZones.purple, t.purple) +
-    row('var(--green-light)',  'var(--green)',  'On target',   usdZones.green,  t.green)  +
-    row('var(--amber-light)', 'var(--amber)',  'Approaching', usdZones.amber,  t.amber)  +
-    `<div style="display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:9px 14px;background:var(--red-light);">
-      <span style="width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;"></span>
-      <span style="font-weight:500;color:var(--red);">Below target</span>
-      <span style="color:var(--muted);font-size:11px;">&lt;${type==='GENREP'?'$1.20':'$0.15'}</span>
-      <span style="font-weight:600;color:var(--red);">&lt;${cur}${formatLocal(t.amber)}</span>
+function renderInlineZones(){
+  const t   = getThresholds();
+  const cur = getCurrency();
+  const zones = getZones();
+
+  const row = (z, i, isLast) => {
+    const val   = t[z.key];
+    const prevZ = i > 0 ? zones[i-1] : null;
+    const prevVal = prevZ ? t[prevZ.key] : null;
+    let localStr;
+    if(z.key === 'darkred'){
+      localStr = `&lt;${cur}${formatLocal(t.red)}`;
+    } else if(i === 0){
+      localStr = `&gt;${cur}${formatLocal(val)}`;
+    } else {
+      localStr = `${cur}${formatLocal(val)}–${cur}${formatLocal(prevVal)}`;
+    }
+    const usd = getZoneUsd(z.key, t.mode);
+    const border = isLast ? '' : 'border-bottom:1px solid var(--border);';
+    return `<div style="display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:9px 14px;background:${z.light};${border}">
+      <span style="width:9px;height:9px;border-radius:50%;background:${z.color};display:inline-block;"></span>
+      <span style="font-weight:500;color:${z.color};">${z.label}</span>
+      <span style="color:var(--muted);font-size:11px;">${usd}</span>
+      <span style="font-weight:600;color:${z.color};">${localStr}</span>
+    </div>`;
+  };
+
+  document.getElementById('inlineZones').innerHTML = zones.map((z, i) => row(z, i, i === zones.length-1)).join('');
+}
+
+// Compare card state
+let compareKeys = []; // additional policy keys beyond the primary
+
+function addCompareCard(){
+  const country = document.getElementById('country').value;
+  const type    = document.getElementById('hubType').value;
+  const allPolicies = getPoliciesFor(country, type);
+  if(!allPolicies.length) return;
+  // Default to first policy not already shown
+  const primaryKey = document.getElementById('policy').value;
+  const usedKeys = [primaryKey, ...compareKeys];
+  const next = allPolicies.find(([k]) => !usedKeys.includes(k));
+  compareKeys.push(next ? next[0] : allPolicies[0][0]);
+  updateCalc();
+}
+
+function removeCompareCard(idx){
+  compareKeys.splice(idx, 1);
+  updateCalc();
+}
+
+function computeDRR(policy){
+  const total = agentBatteries.reduce((a,b) => a+b, 0);
+  let rev = 0, totalRentals = 0;
+  policy.options.forEach(opt => {
+    const el = document.getElementById('act_'+opt.h);
+    const count = parseInt(el ? el.value : 0) || 0;
+    rev += count * opt.agent;
+    totalRentals += count;
+  });
+  const hasInput = totalRentals > 0;
+  const drr = (total > 0 && hasInput) ? rev / total : 0;
+  return { drr, totalRentals, total, hasInput };
+}
+
+function buildSegBar(drr, t){
+  const zones = getZones();
+  // Build segments from top threshold down
+  const thresholds = zones
+    .filter(z => z.key !== 'darkred')
+    .map(z => ({ key: z.key, color: z.color, val: t[z.key] }))
+    .reverse(); // lowest to highest
+
+  const top = thresholds[thresholds.length-1].val * 1.1;
+  let html = '';
+  let prev = 0;
+  thresholds.forEach(seg => {
+    const width = seg.val - prev;
+    const achieved = drr >= prev + 0.01;
+    html += `<div style="flex:${width};background:${seg.color};opacity:${achieved?'1':'0.15'};"></div>`;
+    prev = seg.val;
+  });
+  // remainder
+  html += `<div style="flex:${Math.max(0.01, top - drr)};background:rgba(0,0,0,0.07);"></div>`;
+  return html;
+}
+
+function renderHeroCard(policyKey, isPrimary, compareIdx){
+  const policy = ALL_POLICIES[policyKey] || customPolicies[policyKey];
+  if(!policy) return '';
+  const t   = getThresholds();
+  const cur = getCurrency();
+  const fx  = getFxRate();
+  const { drr, totalRentals, total, hasInput } = computeDRR(policy);
+  const cls = hasInput ? getColor(drr, t) : 'none';
+  const pctOfGreen = Math.round((drr / t.green) * 100);
+  const gap = t.green - drr;
+
+  const drrText  = hasInput ? cur + formatLocal(drr) : cur + '—';
+  const usdText  = hasInput && fx > 0 ? '$' + (drr / fx).toFixed(2) : '—';
+  const fromText = hasInput ? `${totalRentals} rentals · ${total} batteries` : 'enter rentals below';
+  const statusText = hasInput
+    ? (getZones().find(z => z.key === cls)?.label || cls)
+    : 'Enter rentals to see DRR';
+  const pctText = hasInput
+    ? `${pctOfGreen}% of ${cur}${formatLocal(t.green)} target · ` + (gap > 0 ? `${cur}${formatLocal(gap)} short` : `${cur}${formatLocal(-gap)} above`)
+    : '';
+
+  const removeBtn = !isPrimary
+    ? `<button class="remove-compare" onclick="removeCompareCard(${compareIdx})" title="Remove">×</button>`
+    : '';
+
+  // Policy selector for compare cards
+  const country  = document.getElementById('country').value;
+  const type     = document.getElementById('hubType').value;
+  const allPolicies = getPoliciesFor(country, type);
+  const selectorHtml = !isPrimary
+    ? `<select class="compare-policy-select" onchange="compareKeys[${compareIdx}]=this.value;updateCalc()">
+        ${allPolicies.map(([k,v]) => `<option value="${k}" ${k===policyKey?'selected':''}>${v.label}</option>`).join('')}
+      </select>`
+    : `<span style="font-family:var(--mono);font-size:11px;color:var(--text);font-weight:500;">${policy.label}</span>`;
+
+  const utilisationHtml = (!policy.asp && hasInput && total > 0)
+    ? `<div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px;">${Math.round(totalRentals/total*100)}% utilisation equivalent</div>`
+    : '';
+
+  return `
+    <div class="drr-hero ${hasInput ? cls : 'none'}">
+      <div class="hero-policy-label">
+        ${selectorHtml}
+        ${removeBtn}
+      </div>
+      <div class="hero-top">
+        <div class="hero-left">
+          <div class="drr-big ${hasInput ? cls : 'none'}">${drrText}</div>
+          <div class="hero-sub">${fromText}</div>
+          ${utilisationHtml}
+        </div>
+        <div class="hero-right">
+          <div class="hero-usd">${usdText}</div>
+          <div class="hero-drr-label">USD DRR</div>
+        </div>
+      </div>
+      <div class="hero-status">${statusText}</div>
+      <div class="hero-pct">${pctText}</div>
+      <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;gap:2px;">
+        ${buildSegBar(hasInput ? drr : 0, t)}
+      </div>
     </div>`;
 }
 
 // updateCalc: recalculates results without re-rendering checker inputs
 function updateCalc(){
+  const primaryKey = document.getElementById('policy').value;
   const policy = getPolicy(); if(!policy) return;
   const t = getThresholds();
   const cur = getCurrency();
   const total = agentBatteries.reduce((a,b) => a+b, 0);
-  const optAnchor = policy.options.find(o => o.h === policy.anchor);
 
+  // Render all hero cards
+  const container = document.getElementById('heroCards');
+  let html = renderHeroCard(primaryKey, true, -1);
+  compareKeys.forEach((k, i) => { html += renderHeroCard(k, false, i); });
+  container.innerHTML = html;
+
+  // Traffic lights (use primary policy)
+  const { drr, totalRentals, hasInput } = computeDRR(policy);
+  const cls = hasInput ? getColor(drr, t) : 'none';
+  renderTrafficLights(cls, t);
+
+  // Rental mix (primary policy only)
   const sortedOpts = policy.options.slice().sort((a,b) => b.h-a.h);
-  let rev=0, totalRentals=0;
   const optCounts = {};
+  let rev = 0;
   policy.options.forEach(opt => {
     const el = document.getElementById('act_'+opt.h); if(!el) return;
     const count = parseInt(el.value)||0;
     rev += count * opt.agent;
-    totalRentals += count;
     optCounts[opt.h] = count;
   });
 
-  const hasInput = totalRentals > 0;
-  const drr = total>0 ? rev/total : 0;
-  const cls = hasInput ? getColor(drr, t) : 'none';
-  const pctOfGreen = Math.round((drr/t.green)*100);
-
-  // Hero box
-  const hero = document.getElementById('drrHero');
-  const big  = document.getElementById('drrBig');
-  hero.className = 'drr-hero ' + (hasInput ? cls : 'none');
-  big.className  = 'drr-big '  + (hasInput ? cls : 'none');
-  big.textContent = hasInput ? cur+formatLocal(drr) : cur+'—';
-  const fx = getFxRate();
-  const drrUsd = fx > 0 ? ' · $'+(drr/fx).toFixed(2) : '';
-  document.getElementById('drrFrom').textContent = hasInput ? `${totalRentals} rentals · ${total} batteries` : '—';
-  document.getElementById('drrUsdLabel').textContent = hasInput && fx > 0 ? '$'+(drr/fx).toFixed(2) : '—';
-
-  if(hasInput){
-    const gap = t.green - drr;
-    document.getElementById('drrStatus').textContent = cls==='purple'?'Exceptional':cls==='green'?'On target':cls==='amber'?'Approaching target':'Below target';
-    document.getElementById('drrPct').textContent = `${pctOfGreen}% of ${cur}${formatLocal(t.green)} target · `+(gap>0?`${cur}${formatLocal(gap)} short`:`${cur}${formatLocal(-gap)} above`);
-    const amberFlex  = Math.min(drr, t.amber);
-    const greenFlex  = Math.max(0, Math.min(drr, t.green)  - t.amber);
-    const purpleFlex = Math.max(0, Math.min(drr, t.purple) - t.green);
-    const emptyFlex  = Math.max(0, t.purple - drr);
-    document.getElementById('segRed').style.flex    = t.amber+'';
-    document.getElementById('segAmber').style.flex  = (t.green - t.amber)+'';
-    document.getElementById('segGreen').style.flex  = (t.purple - t.green)+'';
-    document.getElementById('segPurple').style.flex = '0';
-    document.getElementById('segEmpty').style.flex  = '1';
-    // Now fill: colour the actual achieved portion
-    document.getElementById('segRed').style.opacity    = drr > 0 ? '1' : '0.15';
-    document.getElementById('segAmber').style.opacity  = drr > t.amber  ? '1' : drr > 0 ? '0.15' : '0.15';
-    document.getElementById('segGreen').style.opacity  = drr > t.green  ? '1' : '0.15';
-    document.getElementById('segPurple').style.opacity = drr >= t.purple ? '1' : '0.15';
-    // Partial fill for current zone
-    if(drr < t.amber){
-      document.getElementById('segRed').style.flex = drr+'';
-      document.getElementById('segAmber').style.opacity = '0.15';
-      document.getElementById('segAmber').style.flex = (t.amber - drr) + (t.green - t.amber)+'';
-    } else if(drr < t.green){
-      document.getElementById('segAmber').style.flex = (drr - t.amber)+'';
-      document.getElementById('segGreen').style.flex = (t.green - drr) + (t.purple - t.green)+'';
-      document.getElementById('segGreen').style.opacity = '0.15';
-    } else if(drr < t.purple){
-      document.getElementById('segGreen').style.flex = (drr - t.green)+'';
-      document.getElementById('segPurple').style.flex = (t.purple - drr)+'';
-      document.getElementById('segPurple').style.opacity = '0.15';
-    } else {
-      document.getElementById('segPurple').style.flex = (t.purple - t.green)+'';
-    }
-    document.getElementById('segEmpty').style.flex = drr >= t.purple ? '0' : '0.001';
-  } else {
-    document.getElementById('drrStatus').textContent = 'Enter rentals to see DRR';
-    document.getElementById('drrPct').textContent = '';
-    document.getElementById('drrFrom').textContent = 'enter rentals below';
-    document.getElementById('drrUsdLabel').textContent = '—';
-    ['segRed','segAmber','segGreen','segPurple'].forEach(id => {
-      document.getElementById(id).style.flex = '0';
-      document.getElementById(id).style.opacity = '1';
-    });
-    document.getElementById('segEmpty').style.flex = '1';
-  }
-
-  // Traffic lights
-  ['red','amber','green','purple'].forEach(c => {
-    document.getElementById('tl_'+c).classList.toggle('active', hasInput && cls===c);
-  });
-
-  // Rental mix
   if(hasInput && policy.asp){
     document.getElementById('mixWrap').style.display = 'block';
     const colors = ['var(--c24)','var(--c12)','var(--c6)'];
     const pcts = sortedOpts.map(o => totalRentals>0 ? Math.round((optCounts[o.h]||0)/totalRentals*100) : 0);
-
-    // Map segments by index position, not by duration
-    const segIds = ['mixSeg24','mixSeg12','mixSeg6'];
-    segIds.forEach((id,i) => {
+    ['mixSeg24','mixSeg12','mixSeg6'].forEach((id,i) => {
       document.getElementById(id).style.width = (pcts[i]||0)+'%';
       document.getElementById(id).style.background = colors[i];
     });
-
     document.getElementById('mixLegend').innerHTML = sortedOpts.map((o,i) =>
       `<span><span class="mix-dot" style="background:${colors[i]}"></span>${pcts[i]}% ${o.h}hr</span>`
     ).join('');
-
-    const shortPct = pcts[pcts.length-1];
-    const fullPct  = pcts[0];
+    const shortPct = pcts[pcts.length-1], fullPct = pcts[0];
     let flagCls='ok', flagLabel='balanced', note='Rental mix looks healthy across durations.';
-    if(shortPct > 60){
-      flagCls='warn-6hr'; flagLabel='short heavy';
-      note=`${shortPct}% of rentals are the shortest duration. Hub is hitting DRR through high volume of shorter rentals. Worth asking: are longer options being offered?`;
-    } else if(fullPct < 20){
-      flagCls='warn-24hr'; flagLabel='full-price light';
-      note=`Only ${fullPct}% of rentals are at the anchor price (${policy.anchor}hr). Could indicate agents defaulting to shorter options.`;
-    }
+    if(shortPct > 60){ flagCls='warn-6hr'; flagLabel='short heavy'; note=`${shortPct}% of rentals are the shortest duration. Worth asking: are longer options being offered?`; }
+    else if(fullPct < 20){ flagCls='warn-24hr'; flagLabel='full-price light'; note=`Only ${fullPct}% of rentals are at the anchor price (${policy.anchor}hr).`; }
     const flagEl = document.getElementById('mixFlag');
-    flagEl.className = 'mix-flag '+flagCls;
-    flagEl.textContent = flagLabel;
+    flagEl.className = 'mix-flag '+flagCls; flagEl.textContent = flagLabel;
     document.getElementById('mixNote').textContent = note;
   } else if(hasInput && !policy.asp){
     document.getElementById('mixWrap').style.display = 'block';
-    document.getElementById('mixSeg24').style.width = '100%';
-    document.getElementById('mixSeg12').style.width = '0%';
-    document.getElementById('mixSeg6').style.width  = '0%';
+    document.getElementById('mixSeg24').style.width='100%';
+    document.getElementById('mixSeg12').style.width='0%';
+    document.getElementById('mixSeg6').style.width='0%';
     document.getElementById('mixLegend').innerHTML = `<span><span class="mix-dot" style="background:var(--c24)"></span>100% — single option policy</span>`;
     const flagEl = document.getElementById('mixFlag');
-    flagEl.className = 'mix-flag ok'; flagEl.textContent = 'single option';
-    document.getElementById('mixNote').textContent = 'Standard hub — one rental option.';
+    flagEl.className='mix-flag ok'; flagEl.textContent='single option';
+    document.getElementById('mixNote').textContent='Standard hub — one rental option.';
   } else {
-    document.getElementById('mixWrap').style.display = 'none';
+    document.getElementById('mixWrap').style.display='none';
   }
+
   renderInlineZones();
 }
+
 
 // Custom policy builder
 
@@ -968,62 +1142,86 @@ function switchTab(tab){
 
 function renderZonesTab(){
   const el = document.getElementById('zonesContent');
-  el.innerHTML = ''; // always re-render in case hub type changed
+  el.innerHTML = '';
   const COUNTRIES = [
     { code:'NG', flag:'🇳🇬', currency:'NGN', cur:'₦'  },
     { code:'CD', flag:'🇨🇩', currency:'CDF', cur:'FC' },
-    { code:'SL', flag:'🇸🇱', currency:'SLE', cur:'Le' },
+    { code:'SL', flag:'🇸🇱', currency:'SLE', cur:'SLE' },
     { code:'LR', flag:'🇱🇷', currency:'LRD', cur:'L$' },
   ];
-  const zones = [
-    { key:'purple', color:'var(--purple)', label:'Exceptional', usd:'>$0.25 / >$2.00' },
-    { key:'green',  color:'var(--green)',  label:'On target',   usd:'$0.20 / $1.60'   },
-    { key:'amber',  color:'var(--amber)',  label:'Approaching', usd:'$0.15 / $1.20'   },
-  ];
 
-  function buildTable(type, usdPurple, usdGreen, usdAmber){
-    const T = COUNTRY_THRESHOLDS[type];
-    return `
-      <h3 style="font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">${type}</h3>
-      <table style="width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;margin-bottom:24px;">
-        <thead>
-          <tr style="border-bottom:2px solid var(--border);">
-            <th style="text-align:left;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">Zone</th>
-            <th style="text-align:center;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">USD</th>
-            ${COUNTRIES.map(c=>`<th style="text-align:right;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">${c.flag} ${c.currency}</th>`).join('')}
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="background:var(--purple-light);border-bottom:1px solid var(--border);">
-            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--purple);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--purple);font-weight:500;">Exceptional</span></td>
-            <td style="text-align:center;padding:9px 10px;color:var(--purple);font-weight:500;">&gt;${usdPurple}</td>
-            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--purple);font-weight:500;">${c.cur}${T[c.code].purple}+</td>`).join('')}
-          </tr>
-          <tr style="background:var(--green-light);border-bottom:1px solid var(--border);">
-            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--green);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--green);font-weight:500;">On target</span></td>
-            <td style="text-align:center;padding:9px 10px;color:var(--green);font-weight:500;">${usdGreen}</td>
-            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--green);font-weight:500;">${c.cur}${T[c.code].green}–${c.cur}${T[c.code].purple}</td>`).join('')}
-          </tr>
-          <tr style="background:var(--amber-light);border-bottom:1px solid var(--border);">
-            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--amber);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--amber);font-weight:500;">Approaching</span></td>
-            <td style="text-align:center;padding:9px 10px;color:var(--amber);font-weight:500;">${usdAmber}</td>
-            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--amber);font-weight:500;">${c.cur}${T[c.code].amber}–${c.cur}${T[c.code].green}</td>`).join('')}
-          </tr>
-          <tr style="background:var(--red-light);">
-            <td style="padding:9px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;margin-right:7px;vertical-align:middle;"></span><span style="color:var(--red);font-weight:500;">Below target</span></td>
-            <td style="text-align:center;padding:9px 10px;color:var(--red);font-weight:500;">&lt;${usdAmber}</td>
-            ${COUNTRIES.map(c=>`<td style="text-align:right;padding:9px 10px;color:var(--red);font-weight:500;">&lt;${c.cur}${T[c.code].amber}</td>`).join('')}
-          </tr>
-        </tbody>
-      </table>
-    `;
+  function fmtC(v, code){
+    if(code === 'SL') return parseFloat(v.toFixed(2)).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
+    return Math.round(v).toLocaleString();
   }
 
-  el.innerHTML = `
-    <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Fixed USD-anchored targets. Same standard across all countries.</p>
-    ${buildTable('MOPO50', '$0.25', '$0.20', '$0.15')}
-    ${buildTable('GENREP', '$2.00', '$1.60', '$1.20')}
-  `;
+  function buildMOPO50(){
+    const T = COUNTRY_THRESHOLDS.MOPO50;
+    const zonesOrdered = MOPO50_ZONES;
+    const rows = zonesOrdered.map((z, i) => {
+      const prevZ = zonesOrdered[i-1];
+      return `<tr style="background:${z.light};border-bottom:1px solid var(--border);">
+        <td style="padding:9px 10px;">
+          <span style="width:9px;height:9px;border-radius:50%;background:${z.color};display:inline-block;margin-right:7px;vertical-align:middle;"></span>
+          <span style="color:${z.color};font-weight:500;">${z.label}</span>
+        </td>
+        <td style="text-align:center;padding:9px 10px;color:${z.color};font-weight:500;">${getZoneUsd(z.key,'mopo50')}</td>
+        ${COUNTRIES.map(c => {
+          const val = T[c.code][z.key];
+          const prevVal = prevZ ? T[c.code][prevZ.key] : null;
+          let localStr;
+          if(z.key === 'darkred') localStr = `&lt;${c.cur}${fmtC(T[c.code].red,c.code)}`;
+          else if(i === 0) localStr = `&gt;${c.cur}${fmtC(val,c.code)}`;
+          else localStr = `${c.cur}${fmtC(val,c.code)}–${c.cur}${fmtC(prevVal,c.code)}`;
+          return `<td style="text-align:right;padding:9px 10px;color:${z.color};font-weight:500;">${localStr}</td>`;
+        }).join('')}
+      </tr>`;
+    }).join('');
+    return `<h3 style="font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">MOPO50</h3>
+      <table style="width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;margin-bottom:28px;">
+        <thead><tr style="border-bottom:2px solid var(--border);">
+          <th style="text-align:left;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">Zone</th>
+          <th style="text-align:center;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">USD</th>
+          ${COUNTRIES.map(c=>`<th style="text-align:right;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">${c.flag} ${c.currency}</th>`).join('')}
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  function buildGENREP(){
+    const T = COUNTRY_THRESHOLDS.GENREP;
+    const rows = GENREP_ZONES.map((z, i) => {
+      const prevZ = GENREP_ZONES[i-1];
+      return `<tr style="background:${z.light};border-bottom:1px solid var(--border);">
+        <td style="padding:9px 10px;">
+          <span style="width:9px;height:9px;border-radius:50%;background:${z.color};display:inline-block;margin-right:7px;vertical-align:middle;"></span>
+          <span style="color:${z.color};font-weight:500;">${z.label}</span>
+        </td>
+        <td style="text-align:center;padding:9px 10px;color:${z.color};font-weight:500;">${getZoneUsd(z.key,'genrep')}</td>
+        ${COUNTRIES.map(c => {
+          const val = T[c.code][z.key];
+          const prevVal = prevZ ? T[c.code][prevZ.key] : null;
+          let localStr;
+          if(z.key === 'red') localStr = `&lt;${c.cur}${fmtC(T[c.code].amber,c.code)}`;
+          else if(i === 0) localStr = `&gt;${c.cur}${fmtC(val,c.code)}`;
+          else localStr = `${c.cur}${fmtC(val,c.code)}–${c.cur}${fmtC(prevVal,c.code)}`;
+          return `<td style="text-align:right;padding:9px 10px;color:${z.color};font-weight:500;">${localStr}</td>`;
+        }).join('')}
+      </tr>`;
+    }).join('');
+    return `<h3 style="font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">GENREP</h3>
+      <table style="width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;margin-bottom:28px;">
+        <thead><tr style="border-bottom:2px solid var(--border);">
+          <th style="text-align:left;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">Zone</th>
+          <th style="text-align:center;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">USD</th>
+          ${COUNTRIES.map(c=>`<th style="text-align:right;padding:7px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:500;">${c.flag} ${c.currency}</th>`).join('')}
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  el.innerHTML = `<p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Fixed USD-anchored targets. Same standard across all countries.</p>
+    ${buildMOPO50()}${buildGENREP()}`;
 }
 
 function renderPolicyPreview(){
@@ -1153,5 +1351,8 @@ renderAgentInputs();
 renderCheckerInputs(false);
 calculate();
 </script>
+
+        </div>
+    </main>
 </body>
 </html>
