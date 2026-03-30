@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'MOPO Call Centre',
+        url: '/work/mopo_callcentre.html',
+        date: '2026-03-30',
+        description: 'An example CRM of how the MOPO Call Centre in Nigeria could operate. Built to describe to our software team some of the function and flows we need to implement our call centre in Nigeria'
+    },
+    {
         title: 'Hub DRR Calculator',
         url: '/work/hub-drr-calculator%20final.html',
         date: '2026-02-24',
