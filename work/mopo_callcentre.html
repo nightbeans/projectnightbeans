@@ -4,43 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOPO Call Centre</title>
-
-
 <script>
   const APPS_SCRIPT_URL = 'https://script.google.com/a/macros/mobile-power.co.uk/s/AKfycbzm_OitQ5IvlBDskNpt-g6X3VwO3QulrNvbLtcpZo28YVL2JohvbOh6JE-SmcKSz-do/exec';
   const ALLOWED_DOMAINS = ['mobile-power.co.uk', 'mopo.co'];
   const GOOGLE_CLIENT_ID = '709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com';
 </script>
-
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0efe9;color:#1a1a18;min-height:100vh;font-size:14px}
-
-/* ── LOGIN SCREEN ── */
 #login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px}
-#login-screen h1{font-size:20px;font-weight:500}
-#login-screen p{font-size:13px;color:#888;max-width:300px;text-align:center}
 .login-card{background:#fff;border-radius:14px;border:0.5px solid rgba(0,0,0,0.08);padding:32px 36px;display:flex;flex-direction:column;align-items:center;gap:16px;min-width:320px}
 .login-logo{font-size:22px;font-weight:500;letter-spacing:-0.02em}
 .login-sub{font-size:13px;color:#888}
 #login-error{font-size:12px;color:#a32d2d;background:#fcebeb;padding:8px 12px;border-radius:7px;display:none}
-
-/* ── USER PILL ── */
-#user-pill{display:flex;align-items:center;gap:8px;margin-left:auto}
-.user-avatar{width:28px;height:28px;border-radius:50%;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#185fa5;flex-shrink:0}
-.user-name{font-size:13px;color:#555}
-.sign-out{font-size:12px;color:#888;cursor:pointer;padding:4px 8px;border-radius:5px;border:0.5px solid rgba(0,0,0,0.1);background:#fff}
-.sign-out:hover{background:#f5f4f0}
-
-/* ── LOADING ── */
 #loading-screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:12px}
 #loading-screen p{font-size:13px;color:#888}
 .spinner{width:24px;height:24px;border:2px solid rgba(0,0,0,0.1);border-top-color:#1a1a18;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* ── APP ── */
 #app{display:none}
 .hdr{background:#fff;border-bottom:0.5px solid rgba(0,0,0,0.1);padding:0 20px;display:flex;align-items:center;height:48px;gap:0}
 .hdr-title{font-size:14px;font-weight:500;padding-right:16px;border-right:0.5px solid rgba(0,0,0,0.1);margin-right:4px;white-space:nowrap}
@@ -51,15 +32,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .btn-primary{background:#1a1a18;color:#fff;border:none}.btn-primary:hover{background:#333}
 .btn-ghost{background:#fff;color:#1a1a18;border:0.5px solid rgba(0,0,0,0.15)}.btn-ghost:hover{background:#f5f4f0}
 .btn-danger{background:#fff;color:#a32d2d;border:0.5px solid rgba(162,45,45,0.3);padding:6px 14px;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;margin-left:auto}.btn-danger:hover{background:#fcebeb}
-
+#user-pill{display:flex;align-items:center;gap:8px;margin-left:auto}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#185fa5;flex-shrink:0}
+.user-name{font-size:13px;color:#555}
+.sign-out{font-size:12px;color:#888;cursor:pointer;padding:4px 8px;border-radius:5px;border:0.5px solid rgba(0,0,0,0.1);background:#fff}.sign-out:hover{background:#f5f4f0}
 .metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:16px 20px}
 .mc{background:#fff;border-radius:10px;padding:12px 14px;border:0.5px solid rgba(0,0,0,0.07)}
 .mc-label{font-size:11px;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
 .mc-val{font-size:22px;font-weight:500}
 .mc-val.g{color:#3b6d11}.mc-val.b{color:#185fa5}.mc-val.a{color:#854f0b}.mc-val.r{color:#a32d2d}
 .mc-sub{font-size:11px;color:#bbb;margin-top:2px}
-
-/* TODAY */
 .today-outer{padding:0 20px 32px}
 .today-greeting{margin-bottom:16px}
 .today-greeting h2{font-size:16px;font-weight:500;margin-bottom:3px}
@@ -81,8 +63,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .done-btn:hover{background:#eaf3de;color:#3b6d11}
 .today-empty{padding:20px 14px;font-size:12px;color:#bbb;text-align:center}
 .today-new-panel{background:#fff;border-radius:10px;border:0.5px solid rgba(0,0,0,0.07);overflow:hidden;margin-bottom:32px}
-
-/* PIPELINE */
 .pipeline-wrap{padding:0 20px 20px;overflow-x:auto}
 .pipeline{display:flex;gap:10px;min-width:900px}
 .stage-col{flex:1;min-width:155px;background:#fff;border-radius:10px;border:0.5px solid rgba(0,0,0,0.07);overflow:hidden}
@@ -100,8 +80,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
 .card-due{font-size:10px;color:#a32d2d;font-weight:500;margin-left:auto}
 .no-loc-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#e24b4a;margin-right:3px;vertical-align:middle}
-
-/* TABLE */
 .view{padding:0 20px 32px}
 .toolbar{display:flex;align-items:center;gap:8px;padding:0 0 12px;flex-wrap:wrap}
 .toolbar input,.toolbar select{padding:7px 11px;border:0.5px solid rgba(0,0,0,0.13);border-radius:7px;font-size:13px;background:#fff;outline:none;font-family:inherit}
@@ -116,8 +94,6 @@ tbody tr:hover{background:#faf9f6}
 td{padding:10px 12px;vertical-align:middle}
 .td-name{font-weight:500}
 .overdue-row td:first-child{border-left:3px solid #e24b4a}
-
-/* REPS */
 .reps-wrap{padding:0 20px 32px}
 .reps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px}
 .rep-card{background:#fff;border-radius:10px;border:0.5px solid rgba(0,0,0,0.07);padding:16px}
@@ -132,8 +108,6 @@ td{padding:10px 12px;vertical-align:middle}
 .rep-bar-fill{height:100%;background:#3b6d11;border-radius:2px}
 .reps-table-wrap{background:#fff;border-radius:10px;border:0.5px solid rgba(0,0,0,0.07);overflow:hidden}
 .reps-table-hdr{padding:10px 14px;border-bottom:0.5px solid rgba(0,0,0,0.07);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:#888}
-
-/* BADGES */
 .badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500}
 .src-website{background:#e6f1fb;color:#185fa5}.src-social{background:#eeedfe;color:#534ab7}
 .src-radio{background:#faeeda;color:#854f0b}.src-d2d{background:#eaf3de;color:#3b6d11}.src-dm{background:#f1efe8;color:#5f5e5a}
@@ -145,8 +119,6 @@ td{padding:10px 12px;vertical-align:middle}
 .conv-tick{color:#3b6d11;font-weight:500}
 .dir-in{background:#eaf3de;color:#3b6d11;font-size:10px;padding:1px 6px;border-radius:10px}
 .dir-out{background:#e6f1fb;color:#185fa5;font-size:10px;padding:1px 6px;border-radius:10px}
-
-/* DRAWER */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:200;align-items:flex-start;justify-content:flex-end}
 .overlay.open{display:flex}
 .drawer{background:#fff;width:540px;max-width:100vw;height:100vh;overflow-y:auto;border-left:0.5px solid rgba(0,0,0,0.1);display:flex;flex-direction:column}
@@ -174,8 +146,6 @@ td{padding:10px 12px;vertical-align:middle}
 .cp-step.done{background:#eaf3de;color:#3b6d11;font-weight:500}
 .cp-step.active{background:#e6f1fb;color:#185fa5;font-weight:500}
 .cp-step:first-child{border-radius:6px 0 0 6px}.cp-step:last-child{border-radius:0 6px 6px 0}
-
-/* HUB SEARCH */
 .hub-search-wrap{position:relative;margin-bottom:6px}
 .hub-search-wrap input{width:100%;padding:7px 10px;border:0.5px solid rgba(0,0,0,0.13);border-radius:7px;font-size:13px;font-family:inherit;outline:none}
 .hub-search-wrap input:focus{border-color:rgba(0,0,0,0.3)}
@@ -193,12 +163,8 @@ td{padding:10px 12px;vertical-align:middle}
 .agent-row{padding:9px 12px;border-bottom:0.5px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between}
 .agent-row:last-child{border-bottom:none}
 .agent-name{font-size:13px;font-weight:500}.agent-meta{font-size:11px;color:#888;margin-top:1px}
-.call-btn{padding:4px 11px;background:#1a1a18;color:#fff;border:none;border-radius:6px;font-size:11px;cursor:pointer}
-.call-btn:hover{background:#333}.call-btn.done{background:#3b6d11}
 .loc-btn{display:flex;align-items:center;gap:6px;padding:7px 11px;background:#fff;border:0.5px solid rgba(0,0,0,0.13);border-radius:7px;font-size:12px;cursor:pointer;color:#185fa5;width:100%;margin-top:6px;font-family:inherit}
 .loc-btn:hover{background:#e6f1fb}
-
-/* ACTIVITY */
 .act-log{border:0.5px solid rgba(0,0,0,0.07);border-radius:8px;overflow:hidden}
 .act-item{padding:9px 12px;border-bottom:0.5px solid rgba(0,0,0,0.06);font-size:12px}
 .act-item:last-child{border-bottom:none}
@@ -227,27 +193,12 @@ td{padding:10px 12px;vertical-align:middle}
 .save-indicator.saving{color:#854f0b}
 .save-indicator.saved{color:#3b6d11}
 .save-indicator.error{color:#a32d2d}
-
 @media(max-width:900px){.today-grid{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.today-grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.fg{grid-template-columns:1fr}.drawer{width:100vw}}
 </style>
 </head>
 <body>
 
-<header style="background-color:#1A4957;border-bottom:1px solid #2d6575;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-  <div>
-    <a href="/" style="text-decoration:none;"><span style="font-size:1.6rem;font-weight:600;color:#ffffff;">joeldelaney</span></a>
-  </div>
-  <ul style="list-style:none;display:flex;gap:2rem;margin:0;padding:0;">
-    <li><a href="/" style="text-decoration:none;color:#b0d4dd;font-weight:500;">Home</a></li>
-    <li><a href="/blog/" style="text-decoration:none;color:#b0d4dd;font-weight:500;">Blog</a></li>
-    <li><a href="/work/" style="text-decoration:none;color:#ffffff;font-weight:500;">Work</a></li>
-    <li><a href="/benedict/" style="text-decoration:none;color:#b0d4dd;font-weight:500;">Benedict</a></li>
-    <li><a href="/book/" style="text-decoration:none;color:#b0d4dd;font-weight:500;">Book</a></li>
-  </ul>
-</header>
-
-<!-- LOGIN SCREEN -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">MOPO</div>
@@ -269,13 +220,11 @@ td{padding:10px 12px;vertical-align:middle}
   </div>
 </div>
 
-<!-- LOADING SCREEN -->
 <div id="loading-screen">
   <div class="spinner"></div>
-  <p id="loading-msg">Loading contacts...</p>
+  <p id="loading-msg">Loading...</p>
 </div>
 
-<!-- APP -->
 <div id="app">
   <div class="hdr">
     <div class="hdr-title">MOPO Call Centre</div>
@@ -283,7 +232,7 @@ td{padding:10px 12px;vertical-align:middle}
     <div class="tab" onclick="switchTab('pipeline',this)">Pipeline</div>
     <div class="tab" onclick="switchTab('all',this)">All contacts</div>
     <div class="tab" onclick="switchTab('reps',this)">Reps</div>
-    <div id="user-pill" class="user-pill">
+    <div id="user-pill">
       <div class="user-avatar" id="user-avatar"></div>
       <span class="user-name" id="user-name-display"></span>
       <button class="sign-out" onclick="signOut()">Sign out</button>
@@ -292,7 +241,6 @@ td{padding:10px 12px;vertical-align:middle}
       <button class="btn btn-ghost" style="font-size:13px;padding:6px 14px" onclick="openNew()">+ New contact</button>
     </div>
   </div>
-
   <div class="metrics" id="metrics"></div>
   <div id="view-today" class="today-outer"></div>
   <div id="view-pipeline" class="pipeline-wrap" style="display:none"></div>
@@ -300,7 +248,6 @@ td{padding:10px 12px;vertical-align:middle}
   <div id="view-reps" class="reps-wrap" style="display:none"></div>
 </div>
 
-<!-- DRAWER -->
 <div class="overlay" id="overlay" onclick="overlayClick(event)">
   <div class="drawer">
     <div class="d-hdr">
@@ -320,83 +267,46 @@ td{padding:10px 12px;vertical-align:middle}
 </div>
 
 <script>
-// ─── STATE ────────────────────────────────────────────────────────────────────
 const today = new Date().toISOString().slice(0,10);
-let contacts = [];
-let activities = [];
-let hubs = [];
+let contacts = [], activities = [], hubs = [];
 let config = { repNames:[], sources:[], purposes:[], stages:[], outcomes:[], directions:[] };
-let currentUser = null;
-let editId = null;
-let currentTab = 'today';
-let sortKey = 'firstContact';
-let sortDir = -1;
+let currentUser = null, editId = null, currentTab = 'today';
+let sortKey = 'firstContact', sortDir = -1;
 
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
 function nextWeekday(from,n){let d=new Date(from),c=0;while(c<n){d.setDate(d.getDate()+1);if(d.getDay()!==0&&d.getDay()!==6)c++}return d.toISOString().slice(0,10)}
 function initials(name){return(name||'?').split(' ').map(w=>w[0]||'').slice(0,2).join('').toUpperCase()}
-function lastActivity(c){
-  const acts=activities.filter(a=>String(a.contactId)===String(c.id));
-  if(!acts.length)return null;
-  return acts.slice().sort((a,b)=>a.date<b.date?1:-1)[0];
-}
+function lastActivity(c){const acts=activities.filter(a=>String(a.contactId)===String(c.id));if(!acts.length)return null;return acts.slice().sort((a,b)=>a.date<b.date?1:-1)[0]}
 function isConverted(c){return !!(c.regDate&&c.rentalDate&&c.rentalDate>=c.regDate&&c.regDate>c.firstContact)}
 function isOverdue(c){return !!(c.followUp&&c.followUp<today&&c.stage!=='Converted')}
 function isDueToday(c){return c.followUp===today&&c.stage!=='Converted'}
 function isNewToday(c){return c.firstContact===today&&c.stage!=='Converted'}
-function isCallback(c){
-  if(c.stage==='Converted')return false;
-  const la=lastActivity(c);
-  return !!(la&&la.outcome==='Callback requested');
-}
-function srcClass(s){
-  if(s==='NG Micro-site')return 'src-website';
-  if(['Facebook Ad','Instagram Ad','TikTok Ad','Social Media DM'].includes(s))return 'src-social';
-  if(s==='Radio Ad')return 'src-radio';
-  if(s==='Door-to-door')return 'src-d2d';
-  return 'src-dm';
-}
-function stageClass(s){
-  return{'New':'st-new','In conversation':'st-contacted','Agent details given':'st-details',
-    '3-way connected':'st-connected','App registered':'st-contacted','Converted':'st-converted',
-    'No local hub':'st-nohub','Complaint open':'st-complaint','No response':'st-noresp'}[s]||'st-new';
-}
-
-// ─── SSO ─────────────────────────────────────────────────────────────────────
+function isCallback(c){if(c.stage==='Converted')return false;const la=lastActivity(c);return !!(la&&la.outcome==='Callback requested')}
+function srcClass(s){if(s==='NG Micro-site')return 'src-website';if(['Facebook Ad','Instagram Ad','TikTok Ad','Social Media DM'].includes(s))return 'src-social';if(s==='Radio Ad')return 'src-radio';if(s==='Door-to-door')return 'src-d2d';return 'src-dm'}
+function stageClass(s){return{'New':'st-new','In conversation':'st-contacted','Agent details given':'st-details','3-way connected':'st-connected','App registered':'st-contacted','Converted':'st-converted','No local hub':'st-nohub','Complaint open':'st-complaint','No response':'st-noresp'}[s]||'st-new'}
 
 function handleGoogleSignIn(response) {
   try {
     const payload = JSON.parse(atob(response.credential.split('.')[1]));
-    const email = payload.email || '';
-    const domain = email.split('@')[1] || '';
-    if (!ALLOWED_DOMAINS.includes(domain)) {
-      document.getElementById('login-error').style.display = 'block';
-      return;
-    }
-    currentUser = { name: payload.name, email, picture: payload.picture };
+    const domain = (payload.email||'').split('@')[1]||'';
+    if (!ALLOWED_DOMAINS.includes(domain)) { document.getElementById('login-error').style.display='block'; return; }
+    currentUser = { name: payload.name, email: payload.email, picture: payload.picture };
     startApp();
-  } catch(e) {
-    console.error('SSO error', e);
-  }
+  } catch(e) { console.error('SSO error',e); }
 }
 
 function signOut() {
   currentUser = null;
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
 }
 
-// Bypass SSO if Client ID not yet configured — dev/test mode
 function checkSSOConfig() {
   if (!GOOGLE_CLIENT_ID) {
-    // No client ID set — show bypass for now
-    document.getElementById('login-screen').innerHTML = `
+    document.getElementById('login-screen').innerHTML=`
       <div class="login-card">
         <div class="login-logo">MOPO</div>
         <div class="login-sub">Call Centre</div>
-        <div style="font-size:12px;color:#888;text-align:center;max-width:260px">
-          Google SSO not yet configured.<br>Enter your name to continue (dev mode).
-        </div>
+        <div style="font-size:12px;color:#888;text-align:center;max-width:260px">Enter your name to continue.</div>
         <div style="display:flex;gap:8px;width:100%">
           <input id="dev-name" placeholder="Your name" style="flex:1;padding:8px 10px;border:0.5px solid rgba(0,0,0,0.15);border-radius:7px;font-size:13px;outline:none">
           <button onclick="devSignIn()" class="btn btn-primary">Go</button>
@@ -406,151 +316,83 @@ function checkSSOConfig() {
 }
 
 function devSignIn() {
-  const name = document.getElementById('dev-name').value.trim();
-  if (!name) return;
-  currentUser = { name, email: name.toLowerCase().replace(' ','.')+'@mobile-power.co.uk', picture: null };
+  const name=document.getElementById('dev-name').value.trim();
+  if(!name)return;
+  currentUser={name,email:name.toLowerCase().replace(' ','.')+'@mobile-power.co.uk',picture:null};
   startApp();
 }
 
-// ─── APP STARTUP ─────────────────────────────────────────────────────────────
 async function startApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('loading-screen').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
-
-  // Set user display
-  const avatar = document.getElementById('user-avatar');
-  avatar.textContent = initials(currentUser.name);
-  document.getElementById('user-name-display').textContent = currentUser.name;
-
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('loading-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('user-avatar').textContent=initials(currentUser.name);
+  document.getElementById('user-name-display').textContent=currentUser.name;
   try {
-    setLoadingMsg('Loading config...');
+    document.getElementById('loading-msg').textContent='Loading config...';
     await loadConfig();
-    setLoadingMsg('Loading contacts...');
+    document.getElementById('loading-msg').textContent='Loading contacts...';
     await loadContacts();
-    setLoadingMsg('Loading activity log...');
+    document.getElementById('loading-msg').textContent='Loading activity log...';
     await loadActivities();
-    setLoadingMsg('Loading hubs...');
+    document.getElementById('loading-msg').textContent='Loading hubs...';
     await loadHubs();
-  } catch(e) {
-    setLoadingMsg('Error loading data: ' + e.message);
-    return;
-  }
-
-  document.getElementById('loading-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  renderMetrics();
-  renderToday();
+  } catch(e) { document.getElementById('loading-msg').textContent='Error: '+e.message; return; }
+  document.getElementById('loading-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  renderMetrics(); renderToday();
 }
 
-function setLoadingMsg(msg) {
-  document.getElementById('loading-msg').textContent = msg;
-}
-
-// ─── API CALLS ────────────────────────────────────────────────────────────────
 async function appsGet(action) {
-  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_WEB_APP_URL_HERE') {
-    // No backend — use localStorage fallback
-    return localGet(action);
-  }
-  const res = await fetch(`${APPS_SCRIPT_URL}?action=${action}`);
+  if(!APPS_SCRIPT_URL||APPS_SCRIPT_URL==='PASTE_YOUR_WEB_APP_URL_HERE')return localGet(action);
+  const res=await fetch(`${APPS_SCRIPT_URL}?action=${action}`);
   return res.json();
 }
-
 async function appsPost(payload) {
-  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_WEB_APP_URL_HERE') {
-    return localPost(payload);
-  }
-  const res = await fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  });
+  if(!APPS_SCRIPT_URL||APPS_SCRIPT_URL==='PASTE_YOUR_WEB_APP_URL_HERE')return localPost(payload);
+  const res=await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(payload)});
   return res.json();
 }
 
-// localStorage fallback (when Apps Script URL not set)
-const LS = 'mopo_cc_local';
-function localGet(action) {
-  const d = JSON.parse(localStorage.getItem(LS) || '{"contacts":[],"activities":[]}');
-  if (action === 'getContacts')    return { contacts: d.contacts || [] };
-  if (action === 'getActivities')  return { activities: d.activities || [] };
-  if (action === 'getHubs')        return { hubs: [] };
-  if (action === 'getConfig')      return {
-    repNames: ['Joel Delaney','Phil Howden'],
-    sources: ['NG Micro-site','Facebook Ad','Instagram Ad','TikTok Ad','Social Media DM','Radio Ad','Door-to-door'],
-    purposes: ['How does MOPO work?','How much does it cost?','Where can I rent near me?','I want to become an agent','I have a problem / complaint','Something else'],
-    stages: ['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'],
-    outcomes: ['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'],
-    directions: ['Inbound','Outbound']
-  };
-  return {};
+const LS='mopo_cc_local';
+function localGet(action){
+  const d=JSON.parse(localStorage.getItem(LS)||'{"contacts":[],"activities":[]}');
+  if(action==='getContacts')return{contacts:d.contacts||[]};
+  if(action==='getActivities')return{activities:d.activities||[]};
+  if(action==='getHubs')return{hubs:[]};
+  if(action==='getConfig')return{repNames:['Joel Delaney','Phil Howden'],sources:['NG Micro-site','Facebook Ad','Instagram Ad','TikTok Ad','Social Media DM','Radio Ad','Door-to-door'],purposes:['How does MOPO work?','How much does it cost?','Where can I rent near me?','I want to become an agent','I have a problem / complaint','Something else'],stages:['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'],outcomes:['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'],directions:['Inbound','Outbound']};
+  return{};
 }
-function localPost(payload) {
-  const d = JSON.parse(localStorage.getItem(LS) || '{"contacts":[],"activities":[]}');
-  if (payload.action === 'saveContact') {
-    const idx = d.contacts.findIndex(c => String(c.id) === String(payload.contact.id));
-    if (idx >= 0) d.contacts[idx] = payload.contact;
-    else d.contacts.push(payload.contact);
-  }
-  if (payload.action === 'deleteContact') {
-    d.contacts = d.contacts.filter(c => String(c.id) !== String(payload.id));
-    d.activities = d.activities.filter(a => String(a.contactId) !== String(payload.id));
-  }
-  if (payload.action === 'saveActivity') {
-    d.activities.push(payload.activity);
-  }
-  localStorage.setItem(LS, JSON.stringify(d));
-  return { success: true };
+function localPost(payload){
+  const d=JSON.parse(localStorage.getItem(LS)||'{"contacts":[],"activities":[]}');
+  if(payload.action==='saveContact'){const idx=d.contacts.findIndex(c=>String(c.id)===String(payload.contact.id));if(idx>=0)d.contacts[idx]=payload.contact;else d.contacts.push(payload.contact);}
+  if(payload.action==='deleteContact'){d.contacts=d.contacts.filter(c=>String(c.id)!==String(payload.id));d.activities=d.activities.filter(a=>String(a.contactId)!==String(payload.id));}
+  if(payload.action==='saveActivity')d.activities.push(payload.activity);
+  localStorage.setItem(LS,JSON.stringify(d));
+  return{success:true};
 }
 
-async function loadConfig() {
-  const r = await appsGet('getConfig');
-  if (r && !r.error) config = r;
-}
-async function loadContacts() {
-  const r = await appsGet('getContacts');
-  if (r && !r.error) contacts = r.contacts || [];
-}
-async function loadActivities() {
-  const r = await appsGet('getActivities');
-  if (r && !r.error) activities = r.activities || [];
-}
-async function loadHubs() {
-  const r = await appsGet('getHubs');
-  if (r && !r.error) hubs = r.hubs || [];
+async function loadConfig(){const r=await appsGet('getConfig');if(r&&!r.error)config=r;}
+async function loadContacts(){const r=await appsGet('getContacts');if(r&&!r.error)contacts=r.contacts||[];}
+async function loadActivities(){const r=await appsGet('getActivities');if(r&&!r.error)activities=r.activities||[];}
+async function loadHubs(){const r=await appsGet('getHubs');if(r&&!r.error)hubs=r.hubs||[];}
+
+async function persistContact(c){setSaveIndicator('saving');const r=await appsPost({action:'saveContact',contact:c});setSaveIndicator(r&&r.success?'saved':'error');return r;}
+async function persistActivity(a){return appsPost({action:'saveActivity',activity:a});}
+async function removeContact(id){setSaveIndicator('saving');const r=await appsPost({action:'deleteContact',id});setSaveIndicator(r&&r.success?'saved':'error');return r;}
+
+function setSaveIndicator(state){
+  const el=document.getElementById('save-indicator');if(!el)return;
+  el.className='save-indicator '+state;
+  el.textContent=state==='saving'?'Saving...':state==='saved'?'✓ Saved':'⚠ Error saving';
+  if(state==='saved')setTimeout(()=>{el.textContent='';el.className='save-indicator';},2000);
 }
 
-async function persistContact(c) {
-  setSaveIndicator('saving');
-  const r = await appsPost({ action: 'saveContact', contact: c });
-  setSaveIndicator(r && r.success ? 'saved' : 'error');
-  return r;
-}
-async function persistActivity(a) {
-  return appsPost({ action: 'saveActivity', activity: a });
-}
-async function removeContact(id) {
-  setSaveIndicator('saving');
-  const r = await appsPost({ action: 'deleteContact', id });
-  setSaveIndicator(r && r.success ? 'saved' : 'error');
-  return r;
-}
-
-function setSaveIndicator(state) {
-  const el = document.getElementById('save-indicator');
-  if (!el) return;
-  el.className = 'save-indicator ' + state;
-  el.textContent = state === 'saving' ? 'Saving...' : state === 'saved' ? '✓ Saved' : '⚠ Error saving';
-  if (state === 'saved') setTimeout(() => { el.textContent = ''; el.className = 'save-indicator'; }, 2000);
-}
-
-// ─── METRICS ─────────────────────────────────────────────────────────────────
-function renderMetrics() {
-  const conv = contacts.filter(isConverted).length;
-  const overdue = contacts.filter(isOverdue).length;
-  const noLoc = contacts.filter(c => !c.location && c.stage !== 'Converted').length;
-  const complaints = contacts.filter(c => c.stage === 'Complaint open').length;
-  document.getElementById('metrics').innerHTML = `
+function renderMetrics(){
+  const conv=contacts.filter(isConverted).length,overdue=contacts.filter(isOverdue).length;
+  const noLoc=contacts.filter(c=>!c.location&&c.stage!=='Converted').length;
+  const complaints=contacts.filter(c=>c.stage==='Complaint open').length;
+  document.getElementById('metrics').innerHTML=`
     <div class="mc"><div class="mc-label">Total contacts</div><div class="mc-val">${contacts.length}</div><div class="mc-sub">all sources</div></div>
     <div class="mc"><div class="mc-label">Converted</div><div class="mc-val g">${conv}</div><div class="mc-sub">first rental done</div></div>
     <div class="mc"><div class="mc-label">Follow-up overdue</div><div class="mc-val ${overdue?'r':''}">${overdue?'⚠ ':''}${overdue}</div><div class="mc-sub">action needed</div></div>
@@ -558,10 +400,9 @@ function renderMetrics() {
     <div class="mc"><div class="mc-label">Open complaints</div><div class="mc-val ${complaints?'r':''}">${complaints?'! ':''}${complaints}</div><div class="mc-sub">needs team lead</div></div>`;
 }
 
-// ─── TODAY ────────────────────────────────────────────────────────────────────
-function todayItemHtml(c, showDoneBtn, dueLabel) {
-  const la = lastActivity(c);
-  return `<div class="today-item" onclick="openContact(${c.id})">
+function todayItemHtml(c,showDoneBtn,dueLabel){
+  const la=lastActivity(c);
+  return`<div class="today-item" onclick="openContact(${c.id})">
     <div class="ti-left">
       <div class="ti-name">${c.name||c.phone||'Unknown'}</div>
       <div class="ti-meta">${c.phone||''}${c.location?' · '+c.location:''}</div>
@@ -573,56 +414,46 @@ function todayItemHtml(c, showDoneBtn, dueLabel) {
   </div>`;
 }
 
-function markDone(id, e) {
+function markDone(id,e){
   e.stopPropagation();
-  const c = contacts.find(x => x.id === id);
-  if (!c) return;
-  c.followUp = '';
-  const act = { id: Date.now(), contactId: id, dir: 'Outbound', type: 'note', date: today, rep: currentUser?.name || '', notes: 'Follow-up marked complete.', outcome: '' };
+  const c=contacts.find(x=>x.id===id);if(!c)return;
+  c.followUp='';
+  const act={id:Date.now(),contactId:id,dir:'Outbound',type:'note',date:today,rep:currentUser?.name||'',notes:'Follow-up marked complete.',outcome:''};
   activities.push(act);
-  persistContact(c);
-  persistActivity(act);
-  renderToday(); renderMetrics();
+  persistContact(c);persistActivity(act);
+  renderToday();renderMetrics();
 }
 
-function todayPanel(title, items, tcClass, emptyMsg, showDoneBtn, dueLabelFn) {
-  const rows = items.length ? items.map(c => todayItemHtml(c, showDoneBtn, dueLabelFn ? dueLabelFn(c) : '')).join('') : `<div class="today-empty">${emptyMsg}</div>`;
-  return `<div class="today-panel">
-    <div class="today-hdr"><span class="today-hdr-title">${title}</span><span class="tc ${tcClass}">${items.length}</span></div>
-    ${rows}
-  </div>`;
+function todayPanel(title,items,tcClass,emptyMsg,showDoneBtn,dueLabelFn){
+  const rows=items.length?items.map(c=>todayItemHtml(c,showDoneBtn,dueLabelFn?dueLabelFn(c):'')).join(''):`<div class="today-empty">${emptyMsg}</div>`;
+  return`<div class="today-panel"><div class="today-hdr"><span class="today-hdr-title">${title}</span><span class="tc ${tcClass}">${items.length}</span></div>${rows}</div>`;
 }
 
-function renderToday() {
-  const overdue = contacts.filter(isOverdue).sort((a,b) => a.followUp < b.followUp ? -1 : 1);
-  const dueToday = contacts.filter(c => isDueToday(c) && !isOverdue(c));
-  const callbacks = contacts.filter(isCallback);
-  const newToday = contacts.filter(isNewToday);
-  const total = overdue.length + dueToday.length + callbacks.length + newToday.length;
-  const dateStr = new Date().toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-  document.getElementById('view-today').innerHTML = `
-    <div class="today-greeting"><h2>${dateStr}</h2><p>${total === 0 ? 'All clear — nothing outstanding.' : `${total} item${total>1?'s':''} need attention today.`}</p></div>
+function renderToday(){
+  const overdue=contacts.filter(isOverdue).sort((a,b)=>a.followUp<b.followUp?-1:1);
+  const dueToday=contacts.filter(c=>isDueToday(c)&&!isOverdue(c));
+  const callbacks=contacts.filter(isCallback);
+  const newToday=contacts.filter(isNewToday);
+  const total=overdue.length+dueToday.length+callbacks.length+newToday.length;
+  const dateStr=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('view-today').innerHTML=`
+    <div class="today-greeting"><h2>${dateStr}</h2><p>${total===0?'All clear — nothing outstanding.':`${total} item${total>1?'s':''} need attention today.`}</p></div>
     <div class="today-grid">
-      ${todayPanel('Overdue follow-ups', overdue, 'tc-red', 'Nothing overdue ✓', true, c => `Overdue since ${c.followUp}`)}
-      ${todayPanel('Due today', dueToday, 'tc-amber', 'No follow-ups due today', true, () => '')}
-      ${todayPanel('Callbacks requested', callbacks, 'tc-blue', 'No callbacks pending', false, () => '')}
+      ${todayPanel('Overdue follow-ups',overdue,'tc-red','Nothing overdue ✓',true,c=>`Overdue since ${c.followUp}`)}
+      ${todayPanel('Due today',dueToday,'tc-amber','No follow-ups due today',true,()=>'')}
+      ${todayPanel('Callbacks requested',callbacks,'tc-blue','No callbacks pending',false,()=>'')}
     </div>
-    ${newToday.length ? `<div class="today-new-panel">
-      <div class="today-hdr"><span class="today-hdr-title">New contacts today</span><span class="tc tc-gray">${newToday.length}</span></div>
-      ${newToday.map(c => todayItemHtml(c, false, '')).join('')}
-    </div>` : ''}`;
+    ${newToday.length?`<div class="today-new-panel"><div class="today-hdr"><span class="today-hdr-title">New contacts today</span><span class="tc tc-gray">${newToday.length}</span></div>${newToday.map(c=>todayItemHtml(c,false,'')).join('')}</div>`:''}`;
 }
 
-// ─── PIPELINE ─────────────────────────────────────────────────────────────────
-function renderPipeline() {
-  const stages = config.stages.length ? config.stages : ['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'];
-  document.getElementById('view-pipeline').innerHTML = `<div class="pipeline">${stages.map(stage => {
-    const cards = contacts.filter(c => c.stage === stage);
-    return `<div class="stage-col">
-      <div class="stage-hdr"><span class="stage-name">${stage}</span><span class="stage-count">${cards.length}</span></div>
-      <div class="stage-cards">${cards.length ? cards.map(c => {
-        const la = lastActivity(c);
-        return `<div class="card${isOverdue(c)?' overdue':''}${c.stage==='Complaint open'?' complaint':''}" onclick="openContact(${c.id})">
+function renderPipeline(){
+  const stages=config.stages.length?config.stages:['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'];
+  document.getElementById('view-pipeline').innerHTML=`<div class="pipeline">${stages.map(stage=>{
+    const cards=contacts.filter(c=>c.stage===stage);
+    return`<div class="stage-col"><div class="stage-hdr"><span class="stage-name">${stage}</span><span class="stage-count">${cards.length}</span></div>
+      <div class="stage-cards">${cards.length?cards.map(c=>{
+        const la=lastActivity(c);
+        return`<div class="card${isOverdue(c)?' overdue':''}${c.stage==='Complaint open'?' complaint':''}" onclick="openContact(${c.id})">
           <div class="card-name">${c.name||c.phone||'Unknown'}</div>
           <div class="card-sub">${c.location?c.location:`<span class="no-loc-dot"></span><span style="color:#e24b4a;font-size:11px">No location</span>`}</div>
           ${la?`<div class="card-last">Last: ${la.date}</div>`:''}
@@ -631,18 +462,15 @@ function renderPipeline() {
             <span class="${c.firstDir==='Inbound'?'dir-in':'dir-out'}">${c.firstDir==='Inbound'?'↙':'↗'}</span>
             ${isOverdue(c)?`<span class="card-due">⚠ ${c.followUp}</span>`:c.followUp?`<span class="card-due" style="color:#bbb">${c.followUp}</span>`:''}
           </div>
-        </div>`;
-      }).join('') : `<div style="text-align:center;padding:16px 8px;font-size:12px;color:#ccc">—</div>`}
-      </div>
-    </div>`;
+        </div>`}).join(''):`<div style="text-align:center;padding:16px 8px;font-size:12px;color:#ccc">—</div>`}
+      </div></div>`;
   }).join('')}</div>`;
 }
 
-// ─── ALL CONTACTS ─────────────────────────────────────────────────────────────
-function renderTableView() {
-  const stages = config.stages.length ? config.stages : [];
-  const sources = config.sources.length ? config.sources : [];
-  document.getElementById('view-all').innerHTML = `
+function renderTableView(){
+  const stages=config.stages.length?config.stages:[];
+  const sources=config.sources.length?config.sources:[];
+  document.getElementById('view-all').innerHTML=`
     <div class="toolbar">
       <input type="text" id="search-all" placeholder="Search name, phone, location..." oninput="refilter()">
       <select id="fdir-all" onchange="refilter()"><option value="">All directions</option><option>Inbound</option><option>Outbound</option></select>
@@ -650,36 +478,28 @@ function renderTableView() {
       <select id="fsrc-all" onchange="refilter()"><option value="">All sources</option>${sources.map(s=>`<option>${s}</option>`).join('')}</select>
       <select id="fpurpose-all" onchange="refilter()"><option value="">All purposes</option>${(config.purposes||[]).map(p=>`<option>${p}</option>`).join('')}</select>
     </div>
-    <table>
-      <thead><tr>
-        <th onclick="sortBy('name')">Name</th><th onclick="sortBy('phone')">Phone</th>
-        <th onclick="sortBy('location')">Location</th><th onclick="sortBy('firstSource')">Source</th>
-        <th>Dir.</th><th onclick="sortBy('purpose')">Purpose</th>
-        <th onclick="sortBy('stage')">Stage</th><th onclick="sortBy('firstContact')">First contact</th>
-        <th onclick="sortBy('followUp')">Follow-up</th><th>Conv.</th>
-      </tr></thead>
-      <tbody id="all-tbody"></tbody>
-    </table>`;
+    <table><thead><tr>
+      <th onclick="sortBy('name')">Name</th><th onclick="sortBy('phone')">Phone</th>
+      <th onclick="sortBy('location')">Location</th><th onclick="sortBy('firstSource')">Source</th>
+      <th>Dir.</th><th onclick="sortBy('purpose')">Purpose</th>
+      <th onclick="sortBy('stage')">Stage</th><th onclick="sortBy('firstContact')">First contact</th>
+      <th onclick="sortBy('followUp')">Follow-up</th><th>Conv.</th>
+    </tr></thead><tbody id="all-tbody"></tbody></table>`;
   refilter();
 }
 
-function refilter() {
-  const q = (document.getElementById('search-all')||{}).value||'';
-  const fd = (document.getElementById('fdir-all')||{}).value||'';
-  const fs = (document.getElementById('fsrc-all')||{}).value||'';
-  const fst = (document.getElementById('fstage-all')||{}).value||'';
-  const fp = (document.getElementById('fpurpose-all')||{}).value||'';
-  let data = contacts.filter(c =>
-    (!q||[c.name,c.phone,c.location,c.hub].some(v=>(v||'').toLowerCase().includes(q.toLowerCase())))&&
-    (!fd||c.firstDir===fd)&&(!fs||c.firstSource===fs)&&(!fst||c.stage===fst)&&(!fp||c.purpose===fp)
-  );
-  data.sort((a,b) => { let av=a[sortKey]||'',bv=b[sortKey]||''; return av<bv?-sortDir:av>bv?sortDir:0; });
-  const tbody = document.getElementById('all-tbody');
-  if (!tbody) return;
-  tbody.innerHTML = data.map(c => `
+function refilter(){
+  const q=(document.getElementById('search-all')||{}).value||'';
+  const fd=(document.getElementById('fdir-all')||{}).value||'';
+  const fs=(document.getElementById('fsrc-all')||{}).value||'';
+  const fst=(document.getElementById('fstage-all')||{}).value||'';
+  const fp=(document.getElementById('fpurpose-all')||{}).value||'';
+  let data=contacts.filter(c=>(!q||[c.name,c.phone,c.location,c.hub].some(v=>(v||'').toLowerCase().includes(q.toLowerCase())))&&(!fd||c.firstDir===fd)&&(!fs||c.firstSource===fs)&&(!fst||c.stage===fst)&&(!fp||c.purpose===fp));
+  data.sort((a,b)=>{let av=a[sortKey]||'',bv=b[sortKey]||'';return av<bv?-sortDir:av>bv?sortDir:0;});
+  const tbody=document.getElementById('all-tbody');if(!tbody)return;
+  tbody.innerHTML=data.map(c=>`
     <tr class="${isOverdue(c)?'overdue-row':''}" onclick="openContact(${c.id})">
-      <td class="td-name">${c.name||'—'}</td>
-      <td style="font-size:12px;color:#555">${c.phone||'—'}</td>
+      <td class="td-name">${c.name||'—'}</td><td style="font-size:12px;color:#555">${c.phone||'—'}</td>
       <td>${c.location||`<span class="loc-missing">⚑ No location</span>`}</td>
       <td><span class="badge ${srcClass(c.firstSource)}">${c.firstSource||'—'}</span></td>
       <td><span class="${c.firstDir==='Inbound'?'dir-in':'dir-out'}">${c.firstDir==='Inbound'?'↙ in':'↗ out'}</span></td>
@@ -688,21 +508,20 @@ function refilter() {
       <td style="font-size:12px;color:#888">${c.firstContact||'—'}</td>
       <td style="font-size:12px;color:${isOverdue(c)?'#a32d2d':'#888'};font-weight:${isOverdue(c)?500:400}">${c.followUp||'—'}</td>
       <td>${isConverted(c)?'<span class="conv-tick">✓</span>':'<span style="color:#bbb">—</span>'}</td>
-    </tr>`).join('') || `<tr><td colspan="10" style="text-align:center;padding:32px;color:#bbb;font-size:13px">No contacts match</td></tr>`;
+    </tr>`).join('')||`<tr><td colspan="10" style="text-align:center;padding:32px;color:#bbb;font-size:13px">No contacts match</td></tr>`;
 }
-function sortBy(k) { if(sortKey===k)sortDir*=-1; else{sortKey=k;sortDir=1} refilter(); }
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}refilter();}
 
-// ─── REPS ─────────────────────────────────────────────────────────────────────
-function renderReps() {
-  const repNames = [...new Set(contacts.map(c=>c.rep).filter(Boolean))];
-  const repData = repNames.map(name => {
-    const mine = contacts.filter(c=>c.rep===name);
-    const conv = mine.filter(isConverted).length;
-    const calls = activities.filter(a=>a.rep===name&&a.type==='call').length;
-    const rate = mine.length ? Math.round((conv/mine.length)*100) : 0;
-    return { name, total: mine.length, conv, calls, rate };
-  }).sort((a,b) => b.conv-a.conv);
-  document.getElementById('view-reps').innerHTML = `
+function renderReps(){
+  const repNames=[...new Set(contacts.map(c=>c.rep).filter(Boolean))];
+  const repData=repNames.map(name=>{
+    const mine=contacts.filter(c=>c.rep===name);
+    const conv=mine.filter(isConverted).length;
+    const calls=activities.filter(a=>a.rep===name&&a.type==='call').length;
+    const rate=mine.length?Math.round((conv/mine.length)*100):0;
+    return{name,total:mine.length,conv,calls,rate};
+  }).sort((a,b)=>b.conv-a.conv);
+  document.getElementById('view-reps').innerHTML=`
     <div class="reps-grid">${repData.map(r=>`
       <div class="rep-card">
         <div class="rep-avatar">${initials(r.name)}</div>
@@ -726,13 +545,12 @@ function renderReps() {
     </div>`;
 }
 
-// ─── TAB SWITCHING ────────────────────────────────────────────────────────────
-function switchTab(tab, el) {
-  currentTab = tab;
+function switchTab(tab,el){
+  currentTab=tab;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  ['today','pipeline','all','reps'].forEach(v => document.getElementById(`view-${v}`).style.display='none');
-  document.getElementById(`view-${tab}`).style.display = 'block';
+  ['today','pipeline','all','reps'].forEach(v=>document.getElementById(`view-${v}`).style.display='none');
+  document.getElementById(`view-${tab}`).style.display='block';
   if(tab==='today')renderToday();
   else if(tab==='pipeline')renderPipeline();
   else if(tab==='all')renderTableView();
@@ -740,25 +558,20 @@ function switchTab(tab, el) {
   renderMetrics();
 }
 
-// ─── HUB SEARCH ──────────────────────────────────────────────────────────────
-function hubSearchHtml(selectedHub) {
-  return `<div class="hub-search-wrap">
+function hubSearchHtml(selectedHub){
+  return`<div class="hub-search-wrap">
     <input type="text" id="hub-search-input" placeholder="Search hubs..." autocomplete="off"
-      value="${selectedHub||''}"
-      oninput="filterHubs(this.value)"
-      onfocus="filterHubs(this.value)"
-      onblur="setTimeout(()=>closeHubDropdown(),200)">
+      value="${selectedHub||''}" oninput="filterHubs(this.value)" onfocus="filterHubs(this.value)" onblur="setTimeout(()=>closeHubDropdown(),200)">
     <div class="hub-dropdown" id="hub-dropdown"></div>
   </div>
   <input type="hidden" id="f-hub" value="${selectedHub||''}">`;
 }
 
-function filterHubs(q) {
-  const dd = document.getElementById('hub-dropdown');
-  if (!dd) return;
-  const filtered = hubs.filter(h => !q || h.name.toLowerCase().includes(q.toLowerCase()) || (h.region||'').toLowerCase().includes(q.toLowerCase()));
-  if (!filtered.length) { dd.classList.remove('open'); return; }
-  dd.innerHTML = filtered.slice(0,20).map(h => `
+function filterHubs(q){
+  const dd=document.getElementById('hub-dropdown');if(!dd)return;
+  const filtered=hubs.filter(h=>!q||h.name.toLowerCase().includes(q.toLowerCase())||(h.region||'').toLowerCase().includes(q.toLowerCase()));
+  if(!filtered.length){dd.classList.remove('open');return;}
+  dd.innerHTML=filtered.slice(0,20).map(h=>`
     <div class="hub-opt" onmousedown="selectHub('${h.name.replace(/'/g,"\\'")}')">
       <div><div class="hub-opt-name">${h.name}</div><div class="hub-opt-meta">${h.region||''}</div></div>
       <span class="hub-product-badge ${h.product==='GENREP'?'hub-genrep':'hub-mopo50'}">${h.product||'MOPO50'}</span>
@@ -766,27 +579,20 @@ function filterHubs(q) {
   dd.classList.add('open');
 }
 
-function selectHub(name) {
-  const inp = document.getElementById('hub-search-input');
-  const hid = document.getElementById('f-hub');
-  if (inp) inp.value = name;
-  if (hid) hid.value = name;
+function selectHub(name){
+  const inp=document.getElementById('hub-search-input');
+  const hid=document.getElementById('f-hub');
+  if(inp)inp.value=name;if(hid)hid.value=name;
   closeHubDropdown();
-  // Update agent panel
-  const c = editId ? contacts.find(x=>x.id===editId) : null;
-  document.getElementById('hub-panel-slot').innerHTML = hubAgentPanel({ hub: name, agentsConnected: c ? c.agentsConnected||[] : [] });
+  const c=editId?contacts.find(x=>x.id===editId):null;
+  document.getElementById('hub-panel-slot').innerHTML=hubAgentPanel({hub:name,agentsConnected:c?c.agentsConnected||[]:[]}); 
 }
 
-function closeHubDropdown() {
-  const dd = document.getElementById('hub-dropdown');
-  if (dd) dd.classList.remove('open');
-}
+function closeHubDropdown(){const dd=document.getElementById('hub-dropdown');if(dd)dd.classList.remove('open');}
 
-// ─── AGENT PANEL ─────────────────────────────────────────────────────────────
-function hubAgentPanel(c) {
-  // For now shows a prompt — in future will pull from Databot via Apps Script
-  if (!c.hub) return '';
-  return `<div class="hub-panel">
+function hubAgentPanel(c){
+  if(!c.hub)return'';
+  return`<div class="hub-panel">
     <div class="hub-panel-hdr">Agents — ${c.hub}</div>
     <div class="agent-row" style="flex-direction:column;align-items:flex-start;gap:6px">
       <div style="font-size:12px;color:#888">Agent lookup coming soon — will pull live from MOPO Platform.</div>
@@ -795,26 +601,20 @@ function hubAgentPanel(c) {
   </div>`;
 }
 
-// ─── DRAWER ───────────────────────────────────────────────────────────────────
-function convPathHtml(c) {
-  const steps = ['Contact in','Contacted','Hub matched','Agent connected','Converted'];
-  const idx = {'New':0,'In conversation':1,'No response':1,'No local hub':2,'Agent details given':2,'3-way connected':3,'App registered':3,'Complaint open':1,'Converted':4};
-  const cur = isConverted(c) ? 5 : (idx[c.stage] ?? 0);
-  return `<div class="conv-path">${steps.map((s,i) => `<div class="cp-step ${i<cur?'done':i===cur?'active':''}">${s}</div>`).join('')}</div>`;
+function convPathHtml(c){
+  const steps=['Contact in','Contacted','Hub matched','Agent connected','Converted'];
+  const idx={'New':0,'In conversation':1,'No response':1,'No local hub':2,'Agent details given':2,'3-way connected':3,'App registered':3,'Complaint open':1,'Converted':4};
+  const cur=isConverted(c)?5:(idx[c.stage]??0);
+  return`<div class="conv-path">${steps.map((s,i)=>`<div class="cp-step ${i<cur?'done':i===cur?'active':''}">${s}</div>`).join('')}</div>`;
 }
 
-function buildDrawer(c) {
-  const isNewC = !c;
-  document.getElementById('d-title').textContent = isNewC ? 'New contact' : (c.name||c.phone||'Contact');
-  document.getElementById('btn-del').style.display = isNewC ? 'none' : 'block';
-  if (!c) c = {
-    id: null, name:'', phone:'', location:'', hub:'', firstSource:'', firstDir:'Inbound',
-    purpose:'', stage:'New', rep: currentUser?.name||'', firstContact: today,
-    followUp: nextWeekday(today,7), regDate:'', rentalDate:'', agentsConnected:[], activities:[]
-  };
-
-  const myActivities = activities.filter(a => String(a.contactId) === String(c.id));
-  const actHtml = myActivities.slice().reverse().map(a => `
+function buildDrawer(c){
+  const isNewC=!c;
+  document.getElementById('d-title').textContent=isNewC?'New contact':(c.name||c.phone||'Contact');
+  document.getElementById('btn-del').style.display=isNewC?'none':'block';
+  if(!c)c={id:null,name:'',phone:'',location:'',hub:'',firstSource:'',firstDir:'Inbound',purpose:'',stage:'New',rep:currentUser?.name||'',firstContact:today,followUp:nextWeekday(today,7),regDate:'',rentalDate:'',agentsConnected:[]};
+  const myActivities=activities.filter(a=>String(a.contactId)===String(c.id));
+  const actHtml=myActivities.slice().reverse().map(a=>`
     <div class="act-item${a.type==='sys'?' sys':''}">
       <div class="act-top">
         <div class="act-label">
@@ -826,27 +626,23 @@ function buildDrawer(c) {
       <div class="act-body">${a.notes||''}</div>
       ${a.rep?`<div class="act-rep">Rep: ${a.rep}</div>`:''}
       ${a.outcome?`<span class="out-pill out-${a.outcome.toLowerCase().replace(/\s/g,'-')}">${a.outcome}</span>`:''}
-    </div>`).join('') || '<div class="act-item sys"><div class="act-body">No activity yet.</div></div>';
-
-  const stages = config.stages.length ? config.stages : ['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'];
-  const sources = config.sources.length ? config.sources : [];
-  const purposes = config.purposes.length ? config.purposes : [];
-  const outcomes = config.outcomes.length ? config.outcomes : ['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'];
-  const repNames = config.repNames.length ? config.repNames : [];
-  const isComplaint = c.stage === 'Complaint open';
-
-  document.getElementById('d-body').innerHTML = `
-    ${!isNewC ? convPathHtml(c) : ''}
-    <div class="sec">
-      <div class="sec-title">Contact details</div>
+    </div>`).join('')||'<div class="act-item sys"><div class="act-body">No activity yet.</div></div>';
+  const stages=config.stages.length?config.stages:['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'];
+  const sources=config.sources.length?config.sources:[];
+  const purposes=config.purposes.length?config.purposes:[];
+  const outcomes=config.outcomes.length?config.outcomes:['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'];
+  const repNames=config.repNames.length?config.repNames:[];
+  const isComplaint=c.stage==='Complaint open';
+  document.getElementById('d-body').innerHTML=`
+    ${!isNewC?convPathHtml(c):''}
+    <div class="sec"><div class="sec-title">Contact details</div>
       <div class="fg">
         <div class="f">
           <div class="f-lbl-row"><label>Phone</label>${c.firstDir==='Inbound'?'<span class="auto-tag">auto on call connect</span>':''}</div>
           <input id="f-phone" value="${c.phone||''}" placeholder="${c.firstDir==='Outbound'?'+234...':''}">
         </div>
         <div class="f"><label>Name</label><input id="f-name" value="${c.name||''}" placeholder="Entered by rep"></div>
-        <div class="f f-full">
-          <label>Location / area</label>
+        <div class="f f-full"><label>Location / area</label>
           <input id="f-location" value="${c.location||''}" placeholder="e.g. Kano Central">
           ${c.firstDir==='Inbound'?`<button class="loc-btn" onclick="alert('📍 Location request sent via WhatsApp to ${c.phone||'caller'} — awaiting pin...')">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="5.5" r="2.5"/><path d="M7 14C7 14 1.5 9 1.5 5.5a5.5 5.5 0 0111 0C12.5 9 7 14 7 14z"/></svg>
@@ -855,19 +651,14 @@ function buildDrawer(c) {
         </div>
       </div>
     </div>
-    <div class="sec">
-      <div class="sec-title">Hub & agent routing</div>
+    <div class="sec"><div class="sec-title">Hub & agent routing</div>
       ${hubSearchHtml(c.hub)}
       <div id="hub-panel-slot" style="margin-top:6px">${hubAgentPanel(c)}</div>
     </div>
-    <div class="sec">
-      <div class="sec-title">Lead info</div>
+    <div class="sec"><div class="sec-title">Lead info</div>
       <div class="fg">
         <div class="f"><label>Direction</label>
-          <select id="f-dir">
-            <option${c.firstDir==='Inbound'?' selected':''}>Inbound</option>
-            <option${c.firstDir==='Outbound'?' selected':''}>Outbound</option>
-          </select>
+          <select id="f-dir"><option${c.firstDir==='Inbound'?' selected':''}>Inbound</option><option${c.firstDir==='Outbound'?' selected':''}>Outbound</option></select>
         </div>
         <div class="f"><label>Source</label>
           <select id="f-source"><option value="">— select —</option>${sources.map(s=>`<option${s===c.firstSource?' selected':''}>${s}</option>`).join('')}</select>
@@ -890,8 +681,7 @@ function buildDrawer(c) {
       ${isComplaint?`<div class="alert alert-red"><strong>⚠ Complaint — escalate to Regional Team Lead</strong>Ensure all notes are complete before saving.</div>`:''}
       <div id="complaint-slot"></div>
     </div>
-    <div class="sec">
-      <div class="sec-title">Conversion tracking <span class="auto-tag">auto from MOPO Platform</span></div>
+    <div class="sec"><div class="sec-title">Conversion tracking <span class="auto-tag">auto from MOPO Platform</span></div>
       <div class="fg">
         <div class="f"><div class="f-lbl-row"><label>App registration date</label><span class="auto-tag">auto</span></div>
           <input id="f-regDate" value="${c.regDate||''}" class="auto-input" placeholder="From MOPO Platform"></div>
@@ -901,8 +691,7 @@ function buildDrawer(c) {
       ${isConverted(c)?`<div class="alert alert-green"><strong>✓ Converted — commission triggered</strong>Rep: ${c.rep||'—'}</div>`:''}
       ${c.regDate&&!c.rentalDate?`<div class="alert alert-amber">App registered — awaiting first rental.</div>`:''}
     </div>
-    ${!isNewC?`<div class="sec">
-      <div class="sec-title">Activity log <span style="font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:#bbb;margin-left:4px">— full contact history</span></div>
+    ${!isNewC?`<div class="sec"><div class="sec-title">Activity log</div>
       <div class="act-log">
         ${actHtml}
         <div class="act-add">
@@ -918,59 +707,49 @@ function buildDrawer(c) {
     </div>`:''}`;
 }
 
-function stageChanged(sel) {
-  const slot = document.getElementById('complaint-slot');
-  if (!slot) return;
-  slot.innerHTML = sel.value === 'Complaint open' ? `<div class="alert alert-red" style="margin-top:8px"><strong>⚠ Complaint — escalate to Regional Team Lead</strong></div>` : '';
+function stageChanged(sel){
+  const slot=document.getElementById('complaint-slot');if(!slot)return;
+  slot.innerHTML=sel.value==='Complaint open'?`<div class="alert alert-red" style="margin-top:8px"><strong>⚠ Complaint — escalate to Regional Team Lead</strong></div>`:'';
 }
 
-async function addActivity(id) {
-  const notes = (document.getElementById('act-notes')||{}).value||'';
-  if (!notes.trim()) return;
-  const act = {
-    id: Date.now(),
-    contactId: id,
-    dir: document.getElementById('act-dir').value,
-    type: document.getElementById('act-type').value,
-    date: today,
-    rep: currentUser?.name || '',
-    notes: notes.trim(),
-    outcome: document.getElementById('act-out').value
-  };
+async function addActivity(id){
+  const notes=(document.getElementById('act-notes')||{}).value||'';
+  if(!notes.trim())return;
+  const act={id:Date.now(),contactId:id,dir:document.getElementById('act-dir').value,type:document.getElementById('act-type').value,date:today,rep:currentUser?.name||'',notes:notes.trim(),outcome:document.getElementById('act-out').value};
   activities.push(act);
   await persistActivity(act);
   buildDrawer(contacts.find(c=>c.id===id));
 }
 
-function openNew() { editId = null; buildDrawer(null); document.getElementById('overlay').classList.add('open'); }
-function openContact(id) { editId = id; buildDrawer(contacts.find(c=>c.id===id)); document.getElementById('overlay').classList.add('open'); }
-function closeDrawer() { document.getElementById('overlay').classList.remove('open'); }
-function overlayClick(e) { if(e.target===document.getElementById('overlay'))closeDrawer(); }
+function openNew(){editId=null;buildDrawer(null);document.getElementById('overlay').classList.add('open');}
+function openContact(id){editId=id;buildDrawer(contacts.find(c=>c.id===id));document.getElementById('overlay').classList.add('open');}
+function closeDrawer(){document.getElementById('overlay').classList.remove('open');}
+function overlayClick(e){if(e.target===document.getElementById('overlay'))closeDrawer();}
 
-async function saveDrawer() {
-  const existing = editId ? contacts.find(c=>c.id===editId) : null;
-  const rec = {
-    id: editId || Date.now(),
-    name: (document.getElementById('f-name')||{}).value||'',
-    phone: (document.getElementById('f-phone')||{}).value||'',
-    location: (document.getElementById('f-location')||{}).value||'',
-    hub: (document.getElementById('f-hub')||{}).value||'',
-    firstSource: (document.getElementById('f-source')||{}).value||'',
-    firstDir: (document.getElementById('f-dir')||{}).value||'Inbound',
-    purpose: (document.getElementById('f-purpose')||{}).value||'',
-    stage: (document.getElementById('f-stage')||{}).value||'New',
-    rep: (document.getElementById('f-rep')||{}).value||currentUser?.name||'',
-    firstContact: (document.getElementById('f-firstContact')||{}).value||today,
-    followUp: (document.getElementById('f-followUp')||{}).value||'',
-    regDate: (document.getElementById('f-regDate')||{}).value||'',
-    rentalDate: (document.getElementById('f-rentalDate')||{}).value||'',
-    agentsConnected: existing ? existing.agentsConnected||[] : [],
+async function saveDrawer(){
+  const existing=editId?contacts.find(c=>c.id===editId):null;
+  const rec={
+    id:editId||Date.now(),
+    name:(document.getElementById('f-name')||{}).value||'',
+    phone:(document.getElementById('f-phone')||{}).value||'',
+    location:(document.getElementById('f-location')||{}).value||'',
+    hub:(document.getElementById('f-hub')||{}).value||'',
+    firstSource:(document.getElementById('f-source')||{}).value||'',
+    firstDir:(document.getElementById('f-dir')||{}).value||'Inbound',
+    purpose:(document.getElementById('f-purpose')||{}).value||'',
+    stage:(document.getElementById('f-stage')||{}).value||'New',
+    rep:(document.getElementById('f-rep')||{}).value||currentUser?.name||'',
+    firstContact:(document.getElementById('f-firstContact')||{}).value||today,
+    followUp:(document.getElementById('f-followUp')||{}).value||'',
+    regDate:(document.getElementById('f-regDate')||{}).value||'',
+    rentalDate:(document.getElementById('f-rentalDate')||{}).value||'',
+    agentsConnected:existing?existing.agentsConnected||[]:[],
   };
-  if (!rec.name && !rec.phone) { alert('Name or phone required.'); return; }
-  if (editId) { contacts = contacts.map(c=>c.id===editId?rec:c); }
-  else {
+  if(!rec.name&&!rec.phone){alert('Name or phone required.');return;}
+  if(editId)contacts=contacts.map(c=>c.id===editId?rec:c);
+  else{
     contacts.push(rec);
-    const initAct = { id: Date.now()+1, contactId: rec.id, dir: rec.firstDir, type: 'sys', date: today, rep: currentUser?.name||'', notes: 'Contact created.', outcome: '' };
+    const initAct={id:Date.now()+1,contactId:rec.id,dir:rec.firstDir,type:'sys',date:today,rep:currentUser?.name||'',notes:'Contact created.',outcome:''};
     activities.push(initAct);
     await persistActivity(initAct);
   }
@@ -983,10 +762,10 @@ async function saveDrawer() {
   renderMetrics();
 }
 
-async function deleteLead() {
-  if (!editId || !confirm('Delete this contact?')) return;
-  contacts = contacts.filter(c=>c.id!==editId);
-  activities = activities.filter(a=>String(a.contactId)!==String(editId));
+async function deleteLead(){
+  if(!editId||!confirm('Delete this contact?'))return;
+  contacts=contacts.filter(c=>c.id!==editId);
+  activities=activities.filter(a=>String(a.contactId)!==String(editId));
   await removeContact(editId);
   closeDrawer();
   if(currentTab==='today')renderToday();
@@ -996,7 +775,6 @@ async function deleteLead() {
   renderMetrics();
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
 checkSSOConfig();
 </script>
 </body>
