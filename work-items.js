@@ -5,7 +5,7 @@
 const workItems = [
     {
         title: 'MOPO Call Centre',
-        url: '/work/mopo_callcentre.html',
+        url: '/work/mopo_callcentre_v2.html',
         date: '2026-03-30',
         description: 'An example CRM of how the MOPO Call Centre in Nigeria could operate. Built to describe to our software team some of the function and flows we need to implement our call centre in Nigeria'
     },
