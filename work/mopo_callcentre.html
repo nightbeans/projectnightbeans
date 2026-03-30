@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOPO Call Centre</title>
 <script>
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxsXQz7YKnXgbMkjDBg9Yam8FI-N6wShmeTgBnyci5y6LJvFOTGHoSmqppstJJsBNtS/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9MCQVyZ_gfqR6uA8lO0e2d8r22HvQB6ZaDntGPRP4cNlXJV81dU9gybsbXIBRc90k/exec';
   const ALLOWED_DOMAINS = ['mobile-power.co.uk', 'mopo.co'];
   const GOOGLE_CLIENT_ID = '709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com';
 </script>
@@ -584,8 +584,26 @@ function selectHub(name){
   const hid=document.getElementById('f-hub');
   if(inp)inp.value=name;if(hid)hid.value=name;
   closeHubDropdown();
-  const c=editId?contacts.find(x=>x.id===editId):null;
-  document.getElementById('hub-panel-slot').innerHTML=hubAgentPanel({hub:name,agentsConnected:c?c.agentsConnected||[]:[]}); 
+  const slot=document.getElementById('hub-panel-slot');
+  if(slot){
+    slot.innerHTML=`<div style="font-size:12px;color:#888;padding:8px 0">Loading agents...</div>`;
+    appsGet(`getAgents&hub=${encodeURIComponent(name)}`).then(r=>{
+      const agents=r.agents||[];
+      if(!agents.length){
+        slot.innerHTML=`<div class="hub-panel"><div class="hub-panel-hdr">Agents — ${name}</div><div class="agent-row"><div style="font-size:12px;color:#888">No active agents found in the last 24 hours.</div></div></div>`;
+        return;
+      }
+      slot.innerHTML=`<div class="hub-panel">
+        <div class="hub-panel-hdr">Active agents — ${name}</div>
+        ${agents.map(a=>`<div class="agent-row">
+          <div><div class="agent-name">${a.name}</div><div class="agent-meta">${a.phone||'No number'} · Last rental: ${a.lastRental?a.lastRental.slice(0,16).replace('T',' '):'—'}</div></div>
+          ${a.phone?`<a href="tel:${a.phone}" style="padding:4px 11px;background:#1a1a18;color:#fff;border-radius:6px;font-size:11px;text-decoration:none;white-space:nowrap">Call 3-way</a>`:''}
+        </div>`).join('')}
+      </div>`;
+    }).catch(()=>{
+      slot.innerHTML=`<div style="font-size:12px;color:#a32d2d;padding:8px 0">Could not load agents.</div>`;
+    });
+  }
 }
 
 function closeHubDropdown(){const dd=document.getElementById('hub-dropdown');if(dd)dd.classList.remove('open');}
@@ -748,10 +766,10 @@ async function saveDrawer(){
   if(!rec.name&&!rec.phone){alert('Name or phone required.');return;}
   if(editId)contacts=contacts.map(c=>c.id===editId?rec:c);
   else{
-    contacts.push(rec);
     const initAct={id:Date.now()+1,contactId:rec.id,dir:rec.firstDir,type:'sys',date:today,rep:currentUser?.name||'',notes:'Contact created.',outcome:''};
     activities.push(initAct);
     await persistActivity(initAct);
+    contacts.push(rec);
   }
   await persistContact(rec);
   closeDrawer();
