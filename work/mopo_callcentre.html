@@ -237,7 +237,11 @@ td{padding:10px 12px;vertical-align:middle}
       <span class="user-name" id="user-name-display"></span>
       <button class="sign-out" onclick="signOut()">Sign out</button>
     </div>
-    <div style="margin-left:12px">
+    <div style="margin-left:12px;display:flex;gap:8px">
+      <label class="btn btn-ghost" style="font-size:13px;padding:6px 14px;cursor:pointer">
+        Upload leads
+        <input type="file" accept=".csv" style="display:none" onchange="importCSV(event)">
+      </label>
       <button class="btn btn-ghost" style="font-size:13px;padding:6px 14px" onclick="openNew()">+ New contact</button>
     </div>
   </div>
@@ -360,7 +364,7 @@ function localGet(action){
   if(action==='getContacts')return{contacts:d.contacts||[]};
   if(action==='getActivities')return{activities:d.activities||[]};
   if(action==='getHubs')return{hubs:[]};
-  if(action==='getConfig')return{repNames:['Joel Delaney','Phil Howden'],sources:['NG Micro-site','Facebook Ad','Instagram Ad','TikTok Ad','Social Media DM','Radio Ad','Door-to-door'],purposes:['How does MOPO work?','How much does it cost?','Where can I rent near me?','I want to become an agent','I have a problem / complaint','Something else'],stages:['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'],outcomes:['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'],directions:['Inbound','Outbound']};
+  if(action==='getConfig')return{repNames:['Joel Delaney','Phil Howden'],sources:['NG Micro-site','Facebook Ad','Instagram Ad','TikTok Ad','Social Media DM','Radio Ad','Door-to-door'],purposes:['How does MOPO work?','How much does it cost?','Where can I rent near me?','I want to become an agent','I have a problem / complaint','Something else'],    stages:['New','In conversation','Agent details given','3-way connected','No local hub','Complaint open','Potential agent logged','No response'],outcomes:['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'],directions:['Inbound','Outbound']};
   return{};
 }
 function localPost(payload){
@@ -447,7 +451,7 @@ function renderToday(){
 }
 
 function renderPipeline(){
-  const stages=config.stages.length?config.stages:['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'];
+  const stages=config.stages.length?config.stages:['New','In conversation','Agent details given','3-way connected','No local hub','Complaint open','Potential agent logged','No response'];
   document.getElementById('view-pipeline').innerHTML=`<div class="pipeline">${stages.map(stage=>{
     const cards=contacts.filter(c=>c.stage===stage);
     return`<div class="stage-col"><div class="stage-hdr"><span class="stage-name">${stage}</span><span class="stage-count">${cards.length}</span></div>
@@ -645,7 +649,7 @@ function buildDrawer(c){
       ${a.rep?`<div class="act-rep">Rep: ${a.rep}</div>`:''}
       ${a.outcome?`<span class="out-pill out-${a.outcome.toLowerCase().replace(/\s/g,'-')}">${a.outcome}</span>`:''}
     </div>`).join('')||'<div class="act-item sys"><div class="act-body">No activity yet.</div></div>';
-  const stages=config.stages.length?config.stages:['New','In conversation','Agent details given','3-way connected','App registered','Converted','No local hub','Complaint open','No response'];
+  const stages=config.stages.length?config.stages:['New','In conversation','Agent details given','3-way connected','No local hub','Complaint open','Agent enquiry logged','No response'];
   const sources=config.sources.length?config.sources:[];
   const purposes=config.purposes.length?config.purposes:[];
   const outcomes=config.outcomes.length?config.outcomes:['Answered','No answer','Voicemail left','Callback requested','WhatsApp sent'];
@@ -662,10 +666,10 @@ function buildDrawer(c){
         <div class="f"><label>Name</label><input id="f-name" value="${c.name||''}" placeholder="Entered by rep"></div>
         <div class="f f-full"><label>Location / area</label>
           <input id="f-location" value="${c.location||''}" placeholder="e.g. Kano Central">
-          ${c.firstDir==='Inbound'?`<button class="loc-btn" onclick="alert('📍 Location request sent via WhatsApp to ${c.phone||'caller'} — awaiting pin...')">
+          ${c.firstDir==='Inbound'?`<a class="loc-btn" href="https://wa.me/${(c.phone||'').replace(/[^0-9]/g,'')}?text=${encodeURIComponent('Hi, please share your location with us so we can find your nearest MOPO hub. Tap the 📎 icon and select Location. Thank you!')}" target="_blank">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="5.5" r="2.5"/><path d="M7 14C7 14 1.5 9 1.5 5.5a5.5 5.5 0 0111 0C12.5 9 7 14 7 14z"/></svg>
             Send location request via WhatsApp
-          </button>`:''}
+          </a>`:''}
         </div>
       </div>
     </div>
@@ -686,9 +690,6 @@ function buildDrawer(c){
         </div>
         <div class="f"><label>Stage</label>
           <select id="f-stage" onchange="stageChanged(this)">${stages.map(s=>`<option${s===c.stage?' selected':''}>${s}</option>`).join('')}</select>
-        </div>
-        <div class="f"><label>Handling rep</label>
-          <select id="f-rep">${repNames.map(r=>`<option${r===c.rep?' selected':''}>${r}</option>`).join('')}</select>
         </div>
         <div class="f"><label>First contact date</label><input type="date" id="f-firstContact" value="${c.firstContact||today}"></div>
         <div class="f">
@@ -756,7 +757,7 @@ async function saveDrawer(){
     firstDir:(document.getElementById('f-dir')||{}).value||'Inbound',
     purpose:(document.getElementById('f-purpose')||{}).value||'',
     stage:(document.getElementById('f-stage')||{}).value||'New',
-    rep:(document.getElementById('f-rep')||{}).value||currentUser?.name||'',
+    rep:currentUser?.name||'',
     firstContact:(document.getElementById('f-firstContact')||{}).value||today,
     followUp:(document.getElementById('f-followUp')||{}).value||'',
     regDate:(document.getElementById('f-regDate')||{}).value||'',
