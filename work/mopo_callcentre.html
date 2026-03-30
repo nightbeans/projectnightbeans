@@ -666,7 +666,7 @@ function buildDrawer(c){
         <div class="f"><label>Name</label><input id="f-name" value="${c.name||''}" placeholder="Entered by rep"></div>
         <div class="f f-full"><label>Location / area</label>
           <input id="f-location" value="${c.location||''}" placeholder="e.g. Kano Central">
-          <button class="loc-btn" onclick="openWA()">
+          <button class="loc-btn" onclick="event.preventDefault();event.stopPropagation();openWA();return false;">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="5.5" r="2.5"/><path d="M7 14C7 14 1.5 9 1.5 5.5a5.5 5.5 0 0111 0C12.5 9 7 14 7 14z"/></svg>
             Send location request via WhatsApp
           </button>
