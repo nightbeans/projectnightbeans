@@ -238,7 +238,7 @@ td{padding:10px 12px;vertical-align:middle}
       <button class="sign-out" onclick="signOut()">Sign out</button>
     </div>
     <div style="margin-left:12px;display:flex;gap:8px;position:relative">
-      <button class="btn btn-ghost" style="font-size:13px;padding:6px 14px" onclick="toggleUploadMenu(event)">Upload leads ▾</button>
+      <button id="upload-menu-btn" class="btn btn-ghost" style="font-size:13px;padding:6px 14px" onclick="toggleUploadMenu(event)">Upload leads ▾</button>
       <div id="upload-menu" style="display:none;position:absolute;top:100%;left:0;background:#fff;border:0.5px solid rgba(0,0,0,0.13);border-radius:7px;box-shadow:0 4px 12px rgba(0,0,0,0.08);z-index:100;min-width:180px;overflow:hidden;margin-top:4px">
         <label style="display:block;padding:9px 14px;font-size:13px;cursor:pointer;transition:background .1s" onmouseover="this.style.background='#f8f7f3'" onmouseout="this.style.background=''">
           Upload CSV
@@ -670,13 +670,11 @@ function buildDrawer(c){
         <div class="f"><label>Name</label><input id="f-name" value="${c.name||''}" placeholder="Entered by rep"></div>
         <div class="f f-full"><label>Location / area</label>
           <input id="f-location" value="${c.location||''}" placeholder="e.g. Kano Central">
-          ${c.phone
-            ? `<a class="loc-btn" href="https://wa.me/${c.phone.replace(/[^0-9]/g,'')}?text=${encodeURIComponent('Hi! To find your nearest MOPO hub, please share your location with us on WhatsApp. Thank you!')}" target="_blank" rel="noopener noreferrer">
-                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="5.5" r="2.5"/><path d="M7 14C7 14 1.5 9 1.5 5.5a5.5 5.5 0 0111 0C12.5 9 7 14 7 14z"/></svg>
-                Send location request via WhatsApp
-              </a>`
-            : `<div style="font-size:11px;color:#aaa;padding:6px 0">Enter phone number then save to enable WhatsApp location request</div>`
-          }
+          <a class="loc-btn" href="#" target="_blank" rel="noopener noreferrer"
+            onmousedown="var n=(document.getElementById('f-phone')||{}).value||'';var num=n.replace(/[^0-9]/g,'');if(num){this.href='https://wa.me/'+num+'?text='+encodeURIComponent('Hi! To find your nearest MOPO hub, please share your location with us on WhatsApp. Thank you!');}else{event.preventDefault();}">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="5.5" r="2.5"/><path d="M7 14C7 14 1.5 9 1.5 5.5a5.5 5.5 0 0111 0C12.5 9 7 14 7 14z"/></svg>
+            Send location request via WhatsApp
+          </a>
         </div>
       </div>
     </div>
@@ -802,6 +800,11 @@ async function deleteLead(){
 }
 
 checkSSOConfig();
+document.addEventListener('click',function(e){
+  const m=document.getElementById('upload-menu');
+  const btn=document.getElementById('upload-menu-btn');
+  if(m&&btn&&!m.contains(e.target)&&!btn.contains(e.target))m.style.display='none';
+});
 </script>
 </body>
 </html>
