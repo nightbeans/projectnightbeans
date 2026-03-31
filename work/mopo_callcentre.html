@@ -800,10 +800,11 @@ async function deleteLead(){
 }
 
 checkSSOConfig();
-document.addEventListener('click',function(e){
+window.addEventListener('click',function(e){
   const m=document.getElementById('upload-menu');
   const btn=document.getElementById('upload-menu-btn');
-  if(m&&btn&&!m.contains(e.target)&&!btn.contains(e.target))m.style.display='none';
+  if(!m||!btn)return;
+  if(!btn.contains(e.target))m.style.display='none';
 });
 </script>
 </body>
