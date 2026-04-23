@@ -3,7 +3,7 @@ name: DRR Trial Email
 on:
   push:
     branches: [main]
-    paths: ['work/asp_600_trial.html']
+    paths: ['work/drr_data.json']
 
 jobs:
   send-email:
