@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'ASP 600 Trial — DRR Monitor',
+        url: '/work/asp_600_trial.html',
+        date: '2026-04-22',
+        description: 'Daily DRR monitoring dashboard for six Nigeria hubs switched from ASP 800NGN to ASP 600NGN alt commission on 22 April 2026. Per-hub charts, baseline tracking, and trial-period averages. Refreshed automatically each morning.'
+    },
+    {
         title: 'MOPO Call Centre',
         url: '/work/mopo_callcentre.html',
         date: '2026-03-30',
