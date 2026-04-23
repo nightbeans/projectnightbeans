@@ -4,34 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ASP 600 Trial — DRR Monitor</title>
-<script>
-const GOOGLE_CLIENT_ID = '709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com';
-const ALLOWED_DOMAINS = ['mobile-power.co.uk', 'mopo.co'];
-</script>
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f3;color:#1c1b18;min-height:100vh;font-size:14px}
-#login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:24px}
-.login-card{background:#fff;border-radius:14px;border:0.5px solid rgba(0,0,0,0.09);padding:36px 40px;display:flex;flex-direction:column;align-items:center;gap:20px;min-width:320px;box-shadow:0 2px 16px rgba(0,0,0,0.05)}
-.login-title{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:400;letter-spacing:-0.02em;text-align:center}
-.login-sub{font-size:13px;color:#6b6b62;text-align:center;line-height:1.5;max-width:260px}
-#login-error{font-size:12px;color:#9b2c2c;background:#fdf0f0;padding:8px 12px;border-radius:7px;display:none;text-align:center}
-#app{display:none}
 .hdr{background:#fff;border-bottom:0.5px solid rgba(0,0,0,0.08);padding:18px 28px 14px}
 .hdr-title{font-family:'Fraunces',Georgia,serif;font-size:21px;font-weight:400;letter-spacing:-0.02em;margin-bottom:5px}
 .hdr-row{display:flex;align-items:center;gap:0;flex-wrap:wrap}
 .hdr-pill{font-size:11px;color:#6b6b62;padding-right:14px;margin-right:14px;border-right:0.5px solid rgba(0,0,0,0.12)}
 .hdr-pill:last-child{border-right:none;margin-right:0;padding-right:0}
 .hdr-ts{font-family:'JetBrains Mono',monospace;font-size:11px;color:#b0ae9f}
-.sign-out-btn{font-size:11px;color:#b0ae9f;background:none;border:none;cursor:pointer;padding:0;font-family:inherit;margin-left:auto}
-.sign-out-btn:hover{color:#6b6b62;text-decoration:underline}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px 28px 48px;max-width:1400px;margin:0 auto}
 @media(max-width:960px){.grid{grid-template-columns:1fr;padding:14px}}
-.hub-card{background:#fff;border-radius:12px;border:0.5px solid rgba(0,0,0,0.08);overflow:hidden}
+.hub-card{background:#fff;border-radius:12px;border:0.5px solid rgba(0,0,0,0.08);overflow:hidden;border-top:3px solid #ccc}
+.hub-card.ogun{border-top-color:#1a7a6e}
+.hub-card.ondo{border-top-color:#c15c28}
+.hub-card.edo{border-top-color:#c4982a}
 .card-head{padding:15px 18px 12px;border-bottom:0.5px solid rgba(0,0,0,0.06);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .card-hub{font-family:'Fraunces',Georgia,serif;font-size:17px;font-weight:400;letter-spacing:-0.01em;margin-bottom:2px}
 .card-state{font-size:11px;color:#6b6b62}
@@ -57,23 +47,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </head>
 <body>
 
-<div id="login-screen">
-  <div class="login-card">
-    <div class="login-title">ASP 600 Trial</div>
-    <div class="login-sub">Daily DRR monitor · six hubs switched to ASP 600NGN alt commission on 22 April 2026</div>
-    <div id="g_id_onload"
-      data-client_id="709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com"
-      data-callback="handleGoogleSignIn"
-      data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin"
-      data-type="standard" data-size="large" data-theme="outline"
-      data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-    </div>
-    <div id="login-error">Access restricted to @mobile-power.co.uk and @mopo.co accounts</div>
-  </div>
-</div>
-
 <div id="app">
   <div class="hdr">
     <div class="hdr-title">ASP 600NGN Trial — DRR Monitor</div>
@@ -82,7 +55,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <span class="hdr-pill">Policy change: 22 April 2026</span>
       <span class="hdr-pill">ASP 800NGN → ASP 600NGN alt commission</span>
       <span class="hdr-ts" id="generated-at"></span>
-      <button class="sign-out-btn" onclick="signOut()">sign out</button>
     </div>
   </div>
   <div class="grid" id="hub-grid"></div>
@@ -99,23 +71,7 @@ const STATE_LABELS = {'Ibiade Ogun':'Ogun','Iwopin Ogun':'Ogun','Kajola Ondo':'O
 const TRIAL_START = '2026-04-22';
 const HUB_ORDER = ['Ibiade Ogun','Iwopin Ogun','Kajola Ondo','Oba Akoko Ondo','Sobe Edo','Ute Ondo'];
 
-// ---- SSO ----
-function handleGoogleSignIn(response) {
-  const payload = JSON.parse(atob(response.credential.split('.')[1]));
-  const domain = (payload.email || '').split('@')[1] || '';
-  if (!ALLOWED_DOMAINS.includes(domain)) {
-    document.getElementById('login-error').style.display = 'block';
-    return;
-  }
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  buildDashboard();
-}
-function signOut() {
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  if (window.google && google.accounts) google.accounts.id.disableAutoSelect();
-}
+document.addEventListener('DOMContentLoaded', buildDashboard);
 
 // ---- BUILD ----
 function buildDashboard() {
@@ -173,7 +129,7 @@ function buildDashboard() {
     const deltaCls = deltaBaseline == null ? '' : deltaBaseline >= -0.1 ? 'up' : deltaBaseline >= -0.3 ? 'am' : 'dn';
 
     const card = document.createElement('div');
-    card.className = 'hub-card';
+    card.className = 'hub-card ' + (STATE_LABELS[hub]||'').toLowerCase();
     card.innerHTML = `
       <div class="card-head">
         <div>
@@ -216,12 +172,13 @@ function buildDashboard() {
         labels: dates,
         datasets: [{
           data: drrVals,
-          borderColor: '#2c2b20',
-          borderWidth: 1.5,
+          borderColor: '#1a7a6e',
+          borderWidth: 2,
           pointRadius: 0,
-          pointHoverRadius: 3,
+          pointHoverRadius: 4,
           tension: 0.3,
-          fill: false
+          fill: true,
+          backgroundColor: 'rgba(26,122,110,0.08)'
         }]
       },
       options: {
@@ -239,25 +196,25 @@ function buildDashboard() {
               baseline: {
                 type: 'line',
                 yMin: baseline, yMax: baseline,
-                borderColor: 'rgba(100,100,80,0.5)',
-                borderWidth: 1,
-                borderDash: [4,4],
-                label: { content: 'baseline ₦'+baseline, display: true, position: 'end', font: {size:9,family:'JetBrains Mono'}, color: 'rgba(100,100,80,0.7)', backgroundColor: 'transparent', yAdjust: -8 }
+                borderColor: '#c15c28',
+                borderWidth: 1.5,
+                borderDash: [5,4],
+                label: { content: 'baseline ₦'+baseline, display: true, position: 'end', font: {size:9,family:'JetBrains Mono'}, color: '#c15c28', backgroundColor: 'transparent', yAdjust: -8 }
               },
               ...(trialIdx >= 0 ? {
                 trialBox: {
                   type: 'box',
                   xMin: trialIdx - 0.5,
-                  backgroundColor: 'rgba(180,160,100,0.07)',
+                  backgroundColor: 'rgba(196,152,42,0.07)',
                   borderWidth: 0
                 },
                 trialLine: {
                   type: 'line',
                   xMin: trialIdx - 0.5, xMax: trialIdx - 0.5,
-                  borderColor: 'rgba(100,80,40,0.3)',
-                  borderWidth: 1,
-                  borderDash: [3,3],
-                  label: { content: 'ASP 600', display: true, position: 'start', font: {size:9,family:'JetBrains Mono'}, color: 'rgba(100,80,40,0.5)', backgroundColor: 'transparent', xAdjust: 4 }
+                  borderColor: '#c4982a',
+                  borderWidth: 1.5,
+                  borderDash: [4,3],
+                  label: { content: 'ASP 600', display: true, position: 'start', font: {size:9,family:'JetBrains Mono'}, color: '#c4982a', backgroundColor: 'transparent', xAdjust: 4 }
                 }
               } : {})
             }
@@ -277,9 +234,9 @@ function buildDashboard() {
       data: {
         labels: dates,
         datasets: [
-          { label: '24hr', data: rows.map(r => r.r24), backgroundColor: '#3d3b2e', stack: 'mix' },
-          { label: '12hr', data: rows.map(r => r.r12), backgroundColor: '#8a856e', stack: 'mix' },
-          { label: '6hr',  data: rows.map(r => r.r6),  backgroundColor: '#c8c4b0', stack: 'mix' }
+          { label: '24hr', data: rows.map(r => r.r24), backgroundColor: '#c15c28', stack: 'mix' },
+          { label: '12hr', data: rows.map(r => r.r12), backgroundColor: '#c4982a', stack: 'mix' },
+          { label: '6hr',  data: rows.map(r => r.r6),  backgroundColor: '#7aaa5a', stack: 'mix' }
         ]
       },
       options: {
