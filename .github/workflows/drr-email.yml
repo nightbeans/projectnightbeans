@@ -1,0 +1,140 @@
+name: DRR Trial Email
+
+on:
+  push:
+    branches: [main]
+    paths: ['work/asp_600_trial.html']
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Send daily DRR summary email
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: |
+          python3 - <<'EOF'
+import json, re, smtplib, os
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from datetime import datetime
+
+# Read metrics from committed JSON
+metrics_path = 'work/.drr_metrics.json'
+if not os.path.exists(metrics_path):
+    print("No metrics file found — skipping email")
+    exit(0)
+
+with open(metrics_path) as f:
+    data = json.load(f)
+
+hubs = data['hubs']
+generated_at = data.get('generated_at', '')
+yesterday = data.get('yesterday_date', '')
+
+BASELINES = {'Ibiade Ogun':118,'Iwopin Ogun':107,'Kajola Ondo':93,
+             'Oba Akoko Ondo':152,'Sobe Edo':113,'Ute Ondo':204}
+
+def color_delta(pct):
+    if pct is None: return '#888'
+    if pct >= -10: return '#3a6b10'
+    if pct >= -30: return '#7a4b0a'
+    return '#9b2c2c'
+
+def fmt_delta(pct, val=None):
+    if pct is None: return '<span style="color:#888">—</span>'
+    c = color_delta(pct)
+    sign = '+' if pct >= 0 else ''
+    return f'<span style="color:{c};font-weight:600">{sign}{round(pct)}%</span>'
+
+def fmt_drr(v):
+    if v is None: return '—'
+    return f'₦{round(v)}'
+
+rows_html = ''
+alerts_html = ''
+for hub in hubs:
+    name = hub['hub_name']
+    baseline = BASELINES.get(name, 0)
+    yd = hub.get('yesterday_drr')
+    trial_avg = hub.get('trial_avg_drr')
+    pre_avg = hub.get('pre_asp_avg_drr')
+    yd_24sh = hub.get('yesterday_24h_share')
+    trial_24sh = hub.get('trial_avg_24h_share')
+    delta_base = hub.get('delta_vs_baseline')
+    delta_pre = hub.get('delta_vs_pre_avg')
+
+    row_bg = '#fff'
+    rows_html += f'''
+    <tr style="border-bottom:1px solid #f0ede4">
+      <td style="padding:7px 10px;font-weight:500;white-space:nowrap">{name}</td>
+      <td style="padding:7px 10px;font-family:monospace;text-align:right">{fmt_drr(yd)}</td>
+      <td style="padding:7px 10px;font-family:monospace;text-align:right">{fmt_drr(trial_avg)}</td>
+      <td style="padding:7px 10px;font-family:monospace;text-align:right">₦{baseline}</td>
+      <td style="padding:7px 10px;text-align:right">{fmt_delta(delta_base)}</td>
+      <td style="padding:7px 10px;text-align:right">{fmt_delta(delta_pre)}</td>
+      <td style="padding:7px 10px;font-family:monospace;text-align:right">{"—" if yd_24sh is None else str(round(yd_24sh*100))+'%'}</td>
+    </tr>'''
+
+    # per-hub alerts
+    hub_alerts = []
+    if yd_24sh is not None and yd_24sh < 0.75:
+        hub_alerts.append(f'24hr share {round(yd_24sh*100)}% (below 75%)')
+    if hub.get('drr_day_on_day_swing') is not None and abs(hub['drr_day_on_day_swing']) > 0.20:
+        swing = hub['drr_day_on_day_swing']
+        hub_alerts.append(f'DRR {"+" if swing>=0 else ""}{round(swing*100)}% day-on-day')
+    if hub_alerts:
+        alerts_html += f'<li style="margin-bottom:4px"><b>{name}:</b> {"; ".join(hub_alerts)}</li>'
+
+trial_days = data.get('trial_days', 1)
+html = f'''<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',sans-serif;background:#faf8f3;margin:0;padding:16px">
+<div style="max-width:600px;margin:0 auto;background:#fff;border-radius:10px;border:1px solid #e8e5dc;overflow:hidden">
+  <div style="background:#faf8f3;padding:14px 18px;border-bottom:1px solid #e8e5dc">
+    <div style="font-size:16px;font-weight:600;margin-bottom:2px">ASP 600NGN Trial · DRR Report</div>
+    <div style="font-size:12px;color:#6b6b62">Data for {yesterday} · trial day {trial_days} · generated {generated_at}</div>
+  </div>
+  <div style="padding:14px 18px">
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead>
+        <tr style="border-bottom:2px solid #e8e5dc;color:#6b6b62;font-size:11px;text-transform:uppercase;letter-spacing:.04em">
+          <th style="padding:5px 10px;text-align:left;font-weight:500">Hub</th>
+          <th style="padding:5px 10px;text-align:right;font-weight:500">Yesterday</th>
+          <th style="padding:5px 10px;text-align:right;font-weight:500">Trial Avg</th>
+          <th style="padding:5px 10px;text-align:right;font-weight:500">Baseline</th>
+          <th style="padding:5px 10px;text-align:right;font-weight:500">Δ Baseline</th>
+          <th style="padding:5px 10px;text-align:right;font-weight:500">Δ Pre-ASP</th>
+          <th style="padding:5px 10px;text-align:right;font-weight:500">24hr%</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows_html}
+      </tbody>
+    </table>
+  </div>
+  {f\'<div style="padding:0 18px 14px"><div style="font-size:12px;color:#7a4b0a;background:#fef7ec;border-radius:6px;padding:10px 12px"><b>Flags</b><ul style="margin:6px 0 0 0;padding-left:18px;line-height:1.6">{alerts_html}</ul></div></div>\' if alerts_html else \'\'}
+  <div style="padding:10px 18px;border-top:1px solid #e8e5dc;font-size:11px;color:#b0ae9f">
+    ASP 800NGN → ASP 600NGN alt commission · hubs 274, 278, 279, 296, 300, 313 · policy change 22 Apr 2026
+    · <a href="https://joeldelaney.com/work/asp_600_trial.html" style="color:#6b6b62">view dashboard</a>
+  </div>
+</div>
+</body></html>'''
+
+msg = MIMEMultipart('alternative')
+msg['Subject'] = f'DRR Trial · {yesterday} · day {trial_days}'
+msg['From'] = os.environ['SMTP_USER']
+msg['To'] = os.environ['EMAIL_TO']
+msg.attach(MIMEText(html, 'html'))
+
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
+    s.login(os.environ['SMTP_USER'], os.environ['SMTP_PASSWORD'])
+    s.sendmail(os.environ['SMTP_USER'], os.environ['EMAIL_TO'], msg.as_string())
+
+print(f"Email sent to {os.environ['EMAIL_TO']}")
+EOF
