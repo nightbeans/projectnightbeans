@@ -16,7 +16,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .hdr-pill{font-size:11px;color:#6b6b62;padding-right:14px;margin-right:14px;border-right:0.5px solid rgba(0,0,0,0.12)}
 .hdr-pill:last-child{border-right:none;margin-right:0;padding-right:0}
 .hdr-ts{font-family:'JetBrains Mono',monospace;font-size:11px;color:#b0ae9f}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px 28px 48px;max-width:1400px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px 28px 32px;max-width:1400px;margin:0 auto}
 @media(max-width:960px){.grid{grid-template-columns:1fr;padding:14px}}
 .hub-card{background:#fff;border-radius:12px;border:0.5px solid rgba(0,0,0,0.08);overflow:hidden;border-top:3px solid #ccc}
 .hub-card.ogun{border-top-color:#1a7a6e}
@@ -43,6 +43,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .chart-lbl{font-size:9px;color:#b0ae9f;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
 .chart-wrap{position:relative;height:148px;width:100%}
 .alert-bar{padding:7px 18px;font-size:11px;color:#7a4b0a;background:#fef7ec;border-top:0.5px solid rgba(0,0,0,0.06);display:none}
+.methodology{padding:16px 28px 32px;max-width:1400px;margin:0 auto}
+.methodology p{font-size:11px;color:#b0ae9f;line-height:1.7}
 </style>
 </head>
 <body>
@@ -58,6 +60,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
   <div class="grid" id="hub-grid"></div>
+  <div class="methodology">
+    <p>DRR = rental_income / average available packs. rental_income is agent wholesale revenue (MOPO's revenue).<br>
+    ₦600 Flat baseline: Nov 2025 – Jan 2026 &nbsp;·&nbsp; ₦800 ASP baseline: 15 Feb – 21 Apr 2026.<br>
+    Email reports T-2 to allow agent sync to catch up. Dashboard shows T-1; may be partial due to sync lag.</p>
+  </div>
 </div>
 
 <script>
@@ -66,7 +73,11 @@ let RAW_DATA = [{"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-04-01","r6":
 let GENERATED_AT = '2026-04-23T06:00:00Z';
 // ---- DATA END ----
 
-const BASELINES = {'Ibiade Ogun':83,'Iwopin Ogun':37,'Kajola Ondo':68,'Oba Akoko Ondo':103,'Sobe Edo':31,'Ute Ondo':96};
+// Baselines hardcoded from reference periods
+// N600 Flat: Nov 2025 - Jan 2026
+const BASELINE_600 = {'Ibiade Ogun':118,'Iwopin Ogun':107,'Kajola Ondo':97,'Oba Akoko Ondo':152,'Sobe Edo':113,'Ute Ondo':204};
+// N800 ASP: 15 Feb - 21 Apr 2026
+const BASELINE_800 = {'Ibiade Ogun':94,'Iwopin Ogun':45,'Kajola Ondo':69,'Oba Akoko Ondo':110,'Sobe Edo':55,'Ute Ondo':101};
 const STATE_LABELS = {'Ibiade Ogun':'Ogun','Iwopin Ogun':'Ogun','Kajola Ondo':'Ondo','Oba Akoko Ondo':'Ondo','Sobe Edo':'Edo','Ute Ondo':'Ondo'};
 const TRIAL_START = '2026-04-22';
 const HUB_ORDER = ['Ibiade Ogun','Iwopin Ogun','Kajola Ondo','Oba Akoko Ondo','Sobe Edo','Ute Ondo'];
@@ -84,13 +95,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   buildDashboard();
 });
 
-// ---- BUILD ----
+function shortDate(d) {
+  const dt = new Date(d + 'T00:00:00Z');
+  return dt.getUTCDate() + ' ' + dt.toLocaleDateString('en-GB',{month:'short',timeZone:'UTC'});
+}
+
 function buildDashboard() {
   const ts = new Date(GENERATED_AT);
   document.getElementById('generated-at').textContent =
     'data as of ' + ts.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'}) + ' UTC';
 
-  // group by hub
   const byHub = {};
   for (const r of RAW_DATA) {
     if (!byHub[r.hub_name]) byHub[r.hub_name] = [];
@@ -102,42 +116,41 @@ function buildDashboard() {
 
   for (const hub of HUB_ORDER) {
     const rows = (byHub[hub] || []).sort((a,b) => a.date.localeCompare(b.date));
-    const baseline = BASELINES[hub];
-    const preRows = rows.filter(r => r.date < TRIAL_START);
+    if (!rows.length) continue;
+    const b600 = BASELINE_600[hub];
+    const b800 = BASELINE_800[hub];
     const trialRows = rows.filter(r => r.date >= TRIAL_START);
     const lastRow = rows[rows.length - 1];
 
     const drr = r => r.inc / r.av;
     const avg = arr => arr.length ? arr.reduce((s,r) => s + drr(r), 0) / arr.length : null;
 
-    const ydDrr = drr(lastRow);
+    const latestDrr = drr(lastRow);
     const trialAvg = avg(trialRows);
-    const preAvg = avg(preRows);
-    const deltaBaseline = trialAvg != null ? (trialAvg - baseline) / baseline : null;
+    const deltaB600 = trialAvg != null ? (trialAvg - b600) / b600 : null;
+    const deltaB800 = trialAvg != null ? (trialAvg - b800) / b800 : null;
     const yd24share = lastRow.rt > 0 ? lastRow.r24 / lastRow.rt : null;
+    const latestDate = shortDate(lastRow.date);
 
-    // badge
+    // badge vs N800 ASP (more actionable)
     let badgeCls = 'badge-ne', badgeTxt = '—';
-    if (deltaBaseline != null) {
-      const pct = Math.round(deltaBaseline * 100);
-      badgeTxt = (pct >= 0 ? '+' : '') + pct + '%';
-      badgeCls = pct >= -10 ? 'badge-up' : pct >= -30 ? 'badge-ne' : 'badge-dn';
+    if (deltaB800 != null) {
+      const pct = Math.round(deltaB800 * 100);
+      badgeTxt = (pct >= 0 ? '+' : '') + pct + '% vs ₦800 ASP';
+      badgeCls = pct >= 5 ? 'badge-up' : pct >= -5 ? 'badge-ne' : 'badge-dn';
     }
 
     // alerts
     const alerts = [];
-    if (yd24share != null && yd24share < 0.75) alerts.push('24hr share yesterday ' + Math.round(yd24share*100) + '% — below 75%');
-    if (trialRows.length >= 2) {
-      const prevDrr = drr(trialRows[trialRows.length - 2]);
-      if (Math.abs(ydDrr - prevDrr) / prevDrr > 0.20) {
-        const swing = Math.round((ydDrr - prevDrr) / prevDrr * 100);
-        alerts.push('DRR swung ' + (swing >= 0 ? '+' : '') + swing + '% day-on-day');
-      }
+    if (yd24share != null && yd24share < 0.75) alerts.push('24hr share ' + Math.round(yd24share*100) + '% — below 75%');
+    if (trialRows.length >= 3 && trialAvg != null && trialAvg < b600 && trialAvg < b800) {
+      alerts.push('trial avg below both baselines');
     }
 
-    const fmt = v => v != null ? '₦' + v.toFixed(0) : '—';
+    const fmt = v => v != null ? '₦' + Math.round(v) : '—';
     const fmtPct = v => v != null ? (v >= 0 ? '+' : '') + Math.round(v*100) + '%' : '—';
-    const deltaCls = deltaBaseline == null ? '' : deltaBaseline >= -0.1 ? 'up' : deltaBaseline >= -0.3 ? 'am' : 'dn';
+    const cls600 = deltaB600 == null ? '' : deltaB600 >= 0 ? 'up' : deltaB600 >= -0.2 ? 'am' : 'dn';
+    const cls800 = deltaB800 == null ? '' : deltaB800 >= 0.05 ? 'up' : deltaB800 >= -0.05 ? 'am' : 'dn';
 
     const card = document.createElement('div');
     card.className = 'hub-card ' + (STATE_LABELS[hub]||'').toLowerCase();
@@ -147,18 +160,18 @@ function buildDashboard() {
           <div class="card-hub">${hub}</div>
           <div class="card-state">${STATE_LABELS[hub]} · hub ${rows[0].hub_id}</div>
         </div>
-        <div class="badge ${badgeCls}">${badgeTxt} vs baseline</div>
+        <div class="badge ${badgeCls}">${badgeTxt}</div>
       </div>
       <div class="stats">
-        <div class="stat"><div class="stat-lbl">Yesterday DRR</div><div class="stat-val">${fmt(ydDrr)}</div></div>
+        <div class="stat"><div class="stat-lbl">${latestDate}</div><div class="stat-val">${fmt(latestDrr)}</div></div>
         <div class="stat"><div class="stat-lbl">Trial Avg</div><div class="stat-val">${fmt(trialAvg)}</div></div>
-        <div class="stat"><div class="stat-lbl">Pre-ASP Avg</div><div class="stat-val">${fmt(preAvg)}</div></div>
-        <div class="stat"><div class="stat-lbl">Baseline</div><div class="stat-val">₦${baseline}</div></div>
-        <div class="stat"><div class="stat-lbl">Δ vs Baseline</div><div class="stat-val ${deltaCls}">${fmtPct(deltaBaseline)}</div></div>
+        <div class="stat"><div class="stat-lbl">vs ₦600 Flat</div><div class="stat-val ${cls600}">${fmtPct(deltaB600)}</div></div>
+        <div class="stat"><div class="stat-lbl">vs ₦800 ASP</div><div class="stat-val ${cls800}">${fmtPct(deltaB800)}</div></div>
+        <div class="stat"><div class="stat-lbl">24hr% latest</div><div class="stat-val">${yd24share != null ? Math.round(yd24share*100)+'%' : '—'}</div></div>
       </div>
       <div class="charts-row">
         <div class="chart-pane">
-          <div class="chart-lbl">DRR ₦ / battery · dotted = baseline · shaded = trial period</div>
+          <div class="chart-lbl">DRR · dotted=₦600 Flat · dashed=₦800 ASP · shaded=trial</div>
           <div class="chart-wrap"><canvas id="drr-${hub.replace(/\s/g,'_')}"></canvas></div>
         </div>
         <div class="chart-pane">
@@ -170,12 +183,11 @@ function buildDashboard() {
     `;
     grid.appendChild(card);
 
-    // charts
-    const dates = rows.map(r => r.date.slice(5)); // MM-DD
-    const drrVals = rows.map(r => +drr(r).toFixed(2));
+    const dates = rows.map(r => r.date.slice(5));
+    const drrVals = rows.map(r => +(drr(r)).toFixed(2));
     const trialIdx = rows.findIndex(r => r.date >= TRIAL_START);
 
-    // DRR line chart
+    // DRR line chart with two reference lines
     const drrCtx = document.getElementById('drr-' + hub.replace(/\s/g,'_')).getContext('2d');
     new Chart(drrCtx, {
       type: 'line',
@@ -197,20 +209,24 @@ function buildDashboard() {
         maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => '₦' + ctx.parsed.y.toFixed(1)
-            }
-          },
+          tooltip: { callbacks: { label: ctx => '₦' + ctx.parsed.y.toFixed(1) } },
           annotation: {
             annotations: {
-              baseline: {
+              flat600: {
                 type: 'line',
-                yMin: baseline, yMax: baseline,
-                borderColor: '#c15c28',
+                yMin: b600, yMax: b600,
+                borderColor: '#6b6b62',
                 borderWidth: 1.5,
                 borderDash: [5,4],
-                label: { content: 'baseline ₦'+baseline, display: true, position: 'end', font: {size:9,family:'JetBrains Mono'}, color: '#c15c28', backgroundColor: 'transparent', yAdjust: -8 }
+                label: { content: '₦600 FLAT ₦'+b600, display: true, position: 'end', font: {size:9,family:'JetBrains Mono'}, color: '#6b6b62', backgroundColor: 'transparent', yAdjust: -8 }
+              },
+              asp800: {
+                type: 'line',
+                yMin: b800, yMax: b800,
+                borderColor: '#c15c28',
+                borderWidth: 1.5,
+                borderDash: [3,3],
+                label: { content: '₦800 ASP ₦'+b800, display: true, position: 'end', font: {size:9,family:'JetBrains Mono'}, color: '#c15c28', backgroundColor: 'transparent', yAdjust: 8 }
               },
               ...(trialIdx >= 0 ? {
                 trialBox: {
