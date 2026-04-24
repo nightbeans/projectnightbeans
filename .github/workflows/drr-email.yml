@@ -18,123 +18,146 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: |
-          python3 <<'EOF'
-          import json, smtplib, os
-          from email.mime.multipart import MIMEMultipart
-          from email.mime.text import MIMEText
+          python3 - <<'EOF'
+import json, smtplib, os
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from datetime import datetime
 
-          with open('work/drr_data.json') as f:
-              data = json.load(f)
+with open('work/drr_data.json') as f:
+    data = json.load(f)
 
-          rows = data['rows']
-          generated_at = data.get('generated_at', '')
-          TRIAL_START = '2026-04-22'
-          BASELINES = {'Ibiade Ogun':83,'Iwopin Ogun':37,'Kajola Ondo':68,                                                                                                   
-               'Oba Akoko Ondo':103,'Sobe Edo':31,'Ute Ondo':96}
-          HUB_ORDER = ['Ibiade Ogun','Iwopin Ogun','Kajola Ondo','Oba Akoko Ondo','Sobe Edo','Ute Ondo']
+rows = data['rows']
+TRIAL_START = '2026-04-22'
 
-          by_hub = {}
-          for r in rows:
-              by_hub.setdefault(r['hub_name'], []).append(r)
+# Baselines hardcoded from reference periods
+# N600 Flat: Nov 2025 - Jan 2026
+BASELINE_600 = {'Ibiade Ogun':118,'Iwopin Ogun':107,'Kajola Ondo':97,'Oba Akoko Ondo':152,'Sobe Edo':113,'Ute Ondo':204}
+# N800 ASP: 15 Feb - 21 Apr 2026
+BASELINE_800 = {'Ibiade Ogun':94,'Iwopin Ogun':45,'Kajola Ondo':69,'Oba Akoko Ondo':110,'Sobe Edo':55,'Ute Ondo':101}
+HUB_ORDER = ['Ibiade Ogun','Iwopin Ogun','Kajola Ondo','Oba Akoko Ondo','Sobe Edo','Ute Ondo']
 
-          yesterday_date = max(r['date'] for r in rows)
-          trial_days = len(set(r['date'] for r in rows if r['date'] >= TRIAL_START))
+by_hub = {}
+for r in rows:
+    by_hub.setdefault(r['hub_name'], []).append(r)
 
-          def drr(r): return r['inc'] / r['av']
-          def avg(lst): return sum(lst)/len(lst) if lst else None
+all_dates = sorted(set(r['date'] for r in rows))
+t2_date = all_dates[-2] if len(all_dates) >= 2 else all_dates[-1]
+trial_dates = [d for d in all_dates if d >= TRIAL_START and d <= t2_date]
+trial_days = len(trial_dates)
 
-          def color_pct(pct):
-              if pct is None: return '#888'
-              if pct >= -10: return '#3a6b10'
-              if pct >= -30: return '#7a4b0a'
-              return '#9b2c2c'
+def short_date(d):
+    dt = datetime.strptime(d, '%Y-%m-%d')
+    return str(dt.day) + ' ' + dt.strftime('%b')
 
-          def fmt_delta(pct):
-              if pct is None: return '<span style="color:#888">—</span>'
-              c = color_pct(pct)
-              s = ('+' if pct>=0 else '') + str(round(pct)) + '%'
-              return f'<span style="color:{c};font-weight:600">{s}</span>'
+today_str = datetime.utcnow().strftime('%Y-%m-%d')
+t2_short = short_date(t2_date)
 
-          rows_html = ''
-          alerts = []
-          for hub in HUB_ORDER:
-              hub_rows = sorted(by_hub.get(hub, []), key=lambda r: r['date'])
-              if not hub_rows: continue
-              baseline = BASELINES.get(hub, 0)
-              pre = [r for r in hub_rows if r['date'] < TRIAL_START]
-              trial = [r for r in hub_rows if r['date'] >= TRIAL_START]
-              last = hub_rows[-1]
+def drr(r): return r['inc'] / r['av']
+def avg(lst): return sum(lst)/len(lst) if lst else None
 
-              yd_drr = drr(last)
-              trial_avg = avg([drr(r) for r in trial])
-              pre_avg = avg([drr(r) for r in pre])
-              db = (trial_avg - baseline) / baseline * 100 if trial_avg else None
-              dp = (trial_avg - pre_avg) / pre_avg * 100 if trial_avg and pre_avg else None
-              sh = round(last['r24'] / last['rt'] * 100) if last['rt'] else None
+def color_600(pct):
+    if pct is None: return '#888'
+    if pct >= 0: return '#3a6b10'
+    if pct >= -20: return '#7a4b0a'
+    return '#9b2c2c'
 
-              rows_html += f'''<tr style="border-bottom:1px solid #f0ede4">
-                <td style="padding:7px 10px;font-weight:500">{hub}</td>
-                <td style="padding:7px 10px;font-family:monospace;text-align:right">&#8358;{round(yd_drr)}</td>
-                <td style="padding:7px 10px;font-family:monospace;text-align:right">&#8358;{round(trial_avg) if trial_avg else "—"}</td>
-                <td style="padding:7px 10px;font-family:monospace;text-align:right">&#8358;{baseline}</td>
-                <td style="padding:7px 10px;text-align:right">{fmt_delta(db)}</td>
-                <td style="padding:7px 10px;text-align:right">{fmt_delta(dp)}</td>
-                <td style="padding:7px 10px;font-family:monospace;text-align:right">{"—" if sh is None else str(sh)+"%"}</td>
-              </tr>'''
+def color_800(pct):
+    if pct is None: return '#888'
+    if pct >= 5: return '#3a6b10'
+    if pct >= -5: return '#7a4b0a'
+    return '#9b2c2c'
 
-              hub_alerts = []
-              if sh is not None and sh < 75:
-                  hub_alerts.append(f'24hr share {sh}% (below 75%)')
-              if len(trial) >= 2:
-                  swing = (yd_drr - drr(trial[-2])) / drr(trial[-2]) * 100
-                  if abs(swing) > 20:
-                      hub_alerts.append(f'DRR {"+" if swing>=0 else ""}{round(swing)}% day-on-day')
-              if hub_alerts:
-                  alerts.append(f'<li style="margin-bottom:3px"><b>{hub}:</b> {"; ".join(hub_alerts)}</li>')
+def fmt_delta(pct, color_fn, b_val):
+    if pct is None: return '<span style="color:#888">-</span>'
+    c = color_fn(pct)
+    s = ('+' if pct >= 0 else '') + str(round(pct)) + '%'
+    return ('<span style="color:' + c + ';font-weight:600">' + s + '</span>'
+            + '<br><span style="font-size:10px;color:#b0ae9f">&#8358;' + str(b_val) + '</span>')
 
-          alert_block = ''
-          if alerts:
-              alert_block = f'''<div style="padding:0 18px 14px">
-            <div style="font-size:12px;color:#7a4b0a;background:#fef7ec;border-radius:6px;padding:10px 12px">
-              <b>Flags</b><ul style="margin:6px 0 0;padding-left:18px;line-height:1.6">{"".join(alerts)}</ul>
-            </div></div>'''
+rows_html = ''
+alerts = []
+for hub in HUB_ORDER:
+    hub_rows = sorted(by_hub.get(hub, []), key=lambda r: r['date'])
+    if not hub_rows: continue
+    b600 = BASELINE_600.get(hub, 0)
+    b800 = BASELINE_800.get(hub, 0)
 
-          html = f'''<!DOCTYPE html><html><head><meta charset="UTF-8"></head>
-          <body style="font-family:-apple-system,sans-serif;background:#faf8f3;margin:0;padding:16px">
-          <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:10px;border:1px solid #e8e5dc;overflow:hidden">
-            <div style="background:#faf8f3;padding:14px 18px;border-bottom:1px solid #e8e5dc">
-              <div style="font-size:16px;font-weight:600;margin-bottom:2px">ASP 600NGN Trial &#183; DRR Report</div>
-              <div style="font-size:12px;color:#6b6b62">Data for {yesterday_date} &#183; trial day {trial_days} &#183; {generated_at[:10]}</div>
-            </div>
-            <div style="padding:14px 18px">
-              <table style="width:100%;border-collapse:collapse;font-size:13px">
-                <thead><tr style="border-bottom:2px solid #e8e5dc;color:#6b6b62;font-size:11px;text-transform:uppercase">
-                  <th style="padding:5px 10px;text-align:left;font-weight:500">Hub</th>
-                  <th style="padding:5px 10px;text-align:right;font-weight:500">Yday</th>
-                  <th style="padding:5px 10px;text-align:right;font-weight:500">Trial avg</th>
-                  <th style="padding:5px 10px;text-align:right;font-weight:500">Baseline</th>
-                  <th style="padding:5px 10px;text-align:right;font-weight:500">&#916; baseline</th>
-                  <th style="padding:5px 10px;text-align:right;font-weight:500">&#916; pre-ASP</th>
-                  <th style="padding:5px 10px;text-align:right;font-weight:500">24hr%</th>
-                </tr></thead>
-                <tbody>{rows_html}</tbody>
-              </table>
-            </div>
-            {alert_block}
-            <div style="padding:10px 18px;border-top:1px solid #e8e5dc;font-size:11px;color:#b0ae9f">
-              Policy change 22 Apr 2026 &#183; hubs 274,278,279,296,300,313 &#183;
-              <a href="https://joeldelaney.com/work/asp_600_trial.html" style="color:#6b6b62">view dashboard</a>
-            </div>
-          </div></body></html>'''
+    t2_rows = [r for r in hub_rows if r['date'] == t2_date]
+    if not t2_rows: continue
+    t2_row = t2_rows[0]
 
-          msg = MIMEMultipart('alternative')
-          msg['Subject'] = f'DRR · {yesterday_date} · day {trial_days}'
-          msg['From'] = os.environ['SMTP_USER']
-          msg['To'] = os.environ['EMAIL_TO']
-          msg.attach(MIMEText(html, 'html'))
+    trial = [r for r in hub_rows if r['date'] >= TRIAL_START and r['date'] <= t2_date]
 
-          with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
-              s.login(os.environ['SMTP_USER'], os.environ['SMTP_PASSWORD'])
-              s.sendmail(os.environ['SMTP_USER'], os.environ['EMAIL_TO'], msg.as_string())
-          print(f"Sent to {os.environ['EMAIL_TO']}")
-          EOF
+    t2_drr_val = drr(t2_row)
+    trial_avg = avg([drr(r) for r in trial])
+    d600 = (trial_avg - b600) / b600 * 100 if trial_avg else None
+    d800 = (trial_avg - b800) / b800 * 100 if trial_avg else None
+    sh = round(t2_row['r24'] / t2_row['rt'] * 100) if t2_row['rt'] else None
+
+    rows_html += '<tr style="border-bottom:1px solid #f0ede4">'
+    rows_html += '<td style="padding:7px 10px;font-weight:500">' + hub + '</td>'
+    rows_html += '<td style="padding:7px 10px;font-family:monospace;text-align:right">&#8358;' + str(round(t2_drr_val)) + '</td>'
+    rows_html += '<td style="padding:7px 10px;font-family:monospace;text-align:right">&#8358;' + (str(round(trial_avg)) if trial_avg else '-') + '</td>'
+    rows_html += '<td style="padding:7px 10px;text-align:right">' + fmt_delta(d600, color_600, b600) + '</td>'
+    rows_html += '<td style="padding:7px 10px;text-align:right">' + fmt_delta(d800, color_800, b800) + '</td>'
+    rows_html += '<td style="padding:7px 10px;font-family:monospace;text-align:right">' + ('-' if sh is None else str(sh) + '%') + '</td>'
+    rows_html += '</tr>'
+
+    hub_alerts = []
+    if sh is not None and sh < 75:
+        hub_alerts.append('24hr share ' + str(sh) + '% (below 75%)')
+    if trial_days >= 3 and trial_avg is not None:
+        if trial_avg < b600 and trial_avg < b800:
+            hub_alerts.append('trial avg below both baselines')
+    if hub_alerts:
+        alerts.append('<li style="margin-bottom:3px"><b>' + hub + ':</b> ' + '; '.join(hub_alerts) + '</li>')
+
+alert_block = ''
+if alerts:
+    alert_block = ('<div style="padding:0 18px 14px">'
+                   '<div style="font-size:12px;color:#7a4b0a;background:#fef7ec;border-radius:6px;padding:10px 12px">'
+                   '<b>Flags</b><ul style="margin:6px 0 0;padding-left:18px;line-height:1.6">'
+                   + ''.join(alerts) + '</ul></div></div>')
+
+html = ('<!DOCTYPE html><html><head><meta charset="UTF-8"></head>'
+'<body style="font-family:-apple-system,sans-serif;background:#faf8f3;margin:0;padding:16px">'
+'<div style="max-width:620px;margin:0 auto;background:#fff;border-radius:10px;border:1px solid #e8e5dc;overflow:hidden">'
+'  <div style="background:#faf8f3;padding:14px 18px;border-bottom:1px solid #e8e5dc">'
+'    <div style="font-size:16px;font-weight:600;margin-bottom:2px">ASP 600NGN Trial &#183; DRR Report</div>'
+'    <div style="font-size:12px;color:#6b6b62">Data for ' + t2_short + ' &#183; trial day ' + str(trial_days) + ' &#183; sent ' + today_str + '</div>'
+'  </div>'
+'  <div style="padding:14px 18px">'
+'    <table style="width:100%;border-collapse:collapse;font-size:13px">'
+'      <thead><tr style="border-bottom:2px solid #e8e5dc;color:#6b6b62;font-size:11px;text-transform:uppercase">'
+'        <th style="padding:5px 10px;text-align:left;font-weight:500">Hub</th>'
+'        <th style="padding:5px 10px;text-align:right;font-weight:500">' + t2_short + '</th>'
+'        <th style="padding:5px 10px;text-align:right;font-weight:500">Trial Avg</th>'
+'        <th style="padding:5px 10px;text-align:right;font-weight:500">vs &#8358;600 Flat</th>'
+'        <th style="padding:5px 10px;text-align:right;font-weight:500">vs &#8358;800 ASP</th>'
+'        <th style="padding:5px 10px;text-align:right;font-weight:500">24hr%</th>'
+'      </tr></thead>'
+'      <tbody>' + rows_html + '</tbody>'
+'    </table>'
+'  </div>'
+'  <div style="padding:4px 18px 12px;font-size:10px;color:#b0ae9f">'
+'    &#8358;600 Flat baseline: Nov 2025 &#8211; Jan 2026 &#183; &#8358;800 ASP baseline: 15 Feb &#8211; 21 Apr 2026'
+'  </div>'
++ alert_block +
+'  <div style="padding:10px 18px;border-top:1px solid #e8e5dc;font-size:11px;color:#b0ae9f">'
+'    Policy change 22 Apr 2026 &#183; hubs 274,278,279,296,300,313 &#183;'
+'    <a href="https://joeldelaney.com/work/asp_600_trial.html" style="color:#6b6b62">view dashboard</a>'
+'  </div>'
+'</div></body></html>')
+
+msg = MIMEMultipart('alternative')
+msg['Subject'] = 'DRR · ' + t2_short + ' · day ' + str(trial_days)
+msg['From'] = os.environ['SMTP_USER']
+msg['To'] = os.environ['EMAIL_TO']
+msg.attach(MIMEText(html, 'html'))
+
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
+    s.login(os.environ['SMTP_USER'], os.environ['SMTP_PASSWORD'])
+    s.sendmail(os.environ['SMTP_USER'], os.environ['EMAIL_TO'], msg.as_string())
+print('Sent to ' + os.environ['EMAIL_TO'])
+EOF
