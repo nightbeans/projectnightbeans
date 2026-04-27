@@ -3,60 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book - joeldelaney</title>
+    <title>Eyelids - joeldelaney</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        .parts-container {
-            max-width: 800px;
+        .book-container {
+            max-width: 680px;
             margin: 60px auto;
-            padding: 0 20px;
+            padding: 0 24px 80px;
         }
-        .parts-grid {
-            display: grid;
-            gap: 20px;
-        }
-        .part-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(176, 212, 221, 0.3);
-            border-radius: 12px;
-            padding: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: block;
-        }
-        .part-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(176, 212, 221, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        .part-number {
-            font-size: 2.5rem;
+        .book-title {
+            font-size: 2.2rem;
             font-weight: 700;
-            color: #7fc8e0;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .part-info {
-            color: #b0d4dd;
-            font-size: 1rem;
-        }
-        .epilogue-card {
-            background: rgba(127, 200, 224, 0.1);
-            border-color: #7fc8e0;
-        }
-        .epilogue-card:hover {
-            background: rgba(127, 200, 224, 0.15);
-            border-color: #ffffff;
-        }
-        .book-title-link {
             color: #ffffff;
-            font-size: 2.5rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            margin-bottom: 8px;
         }
-        .book-title-link:hover {
+        .book-label {
+            font-size: 0.85rem;
             color: #7fc8e0;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 48px;
+        }
+        .book-text p {
+            color: #d4eaf0;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 1.4em;
+        }
+        .book-text em {
+            font-style: italic;
+        }
+        .book-divider {
+            border: none;
+            border-top: 1px solid #2d6575;
+            margin: 2.4em 0;
+            width: 60px;
         }
     </style>
 </head>
@@ -69,36 +50,182 @@
             <ul class="nav-links">
                 <li><a href="../">Home</a></li>
                 <li><a href="../blog/">Blog</a></li>
+                <li><a href="../work/">Work</a></li>
                 <li><a href="../benedict/">Benedict</a></li>
                 <li><a href="../book/" class="active">Book</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="parts-container">
-        <!-- Book Title and Blurb -->
-        <div style="text-align: center; margin-bottom: 50px;">
-            <h1 style="margin-bottom: 30px;"><a href="parts/" class="book-title-link">Eyelids</a></h1>
-            <div style="max-width: 700px; margin: 0 auto; text-align: justify;">
-                <p style="color: #b0d4dd; line-height: 1.7; margin-bottom: 1rem;">
-                    Conor and Calum have long-worshipped their sister, Ella. But something in her has changed, and for the first time, they're afraid of her.
-                </p>
-                <p style="color: #b0d4dd; line-height: 1.7; margin-bottom: 1rem;">
-                    What follows forces the boys apart; Conor travelling inward to his 'deep' for refuge, while Calum remains in the world above.
-                </p>
-                <p style="color: #b0d4dd; line-height: 1.7; margin-bottom: 2rem;">
-                    They each have their guardians, the people they must trust to survive.
-                </p>
-            </div>
+    <main>
+        <div class="book-container">
+            <h1 class="book-title">Eyelids</h1>
+            <div class="book-label">Draft excerpt</div>
 
-            <!-- Buttons -->
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a id="startReadingBtn" href="parts/" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #7fc8e0 0%, #5ab0d0 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);">
-                    <span id="readingBtnText">Start Reading</span>
-                </a>
-                <a href="eyelids-first-10k.pdf" download id="pdfDownload10k" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #7fc8e0 0%, #5ab0d0 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(127, 200, 224, 0.3);">
-                    Download First 10k Words
-                </a>
+            <div class="book-text">
+
+                <p>The poor lads were left wondering if they had ever really known her at all. They didn't speak to each other about any of it; it never seemed necessary nor likely to help. Being together seemed ample respite and refuge. I suppose it's unfair to say who it was harder on, Alex certainly cried more. He was crying now, quietly, bar the fragmented coughs it was forcing up from his shallow breaths.</p>
+
+                <p>The house was calmer when she was gone. Frost covered the ground outside. Conor made tea and loaded their Thermos flasks, while Alex finished up the bacon, scrambled eggs, and a few slices of toast. He spooned the remaining eggs into the bacon tray, covered it with foil and left it on the table aside the remaining half bag of Warburtons Toastie. It wouldn't be much longer before the smell of bacon passed its way down the main hall, up the stairs and out from the jutting beams and low ceilings towards the bright annex with its tall windows that they'd had built six years ago. They knew Dad would be thrilled to wake to breakfast, and more so if he'd come to find they weren't there. Not because he didn't love the boys, but because the past weeks had been hard again.</p>
+
+                <p>They went into the outhouse, already well wrapped in thermals, hopped quickly on pointed toes to the big chest of winter essentials: puffy jackets, waterproof trousers and socks. Gloves, beanies and buffs from Mum's trail races all followed. Boots on and nearly doubled in size, they looked out at each other from their turrets and nodded. Ready? Nearly. Alex regarded Conor's full hands and turned back to grab his Thermos and breakfast. They stepped outside.</p>
+
+                <p>They loved Ella. A sister six years older is practically guaranteed to be worshipped by a pair of younger brothers. They had no interests of their own; they were her shadow. Conor recalled warm mornings when he'd wake and find her sitting at the end of his bed, looking out the window. Her eyes had always been taut, crows-feet at fifteen, taking in far more than you or I. Opportunities. Threats. They could protect you, those eyes. They still saw as much as they ever did, but now they housed a menacing cold.</p>
+
+                <p>Their steps were broken glass on the frost as they came to the stream by their oak. They took their seats, resting against the trunk. Alex on the low branch, his own, with the make-shift cup holder — a gnarled and twisting root — which perfectly fit his Thermos. It had been the redeeming feature that allowed him to accept this otherwise shameful bottom bunk with dignity. He had always felt she was above him, a stained-glass window. No longer, now she was lower, and she had his heels. They were no longer tears of sadness, but fear. It's dangerous to try to save someone who's drowning, especially if they want you dead.</p>
+
+                <p>Conor was above him, listening to the cough-cry of his brother. He was fully reclined, his left leg draped down, and his hat pulled low over his face. He thought about his eyes. That they weren't really closed, just covered, staring at this funny flap of skin. He felt the texture of them against his eyelids, the smooth roll as he panned slowly from left to right, and back. He turned, as he often did, a little further in, moving away from Ella, his brother, everyone. He left them up top and travelled in. He stayed there a while before nodding to the passenger who stepped on as he alighted — meeting the man without eyelids.</p>
+
+                <p>Conor opened his eyes and lifted his cap. Above him was Ella's branch. She was the only one with a view. There was this gap in the tree from her spot that never fully closed. It looked out in every season across the field belonging to Mr Armitage; he remembered his stories and thought fondly that somewhere in that ground would soon lie the three sisters. July from Ella's branch was perhaps the sweetest place in England. Conor pictured himself then, sitting between her legs, leaning back against her. She held him as he tried to match her breathing; it was always far slower than his.</p>
+
+                <p>He realised that he was attempting to match the cadence of her breath as he sat now. He was desperate to climb up and sit in her spot. But he couldn't. They had made their agreement. It was Ella's branch, and she had made it clear that they were not to sit in it without her. Though more recently to their detriment, they had always heeded her words as though they were wisdom from God. She had asked them not to go to her branch in a rare softer moment, and they had agreed. Albeit had she asked amidst some tormented tirade filled with unintelligible requests, they'd have nevertheless obliged.</p>
+
+                <p>They seemed to both silently give up hope in that exact moment. No need to speak when you are saying the same thing — <em>we have lost her.</em></p>
+
+                <p>Alex called up, <em>"Do you have any more bacon, Con?"</em></p>
+
+                <p><em>"Na, all gone. I'm bloody freezing — you ready?"</em></p>
+
+                <p><em>"Sure."</em></p>
+
+                <hr class="book-divider">
+
+                <p>They had stripped down to their thermals in the outhouse and stepped inside. The foil covering the bacon tray remained undisturbed. Their father's failure to emerge from the annex was strange but not yet concerning. They were certain he'd still appreciate their absence, so they threw their coats and kit back on and wandered back outside. They crossed through the holes in the hedges that led through Mrs Careen's garden, on past Number Seven and into Mr Armitage's. They strolled up past the frosted remnants of a garden that would soon be tended and inevitably return to marvellous bloom.</p>
+
+                <p>They passed to the left of the patio pond, opting to hop over a couple of the water features and stepping stones towards the low back door. Conor took a sharp and sudden in-breath.</p>
+
+                <p><em>"Shit."</em></p>
+
+                <p>He'd had that horrible moment when you slip on a sliver of ice and catch yourself.</p>
+
+                <p>They didn't knock. Just stepped down into the funny low cottage entrance and thought — as they always did watching the thick beam slide above them — of those future versions of themselves that would need to <em>'Mind Your Head'</em>.</p>
+
+                <p>They walked through the kitchen, Alex moving the kettle onto the AGA as he moved past. It was quiet for a moment then. As soon as the whistle sounded, he called down —</p>
+
+                <p><em>"You here, boys?"</em></p>
+
+                <p><em>"Yes, Mr Armitage,"</em> replied Alex. <em>"Do you want tea?"</em></p>
+
+                <p><em>"Of course I want tea, thank you, my boy,"</em> returned Mr Armitage.</p>
+
+                <p>They watched his shadow move past the hall away to their left, the rounded shell where his chin slid into his chest as he ducked between light shades and past close shelves. For a man who had lived in the house as long as he had, he never seemed to have grown accustomed to where everything was. He was far too big for it, you see. You got the impression from Mr Armitage that there would never be a house that would make for him a sensible abode.</p>
+
+                <p><em>"Why do we call them 'rooms', hey?"</em> he often asked them, <em>"There is never enough room inside."</em></p>
+
+                <p>He turned towards them, a one-man barricade slowly lumbering their way, chuckling at how they were wrapped up. The boys had never seen him need more than jeans, a tattersall shirt and his wax jacket. Conor swore he'd seen him in a fleece one day. Alex felt his great hands by his side and up into his armpits as his feet lifted off the ground. He'd slid the big chest over to the AGA and started to climb up to reach the top shelf where the teas were before Mr Armitage gave him the lift. He reached out. Paused.</p>
+
+                <p><em>"What tea do you want?"</em> he asked.</p>
+
+                <p><em>"Cedar."</em></p>
+
+                <p>Front and centre. He slid the jar towards him as Mr Armitage lowered him to the floor.</p>
+
+                <p>They filled the filter with the cedar tea, and Alex filled the pot with water. As it steeped, they sat at the round breakfast table. Mr Armitage's long hair framed him well. His chin remained near his chest, a habit from unsuccessfully attempting to avoid knocking lights, ornaments, door-frames. His head low, he glanced up at them.</p>
+
+                <p><em>"Well, how is she?"</em> he asked.</p>
+
+                <p>The boys started to tell him, but they could see that, though he tried, Mr Armitage quickly lost focus, looking out, as he so often did, at the field that housed the three sisters. They knew he wanted to listen. He meant the questions he asked, but his mind was always so saturated. It didn't matter to them; talking to him was, in truth, just a way the boys had to talk to each other. Conor noted how Alex's language had changed concerning Ella. It was no longer simple grief and confusion. He heard it now — he was terrified.</p>
+
+                <p><em>"So then she shot up,"</em> he said, <em>"grabbed the poker out of the fire."</em> He paused for effect, not caring that Mr Armitage was elsewhere, <em>"and swung it at his head."</em></p>
+
+                <p><em>"She meant it too!"</em> Alex continued. <em>"You should have seen her eyes, Mr Armitage, they were wild. She looked like a completely different girl. She didn't even look angry, really. Just violent. No anger, Mr Armitage, I just can't understand it. You know her, I mean — she's mad, right?"</em></p>
+
+                <p><em>"Mhmm, sounds horrid, lad."</em> He replied without looking back at them, ever onward out to the sisters' field. It was nearly three months to the first planting. He was just waiting.</p>
+
+                <p>Alex paused, waiting for more, until eventually he just said;</p>
+
+                <p><em>"Well, she's gone now anyway, thank God."</em></p>
+
+                <p><em>"Gone!"</em> replied Mr Armitage, running back up from his inside travels. He came seemingly flying through the window and back into the room. <em>"Where has she gone?"</em></p>
+
+                <p><em>"We don't know, we just heard the door slam last night, and wandered past her room this morning. The door was open, we peered in and — well — she was gone."</em></p>
+
+                <p>Conor spoke, finally, clarifying — <em>"We mean, we think she's gone, Mr Armitage. We made breakfast today, went out for a while, and when we came back, Dad was still asleep, and there was still no sign of Ella. So, yeah, it seems like she's gone."</em></p>
+
+                <p><em>"That's not good, lads, she could be anywhere. What's your plan?"</em></p>
+
+                <p><em>"Honestly, Mr Armitage, I think we were both just quite excited for a quiet day and some time outside. Should we be doing something?"</em> continued Conor.</p>
+
+                <p>At that moment, Mr Armitage got up and turned towards the corner of the room away to his right. With a great creaking groan from both the leather and the man, he sank into his low button-backed chair by the bookshelf. At last, he lifted his head. His legs stretched out across the rug, crumpling and creasing it in uncharted ways. Again, he looked out across the garden. He reached leftwards and down, his great fingers pawing across his books. All variations on a theme. Farming mostly. And Native American History. The great fingers alighted on a small white book, quite unlike the rest, a journal with large spaces between each of the pages. He flicked through the little white journal, the lads noticing no words, no drawings, just pressed flowers.</p>
+
+                <p><em>"Your sister gave me this book."</em></p>
+
+                <p><em>"What's it say?"</em> asked Alex.</p>
+
+                <p><em>"I'm not sure, lad, a lot, I reckon."</em> Replied Mr Armitage.</p>
+
+                <p>Conor reached out his hand, and he passed it across to him. He took it and slid it into the big front pocket of the hoody he was wearing. He told Mr Armitage that they really ought to be leaving and turned on his heel towards the low back door. Alex, frustrated to be going without the chance to process more of what Ella had done in recent days, shuffle-kicked his feet as he followed.</p>
+
+                <p><em>"Thanks for the tea."</em></p>
+
+                <p><em>"Most welcome, lads."</em></p>
+
+                <p>They had found it unnerving how quickly Mr Armitage's attention had returned when they said they believed Ella had left. He had, for as long as they'd known him, been a man altogether elsewhere. What about Ella's departure had so gripped him while all the gory details of her conduct and speech had not?</p>
+
+                <p>The bacon was still in its place, untouched. Alex put it on the top shelf of the AGA to warm up while he waited for two new slices of toast. The eggs were no longer any good, so he chucked a pan on the stovetop and, a minute later, quickly fried two eggs. Ketchup and brown sauce on the plate, and a veritable <em>'breakfast of champions'</em> was ready for Dad, though it was now well past midday.</p>
+
+                <p>They went up together with the breakfast and a tea Conor had made on a tray for him. Down the low hall with the beams, up the stairs out of the dark tradition of the old cottage, up into ever-brightening spaces and on to the annex where the ceiling moved further away, and the rooms were more glass than brickwork. The light shone in on them from a million telescopic sights, lensed through every shard of ice outside, beaming up at them. They were in the heart of a bloody diamond. They reached for the rods that pulled the tall curtains shut, and a moment later, they could see. Dad was there, eyes open, there were long black tracks down both his arms from the shoulder, right down through the hand. His head was wrong, the chin pointed too high and surrounded by too many pillows even for this ridiculous oversized bed. All the wet red that had vacated his arms had long since blackened and hardened. Ella was on the floor beside the bed, upright, gazing out the westward window toward their oak. Her hands were black too, tightly gripping a leather purse. Not quite. Conor looked more closely at her hands and back at his father. She was holding his scalp.</p>
+
+                <p>Alex dropped the tray and threw up. Ella didn't move. Conor stayed put — still looking at her hands. He went inward again — an immediate and automatic evacuation from this grim reality. The bus carried him as it always did, further and further from home. It was a short ride, and when he was ready to once again alight, the patient passenger entered, paid both fares, and he came flying back through the roof and onto the floor beside his dead father, attempting to rip his scalp out of his sister's hands. Her grip was tight, and it was slippery; a mess of blood, nerves and hair gel. He screamed at her to <em>give it back</em>. She wouldn't. She stayed still. He could hear himself screaming now at the top of his lungs. It was like listening to someone who had fallen down a well. His hands slid again, and he fell to the floor. He got up and ran at her. Punched her. He'd never done that to anyone before. Some politeness of his had resisted and thrown sand in his eyes, disoriented, he hit her on the left side of her forehead. Just then — a laugh — loud, low and painful, it was coming from far away within her.</p>
+
+                <p><em>"Come in,"</em> said Ella then. She locked those wicked eyes on him. Still holding the scalp in her right hand, she grabbed his wrist with her left and started to pull. He felt his hand slipping through the skin of hers. He looked at her, terror filling him. She let go and wrapped her arms around him. He felt his fear ease then. Until every point of connection started to move closer to her. She had him tight. He was moving into her, through her. He was a river flowing into the sea. He took a deep breath, matching hers. He slowed, then everything went white.</p>
+
+                <p><em>"Where the fuck are we, Ella? What the fuck is happening?"</em></p>
+
+                <p><em>"Trust me, Con."</em></p>
+
+                <p>Conor started crying now, but he was already in the river. The world was water now. The world was paint. The world was mud.</p>
+
+                <p><em>"No."</em> His tone betrayed his boyhood, his righteous confusion.</p>
+
+                <p>Ella was everywhere.</p>
+
+                <p><em>"Am I in your mouth?"</em> he asked.</p>
+
+                <p><em>"What?"</em></p>
+
+                <p><em>"Never mind."</em></p>
+
+                <p>Few things sober the grief-stricken mind like feeling stupid. Conor realised then that he could not see himself. He held out his hands, but there was nothing there, just blank white. He thought he turned to look behind him, then he bent over and looked backwards through his legs. But he had no way of telling whether he had really moved at all. His body was missing. All sensations of movement were present without any feedback. He drew the only sensible conclusion; the horror he'd just witnessed had sent him blind.</p>
+
+                <p>Ella leant over and asked from everywhere —</p>
+
+                <p><em>"Ah, you made it! Are you ready?"</em></p>
+
+                <p>He wasn't ready to reply. She continued regardless.</p>
+
+                <p><em>"You're here to help me find the three sisters."</em></p>
+
+                <p>All of time passed for Alex as he stood there looking at his father. Years drained away. Years and miles. He was looking at him from binoculars, coming into focus, he saw the marks of black etched and crusted against the white of his skull. He adjusted them again and looked closer at his face. You could see where the blood had been wiped clean, or relocated; it had all darkened around his ears and jawline. Looking back at his father's eyes, he saw the jagged and imprecise mark where they should have been. Alex had never met the man without eyelids before.</p>
+
+                <p>He turned and ran to the bathroom and locked the door. He was screaming. He had never practiced the turn inwards as Conor was accustomed to. So he was left here, in the horrific reality of the world in front of him. He begged to be silent but couldn't. He wailed and waited. For her. Huge footsteps echoed in the corridor outside the bathroom — great pounding on the door. The bath started bubbling up, the toilet too. She was in the drains. All the sewage of the world, in here, with him. She was an ancient sea-snake. She was as large as the centre of the earth. The floorboards bulged and creaked, the windows blew out, and the walls crumbled as the earthquake started. Then the boiler blew up the house and the street. All England was burning and so was he.</p>
+
+                <p>He heard Alex then — a faint but continuing cry. Mr Armitage, aware of their route and accustomed to crouching, ran towards it. Making each hedge-hole far larger as he did so. Mrs Careen had heard it too and stepped outside. She gave him a look as he passed by her garden that seemed to implore him to settle her fears once he'd settled Alex's. He crossed into their garden and looked up at this strange and incongruous home. He'd led the group that had opposed the planning permission to build this hideous modern annex on the westward side of their beautiful cottage. A testament to the total incompatibility of their parents. Their mother, a perfect country woman. The house had been in her family for years. Some <em>'great'</em> or <em>'great-great'</em> had built the place. The boys had been Ella's shadow as she had been her mother's. They all seemed to agree with Mr Armitage that — no matter what — there was never enough room inside.</p>
+
+                <p>Not so their father. He hated the cottage, hated bumping into door frames, knocking things off shelves. He wanted space. Space indoors. He'd wrestled for years to get planning permission for this annex and eventually managed it. Everyone in town despised it, but none more than they; Mrs Careen, Number 7 and himself; after all, they were the gardens overlooked by him and his 'bloody diamond' as they called it. The boys were seven when they built it. Their father had started it just after their mother's diagnosis. She'd been the one to agree with Mr Armitage on the guardianship of the children with him if anything dreadful would orphan them. He was more than happy to; their father seemed well, and in the event of the worst, he already had three of his own. Their father arranged his annex while their mother arranged the children's future without her. That future arrived quickly, before the scaffolding went up.</p>
+
+                <p>The curtains of the bloody diamond were closed as he approached. Alex was evidently in the most horrific terror one could imagine. Mr Armitage ran through the outhouse and into the kitchen. He was bad enough in his own home that as he ran through the cottage, he clattered and smashed a mug from the sideboard, a painting from the corridor and a vase from the side-table near the stairs. He stomped through, his heavy boots thumping. Alex's screams were intensifying, not calming. He tried the handle of the room he was in and shook it. No luck. He spoke softly but firmly —</p>
+
+                <p><em>"It's me, lad, it's Phil."</em></p>
+
+                <p>He remembered then,</p>
+
+                <p><em>"It's Mr Armitage."</em></p>
+
+                <p>Alex heard it all: the mug, the paintings, the vase. He heard Mr Armitage's steps as he thumped up the stairs, slammed against walls, knocked on the door and eventually kicked it in. He heard it all and concluded the only reasonable possibility — a sea-snake as big as the centre of the world was here to eat his brain and eyes. When the hulking Mr Armitage appeared in the doorway, all his fears were validated. At that moment, his screaming stopped. No protest, there was nothing to be done to avoid what came next. This incredible calm overcame him as he accepted everything.</p>
+
+                <p>Mr Armitage stepped towards him, relieved that the screaming had stopped. He leant back and slumped to the floor, his legs bunched up between the wall and the bathtub. He leant over and picked up Alex by the armpits, sat him down between his legs and held him close.</p>
+
+                <p>Alex was thrilled when he realised that the sea-snake was a relative of the boa constrictor. Thankful that it would first choke the life from him before it swallowed him whole. He felt it slowly wrap itself around him and begin to squeeze as he fell asleep.</p>
+
+                <p>Mr Armitage sat there a moment with Alex until he felt his breathing change. He had slumped against him immediately when he held him. He stood up, slowly, cradling the boy. His legs lolled over his left arm, and his head pressed firmly into Mr Armitage's chest. He walked down the hall and entered the bloody diamond. He saw then what the brothers had seen. He saw where the father still lay. All the blood. His orenda stolen. He stared at his lidless eyes, his absent scalp, and thought of The Great Law — Kayanerenk'wa — broken. He moved around the bed. Looking for Conor. He groaned as he crouched down and looked under the bed, finding no one. He approached the walk-in closet and peered in, but still no one. All the while, he gently spoke Conor's name, trying desperately to assure him a friend had come and that it was safe now. Ultimately, he concluded no one was there. He carried Alex downstairs, picking up a blanket from the bench at the foot of the bed with his right arm and throwing it over him. They moved outside. He carried him out to the hedge holes and into Mrs Careen's. She rushed outside as soon as she saw him and told him that the police had been called and would arrive imminently.</p>
+
+                <p><em>"Send them over when they arrive,"</em> he replied.</p>
+
+                <p>He carried on past Number Seven, looking disdainfully at what had once been the best-kept garden on the street before continuing through to his own. He moved much more gently and carefully, holding the lad than he usually did through the kitchen, down the corridor, upstairs, past his own room and into the room that had belonged to Bethany and Catherine. Two-thirds. The boys had never been upstairs in Mr Armitage's house. He suspected Alex would awake terrified again shortly, but that was a problem to be dealt with when it arrived.</p>
+
+                <p>He set the vacant array of limbs down in Bethany's bed, wondering what of him would survive the night, before there was a knock at the door.</p>
+
             </div>
         </div>
     </main>
@@ -114,41 +241,6 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-FRT76XL460');
-
-        // Track PDF download (first 10k words)
-        document.getElementById('pdfDownload10k').addEventListener('click', function() {
-            gtag('event', 'pdf_download', {
-                'event_category': 'engagement',
-                'event_label': 'first_10k_words'
-            });
-        });
-    </script>
-
-    <script>
-        // Check for saved reading progress
-        const progress = localStorage.getItem('bookProgress');
-        if (progress) {
-            try {
-                const data = JSON.parse(progress);
-                const partNames = ['I', 'II', 'III', 'IV', 'V'];
-                let partNum = data.part;
-
-                // Determine part based on page number if not set correctly
-                if (data.page <= 15) partNum = 1;
-                else if (data.page <= 32) partNum = 2;
-                else if (data.page <= 51) partNum = 3;
-                else if (data.page <= 65) partNum = 4;
-                else partNum = 5;
-
-                const partName = data.page === 95 ? 'Epilogue' : `Part ${partNames[partNum - 1]}`;
-
-                // Update Start Reading button to Continue
-                document.getElementById('readingBtnText').textContent = `Continue from ${partName}, ${data.page}`;
-                document.getElementById('startReadingBtn').href = `${data.page}/`;
-            } catch (e) {
-                // Invalid data, ignore
-            }
-        }
     </script>
 </body>
 </html>
