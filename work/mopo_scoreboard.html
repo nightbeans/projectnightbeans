@@ -6,15 +6,6 @@
 <title>MOPO · 4DX Scoreboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<script>
-  const ALLOWED_DOMAINS = ['mobile-power.co.uk', 'mopo.co'];
-  const GOOGLE_CLIENT_ID = '709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com';
-  // Set your Anthropic API key here. For the MCP connection to Databot,
-  // ensure the mcp-client-1 beta is enabled on your account.
-  const ANTHROPIC_API_KEY = '';
-  const DATABOT_MCP_URL = 'https://databot.mopo.co/mcp';
-</script>
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -28,19 +19,15 @@
 html { font-size: 16px; }
 body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', Georgia, serif; min-height: 100vh; }
 
-/* Auth */
-#login-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:20px; }
-.login-card { background:#fff; border-radius:14px; border:0.5px solid rgba(44,24,16,0.12); padding:36px 40px; display:flex; flex-direction:column; align-items:center; gap:16px; min-width:340px; }
-.login-logo { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; color:var(--ink); letter-spacing:0.04em; }
-.login-sub { font-size:0.9rem; color:var(--ink-faint); font-style:italic; }
-#login-error { font-size:0.8rem; color:var(--terracotta); background:var(--terracotta-pale); padding:8px 12px; border-radius:4px; display:none; text-align:center; }
-
-/* Loading */
-#loading-screen { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:16px; }
-.loading-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--ink); }
-.loading-status { font-size:0.85rem; color:var(--ink-faint); font-style:italic; min-height:1.2em; }
-.loading-bar-track { width:200px; height:3px; background:var(--cream-darker); border-radius:2px; overflow:hidden; }
-.loading-bar-fill { height:100%; background:var(--terracotta); border-radius:2px; width:0; transition:width 0.4s ease; }
+#pw-gate { position:fixed; inset:0; background:var(--ink); display:flex; align-items:center; justify-content:center; z-index:9999; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+.pw-card { text-align:center; padding:2rem; max-width:360px; width:100%; }
+.pw-logo { font-family:'Playfair Display',serif; font-size:1.6rem; color:#fff; font-weight:700; letter-spacing:0.04em; margin-bottom:0.3rem; }
+.pw-sub { color:rgba(245,240,232,0.5); font-size:0.9rem; margin-bottom:2rem; font-style:italic; }
+#pw-input { width:100%; padding:11px 14px; background:rgba(245,240,232,0.08); border:1px solid rgba(245,240,232,0.2); border-radius:4px; color:#fff; font-size:1rem; margin-bottom:0.75rem; outline:none; font-family:inherit; }
+#pw-input:focus { border-color:rgba(245,240,232,0.5); }
+#pw-btn { width:100%; padding:11px; background:var(--terracotta); color:#fff; border:none; border-radius:4px; font-size:1rem; font-weight:600; cursor:pointer; font-family:inherit; }
+#pw-btn:hover { background:#b5572a; }
+#pw-err { color:var(--terracotta-light); font-size:0.85rem; margin-top:0.75rem; display:none; }
 
 #app { display:none; }
 
@@ -103,7 +90,7 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .progress-fill.red { background:var(--terracotta); }
 .progress-fill.amber { background:var(--amber); }
 .progress-fill.green { background:var(--sage); }
-.progress-target-marker { position:absolute; top:-4px; width:2px; height:16px; background:var(--sage); border-radius:1px; right:0; }
+.progress-target-marker { position:absolute; top:-4px; right:0; width:2px; height:16px; background:var(--sage); border-radius:1px; }
 .progress-labels { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--ink-faint); }
 
 .regions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:1.5rem; }
@@ -141,15 +128,17 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .data-table td:first-child { padding-left:1rem; }
 .data-table td:last-child { padding-right:1rem; }
 .data-table tr:last-child td { border-bottom:none; }
-.hub-row { cursor:pointer; transition:background 0.15s; }
+.hub-row { cursor:pointer; transition:background 0.12s; }
 .hub-row:hover { background:rgba(44,24,16,0.04); }
-.hub-row.open { background:rgba(44,24,16,0.04); }
-.agent-rows td { background:rgba(44,24,16,0.03); font-size:0.8rem; padding:0.45rem 0.75rem; }
-.agent-rows td:first-child { padding-left:2rem; }
-.agent-rows { display:none; }
-.agent-rows.visible { display:table-row-group; }
-.expand-icon { font-size:0.7rem; color:var(--ink-faint); transition:transform 0.15s; display:inline-block; margin-left:0.4rem; }
+.expand-icon { font-size:0.65rem; color:var(--ink-faint); transition:transform 0.15s; display:inline-block; margin-left:0.35rem; }
 .hub-row.open .expand-icon { transform:rotate(90deg); }
+.agent-detail { display:none; background:rgba(44,24,16,0.03); }
+.agent-detail.visible { display:table-row; }
+.agent-inner { padding:0.5rem 0.75rem 0.75rem 2rem; }
+.agent-table { width:100%; border-collapse:collapse; font-size:0.78rem; }
+.agent-table th { padding:0.25rem 0.5rem; text-align:left; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); border-bottom:0.5px solid var(--rule); }
+.agent-table td { padding:0.3rem 0.5rem; border-bottom:0.5px solid rgba(44,24,16,0.06); }
+.agent-table tr:last-child td { border-bottom:none; }
 
 .action-tag { display:inline-block; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; padding:0.15rem 0.5rem; border-radius:2px; white-space:nowrap; }
 .action-tag.replace { background:var(--terracotta-pale); color:var(--terracotta); border:0.5px solid var(--terracotta-light); }
@@ -184,37 +173,20 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .badge.red { background:var(--terracotta); color:white; }
 .subsection-label { font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin:0.75rem 0 0.4rem; font-weight:600; }
 .data-note { font-size:0.75rem; color:var(--ink-faint); font-style:italic; text-align:center; padding-top:1.5rem; border-top:0.5px solid var(--rule); line-height:1.6; }
+.loading-msg { text-align:center; padding:4rem 2rem; font-size:0.9rem; color:var(--ink-faint); font-style:italic; }
 .error-notice { background:var(--terracotta-pale); border:0.5px solid var(--terracotta-light); border-radius:4px; padding:0.75rem 1rem; font-size:0.82rem; color:var(--terracotta); margin-bottom:1rem; }
 </style>
 </head>
 <body>
 
-<div id="login-screen">
-  <div class="login-card">
-    <div class="login-logo">MOPO · 4DX</div>
-    <div class="login-sub">Scoreboard — sign in to continue</div>
-    <div id="g_id_onload"
-      data-client_id="709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com"
-      data-callback="handleCredentialResponse"
-      data-auto_prompt="true">
-    </div>
-    <div class="g_id_signin"
-      data-client_id="709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com"
-      data-type="standard"
-      data-size="large"
-      data-theme="outline"
-      data-text="sign_in_with"
-      data-shape="rectangular"
-      data-logo_alignment="left">
-    </div>
-    <div id="login-error">Only MOPO Google accounts can access this tool.</div>
+<div id="pw-gate">
+  <div class="pw-card">
+    <div class="pw-logo">MOPO · 4DX</div>
+    <div class="pw-sub">Scoreboard</div>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')checkPw()">
+    <button id="pw-btn" onclick="checkPw()">Continue</button>
+    <div id="pw-err">Incorrect password — try again</div>
   </div>
-</div>
-
-<div id="loading-screen">
-  <div class="loading-logo">MOPO · 4DX Scoreboard</div>
-  <div class="loading-bar-track"><div class="loading-bar-fill" id="loading-bar"></div></div>
-  <div class="loading-status" id="loading-status">Connecting to Databot…</div>
 </div>
 
 <div id="app">
@@ -225,325 +197,117 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
     </div>
     <div class="masthead-date" id="masthead-date"></div>
   </div>
-
   <div class="page">
     <div class="section-label">Wildly important goal</div>
-    <div id="wig-section"></div>
-
+    <div id="wig-section"><div class="loading-msg">Loading…</div></div>
     <div id="countdown-section"></div>
-
     <div class="section-label" id="portfolio-label"></div>
     <div class="portfolio-row" id="portfolio-section"></div>
-
     <div class="section-label" id="regions-label"></div>
     <div class="regions-grid" id="regions-section"></div>
-
     <div class="section-label" id="leads-label"></div>
     <div class="leads-row" id="leads-section"></div>
-
     <div class="section-label" id="focus-label"></div>
     <div id="focus-investigate-section"></div>
     <div id="focus-working-section"></div>
-
     <div class="section-label" id="new-agents-label"></div>
     <div id="new-agents-section"></div>
-
     <div class="data-note" id="data-note"></div>
   </div>
 </div>
 
 <script>
-// ---- HELPERS ----
-function fmtDRR(v) {
-  if (v == null || isNaN(v)) return '—';
-  return '$' + Number(v).toFixed(2);
+// ---- AUTH ----
+const PW_HASH = '37afc1f49bee96456c3da066936372f00ad403404c2167405605840ceaba9ec0';
+if (sessionStorage.getItem('work_auth') === '1') {
+  document.getElementById('pw-gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  loadData();
 }
+async function checkPw() {
+  const val = document.getElementById('pw-input').value;
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  if (hash === PW_HASH) {
+    sessionStorage.setItem('work_auth', '1');
+    document.getElementById('pw-gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadData();
+  } else {
+    document.getElementById('pw-err').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+window.checkPw = checkPw;
+document.getElementById('pw-input').focus();
+
+// ---- DATA ----
+async function loadData() {
+  try {
+    const resp = await fetch('/work/mopo_scoreboard_data.json');
+    if (!resp.ok) throw new Error('Data file not found (' + resp.status + ')');
+    const data = await resp.json();
+    renderAll(data);
+  } catch (err) {
+    document.getElementById('wig-section').innerHTML =
+      '<div class="error-notice">Could not load scoreboard data. The daily refresh may not have run yet, or the data file is missing.<br><br>' + err.message + '</div>';
+  }
+}
+
+// ---- HELPERS ----
+function fmtDRR(v) { return v == null ? '—' : '$' + Number(v).toFixed(2); }
 function fmtPct(v, dec=1) {
   if (v == null || isNaN(v)) return '—';
-  const s = Number(v).toFixed(dec);
-  return (v >= 0 ? '+' : '') + s + '%';
+  return (v >= 0 ? '+' : '') + Number(v).toFixed(dec) + '%';
 }
-function fmtNGN(v) {
-  if (v == null) return '—';
-  return '₦' + Number(v).toLocaleString('en-NG', {maximumFractionDigits:0});
-}
-function drrColor(v) {
-  if (v >= 0.18) return 'green';
-  if (v >= 0.13) return 'amber';
-  return 'red';
-}
-function portfolioColor(v) {
-  if (v >= 0.18) return 'green';
-  if (v >= 0.14) return 'amber';
-  return 'red';
-}
+function fmtNGN(v) { return v == null ? '—' : '₦' + Number(v).toLocaleString('en-NG', {maximumFractionDigits:0}); }
+function drrColor(v) { return v >= 0.18 ? 'green' : v >= 0.13 ? 'amber' : 'red'; }
+function portColor(v) { return v >= 0.18 ? 'green' : v >= 0.14 ? 'amber' : 'red'; }
 function weeksUntil(dateStr) {
-  const target = new Date(dateStr);
-  const now = new Date();
-  return Math.max(0, Math.ceil((target - now) / (7*24*60*60*1000)));
-}
-function getDateWindow() {
-  const end = new Date(); end.setDate(end.getDate() - 1);
-  const start = new Date(end); start.setDate(start.getDate() - 6);
-  const fmt = d => d.getDate() + ' ' + d.toLocaleDateString('en-GB', {month:'short', year:'numeric'});
-  const fmtS = d => d.getDate() + ' ' + d.toLocaleDateString('en-GB', {month:'short'});
-  const today = new Date();
-  const todayStr = fmt(today);
-  const windowStr = fmtS(start) + '–' + fmt(end);
-  return { start: fmtS(start), end: fmt(end), display: windowStr, today: todayStr, endDate: end };
+  return Math.max(0, Math.ceil((new Date(dateStr) - new Date()) / (7*24*60*60*1000)));
 }
 function arcPath(drr) {
   const frac = Math.min(1, Math.max(0.002, (drr - 0.13) / 0.05));
   const angle = Math.PI * (1 - frac);
-  const x = (100 + 80 * Math.cos(angle)).toFixed(1);
-  const y = (100 - 80 * Math.sin(angle)).toFixed(1);
-  return `M 20 100 A 80 80 0 0 1 ${x} ${y}`;
+  return `M 20 100 A 80 80 0 0 1 ${(100 + 80*Math.cos(angle)).toFixed(1)} ${(100 - 80*Math.sin(angle)).toFixed(1)}`;
 }
-function progressPct(drr) {
-  return Math.min(100, Math.max(0, (drr / 0.18) * 100)).toFixed(1);
-}
-
-// ---- AUTH ----
-function handleCredentialResponse(response) {
-  const payload = JSON.parse(atob(response.credential.split('.')[1]));
-  const email = payload.email || '';
-  const domain = email.split('@')[1] || '';
-  if (!ALLOWED_DOMAINS.includes(domain)) {
-    document.getElementById('login-error').style.display = 'block';
-    return;
-  }
-  sessionStorage.setItem('sb_user', JSON.stringify({name: payload.name, email}));
-  document.getElementById('login-screen').style.display = 'none';
-  startApp();
-}
-window.addEventListener('load', () => {
-  const saved = sessionStorage.getItem('sb_user');
-  if (saved) {
-    document.getElementById('login-screen').style.display = 'none';
-    startApp();
-  }
-});
-
-// ---- DATA LOADING ----
-function setStatus(msg, pct) {
-  document.getElementById('loading-status').textContent = msg;
-  document.getElementById('loading-bar').style.width = pct + '%';
+function fmtWindow(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  return d.getUTCDate() + ' ' + d.toLocaleDateString('en-GB', {month:'short', timeZone:'UTC'});
 }
 
-async function fetchScoreboardData() {
-  const dw = getDateWindow();
-  const prompt = `You are a data analyst for MOPO, a battery rental company in Nigeria.
+// ---- RENDER ----
+function renderAll(data) {
+  const genAt = data.generated_at ? new Date(data.generated_at) : new Date();
+  const genStr = genAt.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+  const winEnd = data.window_end || '';
+  const winStart = data.window_start || '';
+  const winDisplay = winStart && winEnd ? fmtWindow(winStart) + '–' + fmtWindow(winEnd) + ' ' + new Date(winEnd+'T00:00:00Z').getUTCFullYear() : '—';
 
-Run the following SQL queries using the execute_query tool. Return ONLY a single JSON object — no commentary, no markdown, just the raw JSON object.
-
-QUERY 1 — WIG current week DRR (7-day rolling, Nigeria MOPO50, all owners):
-SELECT ROUND(SUM(d.rental_income / NULLIF(crh.rate_usd,0)) / NULLIF(SUM(d.available),0), 4) AS drr_usd
-FROM hub_performance_rollups_daily d
-JOIN hubs h ON d.hub_id = h.hub_id
-JOIN hub_business_policies bp ON h.hub_business_policy_id = bp.hub_business_policy_id
-JOIN currencies cur ON bp.currency_code = cur.currency_code
-JOIN currency_rates_history crh ON crh.currency_id = cur.id AND crh.date = d.date AND crh.is_parallel_rate = 0
-WHERE h.is_test_hub = 0 AND h.product_type = 1 AND h.country_code = 'NG'
-  AND h.hub_decommission_date IS NULL AND d.available > 0
-  AND d.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-
-QUERY 2 — WIG prior week DRR (replace INTERVAL 7 DAY with 14 DAY, and 1 DAY with 8 DAY):
-Same query but: d.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 14 DAY) AND DATE_SUB(CURDATE(), INTERVAL 8 DAY)
-
-QUERY 3 — Portfolio split (owner_id 2 = MPNG, owner_id 6 = CBA):
-SELECT ow.name AS portfolio, COUNT(DISTINCT d.hub_id) AS hub_count,
-  ROUND(SUM(d.rental_income / NULLIF(crh.rate_usd,0)) / NULLIF(SUM(d.available),0), 4) AS drr_usd
-FROM hub_performance_rollups_daily d
-JOIN hubs h ON d.hub_id = h.hub_id
-JOIN companies ow ON h.owner_id = ow.id
-JOIN hub_business_policies bp ON h.hub_business_policy_id = bp.hub_business_policy_id
-JOIN currencies cur ON bp.currency_code = cur.currency_code
-JOIN currency_rates_history crh ON crh.currency_id = cur.id AND crh.date = d.date AND crh.is_parallel_rate = 0
-WHERE h.is_test_hub = 0 AND h.product_type = 1 AND h.country_code = 'NG'
-  AND h.hub_decommission_date IS NULL AND ow.id IN (2,6) AND d.available > 0
-  AND d.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-GROUP BY ow.name, ow.id
-
-QUERY 4 — Regions DRR:
-SELECT r.name AS region,
-  ROUND(SUM(d.rental_income / NULLIF(crh.rate_usd,0)) / NULLIF(SUM(d.available),0), 4) AS drr_usd,
-  COUNT(DISTINCT d.hub_id) AS hubs
-FROM hub_performance_rollups_daily d
-JOIN hubs h ON d.hub_id = h.hub_id
-JOIN region r ON h.region_id = r.id
-JOIN hub_business_policies bp ON h.hub_business_policy_id = bp.hub_business_policy_id
-JOIN currencies cur ON bp.currency_code = cur.currency_code
-JOIN currency_rates_history crh ON crh.currency_id = cur.id AND crh.date = d.date AND crh.is_parallel_rate = 0
-WHERE h.is_test_hub = 0 AND h.product_type = 1 AND h.country_code = 'NG'
-  AND h.hub_decommission_date IS NULL AND d.available > 0
-  AND d.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-GROUP BY r.name ORDER BY drr_usd DESC
-
-QUERY 5 — Lead measure: relative agent performance:
-SELECT COUNT(DISTINCT CASE WHEN rel_perf >= 35 THEN agent_id END) AS above_threshold,
-  COUNT(DISTINCT agent_id) AS total_agents,
-  COUNT(DISTINCT CASE WHEN rel_perf < 35 THEN agent_id END) AS flagged_agents
-FROM (
-  SELECT aprd.agent_id, aprd.hub_id,
-    ROUND(100 * SUM(aprd.rental_income) / NULLIF(MAX(SUM(aprd.rental_income)) OVER (PARTITION BY aprd.hub_id),0),1) AS rel_perf
-  FROM agent_performance_rollups_daily aprd
-  JOIN hubs h ON aprd.hub_id = h.hub_id
-  JOIN agent_hub_assignment_history ahah ON ahah.agent_id = aprd.agent_id AND ahah.hub_id = aprd.hub_id
-    AND DATEDIFF(aprd.date, ahah.created_at) > 14 AND ahah.deleted_at IS NULL
-  WHERE h.country_code = 'NG' AND h.product_type = 1 AND h.is_test_hub = 0
-    AND aprd.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-    AND aprd.rental_income > 0
-  GROUP BY aprd.agent_id, aprd.hub_id
-) perf
-
-QUERY 6 — Lead measure: agent earnings floor (regional P25):
-SELECT COUNT(DISTINCT CASE WHEN weekly_ngn >= regional_p25 THEN agent_id END) AS above_floor,
-  COUNT(DISTINCT agent_id) AS total_agents,
-  COUNT(DISTINCT CASE WHEN weekly_ngn < regional_p25 THEN agent_id END) AS below_floor
-FROM (
-  SELECT aprd.agent_id, SUM(aprd.rental_income) AS weekly_ngn,
-    CASE r.name WHEN 'Ekiti' THEN 60180 WHEN 'Ogun' THEN 60350 WHEN 'Osun' THEN 49500
-      WHEN 'Ondo North' THEN 50000 WHEN 'Ondo South' THEN 37270 WHEN 'Bayelsa' THEN 36000
-      WHEN 'Oyo' THEN 43500 WHEN 'Rivers' THEN 42000 WHEN 'Delta' THEN 27760
-      WHEN 'Cross River' THEN 29000 WHEN 'Anambra' THEN 28000 WHEN 'Enugu' THEN 22500
-      WHEN 'Ebonyi' THEN 9000 WHEN 'Kano' THEN 3840 WHEN 'Imo' THEN 1000 ELSE 25000 END AS regional_p25
-  FROM agent_performance_rollups_daily aprd
-  JOIN hubs h ON aprd.hub_id = h.hub_id
-  JOIN region r ON h.region_id = r.id
-  JOIN agent_hub_assignment_history ahah ON ahah.agent_id = aprd.agent_id AND ahah.hub_id = aprd.hub_id
-    AND DATEDIFF(aprd.date, ahah.created_at) > 14 AND ahah.deleted_at IS NULL
-  WHERE h.country_code = 'NG' AND h.product_type = 1 AND h.is_test_hub = 0
-    AND aprd.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-    AND aprd.rental_income > 0
-  GROUP BY aprd.agent_id, r.name
-) earnings
-
-QUERY 7 — Agents failing BOTH thresholds (for focus list + drill-down). Get per-agent data with hub info and agent names:
-SELECT a.name AS agent_name, h.name AS hub_name, r.name AS region,
-  ow.name AS portfolio, perf.agent_id, perf.hub_id,
-  ROUND(perf.agent_drr_usd, 4) AS agent_drr,
-  perf.rel_perf, ROUND(perf.weekly_ngn) AS weekly_ngn,
-  DATEDIFF(CURDATE(), ahah.created_at) AS days_in_role,
-  ROUND(perf.hub_drr_usd, 4) AS hub_drr,
-  CASE r.name WHEN 'Ekiti' THEN 60180 WHEN 'Ogun' THEN 60350 WHEN 'Osun' THEN 49500
-    WHEN 'Ondo North' THEN 50000 WHEN 'Ondo South' THEN 37270 WHEN 'Bayelsa' THEN 36000
-    WHEN 'Oyo' THEN 43500 WHEN 'Rivers' THEN 42000 WHEN 'Delta' THEN 27760
-    WHEN 'Cross River' THEN 29000 WHEN 'Anambra' THEN 28000 WHEN 'Enugu' THEN 22500
-    WHEN 'Ebonyi' THEN 9000 WHEN 'Kano' THEN 3840 WHEN 'Imo' THEN 1000 ELSE 25000 END AS regional_p25
-FROM (
-  SELECT aprd.agent_id, aprd.hub_id,
-    SUM(aprd.rental_income / NULLIF(crh.rate_usd,0)) / NULLIF(SUM(aprd.available),0) AS agent_drr_usd,
-    SUM(aprd.rental_income) AS weekly_ngn,
-    ROUND(100 * SUM(aprd.rental_income) / NULLIF(MAX(SUM(aprd.rental_income)) OVER (PARTITION BY aprd.hub_id),0),1) AS rel_perf,
-    SUM(SUM(aprd.rental_income / NULLIF(crh2.rate_usd,0))) OVER (PARTITION BY aprd.hub_id) / NULLIF(SUM(SUM(aprd.available)) OVER (PARTITION BY aprd.hub_id),0) AS hub_drr_usd
-  FROM agent_performance_rollups_daily aprd
-  JOIN hubs h ON aprd.hub_id = h.hub_id
-  JOIN hub_business_policies bp ON h.hub_business_policy_id = bp.hub_business_policy_id
-  JOIN currencies cur ON bp.currency_code = cur.currency_code
-  JOIN currency_rates_history crh ON crh.currency_id = cur.id AND crh.date = aprd.date AND crh.is_parallel_rate = 0
-  JOIN currency_rates_history crh2 ON crh2.currency_id = cur.id AND crh2.date = aprd.date AND crh2.is_parallel_rate = 0
-  JOIN agent_hub_assignment_history ahah2 ON ahah2.agent_id = aprd.agent_id AND ahah2.hub_id = aprd.hub_id
-    AND DATEDIFF(aprd.date, ahah2.created_at) > 14 AND ahah2.deleted_at IS NULL
-  WHERE h.country_code = 'NG' AND h.product_type = 1 AND h.is_test_hub = 0
-    AND aprd.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-    AND aprd.rental_income > 0
-  GROUP BY aprd.agent_id, aprd.hub_id
-) perf
-JOIN agents a ON a.id = perf.agent_id
-JOIN hubs h ON h.hub_id = perf.hub_id
-JOIN region r ON h.region_id = r.id
-JOIN companies ow ON h.owner_id = ow.id
-JOIN agent_hub_assignment_history ahah ON ahah.agent_id = perf.agent_id AND ahah.hub_id = perf.hub_id AND ahah.deleted_at IS NULL
-WHERE perf.rel_perf < 35
-  AND perf.weekly_ngn < CASE r.name WHEN 'Ekiti' THEN 60180 WHEN 'Ogun' THEN 60350 WHEN 'Osun' THEN 49500
-    WHEN 'Ondo North' THEN 50000 WHEN 'Ondo South' THEN 37270 WHEN 'Bayelsa' THEN 36000
-    WHEN 'Oyo' THEN 43500 WHEN 'Rivers' THEN 42000 WHEN 'Delta' THEN 27760
-    WHEN 'Cross River' THEN 29000 WHEN 'Anambra' THEN 28000 WHEN 'Enugu' THEN 22500
-    WHEN 'Ebonyi' THEN 9000 WHEN 'Kano' THEN 3840 WHEN 'Imo' THEN 1000 ELSE 25000 END
-ORDER BY hub_name, perf.rel_perf ASC
-
-QUERY 8 — New agent tracker (7–30 days in role, started past 30 days):
-SELECT r.name AS region, COUNT(DISTINCT ahah.agent_id) AS new_agents,
-  ROUND(AVG(aprd_summary.agent_drr),4) AS avg_drr,
-  SUM(CASE WHEN aprd_summary.agent_drr >= 0.18 THEN 1 ELSE 0 END) AS above_target,
-  SUM(CASE WHEN aprd_summary.agent_drr >= 0.13 AND aprd_summary.agent_drr < 0.18 THEN 1 ELSE 0 END) AS progressing,
-  SUM(CASE WHEN aprd_summary.agent_drr < 0.13 THEN 1 ELSE 0 END) AS below_baseline
-FROM agent_hub_assignment_history ahah
-JOIN hubs h ON h.hub_id = ahah.hub_id
-JOIN region r ON h.region_id = r.id
-JOIN (
-  SELECT aprd.agent_id, aprd.hub_id,
-    SUM(aprd.rental_income / NULLIF(crh.rate_usd,0)) / NULLIF(SUM(aprd.available),0) AS agent_drr
-  FROM agent_performance_rollups_daily aprd
-  JOIN hubs h2 ON aprd.hub_id = h2.hub_id
-  JOIN hub_business_policies bp ON h2.hub_business_policy_id = bp.hub_business_policy_id
-  JOIN currencies cur ON bp.currency_code = cur.currency_code
-  JOIN currency_rates_history crh ON crh.currency_id = cur.id AND crh.date = aprd.date AND crh.is_parallel_rate = 0
-  WHERE h2.country_code = 'NG' AND h2.product_type = 1 AND h2.is_test_hub = 0
-    AND aprd.date BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
-  GROUP BY aprd.agent_id, aprd.hub_id
-) aprd_summary ON aprd_summary.agent_id = ahah.agent_id AND aprd_summary.hub_id = ahah.hub_id
-WHERE h.country_code = 'NG' AND h.product_type = 1 AND h.is_test_hub = 0
-  AND ahah.created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND ahah.deleted_at IS NULL
-  AND DATEDIFF(CURDATE(), ahah.created_at) BETWEEN 7 AND 30
-GROUP BY r.name ORDER BY new_agents DESC
-
-Return this exact JSON structure (fill with real query results):
-{
-  "wig_current": <number from Q1>,
-  "wig_prior": <number from Q2>,
-  "portfolios": [{"name":"...","hub_count":N,"drr_usd":N}, ...],
-  "regions": [{"region":"...","hubs":N,"drr_usd":N}, ...],
-  "lead_relative": {"above_threshold":N,"total_agents":N,"flagged_agents":N},
-  "lead_earnings": {"above_floor":N,"total_agents":N,"below_floor":N},
-  "flagged_agents": [
-    {"agent_name":"...","hub_name":"...","region":"...","portfolio":"...","agent_drr":N,"rel_perf":N,"weekly_ngn":N,"days_in_role":N,"hub_drr":N,"regional_p25":N},
-    ...
-  ],
-  "new_agents": {
-    "by_region": [{"region":"...","new_agents":N,"avg_drr":N,"above_target":N,"progressing":N,"below_baseline":N}, ...]
-  }
-}`;
-
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-      'anthropic-beta': 'mcp-client-1',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-opus-4-6',
-      max_tokens: 16000,
-      tools: [{
-        type: 'mcp',
-        server: { type: 'url', url: DATABOT_MCP_URL, name: 'databot' }
-      }],
-      messages: [{ role: 'user', content: prompt }]
-    })
-  });
-
-  if (!resp.ok) throw new Error('Anthropic API error: ' + resp.status);
-  const result = await resp.json();
-  const textBlock = (result.content || []).filter(b => b.type === 'text').pop();
-  if (!textBlock) throw new Error('No text response from Claude');
-  const match = textBlock.text.match(/\{[\s\S]*\}/);
-  if (!match) throw new Error('Could not parse JSON from response');
-  return JSON.parse(match[0]);
+  document.getElementById('masthead-date').innerHTML = `<strong>${genStr}</strong><br>Data: ${winDisplay}`;
+  renderWIG(data, winDisplay);
+  renderPortfolios(data, winDisplay);
+  renderRegions(data, winDisplay);
+  renderLeads(data, winDisplay);
+  renderFocusInvestigate(data, winDisplay);
+  renderFocusWorking(data, winDisplay);
+  renderNewAgents(data, winDisplay);
+  document.getElementById('data-note').innerHTML =
+    `DRR = rental income ÷ available batteries ÷ official NGN/USD rate (is_parallel_rate = 0) · Agent measures exclude &lt;14 days tenure · Floors: Apr 2026 P25 baseline<br>
+    Data window: ${winDisplay} · Generated: ${genStr}`;
 }
 
-// ---- RENDER FUNCTIONS ----
-function renderWIG(data, dw) {
+function renderWIG(data, winDisplay) {
   const curr = data.wig_current || 0;
   const prior = data.wig_prior || 0;
   const weeks = weeksUntil('2026-09-01');
-  const wowPct = prior > 0 ? ((curr - prior) / prior * 100) : 0;
-  const gapNeededPerWeek = weeks > 0 ? ((0.18 - curr) / curr / weeks * 100) : 0;
+  const wow = prior > 0 ? (curr - prior) / prior * 100 : 0;
+  const gapNeeded = weeks > 0 ? (0.18 - curr) / curr / weeks * 100 : 0;
   const status = curr >= 0.18 ? 'ontarget' : curr >= 0.15 ? 'closing' : 'behind';
   const statusLabel = curr >= 0.18 ? 'On target' : curr >= 0.15 ? 'Closing in' : 'Behind target';
-  const wowClass = wowPct >= 0 ? 'positive' : 'negative';
+  const gapDollar = Math.max(0, 0.18 - curr).toFixed(2);
+  const trajWeeks = wow > 0 ? Math.ceil(parseFloat(gapDollar) / (curr * wow / 100)) : '∞';
 
   document.getElementById('wig-section').innerHTML = `
     <div class="wig-panel">
@@ -552,85 +316,78 @@ function renderWIG(data, dw) {
         <div class="wig-headline">Increase Nigeria MOPO50 DRR from <strong>$0.13</strong> to <strong>$0.18</strong> by <strong>1 September 2026</strong></div>
       </div>
       <div class="wig-arc-wrap">
-        <svg class="arc-svg" viewBox="0 0 200 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="arc-svg" viewBox="0 0 200 115" fill="none">
           <path d="M 20 100 A 80 80 0 0 1 180 100" stroke="rgba(245,240,232,0.12)" stroke-width="10" stroke-linecap="round" fill="none"/>
           <path d="${arcPath(curr)}" stroke="#C4622D" stroke-width="10" stroke-linecap="round" fill="none"/>
           <line x1="180" y1="100" x2="175" y2="86" stroke="#6B7C5C" stroke-width="2.5" stroke-linecap="round"/>
-          <text x="16" y="114" fill="rgba(156,123,106,0.8)" font-size="9" font-family="Crimson Pro, serif">$0.13</text>
-          <text x="162" y="114" fill="rgba(107,124,92,0.9)" font-size="9" font-family="Crimson Pro, serif">$0.18</text>
+          <text x="16" y="114" fill="rgba(156,123,106,0.8)" font-size="9" font-family="Crimson Pro,serif">$0.13</text>
+          <text x="162" y="114" fill="rgba(107,124,92,0.9)" font-size="9" font-family="Crimson Pro,serif">$0.18</text>
         </svg>
         <div class="arc-current-val">${fmtDRR(curr)}<span> / battery / day</span></div>
         <span class="arc-status ${status}">${statusLabel}</span>
       </div>
       <div class="wig-stats">
         <div class="wig-stat">
-          <div class="wig-stat-val">${weeks} <span style="font-size:1rem;color:var(--ink-faint);">weeks</span></div>
+          <div class="wig-stat-val">${weeks} <span style="font-size:1rem;color:var(--ink-faint)">weeks</span></div>
           <div class="wig-stat-label">to deadline</div>
         </div>
         <div class="wig-stat">
-          <div class="wig-stat-val ${wowClass}">${fmtPct(wowPct)} ${wowPct >= 0 ? '↑' : '↓'}</div>
+          <div class="wig-stat-val ${wow >= 0 ? 'positive' : 'negative'}">${fmtPct(wow)} ${wow >= 0 ? '↑' : '↓'}</div>
           <div class="wig-stat-label">vs prior week</div>
         </div>
         <div class="wig-stat">
-          <div class="wig-stat-val negative">${fmtPct(gapNeededPerWeek)} per week</div>
+          <div class="wig-stat-val negative">${fmtPct(gapNeeded)} per week</div>
           <div class="wig-stat-label">needed to hit target</div>
         </div>
       </div>
     </div>`;
 
-  const gapDollar = (0.18 - curr).toFixed(2);
-  const trajWeeks = wowPct > 0 ? Math.ceil(gapDollar / (curr * wowPct / 100)) : '∞';
   document.getElementById('countdown-section').innerHTML = `
     <div class="countdown-strip">
       <div class="countdown-left">Gap to close: <strong>$${gapDollar}</strong> · at current trajectory that takes <strong>~${trajWeeks} weeks</strong></div>
       <div class="countdown-weeks">${weeks} <span>weeks remaining</span></div>
-      <div class="weekly-needed">Need <strong>${fmtPct(gapNeededPerWeek)}</strong> per week to reach $0.18</div>
+      <div class="weekly-needed">Need <strong>${fmtPct(gapNeeded)}</strong> per week to reach $0.18</div>
     </div>`;
 }
 
-function renderPortfolios(data, dw) {
-  document.getElementById('portfolio-label').textContent = `Portfolio split · ${dw.display}`;
-  const html = data.portfolios.map(p => {
-    const c = portfolioColor(p.drr_usd);
-    const pct = progressPct(p.drr_usd);
-    const isCBA = p.name.toLowerCase().includes('crossboundary') || p.name.toLowerCase().includes('cba');
+function renderPortfolios(data, winDisplay) {
+  document.getElementById('portfolio-label').textContent = `Portfolio split · ${winDisplay}`;
+  document.getElementById('portfolio-section').innerHTML = (data.portfolios || []).map(p => {
+    const c = portColor(p.drr_usd);
+    const pct = Math.min(100, (p.drr_usd / 0.18 * 100)).toFixed(1);
+    const isCBA = (p.name||'').toLowerCase().includes('cross');
     const label = isCBA ? 'CBA — CrossBoundary asset co' : 'MPNG — directly operated';
-    const revNote = isCBA ? 'Reduced rev share' : 'Full rev share';
-    const drag = isCBA && p.drr_usd < 0.15 ? `<span style="color:var(--terracotta);">Dragging NG average</span>` : '';
+    const note = isCBA ? 'Reduced rev share' : 'Full rev share';
+    const drag = isCBA && p.drr_usd < 0.15 ? `<span style="color:var(--terracotta)">Dragging NG average</span>` : '';
     return `<div class="portfolio-card ${c}">
       <div class="portfolio-name">${label} <span class="status-pip ${c}"></span></div>
       <div class="portfolio-drr ${c}">${fmtDRR(p.drr_usd)}</div>
-      <div style="font-size:0.8rem;color:var(--ink-faint);margin-top:0.2rem;">vs $0.18 target</div>
-      <div class="progress-track">
-        <div class="progress-fill ${c}" style="width:${pct}%"></div>
-        <div class="progress-target-marker"></div>
-      </div>
-      <div class="progress-labels"><span>$0</span><span style="color:var(--sage);">$0.18</span></div>
-      <div class="portfolio-meta" style="margin-top:0.75rem;"><span>${p.hub_count} hubs</span><span>${revNote}</span>${drag}</div>
+      <div style="font-size:0.8rem;color:var(--ink-faint);margin-top:0.2rem">vs $0.18 target</div>
+      <div class="progress-track"><div class="progress-fill ${c}" style="width:${pct}%"></div><div class="progress-target-marker"></div></div>
+      <div class="progress-labels"><span>$0</span><span style="color:var(--sage)">$0.18</span></div>
+      <div class="portfolio-meta" style="margin-top:0.75rem"><span>${p.hub_count} hubs</span><span>${note}</span>${drag}</div>
     </div>`;
   }).join('');
-  document.getElementById('portfolio-section').innerHTML = html;
 }
 
-function renderRegions(data, dw) {
-  document.getElementById('regions-label').textContent = `Regions · ${dw.display} · Nigeria MOPO50`;
-  const html = data.regions.map(r => {
+function renderRegions(data, winDisplay) {
+  document.getElementById('regions-label').textContent = `Regions · ${winDisplay} · Nigeria MOPO50`;
+  document.getElementById('regions-section').innerHTML = (data.regions || []).map(r => {
     const c = drrColor(r.drr_usd);
     const kudos = r.drr_usd >= 0.18 ? `<span class="kudos-badge">✦ on target</span>` : '';
     return `<div class="region-card ${c}">
-      <div><div class="region-name">${r.region} ${kudos}</div><div class="region-hubs">${r.hubs} hub${r.hubs !== 1 ? 's' : ''}</div></div>
+      <div><div class="region-name">${r.region}${kudos}</div><div class="region-hubs">${r.hubs} hub${r.hubs!==1?'s':''}</div></div>
       <div class="region-drr ${c}">${fmtDRR(r.drr_usd)}</div>
     </div>`;
   }).join('');
-  document.getElementById('regions-section').innerHTML = html;
 }
 
-function renderLeads(data, dw) {
-  document.getElementById('leads-label').textContent = `Lead measures · ${dw.display} · agents with >14 days tenure`;
-  const rel = data.lead_relative;
-  const ear = data.lead_earnings;
-  const relPct = rel.total_agents > 0 ? (rel.above_threshold / rel.total_agents * 100).toFixed(1) : '—';
-  const earPct = ear.total_agents > 0 ? (ear.above_floor / ear.total_agents * 100).toFixed(1) : '—';
+function renderLeads(data, winDisplay) {
+  document.getElementById('leads-label').textContent = `Lead measures · ${winDisplay} · agents with >14 days tenure`;
+  const rel = data.lead_relative || {};
+  const ear = data.lead_earnings || {};
+  const relPct = rel.total_agents > 0 ? (rel.above_threshold / rel.total_agents * 100).toFixed(1) : 0;
+  const earPct = ear.total_agents > 0 ? (ear.above_floor / ear.total_agents * 100).toFixed(1) : 0;
   document.getElementById('leads-section').innerHTML = `
     <div class="lead-card">
       <div class="lead-title">Relative agent performance</div>
@@ -639,10 +396,10 @@ function renderLeads(data, dw) {
         <div class="lead-big-num">${relPct}%</div>
         <div class="lead-gauge-detail">
           <div class="lead-bar-track"><div class="lead-bar-fill" style="width:${relPct}%"></div></div>
-          <div class="lead-counts"><span>${rel.above_threshold} healthy</span><span class="flagged">${rel.flagged_agents} flagged</span></div>
+          <div class="lead-counts"><span>${rel.above_threshold||0} healthy</span><span class="flagged">${rel.flagged_agents||0} flagged</span></div>
         </div>
       </div>
-      <div style="font-size:0.78rem;color:var(--ink-faint);font-style:italic;">${rel.flagged_agents} agents below 35% of hub best · ${rel.total_agents} observed · ${dw.display}</div>
+      <div style="font-size:0.78rem;color:var(--ink-faint);font-style:italic">${rel.flagged_agents||0} agents below 35% of hub best · ${rel.total_agents||0} observed · ${winDisplay}</div>
     </div>
     <div class="lead-card">
       <div class="lead-title">Agent earnings floor</div>
@@ -651,176 +408,155 @@ function renderLeads(data, dw) {
         <div class="lead-big-num">${earPct}%</div>
         <div class="lead-gauge-detail">
           <div class="lead-bar-track"><div class="lead-bar-fill" style="width:${earPct}%"></div></div>
-          <div class="lead-counts"><span>${ear.above_floor} above floor</span><span class="flagged">${ear.below_floor} below floor</span></div>
+          <div class="lead-counts"><span>${ear.above_floor||0} above floor</span><span class="flagged">${ear.below_floor||0} below floor</span></div>
         </div>
       </div>
-      <div style="font-size:0.78rem;color:var(--ink-faint);font-style:italic;">Floor is region-specific P25 (Apr 2026 baseline) · Ekiti ₦60,180 / Kano ₦3,840 per week</div>
+      <div style="font-size:0.78rem;color:var(--ink-faint);font-style:italic">Floor is region-specific P25 (Apr 2026 baseline) · Ekiti ₦60,180 / Kano ₦3,840 per week</div>
     </div>`;
 }
 
-function renderFocusInvestigate(data, dw) {
-  document.getElementById('focus-label').textContent = `Focus list · where to point energy this week · ${dw.display}`;
-
-  // Group agents by hub
+function renderFocusInvestigate(data, winDisplay) {
+  document.getElementById('focus-label').textContent = `Focus list · where to point energy this week · ${winDisplay}`;
   const hubMap = {};
   (data.flagged_agents || []).forEach(a => {
-    if (!hubMap[a.hub_name]) {
-      hubMap[a.hub_name] = { hub_name: a.hub_name, region: a.region, portfolio: a.portfolio, hub_drr: a.hub_drr, agents: [] };
-    }
+    if (!hubMap[a.hub_name]) hubMap[a.hub_name] = {hub_name:a.hub_name, region:a.region, portfolio:a.portfolio, hub_drr:a.hub_drr, agents:[]};
     hubMap[a.hub_name].agents.push(a);
   });
+  const hubs = Object.values(hubMap).sort((a,b) => b.agents.length - a.agents.length || a.hub_drr - b.hub_drr);
+  const multi = hubs.filter(h => h.agents.length >= 2);
+  const single = hubs.filter(h => h.agents.length < 2);
+  const kiCount = single.filter(h => h.region==='Kano'||h.region==='Imo').length;
+  const totalFlagged = (data.flagged_agents||[]).length;
 
-  const hubs = Object.values(hubMap).sort((a, b) => b.agents.length - a.agents.length || a.hub_drr - b.hub_drr);
-  const multiHubs = hubs.filter(h => h.agents.length >= 2);
-  const singleHubs = hubs.filter(h => h.agents.length < 2);
-  const kanoImo = singleHubs.filter(h => h.region === 'Kano' || h.region === 'Imo');
-  const otherSingle = singleHubs.filter(h => h.region !== 'Kano' && h.region !== 'Imo');
-  const totalFlagged = (data.flagged_agents || []).length;
-
-  let tbody = '';
-  multiHubs.forEach((hub, i) => {
-    const c = hub.hub_drr < 0.10 ? 'var(--terracotta)' : 'var(--amber)';
-    tbody += `<tr class="hub-row" onclick="toggleDrill(${i})">
-      <td style="font-weight:600;">${hub.hub_name} <span class="expand-icon" id="expand-${i}">▶</span></td>
-      <td style="color:var(--ink-light);">${hub.region}</td>
-      <td style="color:var(--ink-faint);">${hub.portfolio}</td>
-      <td style="text-align:center;"><span class="badge red">${hub.agents.length}</span></td>
-      <td style="text-align:right;font-family:'Playfair Display',serif;color:${c};font-weight:700;">${fmtDRR(hub.hub_drr)}</td>
-      <td style="text-align:right;"><span class="action-tag replace">Replace agents</span></td>
+  let rows = '';
+  multi.forEach((hub, i) => {
+    const drrColor = hub.hub_drr < 0.10 ? 'var(--terracotta)' : 'var(--amber)';
+    rows += `<tr class="hub-row" id="hub-row-${i}" onclick="toggleDrill(${i})">
+      <td style="font-weight:600">${hub.hub_name}<span class="expand-icon" id="ei-${i}">▶</span></td>
+      <td style="color:var(--ink-light)">${hub.region}</td>
+      <td style="color:var(--ink-faint)">${hub.portfolio}</td>
+      <td style="text-align:center"><span class="badge red">${hub.agents.length}</span></td>
+      <td style="text-align:right;font-family:'Playfair Display',serif;color:${drrColor};font-weight:700">${fmtDRR(hub.hub_drr)}</td>
+      <td style="text-align:right"><span class="action-tag replace">Replace agents</span></td>
+    </tr>
+    <tr class="agent-detail" id="drill-${i}">
+      <td colspan="6"><div class="agent-inner">
+        <table class="agent-table">
+          <thead><tr>
+            <th style="width:22%">Agent</th><th style="width:11%;text-align:right">DRR</th>
+            <th style="width:11%;text-align:right">Rel %</th><th style="width:18%;text-align:right">Wk Earnings</th>
+            <th style="width:10%;text-align:right">Days</th><th style="width:14%;text-align:right">Action</th>
+          </tr></thead>
+          <tbody>${hub.agents.map(a => `<tr>
+            <td style="font-weight:500">${a.agent_name}</td>
+            <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--terracotta)">${fmtDRR(a.agent_drr)}</td>
+            <td style="text-align:right">${a.rel_perf}%</td>
+            <td style="text-align:right">${fmtNGN(a.weekly_ngn)}</td>
+            <td style="text-align:right">${a.days_in_role}</td>
+            <td style="text-align:right"><span class="action-tag ${a.rel_perf < 20 ? 'replace' : 'monitor'}">${a.rel_perf < 20 ? 'Replace' : 'Monitor'}</span></td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div></td>
     </tr>`;
-    // Agent drill-down rows
-    tbody += `<tbody id="drill-${i}" class="agent-rows">`;
-    tbody += `<tr><td colspan="6" style="padding:0.3rem 0.75rem 0.3rem 2rem;background:rgba(44,24,16,0.04);">
-      <table style="width:100%;font-size:0.78rem;border-collapse:collapse;">
-        <thead><tr style="color:var(--ink-faint);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;">
-          <th style="padding:0.3rem 0.5rem;text-align:left;">Agent</th>
-          <th style="padding:0.3rem 0.5rem;text-align:right;">DRR</th>
-          <th style="padding:0.3rem 0.5rem;text-align:right;">Rel %</th>
-          <th style="padding:0.3rem 0.5rem;text-align:right;">Wk Earnings</th>
-          <th style="padding:0.3rem 0.5rem;text-align:right;">Days</th>
-          <th style="padding:0.3rem 0.5rem;text-align:right;">Action</th>
-        </tr></thead><tbody>`;
-    hub.agents.forEach(a => {
-      const action = a.rel_perf < 20 ? '<span class="action-tag replace">Replace</span>' : '<span class="action-tag monitor">Monitor</span>';
-      tbody += `<tr>
-        <td style="padding:0.3rem 0.5rem;font-weight:500;">${a.agent_name}</td>
-        <td style="padding:0.3rem 0.5rem;text-align:right;font-family:'Playfair Display',serif;color:var(--terracotta);">${fmtDRR(a.agent_drr)}</td>
-        <td style="padding:0.3rem 0.5rem;text-align:right;">${a.rel_perf}%</td>
-        <td style="padding:0.3rem 0.5rem;text-align:right;">${fmtNGN(a.weekly_ngn)}</td>
-        <td style="padding:0.3rem 0.5rem;text-align:right;">${a.days_in_role}</td>
-        <td style="padding:0.3rem 0.5rem;text-align:right;">${action}</td>
-      </tr>`;
-    });
-    tbody += `</tbody></table></td></tr></tbody>`;
   });
 
   document.getElementById('focus-investigate-section').innerHTML = `
     <div class="focus-header investigate">
-      <div style="display:flex;align-items:center;gap:0.75rem;">
+      <div style="display:flex;align-items:center;gap:0.75rem">
         <div class="focus-dot investigate"></div>
         <div>
           <span class="focus-title investigate">${hubs.length} hubs flagged</span>
-          <span style="font-size:0.82rem;color:var(--ink-light);margin-left:0.75rem;">${totalFlagged} agents below both thresholds · tenure >14 days · ${dw.display}</span>
+          <span style="font-size:0.82rem;color:var(--ink-light);margin-left:0.75rem">${totalFlagged} agents below both thresholds · tenure >14 days · ${winDisplay}</span>
         </div>
       </div>
-      <div style="font-size:0.75rem;color:var(--terracotta);font-style:italic;">Click a hub row to see agents · sorted: flagged agents, then DRR</div>
+      <div style="font-size:0.75rem;color:var(--terracotta);font-style:italic">Click a hub to see agents · sorted: flagged count, then DRR</div>
     </div>
-    <div class="subsection-label">Priority · hubs with multiple flagged agents</div>
+    <div class="subsection-label">Priority · hubs with 2+ flagged agents</div>
     <div class="table-wrap">
       <table class="data-table">
         <thead><tr>
-          <th style="width:26%;">Hub</th>
-          <th style="width:18%;">Region</th>
-          <th style="width:12%;">Portfolio</th>
-          <th style="width:12%;text-align:center;">Flagged</th>
-          <th style="width:12%;text-align:right;">Hub DRR</th>
-          <th style="width:20%;text-align:right;">Action</th>
+          <th style="width:26%">Hub</th><th style="width:18%">Region</th><th style="width:12%">Portfolio</th>
+          <th style="width:12%;text-align:center">Flagged</th><th style="width:12%;text-align:right">Hub DRR</th>
+          <th style="width:20%;text-align:right">Action</th>
         </tr></thead>
-        ${tbody}
+        <tbody>${rows}</tbody>
       </table>
     </div>
-    <div class="notice amber">
-      <span class="notice-label">Note —</span>
-      <span>A further ${otherSingle.length + kanoImo.length} single-agent hubs are flagged. ${kanoImo.length > 0 ? `The majority are in <strong>Kano</strong> and <strong>Imo</strong>, where low DRR reflects a regional market challenge, not individual agent failure. Treat those regions as structural issues — hub-by-hub agent replacements won't solve this.` : ''}</span>
-    </div>`;
+    ${single.length > 0 ? `<div class="notice amber"><span class="notice-label">Note —</span>
+      <span>A further ${single.length} single-agent hub${single.length!==1?'s are':' is'} flagged.${kiCount > 0 ? ` ${kiCount} are in <strong>Kano</strong> or <strong>Imo</strong> — regional market challenge, not individual agent failure. Investigate at regional level.` : ''}</span>
+    </div>` : ''}`;
 }
 
 function toggleDrill(i) {
-  const row = document.getElementById(`drill-${i}`);
-  const icon = document.getElementById(`expand-${i}`);
-  const hubRow = icon && icon.closest('tr');
-  if (!row) return;
-  const open = row.classList.contains('visible');
-  row.classList.toggle('visible', !open);
-  if (hubRow) hubRow.classList.toggle('open', !open);
+  const drill = document.getElementById(`drill-${i}`);
+  const row = document.getElementById(`hub-row-${i}`);
+  const icon = document.getElementById(`ei-${i}`);
+  if (!drill) return;
+  const open = drill.classList.contains('visible');
+  drill.classList.toggle('visible', !open);
+  if (row) row.classList.toggle('open', !open);
 }
 window.toggleDrill = toggleDrill;
 
-function renderFocusWorking(data, dw) {
-  const topRegions = (data.regions || []).filter(r => r.drr_usd >= 0.18);
-  const mpng = (data.portfolios || []).find(p => !p.name.toLowerCase().includes('crossboundary') && !p.name.toLowerCase().includes('cba'));
-  const wow = data.wig_prior > 0 ? ((data.wig_current - data.wig_prior) / data.wig_prior * 100) : 0;
-  let rows = '';
-  topRegions.forEach(r => {
-    rows += `<tr><td style="font-weight:600;">${r.region} region</td><td style="color:var(--ink-light);">${r.hubs} hubs · above $0.18 target</td><td style="text-align:right;font-family:'Playfair Display',serif;color:var(--sage);font-weight:700;">${fmtDRR(r.drr_usd)}</td><td style="text-align:right;"><span class="action-tag on-target">✦ On target</span></td></tr>`;
-  });
-  if (mpng) {
-    rows += `<tr><td style="font-weight:600;">MPNG portfolio</td><td style="color:var(--ink-light);">${mpng.hub_count} hubs · closing gap on target</td><td style="text-align:right;font-family:'Playfair Display',serif;color:var(--sage);font-weight:700;">${fmtDRR(mpng.drr_usd)}</td><td style="text-align:right;"><span class="action-tag on-target">Progressing</span></td></tr>`;
-  }
-  rows += `<tr><td style="font-weight:600;">Week on week</td><td style="color:var(--ink-light);">NG combined · ${wow >= 0 ? 'positive' : 'negative'} direction</td><td style="text-align:right;font-family:'Playfair Display',serif;color:${wow >= 0 ? 'var(--sage)' : 'var(--terracotta)'};font-weight:700;">${fmtPct(wow)}</td><td style="text-align:right;"><span class="action-tag ${wow >= 0 ? 'on-target' : 'monitor'}">${wow >= 0 ? 'Positive trend' : 'Watch'}</span></td></tr>`;
+function renderFocusWorking(data, winDisplay) {
+  const topRegions = (data.regions||[]).filter(r => r.drr_usd >= 0.18);
+  const mpng = (data.portfolios||[]).find(p => !(p.name||'').toLowerCase().includes('cross'));
+  const wow = data.wig_prior > 0 ? (data.wig_current - data.wig_prior) / data.wig_prior * 100 : 0;
+  let rows = topRegions.map(r =>
+    `<tr><td style="font-weight:600">${r.region} region</td><td style="color:var(--ink-light)">${r.hubs} hubs · above $0.18 target</td>
+    <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--sage);font-weight:700">${fmtDRR(r.drr_usd)}</td>
+    <td style="text-align:right"><span class="action-tag on-target">✦ On target</span></td></tr>`).join('');
+  if (mpng) rows += `<tr><td style="font-weight:600">MPNG portfolio</td><td style="color:var(--ink-light)">${mpng.hub_count} hubs</td>
+    <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--sage);font-weight:700">${fmtDRR(mpng.drr_usd)}</td>
+    <td style="text-align:right"><span class="action-tag on-target">Progressing</span></td></tr>`;
+  rows += `<tr><td style="font-weight:600">Week on week</td><td style="color:var(--ink-light)">NG combined</td>
+    <td style="text-align:right;font-family:'Playfair Display',serif;color:${wow>=0?'var(--sage)':'var(--terracotta)'};font-weight:700">${fmtPct(wow)}</td>
+    <td style="text-align:right"><span class="action-tag ${wow>=0?'on-target':'monitor'}">${wow>=0?'Positive trend':'Watch'}</span></td></tr>`;
 
   document.getElementById('focus-working-section').innerHTML = `
-    <div class="focus-header working" style="margin-top:0.75rem;">
-      <div style="display:flex;align-items:center;gap:0.75rem;">
+    <div class="focus-header working" style="margin-top:0.75rem">
+      <div style="display:flex;align-items:center;gap:0.75rem">
         <div class="focus-dot working"></div>
         <span class="focus-title working">Working</span>
       </div>
-      <div style="font-size:0.75rem;color:var(--sage);">regions hitting or exceeding target · ${dw.display}</div>
+      <div style="font-size:0.75rem;color:var(--sage)">regions hitting or exceeding target · ${winDisplay}</div>
     </div>
-    <div class="table-wrap" style="margin-bottom:1.5rem;">
+    <div class="table-wrap" style="margin-bottom:1.5rem">
       <table class="data-table">
-        <thead><tr>
-          <th style="width:28%;">What</th>
-          <th style="width:42%;">Detail</th>
-          <th style="width:14%;text-align:right;">Figure</th>
-          <th style="width:16%;text-align:right;">Status</th>
-        </tr></thead>
+        <thead><tr><th style="width:28%">What</th><th style="width:42%">Detail</th><th style="width:14%;text-align:right">Figure</th><th style="width:16%;text-align:right">Status</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
 }
 
-function renderNewAgents(data, dw) {
+function renderNewAgents(data, winDisplay) {
   const byRegion = (data.new_agents && data.new_agents.by_region) || [];
-  const total = byRegion.reduce((s,r) => s + r.new_agents, 0);
-  const aboveTarget = byRegion.reduce((s,r) => s + r.above_target, 0);
-  const progressing = byRegion.reduce((s,r) => s + r.progressing, 0);
-  const below = byRegion.reduce((s,r) => s + r.below_baseline, 0);
+  const total = byRegion.reduce((s,r)=>s+r.new_agents,0);
+  const aboveTarget = byRegion.reduce((s,r)=>s+r.above_target,0);
+  const progressing = byRegion.reduce((s,r)=>s+r.progressing,0);
+  const below = byRegion.reduce((s,r)=>s+r.below_baseline,0);
+  const kano = byRegion.find(r=>r.region==='Kano');
+  const imo = byRegion.find(r=>r.region==='Imo');
+  const kiTotal = (kano?.new_agents||0) + (imo?.new_agents||0);
 
-  document.getElementById('new-agents-label').textContent = `New agents · started past 30 days · 7–30 days in role · ${total} total · data from ${dw.display}`;
+  document.getElementById('new-agents-label').textContent = `New agents · started past 30 days · 7–30 days in role · ${total} total · ${winDisplay}`;
 
   const tableRows = byRegion.map(r => {
     const c = r.avg_drr >= 0.18 ? 'var(--sage)' : r.avg_drr >= 0.13 ? 'var(--amber)' : 'var(--terracotta)';
-    const isStructural = r.region === 'Kano' || r.region === 'Imo';
-    const tag = isStructural ? '<span class="action-tag structural">Structural</span>'
+    const isKI = r.region==='Kano'||r.region==='Imo';
+    const tag = isKI ? '<span class="action-tag structural">Structural</span>'
       : r.avg_drr >= 0.13 ? '<span class="action-tag on-target">Watch</span>'
       : '<span class="action-tag monitor">Investigate</span>';
-    const rowStyle = isStructural ? 'background:rgba(196,98,45,0.04);' : '';
-    const nameStyle = isStructural ? 'font-weight:700;color:var(--terracotta);' : 'font-weight:600;';
-    return `<tr style="${rowStyle}">
-      <td style="${nameStyle}">${r.region}</td>
-      <td style="text-align:center;${isStructural ? 'font-weight:700;' : ''}">${r.new_agents}</td>
-      <td style="text-align:right;font-family:'Playfair Display',serif;color:${c};font-weight:700;">${fmtDRR(r.avg_drr)}</td>
-      <td style="text-align:center;color:var(--sage);font-weight:600;">${r.above_target}</td>
-      <td style="text-align:center;color:var(--amber);font-weight:600;">${r.progressing}</td>
-      <td style="text-align:center;color:var(--terracotta);${isStructural ? 'font-weight:700;' : 'font-weight:600;'}">${r.below_baseline}</td>
-      <td style="text-align:right;">${tag}</td>
+    return `<tr style="${isKI?'background:rgba(196,98,45,0.04)':''}">
+      <td style="font-weight:${isKI?'700':'600'};color:${isKI?'var(--terracotta)':'inherit'}">${r.region}</td>
+      <td style="text-align:center;${isKI?'font-weight:700':''}">${r.new_agents}</td>
+      <td style="text-align:right;font-family:'Playfair Display',serif;color:${c};font-weight:700">${fmtDRR(r.avg_drr)}</td>
+      <td style="text-align:center;color:var(--sage);font-weight:600">${r.above_target}</td>
+      <td style="text-align:center;color:var(--amber);font-weight:600">${r.progressing}</td>
+      <td style="text-align:center;color:var(--terracotta);font-weight:${isKI?'700':'600'}">${r.below_baseline}</td>
+      <td style="text-align:right">${tag}</td>
     </tr>`;
   }).join('');
-
-  const kanoImoTotal = byRegion.filter(r => r.region==='Kano'||r.region==='Imo').reduce((s,r)=>s+r.new_agents,0);
-  const kanoCount = byRegion.find(r=>r.region==='Kano')?.new_agents || 0;
-  const imoCount = byRegion.find(r=>r.region==='Imo')?.new_agents || 0;
 
   document.getElementById('new-agents-section').innerHTML = `
     <div class="stat-cards">
@@ -833,64 +569,18 @@ function renderNewAgents(data, dw) {
     <div class="table-wrap">
       <table class="data-table">
         <thead><tr>
-          <th style="width:20%;">Region</th>
-          <th style="width:10%;text-align:center;">Agents</th>
-          <th style="width:13%;text-align:right;">Avg DRR</th>
-          <th style="width:13%;text-align:center;color:var(--sage);">≥$0.18</th>
-          <th style="width:15%;text-align:center;color:var(--amber);">$0.13–$0.17</th>
-          <th style="width:13%;text-align:center;color:var(--terracotta);">&lt;$0.13</th>
-          <th style="width:16%;text-align:right;">Status</th>
+          <th style="width:20%">Region</th><th style="width:10%;text-align:center">Agents</th>
+          <th style="width:13%;text-align:right">Avg DRR</th><th style="width:13%;text-align:center;color:var(--sage)">≥$0.18</th>
+          <th style="width:15%;text-align:center;color:var(--amber)">$0.13–$0.17</th>
+          <th style="width:13%;text-align:center;color:var(--terracotta)">&lt;$0.13</th>
+          <th style="width:16%;text-align:right">Status</th>
         </tr></thead>
         <tbody>${tableRows}</tbody>
       </table>
     </div>
-    ${kanoImoTotal > 0 ? `<div class="notice amber"><span class="notice-label">Note —</span><span>Kano (${kanoCount} new agents) and Imo (${imoCount} new agents) account for ${kanoImoTotal} of ${total} new agents this period, all below baseline. This is a market activation challenge, not an agent quality issue. Investigate at regional level.</span></div>` : ''}`;
-}
-
-function renderAll(data) {
-  const dw = getDateWindow();
-  document.getElementById('masthead-date').innerHTML = `<strong>${dw.today}</strong><br>Data: ${dw.display}`;
-  renderWIG(data, dw);
-  renderPortfolios(data, dw);
-  renderRegions(data, dw);
-  renderLeads(data, dw);
-  renderFocusInvestigate(data, dw);
-  renderFocusWorking(data, dw);
-  renderNewAgents(data, dw);
-  const endDate = dw.endDate;
-  const startDate = new Date(endDate); startDate.setDate(startDate.getDate() - 6);
-  const fmtFull = d => d.getDate() + ' ' + d.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
-  document.getElementById('data-note').innerHTML = `
-    All figures drawn from platform database · DRR = rental income ÷ available batteries ÷ official NGN/USD exchange rate (is_parallel_rate = 0)<br>
-    Agent lead measures exclude agents with &lt;14 days tenure · Regional earnings floors: April 2026 P25 baseline · Focus list: agents below both thresholds simultaneously<br>
-    Data window: ${fmtFull(startDate)} – ${fmtFull(endDate)} · Generated: ${dw.today}`;
-}
-
-// ---- INIT ----
-async function startApp() {
-  document.getElementById('loading-screen').style.display = 'flex';
-  try {
-    setStatus('Connecting to Databot…', 15);
-    await new Promise(r => setTimeout(r, 400));
-    setStatus('Running portfolio and region queries…', 35);
-    await new Promise(r => setTimeout(r, 400));
-    setStatus('Computing lead measures…', 55);
-    const data = await fetchScoreboardData();
-    setStatus('Populating scoreboard…', 80);
-    await new Promise(r => setTimeout(r, 300));
-    document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    renderAll(data);
-  } catch (err) {
-    document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    const dw = getDateWindow();
-    document.getElementById('masthead-date').innerHTML = `<strong>${dw.today}</strong><br>Data unavailable`;
-    ['wig-section','countdown-section','portfolio-section','regions-section','leads-section','focus-investigate-section','focus-working-section','new-agents-section'].forEach(id => {
-      document.getElementById(id).innerHTML = `<div class="error-notice">Data unavailable — check Databot connection and API key. Error: ${err.message}</div>`;
-    });
-    console.error('Scoreboard load error:', err);
-  }
+    ${kiTotal > 0 ? `<div class="notice amber"><span class="notice-label">Note —</span>
+      <span>Kano (${kano?.new_agents||0} new agents) and Imo (${imo?.new_agents||0} new agents) account for ${kiTotal} of ${total} new agents this period, all below baseline. Market activation challenge — investigate at regional level.</span>
+    </div>` : ''}`;
 }
 </script>
 </body>
