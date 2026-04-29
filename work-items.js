@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'MOPO 4DX Scoreboard',
+        url: '/work/mopo_scoreboard.html',
+        date: '2026-04-29',
+        description: 'Live operational scoreboard for Nigeria MOPO50. Queries the MOPO database on every load — WIG progress, portfolio split, regional DRR, agent lead measures, flagged hubs with agent drill-down, and new agent tracker.'
+    },
+    {
         title: 'ASP 600 Trial — DRR Monitor',
         url: '/work/asp_600_trial.html',
         date: '2026-04-22',
