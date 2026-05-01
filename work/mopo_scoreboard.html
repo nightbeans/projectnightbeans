@@ -41,25 +41,33 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .page { max-width:1200px; margin:0 auto; padding:2rem 2rem 4rem; }
 .section-label { font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:0.5px solid var(--rule); }
 
-.wig-panel { background:var(--ink); border-radius:4px; padding:2.5rem 3rem; margin-bottom:1.5rem; display:grid; grid-template-columns:1fr auto 1fr; gap:2rem; align-items:center; position:relative; overflow:hidden; }
+.wig-panel { background:var(--ink); border-radius:4px; padding:3rem 4rem; margin-bottom:1.5rem; position:relative; overflow:hidden; }
 .wig-panel::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--terracotta),var(--amber),var(--sage)); }
-.wig-label { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:0.5rem; }
-.wig-headline { font-family:'Playfair Display',serif; font-size:0.95rem; color:var(--cream-dark); font-style:italic; line-height:1.4; max-width:260px; }
+.wig-top { display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:center; margin-bottom:2.5rem; }
+.wig-label { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:0.6rem; }
+.wig-headline { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--cream-dark); font-style:italic; line-height:1.5; max-width:380px; }
 .wig-headline strong { color:var(--cream); font-style:normal; font-weight:700; }
-.wig-arc-wrap { display:flex; flex-direction:column; align-items:center; }
-.arc-svg { width:200px; height:120px; }
-.arc-current-val { font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; color:var(--cream); line-height:1; margin-top:-1.5rem; text-align:center; }
-.arc-current-val span { font-size:1.4rem; font-weight:400; color:var(--ink-faint); }
-.arc-status { font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.75rem; border-radius:2px; font-weight:600; display:inline-block; margin-top:0.5rem; }
-.arc-status.behind { background:rgba(196,98,45,0.2); color:var(--terracotta-light); }
-.arc-status.closing { background:rgba(196,150,45,0.2); color:#D4A040; }
-.arc-status.ontarget { background:rgba(107,124,92,0.2); color:var(--sage-light); }
-.wig-stats { display:flex; flex-direction:column; gap:1.25rem; align-items:flex-end; }
-.wig-stat { text-align:right; }
-.wig-stat-val { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--cream); line-height:1; }
-.wig-stat-val.positive { color:var(--sage-light); }
-.wig-stat-val.negative { color:var(--terracotta-light); }
-.wig-stat-label { font-size:0.75rem; color:var(--ink-faint); margin-top:0.15rem; }
+.wig-hero-num { font-family:'Playfair Display',serif; font-size:5.5rem; font-weight:700; color:var(--cream); line-height:0.95; text-align:right; }
+.wig-hero-num span { display:block; font-size:0.9rem; font-weight:400; color:var(--ink-faint); margin-top:0.4rem; letter-spacing:0.04em; font-family:'Crimson Pro',serif; font-style:italic; }
+.wig-bar-wrap { margin-bottom:2.5rem; }
+.wig-bar-track { width:100%; height:14px; background:rgba(245,240,232,0.08); border-radius:7px; position:relative; overflow:visible; }
+.wig-bar-fill { height:100%; border-radius:7px; transition:width 0.3s; }
+.wig-bar-fill.behind { background:var(--terracotta); }
+.wig-bar-fill.closing { background:var(--amber); }
+.wig-bar-fill.ontarget { background:var(--sage); }
+.wig-bar-tick { position:absolute; top:-6px; bottom:-6px; width:3px; background:var(--sage-light); border-radius:1.5px; }
+.wig-bar-tick-label { position:absolute; top:-22px; transform:translateX(-50%); font-size:0.75rem; color:var(--sage-light); letter-spacing:0.04em; font-family:'Crimson Pro',serif; }
+.wig-bar-axis { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--ink-faint); margin-top:0.6rem; letter-spacing:0.04em; }
+.wig-stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem; align-items:end; }
+.wig-stat-primary .wig-stat-val { font-family:'Playfair Display',serif; font-size:2rem; color:var(--cream); line-height:1; font-weight:700; }
+.wig-stat-primary .wig-stat-val.negative { color:var(--terracotta-light); }
+.wig-stat-primary .wig-stat-val span { font-size:0.95rem; font-weight:400; color:var(--ink-faint); margin-left:0.35rem; font-family:'Crimson Pro',serif; }
+.wig-stat-primary .wig-stat-label { font-size:0.78rem; color:var(--ink-faint); margin-top:0.4rem; letter-spacing:0.02em; }
+.wig-stat-secondary { opacity:0.7; }
+.wig-stat-secondary .wig-stat-val { font-family:'Crimson Pro',serif; font-size:1rem; color:var(--cream-dark); line-height:1; font-weight:400; }
+.wig-stat-secondary .wig-stat-val.positive { color:var(--sage-light); }
+.wig-stat-secondary .wig-stat-val.negative { color:var(--terracotta-light); }
+.wig-stat-secondary .wig-stat-label { font-size:0.7rem; color:var(--ink-faint); margin-top:0.3rem; letter-spacing:0.02em; font-style:italic; }
 
 .countdown-strip { background:var(--cream-darker); border:0.5px solid var(--rule-strong); border-radius:4px; padding:0.85rem 1.5rem; display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; }
 .countdown-left { font-size:0.8rem; color:var(--ink-light); font-style:italic; }
@@ -68,30 +76,6 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .countdown-weeks span { font-size:0.85rem; font-weight:400; color:var(--ink-faint); margin-left:0.4rem; font-family:'Crimson Pro',serif; }
 .weekly-needed { font-size:0.8rem; color:var(--ink-light); text-align:right; }
 .weekly-needed strong { color:var(--terracotta); }
-
-.portfolio-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
-.portfolio-card { background:var(--cream-dark); border:0.5px solid var(--rule-strong); border-radius:4px; padding:1.25rem 1.5rem; position:relative; overflow:hidden; }
-.portfolio-card::after { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; }
-.portfolio-card.red::after { background:var(--terracotta); }
-.portfolio-card.amber::after { background:var(--amber); }
-.portfolio-card.green::after { background:var(--sage); }
-.portfolio-name { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; margin-bottom:0.75rem; display:flex; align-items:center; justify-content:space-between; }
-.status-pip { display:inline-block; width:8px; height:8px; border-radius:50%; margin-left:0.5rem; }
-.status-pip.red { background:var(--terracotta); }
-.status-pip.amber { background:var(--amber); }
-.status-pip.green { background:var(--sage); }
-.portfolio-drr { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; line-height:1; margin-bottom:0.3rem; }
-.portfolio-drr.red { color:var(--terracotta); }
-.portfolio-drr.amber { color:var(--amber); }
-.portfolio-drr.green { color:var(--sage); }
-.portfolio-meta { font-size:0.85rem; color:var(--ink-light); display:flex; gap:1.25rem; margin-top:0.5rem; }
-.progress-track { width:100%; height:8px; background:var(--cream-darker); border-radius:4px; overflow:visible; position:relative; margin:1.25rem 0 0.4rem; }
-.progress-fill { height:100%; border-radius:4px; }
-.progress-fill.red { background:var(--terracotta); }
-.progress-fill.amber { background:var(--amber); }
-.progress-fill.green { background:var(--sage); }
-.progress-target-marker { position:absolute; top:-4px; right:0; width:2px; height:16px; background:var(--sage); border-radius:1px; }
-.progress-labels { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--ink-faint); }
 
 .regions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:1.5rem; }
 .region-card { background:var(--cream-dark); border:0.5px solid var(--rule); border-radius:3px; padding:0.75rem 1rem; display:flex; align-items:center; justify-content:space-between; position:relative; overflow:hidden; }
@@ -112,12 +96,14 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .lead-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; margin-bottom:0.25rem; }
 .lead-subtitle { font-size:0.8rem; color:var(--ink-faint); font-style:italic; margin-bottom:1.25rem; line-height:1.4; }
 .lead-gauge-wrap { display:flex; align-items:flex-end; gap:1.25rem; margin-bottom:1rem; }
-.lead-big-num { font-family:'Playfair Display',serif; font-size:3rem; font-weight:700; line-height:1; color:var(--sage); }
-.lead-gauge-detail { flex:1; }
+.lead-big-num { font-family:'Playfair Display',serif; font-size:3rem; font-weight:700; line-height:1; color:var(--terracotta); white-space:nowrap; }
+.lead-big-num span.unit { font-size:1rem; font-weight:400; color:var(--ink-faint); margin-left:0.4rem; font-family:'Crimson Pro',serif; font-style:italic; }
+.lead-gauge-detail { flex:1; padding-bottom:0.5rem; }
 .lead-bar-track { height:6px; background:var(--cream-darker); border-radius:3px; margin-bottom:0.5rem; overflow:hidden; }
-.lead-bar-fill { height:100%; border-radius:3px; background:var(--sage); }
+.lead-bar-fill { height:100%; border-radius:3px; background:var(--terracotta); }
 .lead-counts { display:flex; justify-content:space-between; font-size:0.78rem; color:var(--ink-faint); }
 .lead-counts .flagged { color:var(--terracotta); font-weight:600; }
+.lead-context { font-size:0.78rem; color:var(--ink-faint); font-style:italic; }
 
 .table-wrap { background:var(--cream-dark); border:0.5px solid var(--rule-strong); border-radius:4px; overflow:hidden; margin-bottom:1rem; }
 .data-table { width:100%; border-collapse:collapse; font-size:0.85rem; table-layout:fixed; }
@@ -175,6 +161,45 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
 .data-note { font-size:0.75rem; color:var(--ink-faint); font-style:italic; text-align:center; padding-top:1.5rem; border-top:0.5px solid var(--rule); line-height:1.6; }
 .loading-msg { text-align:center; padding:4rem 2rem; font-size:0.9rem; color:var(--ink-faint); font-style:italic; }
 .error-notice { background:var(--terracotta-pale); border:0.5px solid var(--terracotta-light); border-radius:4px; padding:0.75rem 1rem; font-size:0.82rem; color:var(--terracotta); margin-bottom:1rem; }
+
+.tabs { display:flex; gap:0; border-bottom:0.5px solid var(--rule-strong); margin-bottom:2rem; }
+.tab { background:none; border:none; padding:0.9rem 1.6rem; font-family:'Crimson Pro',Georgia,serif; font-size:0.95rem; color:var(--ink-faint); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; letter-spacing:0.04em; transition:color 0.15s; }
+.tab.active { color:var(--terracotta); border-bottom-color:var(--terracotta); font-weight:600; }
+.tab:hover:not(.active) { color:var(--ink-light); }
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+.briefing-meta { font-size:0.78rem; color:var(--ink-faint); font-style:italic; margin-bottom:0.6rem; letter-spacing:0.02em; }
+.briefing-headline { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:500; color:var(--ink); line-height:1.35; margin-bottom:2rem; max-width:780px; }
+.briefing-block { margin-bottom:2rem; }
+.briefing-list { display:flex; flex-direction:column; gap:0.5rem; }
+.briefing-item { background:var(--cream-dark); border:0.5px solid var(--rule); border-radius:4px; padding:0.85rem 1.15rem; display:grid; grid-template-columns:120px 100px 1fr; gap:1.25rem; align-items:start; position:relative; overflow:hidden; }
+.briefing-item::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; }
+.briefing-item.bad::before { background:var(--terracotta); }
+.briefing-item.warn::before { background:var(--amber); }
+.briefing-item.good::before { background:var(--sage); }
+.briefing-item-region { font-family:'Playfair Display',serif; font-weight:700; font-size:1rem; padding-left:0.4rem; }
+.briefing-item-stat { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; }
+.briefing-item-stat.bad { color:var(--terracotta); }
+.briefing-item-stat.warn { color:var(--amber); }
+.briefing-item-stat.good { color:var(--sage); }
+.briefing-item-stat .delta { display:block; font-family:'Crimson Pro',serif; font-size:0.78rem; font-weight:400; color:var(--ink-faint); margin-top:0.15rem; font-style:italic; }
+.briefing-item-note { font-size:0.88rem; color:var(--ink-light); line-height:1.55; }
+.briefing-focus { background:var(--ink); color:var(--cream-dark); padding:1.5rem 2rem; border-radius:4px; font-family:'Crimson Pro',serif; font-size:0.98rem; line-height:1.65; }
+.briefing-focus strong { color:var(--cream); font-weight:600; }
+.briefing-region-card { background:var(--cream-dark); border:0.5px solid var(--rule); border-radius:4px; padding:1.25rem 1.5rem; margin-bottom:0.85rem; }
+.briefing-region-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:0.85rem; padding-bottom:0.65rem; border-bottom:0.5px solid var(--rule); }
+.briefing-region-name { font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; }
+.briefing-region-stat { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; }
+.briefing-region-stat.bad { color:var(--terracotta); }
+.briefing-region-stat.warn { color:var(--amber); }
+.briefing-region-stat.good { color:var(--sage); }
+.briefing-region-stat .delta { font-family:'Crimson Pro',serif; font-weight:400; font-size:0.8rem; color:var(--ink-faint); font-style:italic; margin-left:0.5rem; }
+.briefing-questions { list-style:none; counter-reset:q; padding:0; margin:0; }
+.briefing-questions li { counter-increment:q; padding:0.5rem 0 0.5rem 2rem; font-size:0.92rem; line-height:1.55; color:var(--ink); position:relative; border-bottom:0.5px solid var(--rule); }
+.briefing-questions li:last-child { border-bottom:none; padding-bottom:0; }
+.briefing-questions li::before { content:counter(q,decimal-leading-zero); position:absolute; left:0; top:0.5rem; font-family:'Playfair Display',serif; font-size:0.85rem; color:var(--terracotta); font-weight:700; letter-spacing:0.04em; }
+.briefing-empty { padding:3rem 1rem; text-align:center; color:var(--ink-faint); font-style:italic; font-size:0.9rem; background:var(--cream-dark); border:0.5px dashed var(--rule-strong); border-radius:4px; line-height:1.6; }
 </style>
 </head>
 <body>
@@ -198,21 +223,28 @@ body { background: var(--cream); color: var(--ink); font-family: 'Crimson Pro', 
     <div class="masthead-date" id="masthead-date"></div>
   </div>
   <div class="page">
-    <div class="section-label">Wildly important goal</div>
-    <div id="wig-section"><div class="loading-msg">Loading…</div></div>
-    <div id="countdown-section"></div>
-    <div class="section-label" id="portfolio-label"></div>
-    <div class="portfolio-row" id="portfolio-section"></div>
-    <div class="section-label" id="regions-label"></div>
-    <div class="regions-grid" id="regions-section"></div>
-    <div class="section-label" id="leads-label"></div>
-    <div class="leads-row" id="leads-section"></div>
-    <div class="section-label" id="focus-label"></div>
-    <div id="focus-investigate-section"></div>
-    <div id="focus-working-section"></div>
-    <div class="section-label" id="new-agents-label"></div>
-    <div id="new-agents-section"></div>
-    <div class="data-note" id="data-note"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="briefing" role="tab">Briefing</button>
+      <button class="tab" data-tab="scoreboard" role="tab">Scoreboard</button>
+    </div>
+    <div id="tab-briefing" class="tab-pane active" role="tabpanel">
+      <div id="briefing-section"><div class="loading-msg">Loading…</div></div>
+    </div>
+    <div id="tab-scoreboard" class="tab-pane" role="tabpanel">
+      <div class="section-label">Wildly important goal</div>
+      <div id="wig-section"><div class="loading-msg">Loading…</div></div>
+      <div id="countdown-section"></div>
+      <div class="section-label" id="regions-label"></div>
+      <div class="regions-grid" id="regions-section"></div>
+      <div class="section-label" id="leads-label"></div>
+      <div class="leads-row" id="leads-section"></div>
+      <div class="section-label" id="focus-label"></div>
+      <div id="focus-investigate-section"></div>
+      <div id="focus-working-section"></div>
+      <div class="section-label" id="new-agents-label"></div>
+      <div id="new-agents-section"></div>
+      <div class="data-note" id="data-note"></div>
+    </div>
   </div>
 </div>
 
@@ -263,14 +295,8 @@ function fmtPct(v, dec=1) {
 }
 function fmtNGN(v) { return v == null ? '—' : '₦' + Number(v).toLocaleString('en-NG', {maximumFractionDigits:0}); }
 function drrColor(v) { return v >= 0.18 ? 'green' : v >= 0.13 ? 'amber' : 'red'; }
-function portColor(v) { return v >= 0.18 ? 'green' : v >= 0.14 ? 'amber' : 'red'; }
 function weeksUntil(dateStr) {
   return Math.max(0, Math.ceil((new Date(dateStr) - new Date()) / (7*24*60*60*1000)));
-}
-function arcPath(drr) {
-  const frac = Math.min(1, Math.max(0.002, (drr - 0.13) / 0.05));
-  const angle = Math.PI * (1 - frac);
-  return `M 20 100 A 80 80 0 0 1 ${(100 + 80*Math.cos(angle)).toFixed(1)} ${(100 - 80*Math.sin(angle)).toFixed(1)}`;
 }
 function fmtWindow(dateStr) {
   const d = new Date(dateStr + 'T00:00:00Z');
@@ -286,8 +312,8 @@ function renderAll(data) {
   const winDisplay = winStart && winEnd ? fmtWindow(winStart) + '–' + fmtWindow(winEnd) + ' ' + new Date(winEnd+'T00:00:00Z').getUTCFullYear() : '—';
 
   document.getElementById('masthead-date').innerHTML = `<strong>${genStr}</strong><br>Data: ${winDisplay}`;
+  renderBriefing(data, winDisplay, genStr);
   renderWIG(data, winDisplay);
-  renderPortfolios(data, winDisplay);
   renderRegions(data, winDisplay);
   renderLeads(data, winDisplay);
   renderFocusInvestigate(data, winDisplay);
@@ -298,6 +324,86 @@ function renderAll(data) {
     Data window: ${winDisplay} · Generated: ${genStr}`;
 }
 
+function bandClass(drr) { return drr >= 0.18 ? 'good' : drr >= 0.13 ? 'warn' : 'bad'; }
+function fmtDelta(from, to) {
+  if (from == null || to == null) return '';
+  const pct = ((to - from) / from) * 100;
+  const arrow = pct >= 0 ? '↑' : '↓';
+  return `${arrow} ${Math.abs(pct).toFixed(1)}% vs prior wk`;
+}
+
+function renderBriefing(data, winDisplay, genStr) {
+  const b = data.briefing;
+  const section = document.getElementById('briefing-section');
+  if (!b) {
+    section.innerHTML = `<div class="briefing-empty">
+      No briefing available for this data window.<br><br>
+      The briefing is generated by the daily refresh job (Claude API call against the data file).<br>
+      Add a <code>briefing</code> field to <code>mopo_scoreboard_data.json</code> to populate this tab.
+    </div>`;
+    return;
+  }
+  const modelLine = b.model ? ` · ${b.model}` : '';
+  const meta = `Generated ${genStr}${modelLine} · data window ${winDisplay}`;
+
+  const worst = (b.worst_regions || []).map(r => {
+    const c = bandClass(r.drr_usd);
+    const delta = (r.prior_drr_usd != null) ? `<span class="delta">${fmtDelta(r.prior_drr_usd, r.drr_usd)}</span>` : '';
+    return `<div class="briefing-item ${c}">
+      <div class="briefing-item-region">${r.region}</div>
+      <div class="briefing-item-stat ${c}">${fmtDRR(r.drr_usd)}${delta}</div>
+      <div class="briefing-item-note">${r.reason || ''}</div>
+    </div>`;
+  }).join('');
+
+  const deteriorating = (b.deteriorating || []).map(d => {
+    const c = bandClass(d.to);
+    return `<div class="briefing-item ${c}">
+      <div class="briefing-item-region">${d.name}<div style="font-size:0.7rem;color:var(--ink-faint);font-style:italic;margin-top:0.2rem;font-family:'Crimson Pro',serif;font-weight:400">${d.level || ''}</div></div>
+      <div class="briefing-item-stat ${c}">${fmtDRR(d.to)}<span class="delta">from ${fmtDRR(d.from)} · ${fmtDelta(d.from, d.to)}</span></div>
+      <div class="briefing-item-note">${d.note || ''}</div>
+    </div>`;
+  }).join('');
+
+  const regionCards = (b.region_questions || []).map(rq => {
+    const regionData = (data.regions || []).find(r => r.region === rq.region);
+    const drr = regionData ? regionData.drr_usd : null;
+    const c = drr != null ? bandClass(drr) : 'warn';
+    const stat = drr != null ? `<span class="briefing-region-stat ${c}">${fmtDRR(drr)}${rq.wow_delta ? `<span class="delta">${rq.wow_delta}</span>` : ''}</span>` : '';
+    const qs = (rq.questions || []).map(q => `<li>${q}</li>`).join('');
+    return `<div class="briefing-region-card">
+      <div class="briefing-region-head">
+        <div class="briefing-region-name">${rq.region}</div>
+        ${stat}
+      </div>
+      <ol class="briefing-questions">${qs}</ol>
+    </div>`;
+  }).join('');
+
+  section.innerHTML = `
+    <div class="briefing-meta">${meta}</div>
+    ${b.headline ? `<div class="briefing-headline">${b.headline}</div>` : ''}
+    ${worst ? `<div class="briefing-block"><div class="section-label">Struggling worst this week</div><div class="briefing-list">${worst}</div></div>` : ''}
+    ${deteriorating ? `<div class="briefing-block"><div class="section-label">Deteriorating week on week</div><div class="briefing-list">${deteriorating}</div></div>` : ''}
+    ${b.focus ? `<div class="briefing-block"><div class="section-label">Where to focus this week</div><div class="briefing-focus">${b.focus}</div></div>` : ''}
+    ${regionCards ? `<div class="briefing-block"><div class="section-label">Questions to take to each team lead</div>${regionCards}</div>` : ''}
+  `;
+}
+
+function setActiveTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+  if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+}
+document.addEventListener('click', e => {
+  const tab = e.target.closest('.tab');
+  if (tab) setActiveTab(tab.dataset.tab);
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const initial = (location.hash || '').replace('#','');
+  if (initial === 'scoreboard' || initial === 'briefing') setActiveTab(initial);
+});
+
 function renderWIG(data, winDisplay) {
   const curr = data.wig_current || 0;
   const prior = data.wig_prior || 0;
@@ -305,38 +411,40 @@ function renderWIG(data, winDisplay) {
   const wow = prior > 0 ? (curr - prior) / prior * 100 : 0;
   const gapNeeded = weeks > 0 ? (0.18 - curr) / curr / weeks * 100 : 0;
   const status = curr >= 0.18 ? 'ontarget' : curr >= 0.15 ? 'closing' : 'behind';
-  const statusLabel = curr >= 0.18 ? 'On target' : curr >= 0.15 ? 'Closing in' : 'Behind target';
   const gapDollar = Math.max(0, 0.18 - curr).toFixed(2);
   const trajWeeks = wow > 0 ? Math.ceil(parseFloat(gapDollar) / (curr * wow / 100)) : '∞';
+  const barMax = 0.20;
+  const fillPct = Math.min(100, Math.max(0.5, curr / barMax * 100));
+  const tickPct = 0.18 / barMax * 100;
 
   document.getElementById('wig-section').innerHTML = `
     <div class="wig-panel">
-      <div>
-        <div class="wig-label">The WIG</div>
-        <div class="wig-headline">Increase Nigeria MOPO50 DRR from <strong>$0.13</strong> to <strong>$0.18</strong> by <strong>1 September 2026</strong></div>
+      <div class="wig-top">
+        <div>
+          <div class="wig-label">The WIG</div>
+          <div class="wig-headline">Increase Nigeria MOPO50 DRR from <strong>$0.13</strong> to <strong>$0.18</strong> by <strong>1 September 2026</strong></div>
+        </div>
+        <div class="wig-hero-num">${fmtDRR(curr)}<span>per battery per day</span></div>
       </div>
-      <div class="wig-arc-wrap">
-        <svg class="arc-svg" viewBox="0 0 200 115" fill="none">
-          <path d="M 20 100 A 80 80 0 0 1 180 100" stroke="rgba(245,240,232,0.12)" stroke-width="10" stroke-linecap="round" fill="none"/>
-          <path d="${arcPath(curr)}" stroke="#C4622D" stroke-width="10" stroke-linecap="round" fill="none"/>
-          <line x1="180" y1="100" x2="175" y2="86" stroke="#6B7C5C" stroke-width="2.5" stroke-linecap="round"/>
-          <text x="16" y="114" fill="rgba(156,123,106,0.8)" font-size="9" font-family="Crimson Pro,serif">$0.13</text>
-          <text x="162" y="114" fill="rgba(107,124,92,0.9)" font-size="9" font-family="Crimson Pro,serif">$0.18</text>
-        </svg>
-        <div class="arc-current-val">${fmtDRR(curr)}<span> / battery / day</span></div>
-        <span class="arc-status ${status}">${statusLabel}</span>
+      <div class="wig-bar-wrap">
+        <div class="wig-bar-track">
+          <div class="wig-bar-fill ${status}" style="width:${fillPct}%"></div>
+          <div class="wig-bar-tick" style="left:${tickPct}%"></div>
+          <div class="wig-bar-tick-label" style="left:${tickPct}%">$0.18 target</div>
+        </div>
+        <div class="wig-bar-axis"><span>$0</span><span>$${barMax.toFixed(2)}</span></div>
       </div>
       <div class="wig-stats">
-        <div class="wig-stat">
-          <div class="wig-stat-val">${weeks} <span style="font-size:1rem;color:var(--ink-faint)">weeks</span></div>
-          <div class="wig-stat-label">to deadline</div>
+        <div class="wig-stat-primary">
+          <div class="wig-stat-val">${weeks}<span>weeks</span></div>
+          <div class="wig-stat-label">to deadline · 1 Sep 2026</div>
         </div>
-        <div class="wig-stat">
-          <div class="wig-stat-val ${wow >= 0 ? 'positive' : 'negative'}">${fmtPct(wow)} ${wow >= 0 ? '↑' : '↓'}</div>
-          <div class="wig-stat-label">vs prior week</div>
+        <div class="wig-stat-secondary">
+          <div class="wig-stat-val ${wow >= 0 ? 'positive' : 'negative'}">${fmtPct(wow)} ${wow >= 0 ? '↑' : '↓'} vs prior week</div>
+          <div class="wig-stat-label">recent movement</div>
         </div>
-        <div class="wig-stat">
-          <div class="wig-stat-val negative">${fmtPct(gapNeeded)} per week</div>
+        <div class="wig-stat-primary">
+          <div class="wig-stat-val negative">${fmtPct(gapNeeded)}<span>per week</span></div>
           <div class="wig-stat-label">needed to hit target</div>
         </div>
       </div>
@@ -348,26 +456,6 @@ function renderWIG(data, winDisplay) {
       <div class="countdown-weeks">${weeks} <span>weeks remaining</span></div>
       <div class="weekly-needed">Need <strong>${fmtPct(gapNeeded)}</strong> per week to reach $0.18</div>
     </div>`;
-}
-
-function renderPortfolios(data, winDisplay) {
-  document.getElementById('portfolio-label').textContent = `Portfolio split · ${winDisplay}`;
-  document.getElementById('portfolio-section').innerHTML = (data.portfolios || []).map(p => {
-    const c = portColor(p.drr_usd);
-    const pct = Math.min(100, (p.drr_usd / 0.18 * 100)).toFixed(1);
-    const isCBA = (p.name||'').toLowerCase().includes('cross');
-    const label = isCBA ? 'CBA — CrossBoundary asset co' : 'MPNG — directly operated';
-    const note = isCBA ? 'Reduced rev share' : 'Full rev share';
-    const drag = isCBA && p.drr_usd < 0.15 ? `<span style="color:var(--terracotta)">Dragging NG average</span>` : '';
-    return `<div class="portfolio-card ${c}">
-      <div class="portfolio-name">${label} <span class="status-pip ${c}"></span></div>
-      <div class="portfolio-drr ${c}">${fmtDRR(p.drr_usd)}</div>
-      <div style="font-size:0.8rem;color:var(--ink-faint);margin-top:0.2rem">vs $0.18 target</div>
-      <div class="progress-track"><div class="progress-fill ${c}" style="width:${pct}%"></div><div class="progress-target-marker"></div></div>
-      <div class="progress-labels"><span>$0</span><span style="color:var(--sage)">$0.18</span></div>
-      <div class="portfolio-meta" style="margin-top:0.75rem"><span>${p.hub_count} hubs</span><span>${note}</span>${drag}</div>
-    </div>`;
-  }).join('');
 }
 
 function renderRegions(data, winDisplay) {
@@ -386,32 +474,36 @@ function renderLeads(data, winDisplay) {
   document.getElementById('leads-label').textContent = `Lead measures · ${winDisplay} · agents with >14 days tenure`;
   const rel = data.lead_relative || {};
   const ear = data.lead_earnings || {};
-  const relPct = rel.total_agents > 0 ? (rel.above_threshold / rel.total_agents * 100).toFixed(1) : 0;
-  const earPct = ear.total_agents > 0 ? (ear.above_floor / ear.total_agents * 100).toFixed(1) : 0;
+  const relFlagged = rel.flagged_agents || 0;
+  const relTotal = rel.total_agents || 0;
+  const relDeficitPct = relTotal > 0 ? (relFlagged / relTotal * 100).toFixed(1) : 0;
+  const earFlagged = ear.below_floor || 0;
+  const earTotal = ear.total_agents || 0;
+  const earDeficitPct = earTotal > 0 ? (earFlagged / earTotal * 100).toFixed(1) : 0;
   document.getElementById('leads-section').innerHTML = `
     <div class="lead-card">
       <div class="lead-title">Relative agent performance</div>
-      <div class="lead-subtitle">Agents above 35% of their hub's best this week</div>
+      <div class="lead-subtitle">Agents performing below 35% of their hub's best · tenure &gt;14 days</div>
       <div class="lead-gauge-wrap">
-        <div class="lead-big-num">${relPct}%</div>
+        <div class="lead-big-num">${relFlagged}<span class="unit">agents</span></div>
         <div class="lead-gauge-detail">
-          <div class="lead-bar-track"><div class="lead-bar-fill" style="width:${relPct}%"></div></div>
-          <div class="lead-counts"><span>${rel.above_threshold||0} healthy</span><span class="flagged">${rel.flagged_agents||0} flagged</span></div>
+          <div class="lead-bar-track"><div class="lead-bar-fill" style="width:${relDeficitPct}%"></div></div>
+          <div class="lead-counts"><span class="flagged">${relDeficitPct}% flagged</span><span>${relTotal-relFlagged} healthy</span></div>
         </div>
       </div>
-      <div style="font-size:0.78rem;color:var(--ink-faint);font-style:italic">${rel.flagged_agents||0} agents below 35% of hub best · ${rel.total_agents||0} observed · ${winDisplay}</div>
+      <div class="lead-context">below threshold · ${relTotal} observed · ${winDisplay}</div>
     </div>
     <div class="lead-card">
       <div class="lead-title">Agent earnings floor</div>
-      <div class="lead-subtitle">Agents above their regional P25 floor this week</div>
+      <div class="lead-subtitle">Agents earning below their regional P25 floor · tenure &gt;14 days</div>
       <div class="lead-gauge-wrap">
-        <div class="lead-big-num">${earPct}%</div>
+        <div class="lead-big-num">${earFlagged}<span class="unit">agents</span></div>
         <div class="lead-gauge-detail">
-          <div class="lead-bar-track"><div class="lead-bar-fill" style="width:${earPct}%"></div></div>
-          <div class="lead-counts"><span>${ear.above_floor||0} above floor</span><span class="flagged">${ear.below_floor||0} below floor</span></div>
+          <div class="lead-bar-track"><div class="lead-bar-fill" style="width:${earDeficitPct}%"></div></div>
+          <div class="lead-counts"><span class="flagged">${earDeficitPct}% flagged</span><span>${earTotal-earFlagged} above floor</span></div>
         </div>
       </div>
-      <div style="font-size:0.78rem;color:var(--ink-faint);font-style:italic">Floor is region-specific P25 (Apr 2026 baseline) · Ekiti ₦60,180 / Kano ₦3,840 per week</div>
+      <div class="lead-context">below floor · ${earTotal} observed · ${winDisplay}</div>
     </div>`;
 }
 
@@ -419,7 +511,7 @@ function renderFocusInvestigate(data, winDisplay) {
   document.getElementById('focus-label').textContent = `Focus list · where to point energy this week · ${winDisplay}`;
   const hubMap = {};
   (data.flagged_agents || []).forEach(a => {
-    if (!hubMap[a.hub_name]) hubMap[a.hub_name] = {hub_name:a.hub_name, region:a.region, portfolio:a.portfolio, hub_drr:a.hub_drr, agents:[]};
+    if (!hubMap[a.hub_name]) hubMap[a.hub_name] = {hub_name:a.hub_name, region:a.region, hub_drr:a.hub_drr, agents:[]};
     hubMap[a.hub_name].agents.push(a);
   });
   const hubs = Object.values(hubMap).sort((a,b) => b.agents.length - a.agents.length || a.hub_drr - b.hub_drr);
@@ -434,23 +526,24 @@ function renderFocusInvestigate(data, winDisplay) {
     rows += `<tr class="hub-row" id="hub-row-${i}" onclick="toggleDrill(${i})">
       <td style="font-weight:600">${hub.hub_name}<span class="expand-icon" id="ei-${i}">▶</span></td>
       <td style="color:var(--ink-light)">${hub.region}</td>
-      <td style="color:var(--ink-faint)">${hub.portfolio}</td>
       <td style="text-align:center"><span class="badge red">${hub.agents.length}</span></td>
       <td style="text-align:right;font-family:'Playfair Display',serif;color:${drrColor};font-weight:700">${fmtDRR(hub.hub_drr)}</td>
       <td style="text-align:right"><span class="action-tag replace">Replace agents</span></td>
     </tr>
     <tr class="agent-detail" id="drill-${i}">
-      <td colspan="6"><div class="agent-inner">
+      <td colspan="5"><div class="agent-inner">
         <table class="agent-table">
           <thead><tr>
-            <th style="width:22%">Agent</th><th style="width:11%;text-align:right">DRR</th>
-            <th style="width:11%;text-align:right">Rel %</th><th style="width:18%;text-align:right">Wk Earnings</th>
-            <th style="width:10%;text-align:right">Days</th><th style="width:14%;text-align:right">Action</th>
+            <th style="width:20%">Agent</th><th style="width:10%;text-align:right">DRR</th>
+            <th style="width:9%;text-align:right">Rel %</th><th style="width:13%;text-align:right">Hub best</th>
+            <th style="width:16%;text-align:right">Wk Earnings</th>
+            <th style="width:9%;text-align:right">Days</th><th style="width:13%;text-align:right">Action</th>
           </tr></thead>
           <tbody>${hub.agents.map(a => `<tr>
             <td style="font-weight:500">${a.agent_name}</td>
             <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--terracotta)">${fmtDRR(a.agent_drr)}</td>
             <td style="text-align:right">${a.rel_perf}%</td>
+            <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--ink-light)">${fmtDRR(a.hub_best_drr)}</td>
             <td style="text-align:right">${fmtNGN(a.weekly_ngn)}</td>
             <td style="text-align:right">${a.days_in_role}</td>
             <td style="text-align:right"><span class="action-tag ${a.rel_perf < 20 ? 'replace' : 'monitor'}">${a.rel_perf < 20 ? 'Replace' : 'Monitor'}</span></td>
@@ -475,8 +568,8 @@ function renderFocusInvestigate(data, winDisplay) {
     <div class="table-wrap">
       <table class="data-table">
         <thead><tr>
-          <th style="width:26%">Hub</th><th style="width:18%">Region</th><th style="width:12%">Portfolio</th>
-          <th style="width:12%;text-align:center">Flagged</th><th style="width:12%;text-align:right">Hub DRR</th>
+          <th style="width:32%">Hub</th><th style="width:22%">Region</th>
+          <th style="width:12%;text-align:center">Flagged</th><th style="width:14%;text-align:right">Hub DRR</th>
           <th style="width:20%;text-align:right">Action</th>
         </tr></thead>
         <tbody>${rows}</tbody>
@@ -500,15 +593,11 @@ window.toggleDrill = toggleDrill;
 
 function renderFocusWorking(data, winDisplay) {
   const topRegions = (data.regions||[]).filter(r => r.drr_usd >= 0.18);
-  const mpng = (data.portfolios||[]).find(p => !(p.name||'').toLowerCase().includes('cross'));
   const wow = data.wig_prior > 0 ? (data.wig_current - data.wig_prior) / data.wig_prior * 100 : 0;
   let rows = topRegions.map(r =>
     `<tr><td style="font-weight:600">${r.region} region</td><td style="color:var(--ink-light)">${r.hubs} hubs · above $0.18 target</td>
     <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--sage);font-weight:700">${fmtDRR(r.drr_usd)}</td>
     <td style="text-align:right"><span class="action-tag on-target">✦ On target</span></td></tr>`).join('');
-  if (mpng) rows += `<tr><td style="font-weight:600">MPNG portfolio</td><td style="color:var(--ink-light)">${mpng.hub_count} hubs</td>
-    <td style="text-align:right;font-family:'Playfair Display',serif;color:var(--sage);font-weight:700">${fmtDRR(mpng.drr_usd)}</td>
-    <td style="text-align:right"><span class="action-tag on-target">Progressing</span></td></tr>`;
   rows += `<tr><td style="font-weight:600">Week on week</td><td style="color:var(--ink-light)">NG combined</td>
     <td style="text-align:right;font-family:'Playfair Display',serif;color:${wow>=0?'var(--sage)':'var(--terracotta)'};font-weight:700">${fmtPct(wow)}</td>
     <td style="text-align:right"><span class="action-tag ${wow>=0?'on-target':'monitor'}">${wow>=0?'Positive trend':'Watch'}</span></td></tr>`;
@@ -542,15 +631,15 @@ function renderNewAgents(data, winDisplay) {
   document.getElementById('new-agents-label').textContent = `New agents · started past 30 days · 7–30 days in role · ${total} total · ${winDisplay}`;
 
   const tableRows = byRegion.map(r => {
-    const c = r.avg_drr >= 0.18 ? 'var(--sage)' : r.avg_drr >= 0.13 ? 'var(--amber)' : 'var(--terracotta)';
+    const c = r.avg_drr_usd >= 0.18 ? 'var(--sage)' : r.avg_drr_usd >= 0.13 ? 'var(--amber)' : 'var(--terracotta)';
     const isKI = r.region==='Kano'||r.region==='Imo';
     const tag = isKI ? '<span class="action-tag structural">Structural</span>'
-      : r.avg_drr >= 0.13 ? '<span class="action-tag on-target">Watch</span>'
+      : r.avg_drr_usd >= 0.13 ? '<span class="action-tag on-target">Watch</span>'
       : '<span class="action-tag monitor">Investigate</span>';
     return `<tr style="${isKI?'background:rgba(196,98,45,0.04)':''}">
       <td style="font-weight:${isKI?'700':'600'};color:${isKI?'var(--terracotta)':'inherit'}">${r.region}</td>
       <td style="text-align:center;${isKI?'font-weight:700':''}">${r.new_agents}</td>
-      <td style="text-align:right;font-family:'Playfair Display',serif;color:${c};font-weight:700">${fmtDRR(r.avg_drr)}</td>
+      <td style="text-align:right;font-family:'Playfair Display',serif;color:${c};font-weight:700">${fmtDRR(r.avg_drr_usd)}</td>
       <td style="text-align:center;color:var(--sage);font-weight:600">${r.above_target}</td>
       <td style="text-align:center;color:var(--amber);font-weight:600">${r.progressing}</td>
       <td style="text-align:center;color:var(--terracotta);font-weight:${isKI?'700':'600'}">${r.below_baseline}</td>

@@ -1,765 +1,1059 @@
 {
-  "generated_at": "2026-04-30T08:49:42.190971Z",
-  "window_start": "2026-04-23",
-  "window_end": "2026-04-29",
-  "wig_current": 0.1242,
-  "wig_prior": 0.1212,
-  "portfolios": [
-    {
-      "name": "MPNG (directly operated)",
-      "hub_count": 62,
-      "drr_usd": 0.144
-    },
-    {
-      "name": "CrossBoundary Energy (CBA)",
-      "hub_count": 171,
-      "drr_usd": 0.1187
-    }
-  ],
+  "_test_run_note": "Generated inline by Claude Opus 4.7 against live MOPO Databot data on 2026-05-01. NOT produced by the production Monday routine — this is a preview of what the Monday routine will produce.",
+  "generated_at": "2026-05-01T12:36:44.537754+00:00",
+  "window_start": "2026-04-24",
+  "window_end": "2026-04-30",
+  "wig_current": 0.1291,
+  "wig_prior": 0.1256,
   "regions": [
     {
       "region": "Ekiti",
-      "hubs": 23,
-      "drr_usd": 0.1928
+      "hubs": 35,
+      "drr_usd": 0.1996,
+      "prior_drr_usd": 0.1839
     },
     {
       "region": "Ogun",
-      "hubs": 24,
-      "drr_usd": 0.1857
+      "hubs": 37,
+      "drr_usd": 0.1936,
+      "prior_drr_usd": 0.1898
     },
     {
       "region": "Osun",
-      "hubs": 11,
-      "drr_usd": 0.1589
+      "hubs": 17,
+      "drr_usd": 0.164,
+      "prior_drr_usd": 0.1639
     },
     {
       "region": "Ondo North",
-      "hubs": 24,
-      "drr_usd": 0.1531
+      "hubs": 26,
+      "drr_usd": 0.1614,
+      "prior_drr_usd": 0.1641
     },
     {
       "region": "Ondo South",
-      "hubs": 33,
-      "drr_usd": 0.1367
+      "hubs": 35,
+      "drr_usd": 0.1423,
+      "prior_drr_usd": 0.1388
     },
     {
       "region": "Bayelsa",
       "hubs": 13,
-      "drr_usd": 0.1321
+      "drr_usd": 0.1376,
+      "prior_drr_usd": 0.1348
     },
     {
       "region": "Rivers",
-      "hubs": 2,
-      "drr_usd": 0.1285
+      "hubs": 3,
+      "drr_usd": 0.1322,
+      "prior_drr_usd": 0.138
     },
     {
       "region": "Oyo",
-      "hubs": 12,
-      "drr_usd": 0.1249
+      "hubs": 16,
+      "drr_usd": 0.128,
+      "prior_drr_usd": 0.1348
+    },
+    {
+      "region": "Anambra",
+      "hubs": 10,
+      "drr_usd": 0.1077,
+      "prior_drr_usd": 0.1045
     },
     {
       "region": "Delta",
       "hubs": 18,
-      "drr_usd": 0.1052
-    },
-    {
-      "region": "Anambra",
-      "hubs": 10,
-      "drr_usd": 0.1035
-    },
-    {
-      "region": "Cross River",
-      "hubs": 16,
-      "drr_usd": 0.0992
+      "drr_usd": 0.1077,
+      "prior_drr_usd": 0.1056
     },
     {
       "region": "Enugu",
       "hubs": 12,
-      "drr_usd": 0.0981
+      "drr_usd": 0.1027,
+      "prior_drr_usd": 0.1001
+    },
+    {
+      "region": "Cross River",
+      "hubs": 16,
+      "drr_usd": 0.1027,
+      "prior_drr_usd": 0.0982
     },
     {
       "region": "Ebonyi",
       "hubs": 11,
-      "drr_usd": 0.0601
+      "drr_usd": 0.063,
+      "prior_drr_usd": 0.0583
     },
     {
       "region": "Kano",
       "hubs": 14,
-      "drr_usd": 0.0321
+      "drr_usd": 0.0328,
+      "prior_drr_usd": 0.0305
     },
     {
       "region": "Imo",
       "hubs": 10,
-      "drr_usd": 0.0261
+      "drr_usd": 0.0288,
+      "prior_drr_usd": 0.0191
     }
   ],
   "lead_relative": {
-    "above_threshold": 756,
-    "total_agents": 883,
-    "flagged_agents": 127
+    "total_agents": 890,
+    "above_threshold": 759,
+    "flagged_agents": 97
   },
   "lead_earnings": {
-    "above_floor": 709,
-    "total_agents": 883,
+    "total_agents": 890,
+    "above_floor": 716,
     "below_floor": 174
   },
   "flagged_agents": [
     {
-      "agent_name": "BLESSING NWOKOMA",
-      "hub_name": "Nekede 2 Imo",
-      "region": "Imo",
-      "portfolio": "CBA",
-      "agent_drr": 0.2032,
-      "rel_perf": 33.3,
-      "weekly_ngn": 2000.0,
-      "days_in_role": 19,
-      "hub_drr": 0.0039
-    },
-    {
-      "agent_name": "MADUAKOLAM CHIMAKA LILY",
-      "hub_name": "Nekede 2 Imo",
-      "region": "Imo",
-      "portfolio": "CBA",
-      "agent_drr": 0.0508,
-      "rel_perf": 8.3,
-      "weekly_ngn": 500.0,
-      "days_in_role": 19,
-      "hub_drr": 0.0039
-    },
-    {
-      "agent_name": "Gizago kibiya",
-      "hub_name": "Kibiya Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.065,
-      "rel_perf": 7.1,
-      "weekly_ngn": 640.0,
-      "days_in_role": 15,
-      "hub_drr": 0.0045
-    },
-    {
-      "agent_name": "Hassan Dahiru",
-      "hub_name": "Kibiya Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 21,
-      "hub_drr": 0.0045
-    },
-    {
-      "agent_name": "ABUBAKAR TASIU",
-      "hub_name": "Kibiya Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0325,
-      "rel_perf": 3.6,
-      "weekly_ngn": 320.0,
-      "days_in_role": 23,
-      "hub_drr": 0.0045
-    },
-    {
-      "agent_name": "Bello umar abubakar",
-      "hub_name": "Kibiya Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 63,
-      "hub_drr": 0.0045
-    },
-    {
-      "agent_name": "YUSUF GAYA",
-      "hub_name": "Gaya Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0325,
-      "rel_perf": 2.7,
-      "weekly_ngn": 320.0,
-      "days_in_role": 22,
-      "hub_drr": 0.007
-    },
-    {
-      "agent_name": "IBRAHIM ADAM ABDULLAHI",
-      "hub_name": "Gaya Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 55,
-      "hub_drr": 0.007
-    },
-    {
-      "agent_name": "Saifullahi Sani",
-      "hub_name": "Minjibri Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0975,
-      "rel_perf": 3.9,
-      "weekly_ngn": 960.0,
-      "days_in_role": 17,
-      "hub_drr": 0.0124
-    },
-    {
-      "agent_name": "Rabiu shafiu",
-      "hub_name": "Gwarzo Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.065,
-      "rel_perf": 3.0,
-      "weekly_ngn": 640.0,
-      "days_in_role": 23,
-      "hub_drr": 0.0141
-    },
-    {
-      "agent_name": "Odo Kingsley Nwafor",
-      "hub_name": "Obollo-afor 2 Enugu",
-      "region": "Enugu",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 35,
-      "hub_drr": 0.0186
-    },
-    {
-      "agent_name": "Odo Everestus uchenna",
-      "hub_name": "Obollo-afor 2 Enugu",
-      "region": "Enugu",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 92,
-      "hub_drr": 0.0186
-    },
-    {
-      "agent_name": "Ugwueze Miracle Chukwuemeka",
-      "hub_name": "Obollo-afor 2 Enugu",
-      "region": "Enugu",
-      "portfolio": "CBA",
-      "agent_drr": 0.3048,
-      "rel_perf": 6.3,
-      "weekly_ngn": 3000.0,
-      "days_in_role": 93,
-      "hub_drr": 0.0186
-    },
-    {
-      "agent_name": "Masha Lilian",
-      "hub_name": "Ogoja 2 Cross River",
-      "region": "Cross River",
-      "portfolio": "CBA",
-      "agent_drr": 0.7619,
-      "rel_perf": 16.0,
-      "weekly_ngn": 7500.0,
-      "days_in_role": 189,
-      "hub_drr": 0.019
-    },
-    {
-      "agent_name": "Okorie Nwankkwo",
-      "hub_name": "Ogoja 2 Cross River",
-      "region": "Cross River",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 189,
-      "hub_drr": 0.019
-    },
-    {
-      "agent_name": "Augustine Rebecca. O",
-      "hub_name": "Ogoja 2 Cross River",
-      "region": "Cross River",
-      "portfolio": "CBA",
-      "agent_drr": 0.1524,
-      "rel_perf": 3.2,
-      "weekly_ngn": 1500.0,
-      "days_in_role": 189,
-      "hub_drr": 0.019
-    },
-    {
-      "agent_name": "Adebosin adetayo",
-      "hub_name": "Iwopin Ogun",
-      "region": "Ondo South",
-      "portfolio": "MPNG",
-      "agent_drr": 0.7263,
-      "rel_perf": 25.7,
-      "weekly_ngn": 7150.0,
-      "days_in_role": 43,
-      "hub_drr": 0.0198
-    },
-    {
-      "agent_name": "Ligali Qudus",
-      "hub_name": "Iwopin Ogun",
-      "region": "Ondo South",
-      "portfolio": "MPNG",
-      "agent_drr": 0.8635,
-      "rel_perf": 30.5,
-      "weekly_ngn": 8500.0,
-      "days_in_role": 652,
-      "hub_drr": 0.0198
-    },
-    {
-      "agent_name": "Isyaku Abubakar Umar",
-      "hub_name": "Kura Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 182,
-      "hub_drr": 0.0221
-    },
-    {
-      "agent_name": "ISU CHUKWUMA EGWU",
-      "hub_name": "Unwana Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 0.3556,
-      "rel_perf": 10.0,
-      "weekly_ngn": 3500.0,
-      "days_in_role": 63,
-      "hub_drr": 0.0243
-    },
-    {
-      "agent_name": "CHUKWU PAUL EWA",
-      "hub_name": "Unwana Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 0.6095,
-      "rel_perf": 17.1,
-      "weekly_ngn": 6000.0,
-      "days_in_role": 63,
-      "hub_drr": 0.0243
-    },
-    {
-      "agent_name": "Abubakar Ahmad",
-      "hub_name": "Falgore Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 70,
-      "hub_drr": 0.0254
-    },
-    {
-      "agent_name": "Ugwu Irene",
-      "hub_name": "Opi Enugu",
-      "region": "Enugu",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 97,
-      "hub_drr": 0.0279
-    },
-    {
-      "agent_name": "NJOKU MICHAEL",
-      "hub_name": "Nekede 1 Imo",
-      "region": "Imo",
-      "portfolio": "CBA",
-      "agent_drr": 0.1524,
-      "rel_perf": 3.3,
-      "weekly_ngn": 1500.0,
-      "days_in_role": 19,
-      "hub_drr": 0.0279
-    },
-    {
-      "agent_name": "Oluchi Abagba",
-      "hub_name": "Afikpo 2 Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.1683,
-      "rel_perf": 25.8,
-      "weekly_ngn": 11500.0,
-      "days_in_role": 76,
-      "hub_drr": 0.0291
-    },
-    {
-      "agent_name": "Chukwu Victoria Ifeyinwa",
-      "hub_name": "Afikpo 2 Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.473,
-      "rel_perf": 32.6,
-      "weekly_ngn": 14500.0,
-      "days_in_role": 76,
-      "hub_drr": 0.0291
-    },
-    {
-      "agent_name": "Dike Uzochukwu Solomon",
-      "hub_name": "Afikpo 2 Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.5746,
-      "rel_perf": 34.8,
-      "weekly_ngn": 15500.0,
-      "days_in_role": 76,
-      "hub_drr": 0.0291
-    },
-    {
-      "agent_name": "Okoro Blessing Inya",
-      "hub_name": "Afikpo 1 Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.1175,
-      "rel_perf": 29.7,
-      "weekly_ngn": 11000.0,
-      "days_in_role": 76,
-      "hub_drr": 0.033
-    },
-    {
-      "agent_name": "UWABIKE CHINASA IMMACULATE",
-      "hub_name": "Oguta 2 Imo",
-      "region": "Imo",
-      "portfolio": "CBA",
-      "agent_drr": 0.6095,
-      "rel_perf": 14.6,
-      "weekly_ngn": 6000.0,
-      "days_in_role": 15,
-      "hub_drr": 0.0342
-    },
-    {
-      "agent_name": "Adnan yakubu ishaq",
-      "hub_name": "Dambatta Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 48,
-      "hub_drr": 0.0359
-    },
-    {
-      "agent_name": "IBRAHIM LABARAN ABDULLAHI",
-      "hub_name": "Dambatta Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0325,
-      "rel_perf": 0.7,
-      "weekly_ngn": 320.0,
-      "days_in_role": 28,
-      "hub_drr": 0.0359
-    },
-    {
-      "agent_name": "Borode Kehinde",
-      "hub_name": "Oba Akoko Ondo",
-      "region": "Ondo North",
-      "portfolio": "MPNG",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 1085,
-      "hub_drr": 0.0413
-    },
-    {
-      "agent_name": "Aliu Abdugafaru",
-      "hub_name": "Oba Akoko Ondo",
-      "region": "Ondo North",
-      "portfolio": "MPNG",
-      "agent_drr": 0.8686,
-      "rel_perf": 21.3,
-      "weekly_ngn": 8550.0,
-      "days_in_role": 21,
-      "hub_drr": 0.0413
-    },
-    {
-      "agent_name": "Ubamna Bassey",
-      "hub_name": "Idomi cross River",
-      "region": "Cross River",
-      "portfolio": "CBA",
-      "agent_drr": 0.4063,
-      "rel_perf": 5.8,
-      "weekly_ngn": 4000.0,
-      "days_in_role": 22,
-      "hub_drr": 0.0515
-    },
-    {
-      "agent_name": "Mercy Okorefe",
-      "hub_name": "Agbarha Delta",
-      "region": "Delta",
-      "portfolio": "CBA",
-      "agent_drr": 0.7619,
-      "rel_perf": 10.1,
-      "weekly_ngn": 7500.0,
-      "days_in_role": 33,
-      "hub_drr": 0.0535
-    },
-    {
-      "agent_name": "Mercy Okorefe",
-      "hub_name": "Agbarha Delta",
-      "region": "Delta",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 118,
-      "hub_drr": 0.0535
-    },
-    {
-      "agent_name": "EMMANUEL EZEALA",
-      "hub_name": "Okigwe 2 Imo",
-      "region": "Imo",
-      "portfolio": "CBA",
-      "agent_drr": 0.1524,
-      "rel_perf": 1.6,
-      "weekly_ngn": 1500.0,
-      "days_in_role": 20,
-      "hub_drr": 0.054
-    },
-    {
-      "agent_name": "Onuu Ogbonnia Obila",
-      "hub_name": "Afikpo 3 Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 0.6095,
-      "rel_perf": 6.1,
-      "weekly_ngn": 6000.0,
-      "days_in_role": 21,
-      "hub_drr": 0.0554
-    },
-    {
-      "agent_name": "Bassey Janneth",
-      "hub_name": "Afikpo 3 Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.8286,
-      "rel_perf": 18.4,
-      "weekly_ngn": 18000.0,
-      "days_in_role": 30,
-      "hub_drr": 0.0554
-    },
-    {
-      "agent_name": "Nnali marvellous",
-      "hub_name": "Ogoja 1 Cross River",
-      "region": "Cross River",
-      "portfolio": "CBA",
-      "agent_drr": 1.727,
-      "rel_perf": 32.4,
-      "weekly_ngn": 17000.0,
-      "days_in_role": 85,
-      "hub_drr": 0.0557
-    },
-    {
-      "agent_name": "AZINO GIDEON LAMBERT",
-      "hub_name": "Ofagbe Delta",
-      "region": "Delta",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 286,
-      "hub_drr": 0.056
-    },
-    {
-      "agent_name": "EGBAMUNO MATTHEW",
-      "hub_name": "Ofagbe Delta",
-      "region": "Delta",
-      "portfolio": "CBA",
-      "agent_drr": 1.1043,
-      "rel_perf": 13.2,
-      "weekly_ngn": 10870.0,
-      "days_in_role": 286,
-      "hub_drr": 0.056
-    },
-    {
-      "agent_name": "Aso Monday Okereke",
-      "hub_name": "Ekoli Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.8794,
-      "rel_perf": 31.9,
-      "weekly_ngn": 18500.0,
-      "days_in_role": 62,
-      "hub_drr": 0.056
-    },
-    {
-      "agent_name": "Ilesanmi John",
-      "hub_name": "Ore 3 Ondo",
-      "region": "Ondo South",
-      "portfolio": "MPNG",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 424,
-      "hub_drr": 0.0579
-    },
-    {
-      "agent_name": "Christian Gowon",
-      "hub_name": "Oleh 1 Delta",
-      "region": "Delta",
-      "portfolio": "CBA",
-      "agent_drr": 0.8635,
-      "rel_perf": 9.7,
-      "weekly_ngn": 8500.0,
-      "days_in_role": 33,
-      "hub_drr": 0.0591
-    },
-    {
-      "agent_name": "Buola Precious",
-      "hub_name": "Oleh 1 Delta",
-      "region": "Delta",
-      "portfolio": "CBA",
-      "agent_drr": 2.946,
-      "rel_perf": 33.1,
-      "weekly_ngn": 29000.0,
-      "days_in_role": 78,
-      "hub_drr": 0.0591
-    },
-    {
-      "agent_name": "FAVOUR OBINNA",
-      "hub_name": "Okposi Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 2.2349,
-      "rel_perf": 26.7,
-      "weekly_ngn": 22000.0,
-      "days_in_role": 56,
-      "hub_drr": 0.0601
-    },
-    {
-      "agent_name": "CHINYEAKA OGBONNAYA",
-      "hub_name": "Okposi Ebonyi",
-      "region": "Ebonyi",
-      "portfolio": "CBA",
-      "agent_drr": 1.5746,
-      "rel_perf": 18.8,
-      "weekly_ngn": 15500.0,
-      "days_in_role": 56,
-      "hub_drr": 0.0601
-    },
-    {
-      "agent_name": "Saminu Bako",
-      "hub_name": "Rano Kano",
-      "region": "Kano",
-      "portfolio": "CBA",
-      "agent_drr": 0.0,
-      "rel_perf": 0.0,
-      "weekly_ngn": 0.0,
-      "days_in_role": 64,
-      "hub_drr": 0.066
-    },
-    {
-      "agent_name": "Chioma Okorie",
       "hub_name": "Ihiala Anambra",
       "region": "Anambra",
-      "portfolio": "CBA",
-      "agent_drr": 2.0825,
-      "rel_perf": 26.6,
-      "weekly_ngn": 20500.0,
-      "days_in_role": 49,
-      "hub_drr": 0.0665
+      "hub_drr": 0.0667,
+      "agent_name": "Chioma Okorie",
+      "agent_drr": 0.029,
+      "rel_perf": 27,
+      "hub_best_drr": 0.1074,
+      "weekly_ngn": 20500,
+      "days_in_role": 50
+    },
+    {
+      "hub_name": "Igbo Ukwu Anambra",
+      "region": "Anambra",
+      "hub_drr": 0.099,
+      "agent_name": "Okafor Blessing chidinma",
+      "agent_drr": 0.0147,
+      "rel_perf": 8,
+      "hub_best_drr": 0.173,
+      "weekly_ngn": 10500,
+      "days_in_role": 16
+    },
+    {
+      "hub_name": "Uga Anambra",
+      "region": "Anambra",
+      "hub_drr": 0.1123,
+      "agent_name": "Chigaemezu Godson",
+      "agent_drr": 0.0316,
+      "rel_perf": 13,
+      "hub_best_drr": 0.2389,
+      "weekly_ngn": 22000,
+      "days_in_role": 140
+    },
+    {
+      "hub_name": "Uga Anambra",
+      "region": "Anambra",
+      "hub_drr": 0.1123,
+      "agent_name": "Kingsley Umennadi",
+      "agent_drr": 0.0488,
+      "rel_perf": 20,
+      "hub_best_drr": 0.2389,
+      "weekly_ngn": 35000,
+      "days_in_role": 139
+    },
+    {
+      "hub_name": "Oko Anambra",
+      "region": "Anambra",
+      "hub_drr": 0.1507,
+      "agent_name": "Nwaofufe Elizabeth Adaobi",
+      "agent_drr": 0.0521,
+      "rel_perf": 24,
+      "hub_best_drr": 0.2195,
+      "weekly_ngn": 37500,
+      "days_in_role": 140
+    },
+    {
+      "hub_name": "Ogoja 2 Cross River",
+      "region": "Cross River",
+      "hub_drr": 0.0198,
+      "agent_name": "Okorie Nwankkwo",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.067,
+      "weekly_ngn": 0,
+      "days_in_role": 190
+    },
+    {
+      "hub_name": "Ogoja 2 Cross River",
+      "region": "Cross River",
+      "hub_drr": 0.0198,
+      "agent_name": "Augustine Rebecca. O",
+      "agent_drr": 0.0028,
+      "rel_perf": 4,
+      "hub_best_drr": 0.067,
+      "weekly_ngn": 2000,
+      "days_in_role": 190
+    },
+    {
+      "hub_name": "Ogoja 2 Cross River",
+      "region": "Cross River",
+      "hub_drr": 0.0198,
+      "agent_name": "Masha Lilian",
+      "agent_drr": 0.0091,
+      "rel_perf": 14,
+      "hub_best_drr": 0.067,
+      "weekly_ngn": 6500,
+      "days_in_role": 190
+    },
+    {
+      "hub_name": "Idomi cross River",
+      "region": "Cross River",
+      "hub_drr": 0.0506,
+      "agent_name": "Ubamna Bassey",
+      "agent_drr": 0.0029,
+      "rel_perf": 3,
+      "hub_best_drr": 0.0942,
+      "weekly_ngn": 2000,
+      "days_in_role": 23
+    },
+    {
+      "hub_name": "Ogoja 1 Cross River",
+      "region": "Cross River",
+      "hub_drr": 0.0576,
+      "agent_name": "Nnali marvellous",
+      "agent_drr": 0.0244,
+      "rel_perf": 32,
+      "hub_best_drr": 0.0775,
+      "weekly_ngn": 12500,
+      "days_in_role": 86
+    },
+    {
+      "hub_name": "Ikom 3 Cross River",
+      "region": "Cross River",
+      "hub_drr": 0.0961,
+      "agent_name": "John Ikenna",
+      "agent_drr": 0.0424,
+      "rel_perf": 30,
+      "hub_best_drr": 0.1437,
+      "weekly_ngn": 30000,
+      "days_in_role": 51
+    },
+    {
+      "hub_name": "Agbarha Delta",
+      "region": "Delta",
+      "hub_drr": 0.059,
+      "agent_name": "Mercy Okorefe",
+      "agent_drr": 0.0211,
+      "rel_perf": 20,
+      "hub_best_drr": 0.1059,
+      "weekly_ngn": 15000,
+      "days_in_role": 34
+    },
+    {
+      "hub_name": "Ofagbe Delta",
+      "region": "Delta",
+      "hub_drr": 0.0593,
+      "agent_name": "AZINO GIDEON LAMBERT",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.1189,
+      "weekly_ngn": 0,
+      "days_in_role": 287
+    },
+    {
+      "hub_name": "Ofagbe Delta",
+      "region": "Delta",
+      "hub_drr": 0.0593,
+      "agent_name": "EGBAMUNO MATTHEW",
+      "agent_drr": 0.0131,
+      "rel_perf": 11,
+      "hub_best_drr": 0.1189,
+      "weekly_ngn": 9570,
+      "days_in_role": 287
+    },
+    {
+      "hub_name": "Oleh 1 Delta",
+      "region": "Delta",
+      "hub_drr": 0.062,
+      "agent_name": "Christian Gowon",
+      "agent_drr": 0.0098,
+      "rel_perf": 8,
+      "hub_best_drr": 0.1206,
+      "weekly_ngn": 7000,
+      "days_in_role": 34
+    },
+    {
+      "hub_name": "Oleh 1 Delta",
+      "region": "Delta",
+      "hub_drr": 0.062,
+      "agent_name": "Buola Precious",
+      "agent_drr": 0.0418,
+      "rel_perf": 35,
+      "hub_best_drr": 0.1206,
+      "weekly_ngn": 29500,
+      "days_in_role": 79
+    },
+    {
+      "hub_name": "Ufuoma Delta",
+      "region": "Delta",
+      "hub_drr": 0.0771,
+      "agent_name": "Kelvin Oyibodoro",
+      "agent_drr": 0.0286,
+      "rel_perf": 16,
+      "hub_best_drr": 0.1812,
+      "weekly_ngn": 20500,
+      "days_in_role": 21
+    },
+    {
+      "hub_name": "Ufuoma Delta",
+      "region": "Delta",
+      "hub_drr": 0.0771,
+      "agent_name": "Blessing Godspower",
+      "agent_drr": 0.046,
+      "rel_perf": 25,
+      "hub_best_drr": 0.1812,
+      "weekly_ngn": 33000,
+      "days_in_role": 21
+    },
+    {
+      "hub_name": "Ufuoma Delta",
+      "region": "Delta",
+      "hub_drr": 0.0771,
+      "agent_name": "William Ekong Odeworitse",
+      "agent_drr": 0.0522,
+      "rel_perf": 29,
+      "hub_best_drr": 0.1812,
+      "weekly_ngn": 37000,
+      "days_in_role": 21
+    },
+    {
+      "hub_name": "Oleh 2 Delta",
+      "region": "Delta",
+      "hub_drr": 0.1017,
+      "agent_name": "Daniel Umukoro",
+      "agent_drr": 0.0354,
+      "rel_perf": 27,
+      "hub_best_drr": 0.1326,
+      "weekly_ngn": 25000,
+      "days_in_role": 186
+    },
+    {
+      "hub_name": "Ewu Delta",
+      "region": "Delta",
+      "hub_drr": 0.1164,
+      "agent_name": "Glory orinu",
+      "agent_drr": 0.0517,
+      "rel_perf": 25,
+      "hub_best_drr": 0.2075,
+      "weekly_ngn": 38510,
+      "days_in_role": 30
+    },
+    {
+      "hub_name": "Ozoro 2 Delta",
+      "region": "Delta",
+      "hub_drr": 0.1186,
+      "agent_name": "Ani Ezinwanne Dillion",
+      "agent_drr": 0.0379,
+      "rel_perf": 16,
+      "hub_best_drr": 0.232,
+      "weekly_ngn": 26540,
+      "days_in_role": 94
+    },
+    {
+      "hub_name": "Ozoro 2 Delta",
+      "region": "Delta",
+      "hub_drr": 0.1186,
+      "agent_name": "Okotete Emmanuel Oke",
+      "agent_drr": 0.0569,
+      "rel_perf": 25,
+      "hub_best_drr": 0.232,
+      "weekly_ngn": 40200,
+      "days_in_role": 18
+    },
+    {
+      "hub_name": "Kwale 1 Delta",
+      "region": "Delta",
+      "hub_drr": 0.1304,
+      "agent_name": "Precious Uzu",
+      "agent_drr": 0.0526,
+      "rel_perf": 25,
+      "hub_best_drr": 0.2145,
+      "weekly_ngn": 37750,
+      "days_in_role": 317
+    },
+    {
+      "hub_name": "Owhelohbo Delta",
+      "region": "Delta",
+      "hub_drr": 0.1426,
+      "agent_name": "Faith Ese",
+      "agent_drr": 0.0433,
+      "rel_perf": 21,
+      "hub_best_drr": 0.2032,
+      "weekly_ngn": 30500,
+      "days_in_role": 108
+    },
+    {
+      "hub_name": "Evwreni Delta",
+      "region": "Delta",
+      "hub_drr": 0.1565,
+      "agent_name": "Michael Ibobo Aaron",
+      "agent_drr": 0.0689,
+      "rel_perf": 27,
+      "hub_best_drr": 0.257,
+      "weekly_ngn": 49260,
+      "days_in_role": 74
+    },
+    {
+      "hub_name": "Unwana Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0283,
+      "agent_name": "ISU CHUKWUMA EGWU",
+      "agent_drr": 0.0063,
+      "rel_perf": 11,
+      "hub_best_drr": 0.0544,
+      "weekly_ngn": 4500,
+      "days_in_role": 64
+    },
+    {
+      "hub_name": "Unwana Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0283,
+      "agent_name": "CHUKWU PAUL EWA",
+      "agent_drr": 0.0083,
+      "rel_perf": 15,
+      "hub_best_drr": 0.0544,
+      "weekly_ngn": 6000,
+      "days_in_role": 64
+    },
+    {
+      "hub_name": "Afikpo 2 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.03,
+      "agent_name": "Oluchi Abagba",
+      "agent_drr": 0.0182,
+      "rel_perf": 31,
+      "hub_best_drr": 0.0593,
+      "weekly_ngn": 13000,
+      "days_in_role": 77
+    },
+    {
+      "hub_name": "Afikpo 2 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.03,
+      "agent_name": "Dike Uzochukwu Solomon",
+      "agent_drr": 0.0189,
+      "rel_perf": 32,
+      "hub_best_drr": 0.0593,
+      "weekly_ngn": 13500,
+      "days_in_role": 77
+    },
+    {
+      "hub_name": "Afikpo 1 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0365,
+      "agent_name": "Okoro Blessing Inya",
+      "agent_drr": 0.0153,
+      "rel_perf": 27,
+      "hub_best_drr": 0.0565,
+      "weekly_ngn": 11000,
+      "days_in_role": 77
+    },
+    {
+      "hub_name": "Afikpo 3 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0598,
+      "agent_name": "Onuu Ogbonnia Obila",
+      "agent_drr": 0.0111,
+      "rel_perf": 8,
+      "hub_best_drr": 0.1416,
+      "weekly_ngn": 8000,
+      "days_in_role": 22
+    },
+    {
+      "hub_name": "Afikpo 3 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0598,
+      "agent_name": "Bassey Janneth",
+      "agent_drr": 0.0251,
+      "rel_perf": 18,
+      "hub_best_drr": 0.1416,
+      "weekly_ngn": 18000,
+      "days_in_role": 31
+    },
+    {
+      "hub_name": "Okposi Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0611,
+      "agent_name": "FAVOUR OBINNA",
+      "agent_drr": 0.0245,
+      "rel_perf": 20,
+      "hub_best_drr": 0.1201,
+      "weekly_ngn": 17500,
+      "days_in_role": 57
+    },
+    {
+      "hub_name": "Okposi Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0611,
+      "agent_name": "CHINYEAKA OGBONNAYA",
+      "agent_drr": 0.0244,
+      "rel_perf": 20,
+      "hub_best_drr": 0.1201,
+      "weekly_ngn": 17500,
+      "days_in_role": 57
+    },
+    {
+      "hub_name": "Ekoli Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0635,
+      "agent_name": "Aso Monday Okereke",
+      "agent_drr": 0.0299,
+      "rel_perf": 34,
+      "hub_best_drr": 0.0892,
+      "weekly_ngn": 21500,
+      "days_in_role": 63
+    },
+    {
+      "hub_name": "Amuzu (Onueke) 1 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0735,
+      "agent_name": "OMOH EMMANUEL",
+      "agent_drr": 0.0272,
+      "rel_perf": 17,
+      "hub_best_drr": 0.1606,
+      "weekly_ngn": 19500,
+      "days_in_role": 49
+    },
+    {
+      "hub_name": "Amuzu (Onueke) 1 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0735,
+      "agent_name": "OMENYI CHINECHEREM",
+      "agent_drr": 0.0348,
+      "rel_perf": 22,
+      "hub_best_drr": 0.1606,
+      "weekly_ngn": 25000,
+      "days_in_role": 49
+    },
+    {
+      "hub_name": "Amuzu (Onueke) 2 Ebonyi",
+      "region": "Ebonyi",
+      "hub_drr": 0.0867,
+      "agent_name": "Mrs Ezeh Christiana O",
+      "agent_drr": 0.0376,
+      "rel_perf": 26,
+      "hub_best_drr": 0.1451,
+      "weekly_ngn": 11500,
+      "days_in_role": 49
+    },
+    {
+      "hub_name": "Obollo-afor 2 Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.0201,
+      "agent_name": "Odo Kingsley Nwafor",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.0687,
+      "weekly_ngn": 0,
+      "days_in_role": 36
+    },
+    {
+      "hub_name": "Obollo-afor 2 Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.0201,
+      "agent_name": "Ugwueze Miracle Chukwuemeka",
+      "agent_drr": 0.0056,
+      "rel_perf": 8,
+      "hub_best_drr": 0.0687,
+      "weekly_ngn": 4000,
+      "days_in_role": 94
+    },
+    {
+      "hub_name": "Obollo-afor 2 Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.0201,
+      "agent_name": "ugwuanyi promise",
+      "agent_drr": 0.0063,
+      "rel_perf": 9,
+      "hub_best_drr": 0.0687,
+      "weekly_ngn": 4500,
+      "days_in_role": 15
+    },
+    {
+      "hub_name": "Obollo-afor 1 Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.0743,
+      "agent_name": "Owushi Perpetual Chinaza",
+      "agent_drr": 0.0356,
+      "rel_perf": 34,
+      "hub_best_drr": 0.1046,
+      "weekly_ngn": 25500,
+      "days_in_role": 97
+    },
+    {
+      "hub_name": "Akpugo Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.1046,
+      "agent_name": "Lawrence Chukwuebuka",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.1759,
+      "weekly_ngn": 0,
+      "days_in_role": 97
+    },
+    {
+      "hub_name": "Awgu Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.1097,
+      "agent_name": "Okolie Gift Onyinyechi",
+      "agent_drr": 0.0213,
+      "rel_perf": 12,
+      "hub_best_drr": 0.184,
+      "weekly_ngn": 13000,
+      "days_in_role": 66
+    },
+    {
+      "hub_name": "Enugu-Ezike 1 Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.1181,
+      "agent_name": "Elere Sopuluchukwu Kingsley",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.1715,
+      "weekly_ngn": 0,
+      "days_in_role": 104
+    },
+    {
+      "hub_name": "Uduma Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.1234,
+      "agent_name": "Anyim Sebastian",
+      "agent_drr": 0.0285,
+      "rel_perf": 15,
+      "hub_best_drr": 0.1908,
+      "weekly_ngn": 20500,
+      "days_in_role": 24
+    },
+    {
+      "hub_name": "Enugu-Ezike 2 Enugu",
+      "region": "Enugu",
+      "hub_drr": 0.1296,
+      "agent_name": "Chinonso Timothy Nwodo",
+      "agent_drr": 0.0245,
+      "rel_perf": 12,
+      "hub_best_drr": 0.201,
+      "weekly_ngn": 17500,
+      "days_in_role": 16
+    },
+    {
+      "hub_name": "Nekede 2 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0047,
+      "agent_name": "MADUAKOLAM CHIMAKA LILY",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.0104,
+      "weekly_ngn": 0,
+      "days_in_role": 20
+    },
+    {
+      "hub_name": "Nekede 2 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0047,
+      "agent_name": "BLESSING NWOKOMA",
+      "agent_drr": 0.0028,
+      "rel_perf": 27,
+      "hub_best_drr": 0.0104,
+      "weekly_ngn": 2000,
+      "days_in_role": 20
+    },
+    {
+      "hub_name": "Nekede 1 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0291,
+      "agent_name": "NJOKU MICHAEL",
+      "agent_drr": 0.0021,
+      "rel_perf": 3,
+      "hub_best_drr": 0.062,
+      "weekly_ngn": 1500,
+      "days_in_role": 20
+    },
+    {
+      "hub_name": "Oguta 2 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0387,
+      "agent_name": "UWABIKE CHINASA IMMACULATE",
+      "agent_drr": 0.0098,
+      "rel_perf": 16,
+      "hub_best_drr": 0.0592,
+      "weekly_ngn": 7000,
+      "days_in_role": 16
+    },
+    {
+      "hub_name": "Okigwe 3 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0466,
+      "agent_name": "MIRACLE OYIBO",
+      "agent_drr": 0.0126,
+      "rel_perf": 12,
+      "hub_best_drr": 0.1005,
+      "weekly_ngn": 9000,
+      "days_in_role": 20
+    },
+    {
+      "hub_name": "Okigwe 3 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0466,
+      "agent_name": "NWOKOROGU CHIBUIKE",
+      "agent_drr": 0.0126,
+      "rel_perf": 13,
+      "hub_best_drr": 0.1005,
+      "weekly_ngn": 9000,
+      "days_in_role": 20
+    },
+    {
+      "hub_name": "Oguta 1 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0502,
+      "agent_name": "JOHN FAVOUR",
+      "agent_drr": 0.0237,
+      "rel_perf": 28,
+      "hub_best_drr": 0.0858,
+      "weekly_ngn": 17000,
+      "days_in_role": 16
+    },
+    {
+      "hub_name": "Okigwe 2 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0568,
+      "agent_name": "EMMANUEL EZEALA",
+      "agent_drr": 0.0028,
+      "rel_perf": 2,
+      "hub_best_drr": 0.136,
+      "weekly_ngn": 2000,
+      "days_in_role": 21
+    },
+    {
+      "hub_name": "Okigwe 2 Imo",
+      "region": "Imo",
+      "hub_drr": 0.0568,
+      "agent_name": "OKPARA HAPPINESS",
+      "agent_drr": 0.0377,
+      "rel_perf": 28,
+      "hub_best_drr": 0.136,
+      "weekly_ngn": 27000,
+      "days_in_role": 24
+    },
+    {
+      "hub_name": "Kibiya Kano",
+      "region": "Kano",
+      "hub_drr": 0.0045,
+      "agent_name": "ABUBAKAR TASIU",
+      "agent_drr": 0.0,
+      "rel_perf": 0,
+      "hub_best_drr": 0.013,
+      "weekly_ngn": 0,
+      "days_in_role": 24
+    },
+    {
+      "hub_name": "Kibiya Kano",
+      "region": "Kano",
+      "hub_drr": 0.0045,
+      "agent_name": "Gizago kibiya",
+      "agent_drr": 0.0004,
+      "rel_perf": 3,
+      "hub_best_drr": 0.013,
+      "weekly_ngn": 320,
+      "days_in_role": 16
+    },
+    {
+      "hub_name": "Kibiya Kano",
+      "region": "Kano",
+      "hub_drr": 0.0045,
+      "agent_name": "AHMAD ABDULLAHI",
+      "agent_drr": 0.0045,
+      "rel_perf": 35,
+      "hub_best_drr": 0.013,
+      "weekly_ngn": 3200,
+      "days_in_role": 24
     }
   ],
+  "briefing": {
+    "model": "Claude Opus 4.7 (test run, generated inline against live MOPO Databot data)",
+    "generated_at": "2026-05-01T12:36:44.537158+00:00",
+    "headline": "Country DRR ticked up 2.8% to $0.13 — but Imo and Kano (both still ~80% below the $0.13 baseline) absorbed 64 of the 126 new agents recruited in the last 30 days, and only 1 of those 64 cleared baseline.",
+    "worst_regions": [
+      {
+        "region": "Imo",
+        "drr_usd": 0.0288,
+        "prior_drr_usd": 0.0191,
+        "reason": "Worst region in NG MOPO50 by a wide margin ($0.029 — 78% below the $0.13 baseline). The +51% WoW is misleading: it's off a near-zero base ($0.019). 40 of the country's 126 new agents (32%) landed here in the last 30 days, ALL below baseline. Multiple flagged hubs (Nekede 1, Nekede 2, Oguta 1, Oguta 2, Okigwe 2, Okigwe 3) with hub DRRs of $0.005–$0.057. Nekede 2 averages $0.005/battery/day across the entire hub — that's not underperformance, that's a hub with no rental activity to speak of."
+      },
+      {
+        "region": "Kano",
+        "drr_usd": 0.0328,
+        "prior_drr_usd": 0.0305,
+        "reason": "Second-worst at $0.033, +7.5% WoW but again off a low base. 24 new agents in the last 30 days, ALL below baseline. Kibiya hub averages $0.005/battery/day with three flagged agents earning ₦0–₦3,200/week — best agent at the hub is at $0.013. This isn't an agent-quality problem; the hub itself isn't transacting."
+      },
+      {
+        "region": "Ebonyi",
+        "drr_usd": 0.063,
+        "prior_drr_usd": 0.0583,
+        "reason": "Underrated risk. $0.063 puts the whole region just 50% of the $0.13 baseline. 12 flagged agents across Unwana, Afikpo 1/2/3, Okposi, Amuzu — every flagged hub sits at $0.03–$0.09 DRR. Tenure clusters at 49–77 days (recently onboarded, already failing)."
+      },
+      {
+        "region": "Cross River",
+        "drr_usd": 0.1027,
+        "prior_drr_usd": 0.0982,
+        "reason": "Region-level looks middling but masks a disaster hub: Ogoja 2 at $0.020 with three flagged agents (Okorie, Augustine, Masha) all 190 days in role. One agent earning ₦0/week, another ₦2,000/week. This has been allowed to drift for over six months."
+      }
+    ],
+    "deteriorating": [
+      {
+        "name": "Oyo",
+        "level": "region",
+        "from": 0.1348,
+        "to": 0.128,
+        "note": "Largest WoW decline (-5.0%). Sat above baseline last week, now below. Worth a closer look at which hubs slipped."
+      },
+      {
+        "name": "Rivers",
+        "level": "region",
+        "from": 0.138,
+        "to": 0.1322,
+        "note": "-4.2% WoW. Only 3 hubs in the region, so single-hub volatility — but worth confirming."
+      },
+      {
+        "name": "Ondo North",
+        "level": "region",
+        "from": 0.1641,
+        "to": 0.1614,
+        "note": "Small slip, but the region was approaching the $0.18 target from a strong position. Don't lose this trajectory."
+      }
+    ],
+    "focus": "Don't get distracted by the +2.8% country headline. The dominant story is <strong>new-agent intake into Imo and Kano</strong>: those two regions absorbed 51% of the last 30 days' recruits and produced ~1 above-baseline performer between them. Ebonyi and Cross River's Ogoja 2 hub are the secondary story — older, structural underperformance that's been left to drift. <strong>Recommend deprioritising</strong> the recovery work in Anambra and Delta this week (their flagged-agent stories are real but contained, and the regions are creeping in the right direction). <strong>Monday's headline question</strong>: should we keep recruiting in Imo and Kano while the existing intake is producing zero, or pause new hires until we understand why every new agent fails?",
+    "region_questions": [
+      {
+        "region": "Imo",
+        "wow_delta": "↑ 50.8% WoW",
+        "questions": [
+          "Imo received 40 of the country's 126 new agents in the last 30 days (32% of national intake). Zero cleared baseline. What is the recruitment plan optimising for, given the conversion rate?",
+          "Nekede 2 hub averages $0.005/battery/day. Hub-best DRR is $0.010. This isn't a flagged-agent problem; it's a flagged hub. Why is this hub still operational?",
+          "EMMANUEL EZEALA at Okigwe 2 has 21 days in role at $0.003 DRR (2% of hub best $0.136). Is this a 'too early to tell' case or a 'replace immediately' case?",
+          "Oguta 1, Oguta 2, Okigwe 2, Okigwe 3 — four hubs in the region with hub DRRs $0.04–$0.06. Is this a regional demand collapse, a regional ops failure, or both?",
+          "What would it take to stop the bleed — i.e. simply not get worse — by end of May?"
+        ]
+      },
+      {
+        "region": "Kano",
+        "wow_delta": "↑ 7.5% WoW",
+        "questions": [
+          "Kibiya hub: 3 flagged agents, hub DRR $0.005, hub-best DRR $0.013. The best performer at the hub earns ₦3,200/week. This isn't a Kibiya problem — this is a 'why does Kibiya exist' problem. What's the case for keeping it open?",
+          "24 new agents in 30 days, all below baseline. What's the recruitment-screening process for Kano specifically, and how does it compare to Ekiti's (which converted 1 of 3 to above-target)?",
+          "ABUBAKAR TASIU and Gizago kibiya are 16–24 days in, earning ₦0 and ₦320/week. Are they being given a chance to ramp, or are they being set up to fail in a hub that doesn't transact?",
+          "If we paused Kano hiring entirely for 6 weeks and put the recruitment energy into supporting existing agents, what would happen to Kano DRR?"
+        ]
+      },
+      {
+        "region": "Ebonyi",
+        "wow_delta": "↑ 8.1% WoW",
+        "questions": [
+          "12 flagged agents across 7 hubs in Ebonyi, with tenure clustered at 49–77 days. This looks like a cohort failure: a batch of agents recruited 2 months ago that isn't activating. Was something different about that intake batch?",
+          "Onuu Ogbonnia Obila at Afikpo 3 (22 days, 8% rel-perf, hub-best $0.142) — is this a 'still ramping' case, or do we know already it won't work?",
+          "Ebonyi region average is $0.063 — half of baseline. Are the 4 hubs not represented in the flagged list (Ekoli, Amuzu 1, Amuzu 2, Okposi) above baseline, or is the whole region structurally below?"
+        ]
+      },
+      {
+        "region": "Oyo",
+        "wow_delta": "↓ 5.0% WoW",
+        "questions": [
+          "Oyo dropped from $0.135 to $0.128 — biggest WoW decline in the country (-5.0%). What are the bottom 3 hubs in Oyo this week, and were any of them above $0.13 last week?",
+          "Only 1 new agent recruited in Oyo in the last 30 days (below baseline). Is the region intentionally on a hiring freeze, or has recruitment stalled?"
+        ]
+      },
+      {
+        "region": "Cross River",
+        "wow_delta": "↑ 4.6% WoW",
+        "questions": [
+          "Ogoja 2 has three flagged agents, all 190 days in role, hub DRR $0.020. Why has this hub been allowed to drift for 6+ months without intervention? What's the blocker on either fixing or closing it?",
+          "Idomi, Ogoja 1, Ikom 3 — all flagged agents at hubs with $0.05–$0.10 DRR. Is Cross River fundamentally a Niger-Delta-style market activation problem, or are individual hubs salvageable?"
+        ]
+      },
+      {
+        "region": "Delta",
+        "wow_delta": "↑ 2.0% WoW",
+        "questions": [
+          "AZINO GIDEON LAMBERT at Ofagbe Delta: 287 days in role, ₦0/week, $0 DRR. EGBAMUNO MATTHEW same hub, same 287 days, ₦9,570/week, 11% rel-perf. Why have these two not been replaced — what is blocking the action?",
+          "Precious Uzu at Kwale 1 Delta: 317 days in role, 25% rel-perf, ₦37,750/week (decent earnings but well off the hub-best of $0.215). Is this an underperformer or someone we're protecting because the earnings look OK?",
+          "14 of 14 new agents in Delta were below baseline this period — same pattern as Imo and Kano but at a higher absolute DRR. Is this a recruitment problem, or are new agents at lower-revenue hubs being judged against a baseline that doesn't fit?"
+        ]
+      },
+      {
+        "region": "Anambra",
+        "wow_delta": "↑ 3.1% WoW",
+        "questions": [
+          "5 flagged agents across 4 hubs (Ihiala, Igbo Ukwu, Uga, Oko). Hub-best DRRs at these hubs range $0.107–$0.239 — strong potential. Is the gap between flagged agents and hub best a coaching opportunity, or a replacement signal?",
+          "10 new agents recruited, 9 below baseline. Anambra has been creeping up WoW (+3.1%). Is the new intake going to specific hubs, and are any of them likely to convert?"
+        ]
+      },
+      {
+        "region": "Enugu",
+        "wow_delta": "↑ 2.6% WoW",
+        "questions": [
+          "Three flagged agents at Obollo-afor 2 with hub DRR $0.020. Hub-best is $0.069. Sound familiar? Same shape as Ogoja 2 — possible to replicate whatever fix gets used in Cross River here?",
+          "Three agents earning ₦0/week (Lawrence Chukwuebuka at Akpugo, Elere Sopuluchukwu Kingsley at Enugu-Ezike 1, Odo Kingsley Nwafor at Obollo-afor 2). Are these dormant placeholders that should be cleared from the system, or active agents we're failing to support?"
+        ]
+      },
+      {
+        "region": "Bayelsa",
+        "wow_delta": "↑ 2.1% WoW",
+        "questions": [
+          "Bayelsa's at $0.138 with no hubs surfaced as flagged in the top-60. Quietly performing — what's the playbook here, and could it transplant to Cross River (similar geography, 4× worse DRR)?",
+          "5 new agents this period, 1 above target, 1 progressing. Is this small but high-quality intake intentional, and what's different about how Bayelsa hires?"
+        ]
+      },
+      {
+        "region": "Ondo South",
+        "wow_delta": "↑ 2.5% WoW",
+        "questions": [
+          "$0.142 and rising slowly (+2.5% WoW). 35 hubs — the second-largest region in the country. Is the bottom quartile of those 35 hubs dragging us under target, or is the region broadly even?"
+        ]
+      },
+      {
+        "region": "Ondo North",
+        "wow_delta": "↓ 1.6% WoW",
+        "questions": [
+          "Slight slip (-1.6%). Region was within striking distance of the $0.18 target. Is this WoW noise or do we have a hub or two starting to slide?"
+        ]
+      },
+      {
+        "region": "Rivers",
+        "wow_delta": "↓ 4.2% WoW",
+        "questions": [
+          "Only 3 hubs in the region, -4.2% WoW. Almost certainly single-hub volatility. Which one moved, and how much of last week's number was a one-off vs a trend?"
+        ]
+      },
+      {
+        "region": "Osun",
+        "wow_delta": "flat",
+        "questions": [
+          "Held flat at $0.164 — close to target. 17 hubs. What's the path from here to clearing $0.18 sustainably, and what would derail it?"
+        ]
+      },
+      {
+        "region": "Ogun",
+        "wow_delta": "↑ 2.0% WoW",
+        "questions": [
+          "Above target at $0.194 across 37 hubs (the largest region in the country). What does the bottom decile of those 37 look like — is the regional average masking a long tail?",
+          "Ogun and Ekiti are the only two regions clearing $0.18. What's transferable from Ogun's playbook to the next-band-down regions (Osun, Ondo North)?"
+        ]
+      },
+      {
+        "region": "Ekiti",
+        "wow_delta": "↑ 8.5% WoW",
+        "questions": [
+          "Ekiti at $0.20 — top region in NG MOPO50, +8.5% WoW. Is this sustainable or did one strong hub spike the average?",
+          "1 of 3 new agents in Ekiti cleared above target — the only region with that conversion rate. What's different about Ekiti's hiring?"
+        ]
+      }
+    ]
+  },
   "new_agents": {
     "by_region": [
       {
-        "region": "Anambra",
-        "new_agents": 8,
-        "avg_drr": 5.054,
-        "above_target": 7,
+        "region": "Ekiti",
+        "new_agents": 3,
+        "avg_drr_usd": 0.11,
+        "above_target": 1,
+        "progressing": 0,
+        "below_baseline": 2
+      },
+      {
+        "region": "Ondo North",
+        "new_agents": 3,
+        "avg_drr_usd": 0.1,
+        "above_target": 1,
         "progressing": 0,
         "below_baseline": 1
       },
       {
         "region": "Bayelsa",
         "new_agents": 5,
-        "avg_drr": 6.0038,
-        "above_target": 3,
-        "progressing": 0,
-        "below_baseline": 2
-      },
-      {
-        "region": "Cross River",
-        "new_agents": 6,
-        "avg_drr": 3.5302,
-        "above_target": 5,
-        "progressing": 0,
-        "below_baseline": 1
-      },
-      {
-        "region": "Delta",
-        "new_agents": 12,
-        "avg_drr": 3.9986,
-        "above_target": 12,
-        "progressing": 0,
-        "below_baseline": 0
-      },
-      {
-        "region": "Ebonyi",
-        "new_agents": 6,
-        "avg_drr": 3.3524,
-        "above_target": 6,
-        "progressing": 0,
-        "below_baseline": 0
-      },
-      {
-        "region": "Ekiti",
-        "new_agents": 3,
-        "avg_drr": 7.852,
-        "above_target": 3,
-        "progressing": 0,
-        "below_baseline": 0
+        "avg_drr_usd": 0.09,
+        "above_target": 1,
+        "progressing": 1,
+        "below_baseline": 3
       },
       {
         "region": "Enugu",
         "new_agents": 11,
-        "avg_drr": 5.9429,
-        "above_target": 11,
-        "progressing": 0,
-        "below_baseline": 0
-      },
-      {
-        "region": "Imo",
-        "new_agents": 40,
-        "avg_drr": 1.9594,
-        "above_target": 37,
-        "progressing": 2,
-        "below_baseline": 1
-      },
-      {
-        "region": "Kano",
-        "new_agents": 26,
-        "avg_drr": 1.2828,
-        "above_target": 19,
-        "progressing": 0,
-        "below_baseline": 7
-      },
-      {
-        "region": "Ondo North",
-        "new_agents": 2,
-        "avg_drr": 9.8809,
-        "above_target": 2,
-        "progressing": 0,
-        "below_baseline": 0
+        "avg_drr_usd": 0.08,
+        "above_target": 0,
+        "progressing": 3,
+        "below_baseline": 8
       },
       {
         "region": "Ondo South",
-        "new_agents": 3,
-        "avg_drr": 5.9151,
-        "above_target": 3,
+        "new_agents": 4,
+        "avg_drr_usd": 0.07,
+        "above_target": 0,
         "progressing": 0,
-        "below_baseline": 0
+        "below_baseline": 3
+      },
+      {
+        "region": "Anambra",
+        "new_agents": 10,
+        "avg_drr_usd": 0.06,
+        "above_target": 0,
+        "progressing": 0,
+        "below_baseline": 9
+      },
+      {
+        "region": "Cross River",
+        "new_agents": 4,
+        "avg_drr_usd": 0.05,
+        "above_target": 0,
+        "progressing": 0,
+        "below_baseline": 4
       },
       {
         "region": "Osun",
-        "new_agents": 2,
-        "avg_drr": 5.7224,
-        "above_target": 2,
+        "new_agents": 3,
+        "avg_drr_usd": 0.05,
+        "above_target": 0,
         "progressing": 0,
-        "below_baseline": 0
+        "below_baseline": 3
+      },
+      {
+        "region": "Delta",
+        "new_agents": 14,
+        "avg_drr_usd": 0.04,
+        "above_target": 0,
+        "progressing": 0,
+        "below_baseline": 13
       },
       {
         "region": "Oyo",
         "new_agents": 1,
-        "avg_drr": 1.8794,
-        "above_target": 1,
+        "avg_drr_usd": 0.03,
+        "above_target": 0,
         "progressing": 0,
-        "below_baseline": 0
+        "below_baseline": 1
+      },
+      {
+        "region": "Ebonyi",
+        "new_agents": 4,
+        "avg_drr_usd": 0.03,
+        "above_target": 0,
+        "progressing": 0,
+        "below_baseline": 4
+      },
+      {
+        "region": "Kano",
+        "new_agents": 24,
+        "avg_drr_usd": 0.02,
+        "above_target": 0,
+        "progressing": 0,
+        "below_baseline": 24
+      },
+      {
+        "region": "Imo",
+        "new_agents": 40,
+        "avg_drr_usd": 0.02,
+        "above_target": 0,
+        "progressing": 0,
+        "below_baseline": 40
       }
     ]
   }
