@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-05-02T06:31:45.000Z",
+  "yesterday_date": "2026-05-01",
+  "trial_days": 10,
+  "hubs": [
+    {
+      "hub_name": "Kajola Ondo",
+      "hub_id": 274,
+      "yesterday_drr": 49.67,
+      "trial_avg_drr": 44.57,
+      "pre_asp_avg_drr": 67.7,
+      "delta_vs_baseline": -0.5207,
+      "delta_vs_pre_avg": -0.3416,
+      "yesterday_24h_share": 1.0,
+      "trial_avg_24h_share": 0.9968,
+      "drr_day_on_day_swing": 0.0645
+    },
+    {
+      "hub_name": "Iwopin Ogun",
+      "hub_id": 278,
+      "yesterday_drr": 17.85,
+      "trial_avg_drr": 26.4,
+      "pre_asp_avg_drr": 36.25,
+      "delta_vs_baseline": -0.7533,
+      "delta_vs_pre_avg": -0.2718,
+      "yesterday_24h_share": 0.8333,
+      "trial_avg_24h_share": 0.8352,
+      "drr_day_on_day_swing": -0.3977
+    },
+    {
+      "hub_name": "Ibiade Ogun",
+      "hub_id": 279,
+      "yesterday_drr": 39.8,
+      "trial_avg_drr": 68.98,
+      "pre_asp_avg_drr": 78.25,
+      "delta_vs_baseline": -0.4154,
+      "delta_vs_pre_avg": -0.1185,
+      "yesterday_24h_share": 1.0,
+      "trial_avg_24h_share": 0.8487,
+      "drr_day_on_day_swing": -0.5706
+    },
+    {
+      "hub_name": "Ute Ondo",
+      "hub_id": 296,
+      "yesterday_drr": 96.3,
+      "trial_avg_drr": 101.78,
+      "pre_asp_avg_drr": 93.04,
+      "delta_vs_baseline": -0.5011,
+      "delta_vs_pre_avg": 0.0939,
+      "yesterday_24h_share": 0.9655,
+      "trial_avg_24h_share": 0.9329,
+      "drr_day_on_day_swing": -0.0074
+    },
+    {
+      "hub_name": "Sobe Edo",
+      "hub_id": 300,
+      "yesterday_drr": 0.0,
+      "trial_avg_drr": 21.53,
+      "pre_asp_avg_drr": 29.6,
+      "delta_vs_baseline": -0.8094,
+      "delta_vs_pre_avg": -0.2724,
+      "yesterday_24h_share": null,
+      "trial_avg_24h_share": 0.4162,
+      "drr_day_on_day_swing": -1.0
+    },
+    {
+      "hub_name": "Oba Akoko Ondo",
+      "hub_id": 313,
+      "yesterday_drr": 85.83,
+      "trial_avg_drr": 65.07,
+      "pre_asp_avg_drr": 103.74,
+      "delta_vs_baseline": -0.5719,
+      "delta_vs_pre_avg": -0.3728,
+      "yesterday_24h_share": 0.9565,
+      "trial_avg_24h_share": 0.9496,
+      "drr_day_on_day_swing": 0.1508
+    }
+  ]
+}
