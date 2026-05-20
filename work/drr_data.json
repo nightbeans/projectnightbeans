@@ -1,4 +1,4 @@
-{"generated_at":"2026-05-19T00:00:00Z","rows":[
+{"generated_at":"2026-05-20T00:00:00Z","rows":[
 {"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-04-01","r6":0,"r12":0,"r24":33,"rt":33,"inc":22440,"av":299},
 {"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-04-02","r6":1,"r12":0,"r24":33,"rt":34,"inc":22780,"av":299},
 {"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-04-03","r6":0,"r12":0,"r24":27,"rt":27,"inc":18360,"av":299},
@@ -46,7 +46,8 @@
 {"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-05-15","r6":0,"r12":0,"r24":28,"rt":28,"inc":12600,"av":299},
 {"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-05-16","r6":0,"r12":0,"r24":38,"rt":38,"inc":17100,"av":299},
 {"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-05-17","r6":0,"r12":0,"r24":34,"rt":34,"inc":15300,"av":299},
-{"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-05-18","r6":1,"r12":0,"r24":32,"rt":33,"inc":14700,"av":299},
+{"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-05-18","r6":1,"r12":0,"r24":38,"rt":39,"inc":17400,"av":299},
+{"hub_name":"Kajola Ondo","hub_id":274,"date":"2026-05-19","r6":0,"r12":0,"r24":28,"rt":28,"inc":12600,"av":299},
 {"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-04-01","r6":0,"r12":1,"r24":6,"rt":7,"inc":4590,"av":299},
 {"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-04-02","r6":0,"r12":13,"r24":15,"rt":28,"inc":16830,"av":298},
 {"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-04-03","r6":1,"r12":5,"r24":19,"rt":25,"inc":15810,"av":298},
@@ -94,7 +95,8 @@
 {"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-05-15","r6":0,"r12":5,"r24":26,"rt":31,"inc":13700,"av":293},
 {"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-05-16","r6":0,"r12":6,"r24":30,"rt":36,"inc":15900,"av":293},
 {"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-05-17","r6":0,"r12":2,"r24":47,"rt":49,"inc":21950,"av":293},
-{"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-05-18","r6":0,"r12":3,"r24":1,"rt":4,"inc":1650,"av":293},
+{"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-05-18","r6":0,"r12":4,"r24":21,"rt":25,"inc":11050,"av":293},
+{"hub_name":"Iwopin Ogun","hub_id":278,"date":"2026-05-19","r6":0,"r12":1,"r24":7,"rt":8,"inc":3550,"av":293},
 {"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-04-01","r6":0,"r12":15,"r24":30,"rt":45,"inc":28050,"av":297},
 {"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-04-02","r6":0,"r12":38,"r24":23,"rt":61,"inc":35020,"av":297},
 {"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-04-03","r6":0,"r12":13,"r24":11,"rt":24,"inc":14110,"av":297},
@@ -142,7 +144,8 @@
 {"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-05-15","r6":0,"r12":15,"r24":42,"rt":57,"inc":24900,"av":292},
 {"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-05-16","r6":0,"r12":9,"r24":44,"rt":53,"inc":23400,"av":292},
 {"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-05-17","r6":0,"r12":6,"r24":38,"rt":44,"inc":19500,"av":292},
-{"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-05-18","r6":0,"r12":5,"r24":37,"rt":42,"inc":18650,"av":293},
+{"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-05-18","r6":0,"r12":9,"r24":46,"rt":55,"inc":24300,"av":293},
+{"hub_name":"Ibiade Ogun","hub_id":279,"date":"2026-05-19","r6":0,"r12":10,"r24":22,"rt":32,"inc":13900,"av":293},
 {"hub_name":"Ute Ondo","hub_id":296,"date":"2026-04-01","r6":0,"r12":11,"r24":15,"rt":26,"inc":15810,"av":136},
 {"hub_name":"Ute Ondo","hub_id":296,"date":"2026-04-02","r6":0,"r12":17,"r24":14,"rt":31,"inc":18190,"av":136},
 {"hub_name":"Ute Ondo","hub_id":296,"date":"2026-04-03","r6":0,"r12":1,"r24":3,"rt":4,"inc":2550,"av":136},
@@ -190,7 +193,8 @@
 {"hub_name":"Ute Ondo","hub_id":296,"date":"2026-05-15","r6":0,"r12":2,"r24":19,"rt":21,"inc":9350,"av":134},
 {"hub_name":"Ute Ondo","hub_id":296,"date":"2026-05-16","r6":0,"r12":1,"r24":21,"rt":22,"inc":9850,"av":134},
 {"hub_name":"Ute Ondo","hub_id":296,"date":"2026-05-17","r6":0,"r12":0,"r24":20,"rt":20,"inc":9000,"av":134},
-{"hub_name":"Ute Ondo","hub_id":296,"date":"2026-05-18","r6":0,"r12":0,"r24":14,"rt":14,"inc":6300,"av":134},
+{"hub_name":"Ute Ondo","hub_id":296,"date":"2026-05-18","r6":0,"r12":0,"r24":15,"rt":15,"inc":6750,"av":134},
+{"hub_name":"Ute Ondo","hub_id":296,"date":"2026-05-19","r6":0,"r12":0,"r24":13,"rt":13,"inc":5850,"av":134},
 {"hub_name":"Sobe Edo","hub_id":300,"date":"2026-04-01","r6":0,"r12":5,"r24":1,"rt":6,"inc":3230,"av":138},
 {"hub_name":"Sobe Edo","hub_id":300,"date":"2026-04-02","r6":0,"r12":6,"r24":0,"rt":6,"inc":3060,"av":137},
 {"hub_name":"Sobe Edo","hub_id":300,"date":"2026-04-03","r6":0,"r12":7,"r24":1,"rt":8,"inc":4250,"av":137},
@@ -238,7 +242,8 @@
 {"hub_name":"Sobe Edo","hub_id":300,"date":"2026-05-15","r6":0,"r12":7,"r24":11,"rt":18,"inc":7750,"av":137},
 {"hub_name":"Sobe Edo","hub_id":300,"date":"2026-05-16","r6":0,"r12":2,"r24":5,"rt":7,"inc":3050,"av":137},
 {"hub_name":"Sobe Edo","hub_id":300,"date":"2026-05-17","r6":0,"r12":4,"r24":6,"rt":10,"inc":4300,"av":137},
-{"hub_name":"Sobe Edo","hub_id":300,"date":"2026-05-18","r6":0,"r12":0,"r24":1,"rt":1,"inc":450,"av":137},
+{"hub_name":"Sobe Edo","hub_id":300,"date":"2026-05-18","r6":0,"r12":0,"r24":3,"rt":3,"inc":1350,"av":137},
+{"hub_name":"Sobe Edo","hub_id":300,"date":"2026-05-19","r6":0,"r12":5,"r24":2,"rt":7,"inc":2900,"av":137},
 {"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-04-01","r6":0,"r12":9,"r24":13,"rt":22,"inc":13430,"av":124},
 {"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-04-02","r6":0,"r12":8,"r24":19,"rt":27,"inc":17000,"av":124},
 {"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-04-03","r6":0,"r12":6,"r24":7,"rt":13,"inc":7820,"av":122},
@@ -286,5 +291,6 @@
 {"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-05-15","r6":0,"r12":4,"r24":27,"rt":31,"inc":13750,"av":119},
 {"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-05-16","r6":0,"r12":2,"r24":25,"rt":27,"inc":12050,"av":119},
 {"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-05-17","r6":0,"r12":1,"r24":16,"rt":17,"inc":7600,"av":119},
-{"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-05-18","r6":0,"r12":0,"r24":20,"rt":20,"inc":9000,"av":119}
+{"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-05-18","r6":0,"r12":0,"r24":20,"rt":20,"inc":9000,"av":119},
+{"hub_name":"Oba Akoko Ondo","hub_id":313,"date":"2026-05-19","r6":0,"r12":1,"r24":36,"rt":37,"inc":16600,"av":119}
 ]}
