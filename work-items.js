@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'Hub DRR Performance Atlas Analysis',
+        url: '/work/hub_atlas_dashboard.html',
+        date: '2026-05-22',
+        description: '30, 90 and 180 day DRR analysis of hubs within settlement polygons from MOPO Atlas dataset. Use this dashboard to understand the demographics of the settlements in each operating subsidiary and compare these to the performance of hubs within those polygons. The slider is critical for ensuring that you filter out outlier polygons such as Freetown in Sierra Leone.'
+    },
+    {
         title: 'MOPO 4DX Scoreboard',
         url: '/work/mopo_scoreboard.html',
         date: '2026-04-29',
