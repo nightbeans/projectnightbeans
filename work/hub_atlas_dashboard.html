@@ -71,6 +71,12 @@ body {
   border-bottom: 1px solid var(--rule);
 }
 .control-group { display: flex; flex-direction: column; gap: 6px; }
+.metric-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 16px;
+}
 .control-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
@@ -346,6 +352,16 @@ body {
   text-align: right;
   letter-spacing: 0.02em;
 }
+.date-range {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  padding: 6px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  white-space: nowrap;
+}
 
 @media (max-width: 900px) {
   body { padding: 20px; }
@@ -395,6 +411,10 @@ body {
       <button data-val="drr_180d">180 day</button>
     </div>
   </div>
+  <div class="control-group">
+    <span class="control-label">Date range</span>
+    <span class="date-range" id="window-range"></span>
+  </div>
   <div class="control-group slider-group">
     <span class="control-label">Max polygon population</span>
     <div class="slider-row">
@@ -414,7 +434,7 @@ body {
 <div class="section-title">Quartile binning — share of hubs hitting DRR target</div>
 <div class="section-rule"></div>
 <div class="section-byline">Hubs grouped into quartiles by selected metric. Counts and DRR hit rates per bin.</div>
-<div class="control-group" style="margin: 12px 0 16px">
+<div class="metric-inline">
   <span class="control-label">Metric</span>
   <div class="btn-group" id="metric-btns">
     <button data-val="population" class="active">Population</button>
@@ -455,6 +475,7 @@ body {
   Households is Atlas's count of satellite-detected building footprints in the polygon — independent of any census-derived population estimate.
   DRR computed as: SUM(rental_income / daily FX rate) ÷ SUM(available batteries that day). USD-denominated throughout.
   Lagos is included in this analysis (unlike SmartPlay analysis where it's excluded).
+  Data pulled <span id="footer-build-date"></span>. DRR windows count back from this date.
 </div>
 
 <div class="tooltip" id="tooltip"></div>
@@ -464,6 +485,19 @@ const DATA = [{"hub_id": 152, "name": "Agbado Ekiti", "country_code": "NG", "lat
 const HH_SIZE = {NG: 5.0, SL: 5.7, LR: 4.7, CD: 6.0};
 const TARGETS = {MOPO50: 0.18, GENREP: 2.00};
 const COUNTRY_NAMES = {NG: 'Nigeria', SL: 'Sierra Leone', LR: 'Liberia', CD: 'DRC'};
+
+// Date the underlying data was pulled from the database. Update this when regenerating the dashboard.
+const BUILD_DATE = '2026-05-22';
+
+const WINDOW_DAYS = {drr_30d: 30, drr_90d: 90, drr_180d: 180};
+
+function fmtRange(windowKey) {
+  const end = new Date(BUILD_DATE + 'T00:00:00Z');
+  const start = new Date(end);
+  start.setUTCDate(end.getUTCDate() - WINDOW_DAYS[windowKey]);
+  const fmt = (d) => d.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC'});
+  return `${fmt(start)} – ${fmt(end)}`;
+}
 
 let state = {
   country: 'NG',
@@ -799,6 +833,12 @@ function renderAll() {
   renderQuartiles();
   renderTable();
   document.getElementById('meta-stamp').textContent = `${COUNTRY_NAMES[state.country]} · ${state.hubType} · ${state.window.replace('drr_','').replace('d',' day')}`;
+  document.getElementById('window-range').textContent = fmtRange(state.window);
+  const buildDateEl = document.getElementById('footer-build-date');
+  if (buildDateEl && !buildDateEl.textContent) {
+    const d = new Date(BUILD_DATE + 'T00:00:00Z');
+    buildDateEl.textContent = d.toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'});
+  }
 }
 
 // Wire up controls
