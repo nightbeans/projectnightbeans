@@ -162,8 +162,8 @@ def generate_benedict_reviews():
         except Exception as e:
             print(f'  ✗ Error processing {item.name}: {e}')
 
-    # Sort by date (newest first)
-    reviews.sort(key=lambda x: x['date'], reverse=True)
+    # Sort by date (newest first), tiebreak on url for deterministic output
+    reviews.sort(key=lambda x: (x['date'], x['url']), reverse=True)
 
     # Generate JavaScript file
     js_content = f"""// Benedict Reviews Data
@@ -223,8 +223,8 @@ def generate_blog_posts():
         except Exception as e:
             print(f'  ✗ Error processing {item.name}: {e}')
 
-    # Sort by date (newest first)
-    posts.sort(key=lambda x: x['date'], reverse=True)
+    # Sort by date (newest first), tiebreak on url for deterministic output
+    posts.sort(key=lambda x: (x['date'], x['url']), reverse=True)
 
     # Generate JavaScript file
     js_content = f"""// Blog Posts Data
@@ -411,8 +411,8 @@ def generate_book_chapters():
         except Exception as e:
             print(f'  ✗ Error processing {item.name}: {e}')
 
-    # Sort by chapter number
-    chapters.sort(key=lambda x: x['chapterNumber'])
+    # Sort by chapter number, tiebreak on url for deterministic output
+    chapters.sort(key=lambda x: (x['chapterNumber'], x['url']))
 
     # Generate JavaScript file
     js_content = f"""// Book Chapters Data

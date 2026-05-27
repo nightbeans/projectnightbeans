@@ -165,18 +165,18 @@ const blogPosts = [
         "excerpt": "“It’s time to go.”"
     },
     {
-        "title": "It self-destructs",
-        "url": "/posts/it-self-destructs/",
-        "date": "2024-05-03",
-        "dateDisplay": "May 03 2024",
-        "excerpt": "Self-destructing album, gig. Self-destructing small, big. Self-destructing letter, call. Self-destructing summer,fall. Self-destructing finished, task. Self-destructing answer, ask. Self-destructing more, less. Self-destructing checkers, chess."
-    },
-    {
         "title": "It started by starting",
         "url": "/posts/it-started-by-starting/",
         "date": "2024-05-03",
         "dateDisplay": "May 03 2024",
         "excerpt": "What to do if there is nothing?  What the hell do we do? Let’s just eat. Let’s just sit. There is nothing, right. There is nothing right. Let’s do nothing, let’s do. No one will remember. If nothing ever happened, nothing ever will. I think something just showed up, it started by starting. What do we do if there’s something? What on earth will we do? There’s something, right. There’s something right. Let’s do something, let’s do. Someone will remember. If something started happening, something surely will. Let’s do what we can, let’s eat, let’s sit. I think something showed up, it started by starting. It proved something right, it showed us that nothing,was never in sight."
+    },
+    {
+        "title": "It self-destructs",
+        "url": "/posts/it-self-destructs/",
+        "date": "2024-05-03",
+        "dateDisplay": "May 03 2024",
+        "excerpt": "Self-destructing album, gig. Self-destructing small, big. Self-destructing letter, call. Self-destructing summer,fall. Self-destructing finished, task. Self-destructing answer, ask. Self-destructing more, less. Self-destructing checkers, chess."
     },
     {
         "title": "Bad Marketing Campaigns #1",
@@ -263,18 +263,18 @@ const blogPosts = [
         "excerpt": "The car from Kambia to Makeni was long and not too comfortable, but the roads were good. Most of the roads in Sierra Leone are excellent."
     },
     {
-        "title": "Further down",
-        "url": "/posts/further-down/",
-        "date": "2024-04-07",
-        "dateDisplay": "April 07 2024",
-        "excerpt": "Time on the surface. Short chopping breaths. Quick flying kicks. They love to distract. I long to detract. It is there at the bottom. It is always further down. If only I were earnest. I hope I mean, what I say."
-    },
-    {
         "title": "The Stowaway (for Percy)",
         "url": "/posts/the-stowaway-for-percy/",
         "date": "2024-04-07",
         "dateDisplay": "April 07 2024",
         "excerpt": "I just wanted an adventure. I should not have been there. Hiding below. Thank God he cared for me. Trapped with hope, until it sinks. So too I. Thank God he cared for me. I was not planned for. No supplies, no bed, no role reserved. Thank God he cared for me. We carried the Caird. My feet frozen through, the stowaway now useless. Thank God he cared for me. He sailed as we waited. Inhospitable refuge. I was in agony. Thank God he cared for me. There because I had hidden. He acted as if I were chosen. He fed me. He led me. He returned for me. Thank God he cared for me."
+    },
+    {
+        "title": "Further down",
+        "url": "/posts/further-down/",
+        "date": "2024-04-07",
+        "dateDisplay": "April 07 2024",
+        "excerpt": "Time on the surface. Short chopping breaths. Quick flying kicks. They love to distract. I long to detract. It is there at the bottom. It is always further down. If only I were earnest. I hope I mean, what I say."
     },
     {
         "title": "Crude naif prig",
@@ -291,18 +291,18 @@ const blogPosts = [
         "excerpt": "It’s dark out, who is home? Let them come in, they are alone. It’s a cliff they are on, I don’t think they know. There really is nowhere else to go, let’s wait. We’ll see. Which of them will come to me."
     },
     {
-        "title": "I am not calm",
-        "url": "/posts/i-am-not-calm/",
-        "date": "2024-04-02",
-        "dateDisplay": "April 02 2024",
-        "excerpt": "I am filling up, I cannot write. I am jamming the airways, cover my ears. Close my eyes. My mind is full and I am at the limit. I am not calm. I am not ready for quiet."
-    },
-    {
         "title": "Many uses for a Buff",
         "url": "/posts/many-uses-for-a-buff/",
         "date": "2024-04-02",
         "dateDisplay": "April 02 2024",
         "excerpt": "He is an excellent runner. He is an exceptional runner. He has run the Dragons Back and the Spine."
+    },
+    {
+        "title": "I am not calm",
+        "url": "/posts/i-am-not-calm/",
+        "date": "2024-04-02",
+        "dateDisplay": "April 02 2024",
+        "excerpt": "I am filling up, I cannot write. I am jamming the airways, cover my ears. Close my eyes. My mind is full and I am at the limit. I am not calm. I am not ready for quiet."
     },
     {
         "title": "EBI: Tamper, Sellers Wheel: 3/10",
@@ -326,18 +326,18 @@ const blogPosts = [
         "excerpt": "‘Scar’ from The Lion King is probably not a model to be emulated."
     },
     {
-        "title": "EBI - A brunch index you cant trust",
-        "url": "/posts/ebi-a-brunch-index-you-cant-trust/",
-        "date": "2024-03-21",
-        "dateDisplay": "March 21 2024",
-        "excerpt": "Here’s the vision. You’re in Barcelona. You wake up naturally at 9:17. You have a shower and put on your Birks, shorts and a short sleeve shirt with one more button undone than your comfy with and head out the door."
-    },
-    {
         "title": "What?",
         "url": "/posts/what/",
         "date": "2024-03-21",
         "dateDisplay": "March 21 2024",
         "excerpt": "Daniel Kaluuya told an excellent story in an interview with Rick Rubin. It was from his time acting opposite Josh Brolin in Sicario. I have not seen the film at the time of writing."
+    },
+    {
+        "title": "EBI - A brunch index you cant trust",
+        "url": "/posts/ebi-a-brunch-index-you-cant-trust/",
+        "date": "2024-03-21",
+        "dateDisplay": "March 21 2024",
+        "excerpt": "Here’s the vision. You’re in Barcelona. You wake up naturally at 9:17. You have a shower and put on your Birks, shorts and a short sleeve shirt with one more button undone than your comfy with and head out the door."
     },
     {
         "title": "We butchered a model",
