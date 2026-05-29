@@ -1,6 +1,6 @@
 (function () {
   if (sessionStorage.getItem('work_auth') === '1') return;
-  if (localStorage.getItem('work_email_auth') === '1') return;
+  if (localStorage.getItem('work_sso_auth') === '1') return;
 
   const CLIENT_ID = '709784373150-q5budplonk1uggjvr9kq2pqggf205mq4.apps.googleusercontent.com';
   const ALLOWED_DOMAIN = 'mobile-power.co.uk';
@@ -20,7 +20,7 @@
       const c = decodeJWT(response.credential);
       const emailOk = typeof c.email === 'string' && c.email.toLowerCase().endsWith('@' + ALLOWED_DOMAIN);
       if (c.email_verified && c.hd === ALLOWED_DOMAIN && emailOk) {
-        localStorage.setItem('work_email_auth', '1');
+        localStorage.setItem('work_sso_auth', '1');
         localStorage.setItem('work_email', c.email.toLowerCase());
         const gate = document.getElementById('__work-email-gate');
         if (gate) gate.remove();
