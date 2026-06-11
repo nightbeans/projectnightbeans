@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'Proxy Microhub Trial',
+        url: '/work/proxy_microhub_drr_dashboard.html',
+        date: '2026-06-11',
+        description: 'DRR dashboard tracking the Proxy Microhub trial.'
+    },
+    {
         title: 'Hub DRR Performance Atlas Analysis',
         url: '/work/hub_atlas_dashboard.html',
         date: '2026-05-22',
