@@ -1,79 +1,79 @@
 {
-  "generated_at": "2026-06-13T06:09:38Z",
-  "yesterday_date": "2026-06-12",
-  "trial_days": 52,
+  "generated_at": "2026-06-14T06:09:48Z",
+  "yesterday_date": "2026-06-13",
+  "trial_days": 53,
   "hubs": [
     {
       "hub_name": "Kajola Ondo",
       "hub_id": 274,
-      "yesterday_drr": 38.01,
-      "trial_avg_drr": 44.76,
+      "yesterday_drr": 33.45,
+      "trial_avg_drr": 44.72,
       "pre_asp_avg_drr": 67.7,
-      "delta_vs_baseline": -0.5187,
-      "delta_vs_pre_avg": -0.3388,
+      "delta_vs_baseline": -0.5191,
+      "delta_vs_pre_avg": -0.3394,
       "yesterday_24h_share": 1.0,
       "trial_avg_24h_share": 0.9971,
-      "drr_day_on_day_swing": -0.0385
+      "drr_day_on_day_swing": -0.2902
     },
     {
       "hub_name": "Iwopin Ogun",
       "hub_id": 278,
-      "yesterday_drr": 63.04,
-      "trial_avg_drr": 50.96,
+      "yesterday_drr": 88.29,
+      "trial_avg_drr": 52.17,
       "pre_asp_avg_drr": 36.25,
-      "delta_vs_baseline": -0.5237,
-      "delta_vs_pre_avg": 0.4058,
-      "yesterday_24h_share": 0.9762,
-      "trial_avg_24h_share": 0.8812,
-      "drr_day_on_day_swing": -0.3632
+      "delta_vs_baseline": -0.5124,
+      "delta_vs_pre_avg": 0.4392,
+      "yesterday_24h_share": 0.9492,
+      "trial_avg_24h_share": 0.8826,
+      "drr_day_on_day_swing": -0.0205
     },
     {
       "hub_name": "Ibiade Ogun",
       "hub_id": 279,
-      "yesterday_drr": 51.0,
-      "trial_avg_drr": 89.85,
+      "yesterday_drr": 87.79,
+      "trial_avg_drr": 90.55,
       "pre_asp_avg_drr": 78.25,
-      "delta_vs_baseline": -0.2386,
-      "delta_vs_pre_avg": 0.1482,
-      "yesterday_24h_share": 0.9706,
-      "trial_avg_24h_share": 0.8253,
-      "drr_day_on_day_swing": -0.2078
+      "delta_vs_baseline": -0.2326,
+      "delta_vs_pre_avg": 0.1572,
+      "yesterday_24h_share": 0.8983,
+      "trial_avg_24h_share": 0.8241,
+      "drr_day_on_day_swing": -0.026
     },
     {
       "hub_name": "Ute Ondo",
       "hub_id": 296,
-      "yesterday_drr": 103.05,
-      "trial_avg_drr": 94.03,
+      "yesterday_drr": 93.89,
+      "trial_avg_drr": 94.5,
       "pre_asp_avg_drr": 93.04,
-      "delta_vs_baseline": -0.5391,
-      "delta_vs_pre_avg": 0.0106,
+      "delta_vs_baseline": -0.5368,
+      "delta_vs_pre_avg": 0.0157,
       "yesterday_24h_share": 1.0,
-      "trial_avg_24h_share": 0.9652,
-      "drr_day_on_day_swing": -0.2623
+      "trial_avg_24h_share": 0.9659,
+      "drr_day_on_day_swing": -0.2679
     },
     {
       "hub_name": "Sobe Edo",
       "hub_id": 300,
-      "yesterday_drr": 38.64,
-      "trial_avg_drr": 44.44,
+      "yesterday_drr": 65.91,
+      "trial_avg_drr": 45.4,
       "pre_asp_avg_drr": 29.6,
-      "delta_vs_baseline": -0.6067,
-      "delta_vs_pre_avg": 0.5014,
+      "delta_vs_baseline": -0.5982,
+      "delta_vs_pre_avg": 0.5338,
       "yesterday_24h_share": 1.0,
-      "trial_avg_24h_share": 0.6706,
-      "drr_day_on_day_swing": -0.6304
+      "trial_avg_24h_share": 0.6768,
+      "drr_day_on_day_swing": -0.0333
     },
     {
       "hub_name": "Oba Akoko Ondo",
       "hub_id": 313,
-      "yesterday_drr": 88.24,
-      "trial_avg_drr": 88.94,
+      "yesterday_drr": 57.98,
+      "trial_avg_drr": 89.11,
       "pre_asp_avg_drr": 103.74,
-      "delta_vs_baseline": -0.4149,
-      "delta_vs_pre_avg": -0.1427,
+      "delta_vs_baseline": -0.4138,
+      "delta_vs_pre_avg": -0.141,
       "yesterday_24h_share": 1.0,
-      "trial_avg_24h_share": 0.9806,
-      "drr_day_on_day_swing": -0.375
+      "trial_avg_24h_share": 0.981,
+      "drr_day_on_day_swing": -0.549
     }
   ]
 }
