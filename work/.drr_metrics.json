@@ -1,1 +1,7 @@
-{"generated_at":"2026-06-21T06:04:26Z","status":"ERROR","error":"MOPO-Databot MCP server failed to connect — database query could not be executed","yesterday_date":null,"trial_days":null,"hubs":[]}
+{
+  "generated_at": "2026-06-23T06:06:33Z",
+  "run_date": "2026-06-23",
+  "status": "FAILED",
+  "error": "MOPO-Databot MCP server failed to connect. Dashboard not updated.",
+  "hubs": []
+}
