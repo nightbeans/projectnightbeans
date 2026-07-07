@@ -5,9 +5,9 @@
 const workItems = [
     {
         title: 'Proxy Microhub Trial',
-        url: '/work/proxy_microhub_drr_dashboard.html',
-        date: '2026-06-11',
-        description: 'DRR dashboard tracking the Proxy Microhub trial.'
+        url: '/work/proxy_microhub_trial_v2.html',
+        date: '2026-07-07',
+        description: 'Six-week check-in on the Proxy Microhub trial — DRR uplift across Sobe, Ute and Oba on live data to 6 Jul 2026.'
     },
     {
         title: 'Hub DRR Performance Atlas Analysis',
