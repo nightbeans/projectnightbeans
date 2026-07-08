@@ -1,1 +1,1091 @@
-{"generated_at": "2026-06-20T07:17:45.259419+00:00", "window_start": "2026-06-13", "window_end": "2026-06-19", "wig_current": 0.1737, "wig_prior": 0.1821, "portfolios": [{"name": "MPNG (directly operated)", "hub_count": 7, "drr_usd": 0.1737}], "regions": [{"region": "Ekiti", "hubs": 7, "drr_usd": 0.1737}], "lead_relative": {"above_threshold": 99, "total_agents": 100, "flagged_agents": 1}, "lead_earnings": {"above_floor": 84, "total_agents": 100, "below_floor": 16}, "flagged_agents": [{"agent_name": "Abdulsalam Abiola", "hub_name": "Iwopin Ogun", "region": "Ondo South", "portfolio": "MPNG (directly operated)", "agent_drr": 2.0087, "rel_perf": 26.4, "weekly_ngn": 19700, "days_in_role": 1339, "hub_drr": 0}], "new_agents": {"by_region": [{"region": "Kogi", "new_agents": 8, "avg_drr": 9.1003, "above_target": 8, "progressing": 0, "below_baseline": 0}, {"region": "Ogun", "new_agents": 3, "avg_drr": 9.0681, "above_target": 3, "progressing": 0, "below_baseline": 0}, {"region": "Anambra", "new_agents": 3, "avg_drr": 8.2422, "above_target": 3, "progressing": 0, "below_baseline": 0}, {"region": "Nasarawa", "new_agents": 8, "avg_drr": 8.0471, "above_target": 8, "progressing": 0, "below_baseline": 0}, {"region": "Ondo South", "new_agents": 2, "avg_drr": 7.627, "above_target": 2, "progressing": 0, "below_baseline": 0}, {"region": "Kaduna", "new_agents": 12, "avg_drr": 6.7243, "above_target": 12, "progressing": 0, "below_baseline": 0}, {"region": "Ekiti", "new_agents": 2, "avg_drr": 6.6145, "above_target": 2, "progressing": 0, "below_baseline": 0}, {"region": "Delta", "new_agents": 6, "avg_drr": 6.1047, "above_target": 6, "progressing": 0, "below_baseline": 0}, {"region": "Osun", "new_agents": 6, "avg_drr": 4.5922, "above_target": 6, "progressing": 0, "below_baseline": 0}, {"region": "Ebonyi", "new_agents": 2, "avg_drr": 4.4865, "above_target": 2, "progressing": 0, "below_baseline": 0}, {"region": "Bayelsa", "new_agents": 2, "avg_drr": 4.461, "above_target": 2, "progressing": 0, "below_baseline": 0}, {"region": "Cross River", "new_agents": 16, "avg_drr": 3.6038, "above_target": 14, "progressing": 1, "below_baseline": 1}, {"region": "Enugu", "new_agents": 2, "avg_drr": 3.4158, "above_target": 2, "progressing": 0, "below_baseline": 0}, {"region": "Kano", "new_agents": 8, "avg_drr": 2.5619, "above_target": 8, "progressing": 0, "below_baseline": 0}, {"region": "Ondo North", "new_agents": 7, "avg_drr": 2.5579, "above_target": 7, "progressing": 0, "below_baseline": 0}, {"region": "Oyo", "new_agents": 13, "avg_drr": 1.6618, "above_target": 13, "progressing": 0, "below_baseline": 0}]}}
+{
+  "generated_at": "2026-07-08T07:15:37.876957+00:00",
+  "window_start": "2026-07-01",
+  "window_end": "2026-07-07",
+  "wig_current": 0.116,
+  "wig_prior": 0.1214,
+  "portfolios": [
+    {
+      "name": "MPNG (directly operated)",
+      "hub_count": 62,
+      "drr_usd": 0.121
+    },
+    {
+      "name": "CrossBoundary Energy (CBA)",
+      "hub_count": 201,
+      "drr_usd": 0.115
+    },
+    {
+      "name": "Other",
+      "hub_count": 1,
+      "drr_usd": 0.0047
+    }
+  ],
+  "regions": [
+    {
+      "region": "Ekiti",
+      "hubs": 23,
+      "drr_usd": 0.1982
+    },
+    {
+      "region": "Ogun",
+      "hubs": 23,
+      "drr_usd": 0.1727
+    },
+    {
+      "region": "Rivers",
+      "hubs": 2,
+      "drr_usd": 0.1406
+    },
+    {
+      "region": "Ondo North",
+      "hubs": 24,
+      "drr_usd": 0.137
+    },
+    {
+      "region": "Osun",
+      "hubs": 13,
+      "drr_usd": 0.1324
+    },
+    {
+      "region": "Bayelsa",
+      "hubs": 13,
+      "drr_usd": 0.1246
+    },
+    {
+      "region": "Anambra",
+      "hubs": 10,
+      "drr_usd": 0.1151
+    },
+    {
+      "region": "Delta",
+      "hubs": 20,
+      "drr_usd": 0.1089
+    },
+    {
+      "region": "Kogi",
+      "hubs": 5,
+      "drr_usd": 0.1029
+    },
+    {
+      "region": "Ondo South",
+      "hubs": 33,
+      "drr_usd": 0.1004
+    },
+    {
+      "region": "Imo",
+      "hubs": 10,
+      "drr_usd": 0.0949
+    },
+    {
+      "region": "Cross River",
+      "hubs": 19,
+      "drr_usd": 0.0932
+    },
+    {
+      "region": "Oyo",
+      "hubs": 17,
+      "drr_usd": 0.0848
+    },
+    {
+      "region": "Kaduna",
+      "hubs": 9,
+      "drr_usd": 0.0844
+    },
+    {
+      "region": "Ebonyi",
+      "hubs": 11,
+      "drr_usd": 0.0804
+    },
+    {
+      "region": "Nasarawa",
+      "hubs": 5,
+      "drr_usd": 0.0796
+    },
+    {
+      "region": "Kano",
+      "hubs": 14,
+      "drr_usd": 0.0748
+    },
+    {
+      "region": "Enugu",
+      "hubs": 12,
+      "drr_usd": 0.0621
+    }
+  ],
+  "lead_relative": {
+    "above_threshold": 860,
+    "total_agents": 952,
+    "flagged_agents": 92
+  },
+  "lead_earnings": {
+    "above_floor": 764,
+    "total_agents": 952,
+    "below_floor": 188
+  },
+  "flagged_agents": [
+    {
+      "agent_name": "Muideen mukaila",
+      "hub_name": "Tewure Oyo",
+      "region": "Oyo",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.0255,
+      "rel_perf": 4.5,
+      "weekly_ngn": 250,
+      "days_in_role": 55,
+      "hub_drr": 0.0005
+    },
+    {
+      "agent_name": "Abdulwaheed Olanrewaju",
+      "hub_name": "Tewure Oyo",
+      "region": "Oyo",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.051,
+      "rel_perf": 9.0,
+      "weekly_ngn": 500,
+      "days_in_role": 55,
+      "hub_drr": 0.0005
+    },
+    {
+      "agent_name": "ADEDEJI ADENUGA",
+      "hub_name": "Ayete Oyo",
+      "region": "Oyo",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.1998,
+      "rel_perf": 18.5,
+      "weekly_ngn": 1960,
+      "days_in_role": 37,
+      "hub_drr": 0.0015
+    },
+    {
+      "agent_name": "Abdullateef Sofiyulahi",
+      "hub_name": "Ofiki Oyo",
+      "region": "Oyo",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.1091,
+      "rel_perf": 7.0,
+      "weekly_ngn": 1070,
+      "days_in_role": 48,
+      "hub_drr": 0.0016
+    },
+    {
+      "agent_name": "Bolaji Adam",
+      "hub_name": "Ofiki Oyo",
+      "region": "Oyo",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.2579,
+      "rel_perf": 16.5,
+      "weekly_ngn": 2530,
+      "days_in_role": 48,
+      "hub_drr": 0.0016
+    },
+    {
+      "agent_name": "Theresa Ushilebe",
+      "hub_name": "Ogoja 2 Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.2233,
+      "rel_perf": 34.3,
+      "weekly_ngn": 12000,
+      "days_in_role": 50,
+      "hub_drr": 0.0035
+    },
+    {
+      "agent_name": "Izuchukwu Anthony Samson",
+      "hub_name": "Obollo-afor 2 Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.6626,
+      "rel_perf": 23.6,
+      "weekly_ngn": 6500,
+      "days_in_role": 62,
+      "hub_drr": 0.0039
+    },
+    {
+      "agent_name": "Oriyomi Adeola",
+      "hub_name": "Iperindo Osun",
+      "region": "Osun",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.208,
+      "rel_perf": 3.5,
+      "weekly_ngn": 2040,
+      "days_in_role": 107,
+      "hub_drr": 0.0051
+    },
+    {
+      "agent_name": "Ismail Hamza Muhammad",
+      "hub_name": "Gaya Kano",
+      "region": "Kano",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.0255,
+      "rel_perf": 0.4,
+      "weekly_ngn": 250,
+      "days_in_role": 29,
+      "hub_drr": 0.0052
+    },
+    {
+      "agent_name": "Nnabuike Ikenna",
+      "hub_name": "Idomi cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.1019,
+      "rel_perf": 1.9,
+      "weekly_ngn": 1000,
+      "days_in_role": 141,
+      "hub_drr": 0.0052
+    },
+    {
+      "agent_name": "Egba Joy Christian",
+      "hub_name": "Ovonum Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.8665,
+      "rel_perf": 14.9,
+      "weekly_ngn": 8500,
+      "days_in_role": 40,
+      "hub_drr": 0.0056
+    },
+    {
+      "agent_name": "Ferdinand Omono",
+      "hub_name": "Ovonum Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.9878,
+      "rel_perf": 34.2,
+      "weekly_ngn": 19500,
+      "days_in_role": 26,
+      "hub_drr": 0.0056
+    },
+    {
+      "agent_name": "Dike Uzochukwu Solomon",
+      "hub_name": "Afikpo 2 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.7839,
+      "rel_perf": 31.3,
+      "weekly_ngn": 17500,
+      "days_in_role": 145,
+      "hub_drr": 0.006
+    },
+    {
+      "agent_name": "Oluchi Abagba",
+      "hub_name": "Afikpo 2 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.58,
+      "rel_perf": 27.7,
+      "weekly_ngn": 15500,
+      "days_in_role": 145,
+      "hub_drr": 0.006
+    },
+    {
+      "agent_name": "Uchenna Ezugwu",
+      "hub_name": "Ibagwa-aka Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.2936,
+      "rel_perf": 31.3,
+      "weekly_ngn": 22500,
+      "days_in_role": 166,
+      "hub_drr": 0.0061
+    },
+    {
+      "agent_name": "Lora Benjamin",
+      "hub_name": "Kolo Bayelsa",
+      "region": "Bayelsa",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.3568,
+      "rel_perf": 7.1,
+      "weekly_ngn": 3500,
+      "days_in_role": 182,
+      "hub_drr": 0.0065
+    },
+    {
+      "agent_name": "Jennifer Ogbudu",
+      "hub_name": "Bekwarra Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.631,
+      "rel_perf": 22.7,
+      "weekly_ngn": 16000,
+      "days_in_role": 47,
+      "hub_drr": 0.0066
+    },
+    {
+      "agent_name": "Edafe Marian",
+      "hub_name": "Oleh 1 Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.2039,
+      "rel_perf": 2.5,
+      "weekly_ngn": 2000,
+      "days_in_role": 21,
+      "hub_drr": 0.0067
+    },
+    {
+      "agent_name": "Onokurefe David Daniel",
+      "hub_name": "Oleh 1 Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.9878,
+      "rel_perf": 24.8,
+      "weekly_ngn": 19500,
+      "days_in_role": 21,
+      "hub_drr": 0.0067
+    },
+    {
+      "agent_name": "Thomas Osede",
+      "hub_name": "Doma 2 Nasarawa",
+      "region": "Nasarawa",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.5331,
+      "rel_perf": 29.6,
+      "weekly_ngn": 15040,
+      "days_in_role": 20,
+      "hub_drr": 0.0068
+    },
+    {
+      "agent_name": "Ama Ifeanyi Possible",
+      "hub_name": "Unwana Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.7839,
+      "rel_perf": 34.0,
+      "weekly_ngn": 17500,
+      "days_in_role": 22,
+      "hub_drr": 0.0074
+    },
+    {
+      "agent_name": "Kingsley Chukwudozie",
+      "hub_name": "Obollo-afor 1 Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.4587,
+      "rel_perf": 6.1,
+      "weekly_ngn": 4500,
+      "days_in_role": 43,
+      "hub_drr": 0.0081
+    },
+    {
+      "agent_name": "Balogun Rasheedat",
+      "hub_name": "Oka - Akoko 2 Ondo",
+      "region": "Ondo North",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 0.1529,
+      "rel_perf": 1.8,
+      "weekly_ngn": 1500,
+      "days_in_role": 1167,
+      "hub_drr": 0.0084
+    },
+    {
+      "agent_name": "Agbajelola Ganiyu",
+      "hub_name": "Oka - Akoko 2 Ondo",
+      "region": "Ondo North",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 2.4465,
+      "rel_perf": 28.9,
+      "weekly_ngn": 24000,
+      "days_in_role": 49,
+      "hub_drr": 0.0084
+    },
+    {
+      "agent_name": "BAMAS JIOSEPH",
+      "hub_name": "Kujama Kaduna",
+      "region": "Kaduna",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.9134,
+      "rel_perf": 8.8,
+      "weekly_ngn": 8960,
+      "days_in_role": 27,
+      "hub_drr": 0.0084
+    },
+    {
+      "agent_name": "MUJAHIDI ISIYAKU",
+      "hub_name": "Kujama Kaduna",
+      "region": "Kaduna",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.3486,
+      "rel_perf": 22.5,
+      "weekly_ngn": 23040,
+      "days_in_role": 27,
+      "hub_drr": 0.0084
+    },
+    {
+      "agent_name": "RABIU HUSSAINI",
+      "hub_name": "Kujama Kaduna",
+      "region": "Kaduna",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.6208,
+      "rel_perf": 34.7,
+      "weekly_ngn": 35520,
+      "days_in_role": 27,
+      "hub_drr": 0.0084
+    },
+    {
+      "agent_name": "Ejinaka Ezekiel",
+      "hub_name": "Nenwe Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.2548,
+      "rel_perf": 3.4,
+      "weekly_ngn": 2500,
+      "days_in_role": 71,
+      "hub_drr": 0.0085
+    },
+    {
+      "agent_name": "Abdulsalam Abiola",
+      "hub_name": "Iwopin Ogun",
+      "region": "Ondo South",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 0.6779,
+      "rel_perf": 5.4,
+      "weekly_ngn": 6650,
+      "days_in_role": 1357,
+      "hub_drr": 0.0088
+    },
+    {
+      "agent_name": "Akinsanya Binjo",
+      "hub_name": "Iwopin Ogun",
+      "region": "Ondo South",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 3.4863,
+      "rel_perf": 27.8,
+      "weekly_ngn": 34200,
+      "days_in_role": 1357,
+      "hub_drr": 0.0088
+    },
+    {
+      "agent_name": "Chukwuebuka Ugwu",
+      "hub_name": "Ekwulobia1 Anambra",
+      "region": "Anambra",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.3058,
+      "rel_perf": 4.1,
+      "weekly_ngn": 3000,
+      "days_in_role": 201,
+      "hub_drr": 0.0089
+    },
+    {
+      "agent_name": "OMENYI CHINECHEREM",
+      "hub_name": "Amuzu (Onueke) 1 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.7136,
+      "rel_perf": 6.6,
+      "weekly_ngn": 7000,
+      "days_in_role": 117,
+      "hub_drr": 0.0091
+    },
+    {
+      "agent_name": "OMAH SOLOMON",
+      "hub_name": "Amuzu (Onueke) 1 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.0581,
+      "rel_perf": 28.4,
+      "weekly_ngn": 30000,
+      "days_in_role": 117,
+      "hub_drr": 0.0091
+    },
+    {
+      "agent_name": "Agu Lawrence",
+      "hub_name": "Awgu Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.682,
+      "rel_perf": 21.4,
+      "weekly_ngn": 16500,
+      "days_in_role": 69,
+      "hub_drr": 0.0094
+    },
+    {
+      "agent_name": "Abuh Iliasu",
+      "hub_name": "Kasuwan Magani Kaduna",
+      "region": "Kaduna",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.8481,
+      "rel_perf": 10.5,
+      "weekly_ngn": 8320,
+      "days_in_role": 15,
+      "hub_drr": 0.0102
+    },
+    {
+      "agent_name": "Imeze Philip Mmaduabuchi",
+      "hub_name": "Ekoli Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.1917,
+      "rel_perf": 25.3,
+      "weekly_ngn": 21500,
+      "days_in_role": 35,
+      "hub_drr": 0.0102
+    },
+    {
+      "agent_name": "Edokor Carlson",
+      "hub_name": "Ogoja 1 Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.262,
+      "rel_perf": 26.9,
+      "weekly_ngn": 32000,
+      "days_in_role": 163,
+      "hub_drr": 0.0103
+    },
+    {
+      "agent_name": "Libabatu Muhammad",
+      "hub_name": "Ogoja 1 Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.1019,
+      "rel_perf": 0.8,
+      "weekly_ngn": 1000,
+      "days_in_role": 70,
+      "hub_drr": 0.0103
+    },
+    {
+      "agent_name": "Hassan Sashayi",
+      "hub_name": "Agyaragu Nasarawa",
+      "region": "Nasarawa",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.4791,
+      "rel_perf": 34.1,
+      "weekly_ngn": 24320,
+      "days_in_role": 27,
+      "hub_drr": 0.0107
+    },
+    {
+      "agent_name": "Eze Stephen Ogochukwu",
+      "hub_name": "Enugu-Ezike 2 Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.8227,
+      "rel_perf": 34.2,
+      "weekly_ngn": 37500,
+      "days_in_role": 138,
+      "hub_drr": 0.0107
+    },
+    {
+      "agent_name": "Chinonso Timothy Nwodo",
+      "hub_name": "Enugu-Ezike 2 Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.5994,
+      "rel_perf": 23.3,
+      "weekly_ngn": 25500,
+      "days_in_role": 84,
+      "hub_drr": 0.0107
+    },
+    {
+      "agent_name": "Adebisi Adeboye",
+      "hub_name": "Okeigbo Osun",
+      "region": "Osun",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.7503,
+      "rel_perf": 23.6,
+      "weekly_ngn": 17170,
+      "days_in_role": 57,
+      "hub_drr": 0.0107
+    },
+    {
+      "agent_name": "Sunday Omini Okon",
+      "hub_name": "Mkpani Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.1917,
+      "rel_perf": 22.9,
+      "weekly_ngn": 21500,
+      "days_in_role": 22,
+      "hub_drr": 0.0108
+    },
+    {
+      "agent_name": "Isiesi Loveth",
+      "hub_name": "Oleh 2 Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.3955,
+      "rel_perf": 26.1,
+      "weekly_ngn": 23500,
+      "days_in_role": 132,
+      "hub_drr": 0.0112
+    },
+    {
+      "agent_name": "Azeez Abass Olabisi",
+      "hub_name": "Igangan 1 Oyo",
+      "region": "Oyo",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.4271,
+      "rel_perf": 12.6,
+      "weekly_ngn": 14000,
+      "days_in_role": 64,
+      "hub_drr": 0.0112
+    },
+    {
+      "agent_name": "Ewa Johnson Okpani",
+      "hub_name": "Afikpo 3 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.3762,
+      "rel_perf": 13.6,
+      "weekly_ngn": 13500,
+      "days_in_role": 62,
+      "hub_drr": 0.0114
+    },
+    {
+      "agent_name": "AGHA DAVID ONYENATURUCHI",
+      "hub_name": "Afikpo 3 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.58,
+      "rel_perf": 15.6,
+      "weekly_ngn": 15500,
+      "days_in_role": 139,
+      "hub_drr": 0.0114
+    },
+    {
+      "agent_name": "Bassey Janneth",
+      "hub_name": "Afikpo 3 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.5168,
+      "rel_perf": 34.7,
+      "weekly_ngn": 34500,
+      "days_in_role": 99,
+      "hub_drr": 0.0114
+    },
+    {
+      "agent_name": "Emmanuel Ibiam Ugwumba",
+      "hub_name": "Afikpo 1 Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.8033,
+      "rel_perf": 31.6,
+      "weekly_ngn": 27500,
+      "days_in_role": 145,
+      "hub_drr": 0.0116
+    },
+    {
+      "agent_name": "CHINYEAKA OGBONNAYA",
+      "hub_name": "Okposi Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.5607,
+      "rel_perf": 4.5,
+      "weekly_ngn": 5500,
+      "days_in_role": 125,
+      "hub_drr": 0.0118
+    },
+    {
+      "agent_name": "FAVOUR OBINNA",
+      "hub_name": "Okposi Ebonyi",
+      "region": "Ebonyi",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.7839,
+      "rel_perf": 14.2,
+      "weekly_ngn": 17500,
+      "days_in_role": 125,
+      "hub_drr": 0.0118
+    },
+    {
+      "agent_name": "Ibitoye Oluwole",
+      "hub_name": "Irun-Oke Ondo",
+      "region": "Ondo North",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 2.4852,
+      "rel_perf": 29.4,
+      "weekly_ngn": 24380,
+      "days_in_role": 27,
+      "hub_drr": 0.012
+    },
+    {
+      "agent_name": "Anyim Sebastian",
+      "hub_name": "Uduma Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.6626,
+      "rel_perf": 6.1,
+      "weekly_ngn": 6500,
+      "days_in_role": 92,
+      "hub_drr": 0.0121
+    },
+    {
+      "agent_name": "Chukwu Emeka",
+      "hub_name": "Ikom 1 Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.5994,
+      "rel_perf": 24.6,
+      "weekly_ngn": 25500,
+      "days_in_role": 22,
+      "hub_drr": 0.0122
+    },
+    {
+      "agent_name": "Abdullahi usman",
+      "hub_name": "Karaye Kano",
+      "region": "Kano",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 0.2039,
+      "rel_perf": 2.4,
+      "weekly_ngn": 2000,
+      "days_in_role": 79,
+      "hub_drr": 0.0125
+    },
+    {
+      "agent_name": "Umenwunne Nzubechukwu",
+      "hub_name": "Igbo Ukwu Anambra",
+      "region": "Anambra",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.8736,
+      "rel_perf": 27.1,
+      "weekly_ngn": 38000,
+      "days_in_role": 88,
+      "hub_drr": 0.0128
+    },
+    {
+      "agent_name": "Okafor Blessing chidinma",
+      "hub_name": "Igbo Ukwu Anambra",
+      "region": "Anambra",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.2426,
+      "rel_perf": 15.7,
+      "weekly_ngn": 22000,
+      "days_in_role": 84,
+      "hub_drr": 0.0128
+    },
+    {
+      "agent_name": "Olatunde Ehunmose",
+      "hub_name": "Okitipupa 5 Ondo",
+      "region": "Ondo South",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 2.0795,
+      "rel_perf": 20.4,
+      "weekly_ngn": 20400,
+      "days_in_role": 259,
+      "hub_drr": 0.013
+    },
+    {
+      "agent_name": "Abang Ruda Nkere",
+      "hub_name": "Okundi Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.2742,
+      "rel_perf": 10.0,
+      "weekly_ngn": 12500,
+      "days_in_role": 237,
+      "hub_drr": 0.0132
+    },
+    {
+      "agent_name": "Glory orinu",
+      "hub_name": "Ewu Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.0408,
+      "rel_perf": 16.2,
+      "weekly_ngn": 20020,
+      "days_in_role": 98,
+      "hub_drr": 0.0135
+    },
+    {
+      "agent_name": "Agbo Simon",
+      "hub_name": "Ekwulobia 2 Anambra",
+      "region": "Anambra",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.9052,
+      "rel_perf": 30.8,
+      "weekly_ngn": 28500,
+      "days_in_role": 201,
+      "hub_drr": 0.0154
+    },
+    {
+      "agent_name": "Ugochukwu okoknkwo",
+      "hub_name": "Ekwulobia 2 Anambra",
+      "region": "Anambra",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 1.0703,
+      "rel_perf": 11.4,
+      "weekly_ngn": 10500,
+      "days_in_role": 48,
+      "hub_drr": 0.0154
+    },
+    {
+      "agent_name": "AUGUSTUS EZENWA",
+      "hub_name": "Okitipupa Ondo II",
+      "region": "Ondo South",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.4659,
+      "rel_perf": 29.9,
+      "weekly_ngn": 34000,
+      "days_in_role": 727,
+      "hub_drr": 0.0157
+    },
+    {
+      "agent_name": "John Ikenna",
+      "hub_name": "Ikom 3 Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.4659,
+      "rel_perf": 29.6,
+      "weekly_ngn": 34000,
+      "days_in_role": 119,
+      "hub_drr": 0.0157
+    },
+    {
+      "agent_name": "Odey Abigail Unaji",
+      "hub_name": "Okuku Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.211,
+      "rel_perf": 28.1,
+      "weekly_ngn": 31500,
+      "days_in_role": 258,
+      "hub_drr": 0.0161
+    },
+    {
+      "agent_name": "OCHUWA LIVINUS  NNAMUDI",
+      "hub_name": "Okpankwu Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.3446,
+      "rel_perf": 15.4,
+      "weekly_ngn": 23000,
+      "days_in_role": 201,
+      "hub_drr": 0.0164
+    },
+    {
+      "agent_name": "Bright chdiebube okwute",
+      "hub_name": "Okpankwu Enugu",
+      "region": "Enugu",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.5168,
+      "rel_perf": 23.2,
+      "weekly_ngn": 34500,
+      "days_in_role": 201,
+      "hub_drr": 0.0164
+    },
+    {
+      "agent_name": "Abdulsalam Ayanfe",
+      "hub_name": "Ilobu Osun",
+      "region": "Osun",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.9756,
+      "rel_perf": 24.0,
+      "weekly_ngn": 39000,
+      "days_in_role": 36,
+      "hub_drr": 0.0176
+    },
+    {
+      "agent_name": "Okubo-ere Mese",
+      "hub_name": "Bomadi Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.7187,
+      "rel_perf": 20.7,
+      "weekly_ngn": 36480,
+      "days_in_role": 120,
+      "hub_drr": 0.0179
+    },
+    {
+      "agent_name": "Emmanuel Ekpe",
+      "hub_name": "Bomadi Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.7411,
+      "rel_perf": 20.8,
+      "weekly_ngn": 36700,
+      "days_in_role": 30,
+      "hub_drr": 0.0179
+    },
+    {
+      "agent_name": "Ajisafe Kamilu",
+      "hub_name": "Sapon Ogun",
+      "region": "Ogun",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.8125,
+      "rel_perf": 22.4,
+      "weekly_ngn": 37400,
+      "days_in_role": 163,
+      "hub_drr": 0.0184
+    },
+    {
+      "agent_name": "Samuel Olorunfemi",
+      "hub_name": "Owo Ondo",
+      "region": "Ondo North",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 4.8431,
+      "rel_perf": 34.5,
+      "weekly_ngn": 47510,
+      "days_in_role": 706,
+      "hub_drr": 0.019
+    },
+    {
+      "agent_name": "Ransome Bernard Ofem",
+      "hub_name": "Ugep 2 Cross River",
+      "region": "Cross River",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 2.4465,
+      "rel_perf": 16.3,
+      "weekly_ngn": 24000,
+      "days_in_role": 36,
+      "hub_drr": 0.0196
+    },
+    {
+      "agent_name": "UTI japhet",
+      "hub_name": "Ozoro 2 Delta",
+      "region": "Delta",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 3.6035,
+      "rel_perf": 20.3,
+      "weekly_ngn": 35350,
+      "days_in_role": 20,
+      "hub_drr": 0.0204
+    },
+    {
+      "agent_name": "Oluwafemi Clement",
+      "hub_name": "Owo 2 Ondo",
+      "region": "Ondo North",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 4.0021,
+      "rel_perf": 27.0,
+      "weekly_ngn": 39260,
+      "days_in_role": 1195,
+      "hub_drr": 0.0226
+    },
+    {
+      "agent_name": "Toyin Adeyeye",
+      "hub_name": "Omuo Kota Ekiti",
+      "region": "Ekiti",
+      "portfolio": "CrossBoundary Energy (CBA)",
+      "agent_drr": 5.9613,
+      "rel_perf": 33.3,
+      "weekly_ngn": 58480,
+      "days_in_role": 79,
+      "hub_drr": 0.0238
+    },
+    {
+      "agent_name": "Awopegba Olamide",
+      "hub_name": "Ikole Ekiti 1",
+      "region": "Ekiti",
+      "portfolio": "MPNG (directly operated)",
+      "agent_drr": 6.1,
+      "rel_perf": 30.9,
+      "weekly_ngn": 59840,
+      "days_in_role": 89,
+      "hub_drr": 0.0295
+    }
+  ],
+  "new_agents": {
+    "by_region": [
+      {
+        "region": "Anambra",
+        "new_agents": 8,
+        "avg_drr": 11.1685,
+        "above_target": 8,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Ondo South",
+        "new_agents": 3,
+        "avg_drr": 7.6351,
+        "above_target": 3,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Oyo",
+        "new_agents": 1,
+        "avg_drr": 6.575,
+        "above_target": 1,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Kogi",
+        "new_agents": 12,
+        "avg_drr": 6.1789,
+        "above_target": 12,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Ogun",
+        "new_agents": 2,
+        "avg_drr": 5.8099,
+        "above_target": 2,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Nasarawa",
+        "new_agents": 14,
+        "avg_drr": 5.7993,
+        "above_target": 14,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Kaduna",
+        "new_agents": 25,
+        "avg_drr": 5.4426,
+        "above_target": 23,
+        "progressing": 0,
+        "below_baseline": 2
+      },
+      {
+        "region": "Ekiti",
+        "new_agents": 2,
+        "avg_drr": 4.9562,
+        "above_target": 1,
+        "progressing": 0,
+        "below_baseline": 1
+      },
+      {
+        "region": "Cross River",
+        "new_agents": 5,
+        "avg_drr": 4.8522,
+        "above_target": 5,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Delta",
+        "new_agents": 7,
+        "avg_drr": 4.5588,
+        "above_target": 6,
+        "progressing": 0,
+        "below_baseline": 1
+      },
+      {
+        "region": "Ondo North",
+        "new_agents": 3,
+        "avg_drr": 4.3724,
+        "above_target": 3,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Ebonyi",
+        "new_agents": 4,
+        "avg_drr": 4.1412,
+        "above_target": 4,
+        "progressing": 0,
+        "below_baseline": 0
+      },
+      {
+        "region": "Kano",
+        "new_agents": 13,
+        "avg_drr": 4.0691,
+        "above_target": 12,
+        "progressing": 0,
+        "below_baseline": 1
+      },
+      {
+        "region": "Enugu",
+        "new_agents": 1,
+        "avg_drr": 0.3058,
+        "above_target": 1,
+        "progressing": 0,
+        "below_baseline": 0
+      }
+    ]
+  }
+}
