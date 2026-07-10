@@ -586,6 +586,12 @@ const bookChapters = [
         "excerpt": ""
     },
     {
+        "title": "Eyelids",
+        "chapterNumber": 999,
+        "url": "/book/eyelids/",
+        "excerpt": ""
+    },
+    {
         "title": "Part I",
         "chapterNumber": 999,
         "url": "/book/part-1/",
@@ -613,6 +619,12 @@ const bookChapters = [
         "title": "Part V",
         "chapterNumber": 999,
         "url": "/book/part-5/",
+        "excerpt": ""
+    },
+    {
+        "title": "Parthian Shot",
+        "chapterNumber": 999,
+        "url": "/book/parthian-shot/",
         "excerpt": ""
     },
     {
