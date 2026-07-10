@@ -6,631 +6,631 @@ const bookChapters = [
     {
         "title": "Chapter 1",
         "chapterNumber": 1,
-        "url": "/book/chapter-1/",
+        "url": "/books/chapter-1/",
         "excerpt": "The poor lads were left wondering if they had ever really known her at all. They didn't speak to each other about any of it, it never seemed necessary..."
     },
     {
         "title": "1",
         "chapterNumber": 999,
-        "url": "/book/1/",
+        "url": "/books/1/",
         "excerpt": "Part 1"
     },
     {
         "title": "10",
         "chapterNumber": 999,
-        "url": "/book/10/",
+        "url": "/books/10/",
         "excerpt": "Calum's world had been unzipped, and everything poured out onto the floor. He had been left with absolutely nothing to hold onto. The first thing he d..."
     },
     {
         "title": "11",
         "chapterNumber": 999,
-        "url": "/book/11/",
+        "url": "/books/11/",
         "excerpt": "Ella squatted down. A perfect squat with flat heels. She ran her hand through the tall grass surrounding the tree. There were all manner of wildflower..."
     },
     {
         "title": "12",
         "chapterNumber": 999,
-        "url": "/book/12/",
+        "url": "/books/12/",
         "excerpt": "Conor wasn’t telling the truth here; he remembered it well. It was the second passenger who had first dragged him inwards. He remembered the day, the ..."
     },
     {
         "title": "13",
         "chapterNumber": 999,
-        "url": "/book/13/",
+        "url": "/books/13/",
         "excerpt": "Ella didn’t mind his half-truths. She’d expected his first day in his deep to have been that day at the beach. Ella had been born with her umbilical c..."
     },
     {
         "title": "14",
         "chapterNumber": 999,
-        "url": "/book/14/",
+        "url": "/books/14/",
         "excerpt": "“Nope,” Calum replied, “I’ve never seen any of them before.”"
     },
     {
         "title": "15",
         "chapterNumber": 999,
-        "url": "/book/15/",
+        "url": "/books/15/",
         "excerpt": "The boy lay down to rest once more. Leaving Mr Armitage to reflect on all he’d said. He decided a walk outside would be the best approach. No good thi..."
     },
     {
         "title": "16",
         "chapterNumber": 999,
-        "url": "/book/16/",
+        "url": "/books/16/",
         "excerpt": "Part 2"
     },
     {
         "title": "17",
         "chapterNumber": 999,
-        "url": "/book/17/",
+        "url": "/books/17/",
         "excerpt": "“You can sit on my branch if you want to.” Said Calum to the great man as he approached."
     },
     {
         "title": "18",
         "chapterNumber": 999,
-        "url": "/book/18/",
+        "url": "/books/18/",
         "excerpt": "Mrs Careen watched from her first-floor deck as the two of them passed through the field back towards Mr Armitage’s. Calum practically sprinting to ke..."
     },
     {
         "title": "19",
         "chapterNumber": 999,
-        "url": "/book/19/",
+        "url": "/books/19/",
         "excerpt": "Conor observed as Ella reached into the till. She pulled it out, tried it on. He recognised it immediately. The watch was far too large for her wrist...."
     },
     {
         "title": "2",
         "chapterNumber": 999,
-        "url": "/book/2/",
+        "url": "/books/2/",
         "excerpt": "They had stripped down to their thermals in the outhouse and stepped inside. The foil covering the bacon tray remained undisturbed. Their father's fai..."
     },
     {
         "title": "20",
         "chapterNumber": 999,
-        "url": "/book/20/",
+        "url": "/books/20/",
         "excerpt": "A knock on the dark red door at the rear of Number Seven. Mr Armitage had not spoken to his neighbour since he’d asked him about the disappearance of ..."
     },
     {
         "title": "21",
         "chapterNumber": 999,
-        "url": "/book/21/",
+        "url": "/books/21/",
         "excerpt": "“I said open your fucking eyes, Conor! Now!”"
     },
     {
         "title": "22",
         "chapterNumber": 999,
-        "url": "/book/22/",
+        "url": "/books/22/",
         "excerpt": "“Let me in, for God's sake, man,” yelled Mr Armitage to the muffled refusal from the neighbour within."
     },
     {
         "title": "23",
         "chapterNumber": 999,
-        "url": "/book/23/",
+        "url": "/books/23/",
         "excerpt": "“Number Seven, hey,” said Mrs Careen as she laid a bowl of mushroom soup before the boy with three thick slices of bread on the side of the plate the ..."
     },
     {
         "title": "24",
         "chapterNumber": 999,
-        "url": "/book/24/",
+        "url": "/books/24/",
         "excerpt": "“Sorry about the window,” Mr Armitage smirked as he moved through into what was once a lounge - “may I?” He continued as he accidentally knocked over ..."
     },
     {
         "title": "25",
         "chapterNumber": 999,
-        "url": "/book/25/",
+        "url": "/books/25/",
         "excerpt": "Conor turned away from the man without eyelids, to his sister. Tending the fire in the centre aisle. Conor had been aware of the dried blood around El..."
     },
     {
         "title": "26",
         "chapterNumber": 999,
-        "url": "/book/26/",
+        "url": "/books/26/",
         "excerpt": "Mrs Careen sat down on the chair beside Calum and set the tray with the teapot and their cups on the coffee table that lay between them. Calum had gla..."
     },
     {
         "title": "27",
         "chapterNumber": 999,
-        "url": "/book/27/",
+        "url": "/books/27/",
         "excerpt": "He’d fed his cruelty a little too long, and it had blossomed into familiar rage - “Another two missing children, and you’re just going to stay in here..."
     },
     {
         "title": "28",
         "chapterNumber": 999,
-        "url": "/book/28/",
+        "url": "/books/28/",
         "excerpt": "As soon as they landed in his deep Conor set off running. Straight off the road, and he was hopping fences. He caught himself thinking how much of a m..."
     },
     {
         "title": "29",
         "chapterNumber": 999,
-        "url": "/book/29/",
+        "url": "/books/29/",
         "excerpt": "Mr Armitage watched as the neighbour reached down, grabbed his hand from around his calf and prised his fingers loose. He shuffled his hands along the..."
     },
     {
         "title": "3",
         "chapterNumber": 999,
-        "url": "/book/3/",
+        "url": "/books/3/",
         "excerpt": "They had found it unnerving how quickly Mr Armitage's attention had returned when they said they believed Ella had left. He had, for as long as they'd..."
     },
     {
         "title": "30",
         "chapterNumber": 999,
-        "url": "/book/30/",
+        "url": "/books/30/",
         "excerpt": "“Fucking Bear, look what it did to me! Owh, that really fucking stings.” The neighbour was standing at the bathroom mirror. Refusing to turn the light..."
     },
     {
         "title": "31",
         "chapterNumber": 999,
-        "url": "/book/31/",
+        "url": "/books/31/",
         "excerpt": "“God, Phil, what good did you think any of that would do?”"
     },
     {
         "title": "32",
         "chapterNumber": 999,
-        "url": "/book/32/",
+        "url": "/books/32/",
         "excerpt": "Ella stepped onto the bus, and Conor saw that she was far calmer here than last she’d stood before him. More human. That made it worse. She knew he ne..."
     },
     {
         "title": "33",
         "chapterNumber": 999,
-        "url": "/book/33/",
+        "url": "/books/33/",
         "excerpt": "Part 3"
     },
     {
         "title": "34",
         "chapterNumber": 999,
-        "url": "/book/34/",
+        "url": "/books/34/",
         "excerpt": "The neighbour had woken up after first falling asleep on the floor of the antechamber, which wasn’t allowed, checked the case and saw he’d been there ..."
     },
     {
         "title": "35",
         "chapterNumber": 999,
-        "url": "/book/35/",
+        "url": "/books/35/",
         "excerpt": "As he stood washing the dishes, after dismissing the lad, Mr Armitage had time to think further through exactly what he’d hoped to achieve yesterday w..."
     },
     {
         "title": "36",
         "chapterNumber": 999,
-        "url": "/book/36/",
+        "url": "/books/36/",
         "excerpt": "Mrs Careen regretted the amount she had told the boy, but remained unsure how she could have parsed the truth out any more appropriately, nor how she ..."
     },
     {
         "title": "37",
         "chapterNumber": 999,
-        "url": "/book/37/",
+        "url": "/books/37/",
         "excerpt": "Hag. Hag! You hated the girls, you hated them because he loved them. I know everything you want. Everything. You wounded mother, you want to eat every..."
     },
     {
         "title": "38",
         "chapterNumber": 999,
-        "url": "/book/38/",
+        "url": "/books/38/",
         "excerpt": "Calum was looking out of Bethany’s window when he spotted the neighbour next door, waving to Mrs Careen. He was much smaller than Mr Armitage, though ..."
     },
     {
         "title": "39",
         "chapterNumber": 999,
-        "url": "/book/39/",
+        "url": "/books/39/",
         "excerpt": "Hours had passed since Bedgellert. Ella had sung a little - songs she knew Conor enjoyed - but none like Mr Bojangles, none that helped constitute who..."
     },
     {
         "title": "4",
         "chapterNumber": 999,
-        "url": "/book/4/",
+        "url": "/books/4/",
         "excerpt": "All of time passed for Calum as he stood there looking at his father. Years drained away. Years and miles. He was looking at him from binoculars, comi..."
     },
     {
         "title": "40",
         "chapterNumber": 999,
-        "url": "/book/40/",
+        "url": "/books/40/",
         "excerpt": "The entry to Number Seven seemed to swell and constrict as Calum stared at it. A moment ago, it had grown teeth all around its edges, the red door a t..."
     },
     {
         "title": "41",
         "chapterNumber": 999,
-        "url": "/book/41/",
+        "url": "/books/41/",
         "excerpt": "Once payment was made, the man without eyelids gestured to Conor. He rose from the back seat and approached his old friend. Same as always, Conor and ..."
     },
     {
         "title": "42",
         "chapterNumber": 999,
-        "url": "/book/42/",
+        "url": "/books/42/",
         "excerpt": "Calum felt weak hands awkwardly slip into his armpits; they tried to slide him in. The hands readjusted and attempted to reach under him, lifting him ..."
     },
     {
         "title": "43",
         "chapterNumber": 999,
-        "url": "/book/43/",
+        "url": "/books/43/",
         "excerpt": "Reaching again for the wax jacket, Mr Armitage arose and walked into his garden. He made his way up, keeping his eyes ahead, searching for the boy, to..."
     },
     {
         "title": "44",
         "chapterNumber": 999,
-        "url": "/book/44/",
+        "url": "/books/44/",
         "excerpt": "They looked out at the sisters' harvest. Mr Armitage’s way of preserving the memory of the three sisters. Ella and Conor realised then just how raveno..."
     },
     {
         "title": "45",
         "chapterNumber": 999,
-        "url": "/book/45/",
+        "url": "/books/45/",
         "excerpt": "He’d never seen a laugh quite as ugly as the neighbour gave then. It bared his yellow teeth and brought up bile in the coughs that lived with it."
     },
     {
         "title": "46",
         "chapterNumber": 999,
-        "url": "/book/46/",
+        "url": "/books/46/",
         "excerpt": "Conor felt a jolt of pain through his back as they landed back up top. He had slammed into a small log by a forgotten firepit. The spot was familiar; ..."
     },
     {
         "title": "47",
         "chapterNumber": 999,
-        "url": "/book/47/",
+        "url": "/books/47/",
         "excerpt": "“What kind of question is that, boy? Jesus!” The neighbour reproached the lad then, looking at him, wondering what sort of sick mind he had. Until he ..."
     },
     {
         "title": "48",
         "chapterNumber": 999,
-        "url": "/book/48/",
+        "url": "/books/48/",
         "excerpt": "He stretched out his hand toward her. Ella didn’t know exactly what he wanted for a moment. She just stared at him. The tips of his fingers twitched. ..."
     },
     {
         "title": "49",
         "chapterNumber": 999,
-        "url": "/book/49/",
+        "url": "/books/49/",
         "excerpt": "“So that’s what you do, then? You just sit there staring into space? I think you’re fu-, you’re useless.” Calum barked at Mr Armitage as he moved rapi..."
     },
     {
         "title": "5",
         "chapterNumber": 999,
-        "url": "/book/5/",
+        "url": "/books/5/",
         "excerpt": "He heard Calum then - a faint but continuing cry. Mr Armitage, aware of their route and accustomed to crouching, ran towards it. Making each hedge-hol..."
     },
     {
         "title": "50",
         "chapterNumber": 999,
-        "url": "/book/50/",
+        "url": "/books/50/",
         "excerpt": "Mrs Careen heard a knock at the back door. She stepped over to the cabinet in the front lounge, picking up a bottle of Laphroaig, two glasses and the ..."
     },
     {
         "title": "51",
         "chapterNumber": 999,
-        "url": "/book/51/",
+        "url": "/books/51/",
         "excerpt": "“Thank you.” The man without eyelids had passed Conor the watch, and manners mandated his gratitude before his mind had a chance to mark the man unwor..."
     },
     {
         "title": "52",
         "chapterNumber": 999,
-        "url": "/book/52/",
+        "url": "/books/52/",
         "excerpt": "Part 4"
     },
     {
         "title": "53",
         "chapterNumber": 999,
-        "url": "/book/53/",
+        "url": "/books/53/",
         "excerpt": "The neighbours' bare feet practically danced out and onto the soft, wet grass of Mrs Careen’s garden. He made his way slowly down the garden before he..."
     },
     {
         "title": "54",
         "chapterNumber": 999,
-        "url": "/book/54/",
+        "url": "/books/54/",
         "excerpt": "The man without eyelids had driven the three of them back from the car park by Llyn Ogwen south, the length of Wales, out through Bristol. The journey..."
     },
     {
         "title": "55",
         "chapterNumber": 999,
-        "url": "/book/55/",
+        "url": "/books/55/",
         "excerpt": "The Neighbour moved straight to his antechamber and pulled out the empty band holder in the corner. He took the new watch and slowly placed it and pre..."
     },
     {
         "title": "56",
         "chapterNumber": 999,
-        "url": "/book/56/",
+        "url": "/books/56/",
         "excerpt": "“Jesus, it fucking stinks in here,” said Ella."
     },
     {
         "title": "57",
         "chapterNumber": 999,
-        "url": "/book/57/",
+        "url": "/books/57/",
         "excerpt": "The neighbour lay listening to the rustle and careful movement of his boxes downstairs. He heard a footstep, then another sound by the back door. Ther..."
     },
     {
         "title": "58",
         "chapterNumber": 999,
-        "url": "/book/58/",
+        "url": "/books/58/",
         "excerpt": "His Ella flashed before Calum’s eyes. Not now! He begged the demon to drown her, and thankfully, she did. The valkyrie he’d spent the last two days wi..."
     },
     {
         "title": "59",
         "chapterNumber": 999,
-        "url": "/book/59/",
+        "url": "/books/59/",
         "excerpt": "A moment later, the neighbour leant over the top rail of the staircase, looking straight down at her. The faint moonlight reflecting from a cracked cu..."
     },
     {
         "title": "6",
         "chapterNumber": 999,
-        "url": "/book/6/",
+        "url": "/books/6/",
         "excerpt": "\"Ella, I can't see anything. What did you do to me? God, my eyes hurt. Seriously, what the fuck did you do? You. You scalped him, Ella. What does - wh..."
     },
     {
         "title": "60",
         "chapterNumber": 999,
-        "url": "/book/60/",
+        "url": "/books/60/",
         "excerpt": "He’d had trouble sleeping the past two nights, so here at perhaps four, Mr Armitage sat up, threw his legs down over the side of his bed and began mov..."
     },
     {
         "title": "61",
         "chapterNumber": 999,
-        "url": "/book/61/",
+        "url": "/books/61/",
         "excerpt": "His eyes were embers. He arose from the waiting room and paced towards the neighbour. The detritus failed to hinder his strides. Lay at the bottom of ..."
     },
     {
         "title": "62",
         "chapterNumber": 999,
-        "url": "/book/62/",
+        "url": "/books/62/",
         "excerpt": "Their hands were clasped tightly around their knives. They did not run. The siblings were standing back to back, as though they were seeing whether Co..."
     },
     {
         "title": "63",
         "chapterNumber": 999,
-        "url": "/book/63/",
+        "url": "/books/63/",
         "excerpt": "Mrs Careen was the taxi to Heathrow. She’d been awake when they’d knocked at the door. She always drove him to the airport, which was easier than park..."
     },
     {
         "title": "64",
         "chapterNumber": 999,
-        "url": "/book/64/",
+        "url": "/books/64/",
         "excerpt": "“I am not going in there, Ella,” replied Conor emphatically, “no fucking way.”"
     },
     {
         "title": "65",
         "chapterNumber": 999,
-        "url": "/book/65/",
+        "url": "/books/65/",
         "excerpt": "The neighbour awoke several hours later. The green light above him gently warmed his eyelids before he slowly opened them. He lay flat beside the bird..."
     },
     {
         "title": "66",
         "chapterNumber": 999,
-        "url": "/book/66/",
+        "url": "/books/66/",
         "excerpt": "Part 5"
     },
     {
         "title": "67",
         "chapterNumber": 999,
-        "url": "/book/67/",
+        "url": "/books/67/",
         "excerpt": "Ella remained beside the great hound she had named Gellert for a short while, gently stroking his back and tracing the lines of its ribs with her inde..."
     },
     {
         "title": "68",
         "chapterNumber": 999,
-        "url": "/book/68/",
+        "url": "/books/68/",
         "excerpt": "Calum walked behind the two great muddy beasts into the house. Wesley pointed the boy to a seat by the kitchen as the two men went their separate ways..."
     },
     {
         "title": "69",
         "chapterNumber": 999,
-        "url": "/book/69/",
+        "url": "/books/69/",
         "excerpt": "“Stop, stop, fuck - please - Jesus.” The hand holding the shard of glass was perfectly still, but the neighbour's trembling pulled at the edges of the..."
     },
     {
         "title": "7",
         "chapterNumber": 999,
-        "url": "/book/7/",
+        "url": "/books/7/",
         "excerpt": "Mr Armitage reached the front door before realising that the knock had been at the back. It was Mrs Careen. They sat down together at the table under ..."
     },
     {
         "title": "70",
         "chapterNumber": 999,
-        "url": "/book/70/",
+        "url": "/books/70/",
         "excerpt": "The space in the stairwell was growing increasingly cramped as they descended. They noticed just how bad it was getting when Ella made the move from c..."
     },
     {
         "title": "71",
         "chapterNumber": 999,
-        "url": "/book/71/",
+        "url": "/books/71/",
         "excerpt": "Calum woke up late. Padded across the carpet and looked out the window across to the woods out the back of Wesley’s house. No neighbours. The two grea..."
     },
     {
         "title": "72",
         "chapterNumber": 999,
-        "url": "/book/72/",
+        "url": "/books/72/",
         "excerpt": "The eyes were intrigued. The ever-open eyes were always attentive, but not always excited. They were now."
     },
     {
         "title": "73",
         "chapterNumber": 999,
-        "url": "/book/73/",
+        "url": "/books/73/",
         "excerpt": "Hugs and handshakes and greetings for “Armitage! Armitage!” Rang out across the small gathering space beside Hemlock Creek. A good number had turned o..."
     },
     {
         "title": "74",
         "chapterNumber": 999,
-        "url": "/book/74/",
+        "url": "/books/74/",
         "excerpt": "She was far ahead of him, climbing the roots. Conor decided not to rush. It was a long climb."
     },
     {
         "title": "75",
         "chapterNumber": 999,
-        "url": "/book/75/",
+        "url": "/books/75/",
         "excerpt": "Wesley hit his stride with the invocation of Thadodaho. Any remaining mutterings were silenced. The council were cast back to nights by the fire - the..."
     },
     {
         "title": "76",
         "chapterNumber": 999,
-        "url": "/book/76/",
+        "url": "/books/76/",
         "excerpt": "“Theft and sacrifice mark the same coin. You know it well. You sacrifice nothing. Look at this house. You would give nothing up - nothing of your own...."
     },
     {
         "title": "77",
         "chapterNumber": 999,
-        "url": "/book/77/",
+        "url": "/books/77/",
         "excerpt": "Ella hadn’t listened. Of course, it had been a race. And she had wiped the floor with her brother. She looked down at the crawling speck below her as ..."
     },
     {
         "title": "78",
         "chapterNumber": 999,
-        "url": "/book/78/",
+        "url": "/books/78/",
         "excerpt": "A woman spoke then."
     },
     {
         "title": "79",
         "chapterNumber": 999,
-        "url": "/book/79/",
+        "url": "/books/79/",
         "excerpt": "He knew as soon as he glanced down that it was impossible. He stood no chance of escaping this pit. He must have been ten metres from the top still, a..."
     },
     {
         "title": "8",
         "chapterNumber": 999,
-        "url": "/book/8/",
+        "url": "/books/8/",
         "excerpt": "“We did it, Con, we fucking did it.”"
     },
     {
         "title": "80",
         "chapterNumber": 999,
-        "url": "/book/80/",
+        "url": "/books/80/",
         "excerpt": "The man without eyelids had been silent a long time; he was vastly less patient up here than down in the deeps. It must have been because he’d spent s..."
     },
     {
         "title": "81",
         "chapterNumber": 999,
-        "url": "/book/81/",
+        "url": "/books/81/",
         "excerpt": "As Conor neared the tree, the smallest turned to him. It was clear there would be no repeating themselves. Ella had the eyes of the valkyrie again. Sh..."
     },
     {
         "title": "82",
         "chapterNumber": 999,
-        "url": "/book/82/",
+        "url": "/books/82/",
         "excerpt": "Mr Armitage looked smaller there, at the centre of the small amphitheatre by Hemlock Creek, than he ever had in Calum’s life. He always looked smaller..."
     },
     {
         "title": "83",
         "chapterNumber": 999,
-        "url": "/book/83/",
+        "url": "/books/83/",
         "excerpt": "“You are not the one we waited for.” Said the first."
     },
     {
         "title": "84",
         "chapterNumber": 999,
-        "url": "/book/84/",
+        "url": "/books/84/",
         "excerpt": "Concluding his opening remarks, the Hemlock Creek council began - “To start with the worst of it, you have made it plain, Armitage, that you were a te..."
     },
     {
         "title": "85",
         "chapterNumber": 999,
-        "url": "/book/85/",
+        "url": "/books/85/",
         "excerpt": "Conor knew he had a matter of seconds to convince Ella that he would not carry out his offering. He hoped she would not hurt him, but the memory of th..."
     },
     {
         "title": "86",
         "chapterNumber": 999,
-        "url": "/book/86/",
+        "url": "/books/86/",
         "excerpt": "The neighbour knew that his time was limited. Soon enough, the girl and the lad would find their way back up, ripping through the wound. His visitor w..."
     },
     {
         "title": "87",
         "chapterNumber": 999,
-        "url": "/book/87/",
+        "url": "/books/87/",
         "excerpt": "“You don’t know?” Asked Conor, “We’re in the neighbours' deep. You know - Number Seven.”"
     },
     {
         "title": "88",
         "chapterNumber": 999,
-        "url": "/book/88/",
+        "url": "/books/88/",
         "excerpt": "Mr Armitage looked out at the gathering, making vows to one another to tell their old stories. He considered how it was only the fear of violence that..."
     },
     {
         "title": "89",
         "chapterNumber": 999,
-        "url": "/book/89/",
+        "url": "/books/89/",
         "excerpt": "“Conor! You are magnificent, my boy!” Cried the man without eyelids - “Of course I accept your gift! Anything to keep this little one with us!” He ran..."
     },
     {
         "title": "9",
         "chapterNumber": 999,
-        "url": "/book/9/",
+        "url": "/books/9/",
         "excerpt": "Mr Armitage stood up tall and stepped over to put another log on the burner outside. He was finally ready to speak to Mrs Careen, mummified in two of ..."
     },
     {
         "title": "90",
         "chapterNumber": 999,
-        "url": "/book/90/",
+        "url": "/books/90/",
         "excerpt": "Wesley concluded the gathering, making the final note that they would reconvene the following Wednesday evening, again at seven, where he would begin ..."
     },
     {
         "title": "91",
         "chapterNumber": 999,
-        "url": "/book/91/",
+        "url": "/books/91/",
         "excerpt": "Conor watched as Ella took the hands of their mutual friend. He saw how he must have passed into Ella in the bloody diamond. A river running into the ..."
     },
     {
         "title": "92",
         "chapterNumber": 999,
-        "url": "/book/92/",
+        "url": "/books/92/",
         "excerpt": "Ella was running. Just ahead of her were Sara and Bethany. They were sprinting. Fuck, they’re fast, she thought. One slow breath. Then she tipped her ..."
     },
     {
         "title": "93",
         "chapterNumber": 999,
-        "url": "/book/93/",
+        "url": "/books/93/",
         "excerpt": "Mr Armitage fell then, clutching his neck. Calum figured an asthma attack. Wesley figured Thadodaho. Mary figured pretence. He coughed and sputtered. ..."
     },
     {
         "title": "94",
         "chapterNumber": 999,
-        "url": "/book/94/",
+        "url": "/books/94/",
         "excerpt": "Ella stood behind the two of them as they crouched over him, pouring more and more soil into his mouth, it looked like a grotesque version of when Cal..."
     },
     {
         "title": "95",
         "chapterNumber": 999,
-        "url": "/book/95/",
+        "url": "/books/95/",
         "excerpt": "Epilogue"
     },
     {
         "title": "Epilogue",
         "chapterNumber": 999,
-        "url": "/book/epilogue/",
+        "url": "/books/epilogue/",
         "excerpt": ""
     },
     {
         "title": "Eyelids",
         "chapterNumber": 999,
-        "url": "/book/eyelids/",
+        "url": "/books/eyelids/",
         "excerpt": ""
     },
     {
         "title": "Part I",
         "chapterNumber": 999,
-        "url": "/book/part-1/",
+        "url": "/books/part-1/",
         "excerpt": ""
     },
     {
         "title": "Part II",
         "chapterNumber": 999,
-        "url": "/book/part-2/",
+        "url": "/books/part-2/",
         "excerpt": ""
     },
     {
         "title": "Part III",
         "chapterNumber": 999,
-        "url": "/book/part-3/",
+        "url": "/books/part-3/",
         "excerpt": ""
     },
     {
         "title": "Part IV",
         "chapterNumber": 999,
-        "url": "/book/part-4/",
+        "url": "/books/part-4/",
         "excerpt": ""
     },
     {
         "title": "Part V",
         "chapterNumber": 999,
-        "url": "/book/part-5/",
+        "url": "/books/part-5/",
         "excerpt": ""
     },
     {
         "title": "Parthian Shot",
         "chapterNumber": 999,
-        "url": "/book/parthian-shot/",
+        "url": "/books/parthian-shot/",
         "excerpt": ""
     },
     {
         "title": "joeldelaney",
         "chapterNumber": 999,
-        "url": "/book/parts/",
+        "url": "/books/parts/",
         "excerpt": ""
     }
 ];
