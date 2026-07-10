@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">6</a></h1>
+                <div class="nav-arrows">
+                    <a href="../7/" class="nav-arrow">→</a>
+                    <a href="../5/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p><em>"Ella, I can't see anything. What did you do to me? God, my eyes hurt. Seriously, what the fuck did you do? You. You scalped him, Ella. What does - where are - his scalp, Ella? You. Was he alive? When you did that - was he alive? Fuck, my eyes.”</em> His hands reached for his pockets. <em>“I, I need a phone.”</em></p>
+        <p>The whiteness he occupied began taking on shape. Ella watched as he began straining to see. Sensation was returning, discomfort the accompaniment. All the agitation of the rushing water pouring over his eyes. He shuffled his feet, as though setting himself for a chip out of a bunker. Felt the soft sandy floor of the riverbed.</p>
+        <p><em>"What do you see, Con?"</em></p>
+        <p>She still spoke from everywhere, some memory - a conscience.</p>
+        <p><em>"Seriously, Ella, where am I?"</em></p>
+        <p><em>"Brilliant, you’re starting to see it now!"</em></p>
+        <p>She was right.</p>
+        <p>Conor was used to going inward, but where he went was always on dry land. More than that, he’d never even gone off-road. He wondered whether that had been cowardice. He'd stuck to bus routes for God's sake. Ella had gone to the very bottom of the world.</p>
+        <p><em>"You'd only taken the bus routes before - right?"</em> she laughed. The laugh was the first time he’d seen her in months. His Ella. He felt all the blood in his heart.</p>
+        <p><em>"God, I'm so glad you could come,"</em> she said, grabbing his hands. He could still only make out her outline.</p>
+        <p>Conor stopped for a moment, forced his mind outward - back to his father’s bed - and reminded himself that he was down here with a psychopathic murderer. He had to get back. He held his breath, made the real world so prominent in his mind and awaited the familiar flight and crash that would mark his return. But he had no authority, no route back. He hadn't travelled to his own deep. Ella had taken him deeper than he'd ever been into hers.</p>
+        <p><em>“Come up.”</em></p>
+        <p>She reached out and took his hand. He could still scarcely see. The riverbed darkened as they approached the bank. He felt the first uneven rocky step ahead of him that would eventually lead them up and out to dry land. He felt the hardness of her hand, all her calluses, squeezed gently. She reciprocated. He was terrified of how he needed her. Reaching out as she led him up the stairs, gripped round her tricep, felt all the sinewed strength she had. Begging to know this girl. What terrified him most was how his guts all twisted and strained, desperate to trust her.</p>
+
+                <div class="bottom-nav">
+                    <a href="../5/" class="nav-arrow">←</a>
+                    <a href="../7/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 6,
+            'part': 1
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 6,
+            part: 1,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

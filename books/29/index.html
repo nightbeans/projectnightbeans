@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">29</a></h1>
+                <div class="nav-arrows">
+                    <a href="../30/" class="nav-arrow">→</a>
+                    <a href="../28/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Mr Armitage watched as the neighbour reached down, grabbed his hand from around his calf and prised his fingers loose. He shuffled his hands along the floor and slumped against the wall; the green from the antechamber showed him more clearly than Mr Armitage had seen him in years. Facing each other, the neighbour gently touched his chin and saw the blood running down and onto his shirt. He grabbed some underpants from a box that had toppled nearby and rubbed his hand and chin on them.</p>
+        <p><em>“Do you need me to take you -”</em></p>
+        <p><em>“Leave,”</em> replied the neighbour.</p>
+        <p><em>“- you might need stitches, let me take you to -”</em></p>
+        <p><em>“Leave, now, Phil.”</em></p>
+        <p>Mr Armitage stood up, clattered over some new mess on the stairs and stumbled out to the kitchen. He switched the light on as he rooted through several drawers until he found some scissors and tape. He ripped the top off one of the cardboard boxes and cut a small rectangle. As he left, he taped it down, patching the small window of the rear door he’d smashed to get in. Clicked the light back off.</p>
+        <p>He left and wandered down the garden, tripping several times over, but managing to avoid any overturned rakes. He bent down and pressed himself through the hedge hole. Calum would get through with ease now. He made his way down Mrs Careen’s garden. She waved as she saw him making his way up. His head remained low as he passed through her back door and sat down in the adjoining lounge beside the kitchen.</p>
+        <p><em>“The boy is asleep upstairs. How was next door?”</em> She asked.</p>
+        <p>Mr Armitage just waved his hand.</p>
+        <p><em>“That bad?”</em></p>
+        <p><em>“Worse,”</em> he replied.</p>
+        <p>She finished wiping the counters and returned the kitchen to its hard-earned, effortless orderliness, then sat down. She observed he wasn’t hunched in his usual dejected grief - his face was marred with shame.</p>
+        <p><em>“What happened?”</em> She insisted.</p>
+
+                <div class="bottom-nav">
+                    <a href="../28/" class="nav-arrow">←</a>
+                    <a href="../30/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 29,
+            'part': 2
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 29,
+            part: 2,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

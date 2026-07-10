@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">25</a></h1>
+                <div class="nav-arrows">
+                    <a href="../26/" class="nav-arrow">→</a>
+                    <a href="../24/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Conor turned away from the man without eyelids, to his sister. Tending the fire in the centre aisle. Conor had been aware of the dried blood around Ella’s thigh; he watched now as she reached in and gave a sharp tug. He thought of Velcro as he heard it pull away from the fibres of her shorts. It had definitely shrunk - more of a leather purse than a handbag now. She threw their father's scalp onto the fire beside the man. Conor’s thumb slipped on blood and snot as he hurried to plug his nose - he had to, couldn’t bear the fact that he liked the smell. It took time, but eventually, like paper, it crumpled. Ella squatted down by it and watched as it moved from flesh to meat to ash. She reached it, cupped the ashes in her hands and moved towards the man without eyelids, placing them upon his lap where he sat. No sooner were they laid there than they were lost entirely, falling through into the sea of ashes that surrounded him.</p>
+        <p><em>“If you want to speak with him, we need to take him up,”</em> said Ella, <em>“he won’t speak to you down here.”</em></p>
+        <p>Conor couldn’t speak. He sure as hell didn’t want to hear anything the man without eyelids had to say. Taking him up was not an option.</p>
+        <p><em>“You have to promise him something, Conor, something that matters. Then he will take you up and explain all this. I need you.”</em></p>
+        <p><em>“God, Ella, you’re sick. I won’t listen to that man.”</em></p>
+        <p>She was a stampede then, marching back towards him, she wrenched his head back, left hand pressing on his forehead. He saw then the wild eyes of the dangerous animal that his father must have seen moments before he died.</p>
+        <p><em>“Promise him something, Conor! Something that hurts!”</em> The blade was in her right hand, raised above him and closing. The strip lights down the bus were flickering, Conor thought of all the time between one and two. He knew he couldn’t take this man up. He believed they were the same, but he prayed they were different. He felt a gentle touch on his hand, the familiarity of his own man without eyelids reaching out again. He hadn’t been able to get there in his earlier attempt to escape from Ella. But they had managed to travel together once before. With all the force he could, he wrapped his arms around her, legs loosened as he pulled his dead weight, hurtling out of the door of the bus, towards the ground. The knife remained just above his left eye. Seeing beyond it, he watched Ella’s eyes widen as she realised the control she had lost. Conor felt his body hit the concrete and waited for the knife to plunge through his eye until it too met the earth below.</p>
+        <p>Everything went black as he pulled Ella into his deep.</p>
+
+                <div class="bottom-nav">
+                    <a href="../24/" class="nav-arrow">←</a>
+                    <a href="../26/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 25,
+            'part': 2
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 25,
+            part: 2,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

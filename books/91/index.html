@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>91 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">91</a></h1>
+                <div class="nav-arrows">
+                    <a href="../92/" class="nav-arrow">→</a>
+                    <a href="../90/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Conor watched as Ella took the hands of their mutual friend. He saw how he must have passed into Ella in the bloody diamond. A river running into the sea. It was just him and his old friend now - the man who paid his fares. The neighbour lay beside him, perfectly still. He spotted a watch on his wrist, prodded at the sleeve to see it more clearly. It was the same as his father's, the one Ella had given him. He unclipped the clasp and slid it off the man's arm and onto his own. Clamped it shut. He’d give it to his brother.</p>
+        <p><em>“Where is Calum?”</em> He asked.</p>
+        <p><em>“I don’t know, boy, would you believe it, I’ve never met the lad.”</em></p>
+        <p><em>“Thank fuck for that.”</em></p>
+        <p><em>“Come, Conor, be fair.”</em></p>
+        <p>Conor paused for a moment, then - thought of the hound in the neighbour's deep.</p>
+        <p><em>“You’re a wolf.”</em></p>
+        <p><em>“Ah, Conor, Bedgellert is a beautiful town, but I reject your allegory. There are many wolves. And many babes lie gored and dead in their mouths. Don’t play some Llewellyn now. Your sister - is she supposed to be the brave and misunderstood hound? The truth is rarely as simple as a folktale.”</em></p>
+        <p><em>“So what then?”</em> Cried Conor in desperation. The eyes stared back at him with great warmth. He could tell the man did love him, however inexplicably.</p>
+        <p><em>“You all remind me of Llewelyn. So passionate. Passionate and wrong.”</em></p>
+
+                <div class="bottom-nav">
+                    <a href="../90/" class="nav-arrow">←</a>
+                    <a href="../92/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 91,
+            'part': 5
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 91,
+            part: 5,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

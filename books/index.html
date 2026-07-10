@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - joeldelaney</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .books-container {
+            max-width: 720px;
+            margin: 60px auto;
+            padding: 0 24px 80px;
+        }
+        .books-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .books-intro {
+            color: #b0d4dd;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 48px;
+            max-width: 56ch;
+        }
+        .book-card {
+            display: block;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(176, 212, 221, 0.3);
+            border-radius: 12px;
+            padding: 30px 32px;
+            margin-bottom: 22px;
+            transition: all 0.3s ease;
+        }
+        .book-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(176, 212, 221, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+        .book-card-head {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+        .book-card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+        }
+        .book-label {
+            font-size: 0.8rem;
+            color: #7fc8e0;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+        }
+        .book-teaser {
+            color: #d4eaf0;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../">Home</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../work/">Work</a></li>
+                <li><a href="../benedict/">Benedict</a></li>
+                <li><a href="../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="books-container">
+            <h1 class="books-title">Books</h1>
+            <p class="books-intro">Draft excerpts from two works in progress. New to these? Start with <em>Parthian Shot</em>.</p>
+
+            <a href="./parthian-shot/" class="book-card">
+                <div class="book-card-head">
+                    <h2 class="book-card-title">Parthian Shot</h2>
+                </div>
+                <div class="book-label">Draft excerpt</div>
+                <p class="book-teaser">She asked me to kill her often. Rather, she asked me to switch off the machines.</p>
+            </a>
+
+            <a href="./eyelids/" class="book-card">
+                <div class="book-card-head">
+                    <h2 class="book-card-title">Eyelids</h2>
+                </div>
+                <div class="book-label">Draft excerpt</div>
+                <p class="book-teaser">The poor lads were left wondering if they had ever really known her at all.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+    </script>
+</body>
+</html>

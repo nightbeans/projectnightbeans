@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>63 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">63</a></h1>
+                <div class="nav-arrows">
+                    <a href="../64/" class="nav-arrow">→</a>
+                    <a href="../62/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Mrs Careen was the taxi to Heathrow. She’d been awake when they’d knocked at the door. She always drove him to the airport, which was easier than parking somewhere for the week, and she got the sense that Mr Armitage wanted her to witness his bravery. She paid him little notice. The brave one resided in the back of the car. She’d grown wildly impressed with this young lad. He was evidently worried about their onward journey, but was clearly pleased to have Mr Armitage firmly in the game with him.</p>
+        <p>Neither she nor Mr Armitage spoke much on that drive. She was still shaken by the neighbour's visit last night, and the cries she’d heard from him in the dead of the night that had woken her. Neither of them mentioned it. It was hardly a mark of bravery to say you had heard what they had and done nothing. But she counted him a mutt. Whatever self-imposed torture he’d inflicted last night was earned. She hadn’t been sleeping well, woken by any and every noise. She’d gone to the bathroom in the middle of the night and cracked the window to be nearer his screams of agony. Only when he’d finished did she return to bed.</p>
+        <p>They arrived at Heathrow drop-off. The two of them had carry-ons and a backpack each. Calum was wrapped and geared up for an even greater cold when they landed. Mr Armitage wore what he always did. But she knew he’d have packed a couple fleeces too. She leant down and hugged Calum, before turning to Mr Armitage, who gave her a hug with his right arm only, already turning away towards the doors of Terminal 2.</p>
+
+                <div class="bottom-nav">
+                    <a href="../62/" class="nav-arrow">←</a>
+                    <a href="../64/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 63,
+            'part': 4
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 63,
+            part: 4,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

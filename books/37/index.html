@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">37</a></h1>
+                <div class="nav-arrows">
+                    <a href="../38/" class="nav-arrow">→</a>
+                    <a href="../36/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p><em>Hag. Hag! You hated the girls, you hated them because he loved them. I know everything you want. Everything. You wounded mother, you want to eat everything, you want to eat the whole world. Yes, eat. Eat it up, eat him up. Hag. The Hag chasing the Bear, same as always. He’s weak enough for you again now, try again, Hag. Now he has a young charge to look after. Of course, he’s the one to take the boy in. When nobody wants the child, who’s there? The Bear - and traipsing behind him - the Hag. You love nothing but your own self-sacrifice. You rejoiced when the girls disappeared. Oh, you licked his wounds; consoling, counselling. I bet he cried with you. I bet you screamed into your pillow when he told you all he loved about the girls. You begged to hear him say one thing of you; one tenderness, one facet of you that he loved. But he never did, did he? Because he loves but one thing about you. That you’re always there. When he needs you. And that you are able to lie to yourself that he thinks about you when you’re not. Oh, Hag, I wish I felt anything for you but loathing. Poor boy, falling into the care of you and the Bear. I hope he dies as I pray they did - peacefully.</em></p>
+
+                <div class="bottom-nav">
+                    <a href="../36/" class="nav-arrow">←</a>
+                    <a href="../38/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 37,
+            'part': 3
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 37,
+            part: 3,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

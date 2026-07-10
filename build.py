@@ -310,7 +310,7 @@ def update_blog_post_files(posts):
                     after = match.group(2)
                     # Check if Book link already exists
                     if 'book' not in after.lower():
-                        return before + '\n                <li><a href="../../book/">Book</a></li>' + after
+                        return before + '\n                <li><a href="../../books/">Books</a></li>' + after
                     return match.group(0)
 
                 html = re.sub(nav_links_pattern, add_book_link, html, flags=re.DOTALL)
@@ -367,7 +367,7 @@ def generate_book_chapters():
     """Generate book-chapters.js from HTML files"""
     print('Generating book-chapters.js...')
 
-    book_dir = Path('book')
+    book_dir = Path('books')
     if not book_dir.exists():
         print('Book directory not found, skipping...')
         return
@@ -401,7 +401,7 @@ def generate_book_chapters():
             chapter = {
                 'title': title,
                 'chapterNumber': chapter_number,
-                'url': f'/book/{item.name}/',
+                'url': f'/books/{item.name}/',
                 'excerpt': excerpt
             }
 

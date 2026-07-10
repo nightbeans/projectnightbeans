@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>80 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">80</a></h1>
+                <div class="nav-arrows">
+                    <a href="../81/" class="nav-arrow">→</a>
+                    <a href="../79/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>The man without eyelids had been silent a long time; he was vastly less patient up here than down in the deeps. It must have been because he’d spent such a short time above compared to his time below. It could also be the sound of the nine watches ticking. They were not perfectly aligned, so the noise from the eight watches was a ceaseless irritation. He arose then, and the neighbour got that beautiful flood of calm that washes over you when he looks away. He stepped up and over the neighbour and exited by the door next to the neighbour's head, straight out to the stairs. He began descending.</p>
+        <p><em>“Wait! Where are you going?”</em> Called the neighbour. He received no reply. In agony, he rose and attempted to follow, his head pounding and the pain from the incision in his hip like a burn. The wound pulled as he stepped on uneven surfaces that gave way, pulling at it. He cried out in pain all the way downstairs. He turned the corner to see the man open the rear door and step out into crisp midday air. The neighbour crept and crawled his way behind the man, who had led out and across to the Bears’.</p>
+        <p><em>“This was where the girls lived, wasn’t it?”</em> he asked. <em>“Bethany drew it up in her deep. Though she made it far larger.”</em></p>
+        <p>The neighbour said nothing as he approached the man, who stood by Mr Armitage’s fire-pit. He tried the low rear door. It was locked. The man without eyelids broke a small pane with a rock from beside the pond and opened it, returning the favour. They moved together through the house. In Bethany and Catherine's room, he finally took a seat on the small chair that faced out to the two beds, turning away from the far corner by the window. The neighbour didn’t know the Bear had left that morning. The neighbour went to sit on Bethany’s bed.</p>
+        <p>The eyes held out a hand as the man gently shook his head. The neighbour had no inclination to finish his terrible haircut. So he slunk to the floor, resting his back against their wardrobes. The room was quieter now without the watches. But the man seemed no more patient.</p>
+        <p><em>“You are right, you know. I like owning things. I, I like taking things. But, it’s not as you say. I didn’t mean to steal your sacrifices.”</em></p>
+        <p>The eyes glistened. The neighbour continued.</p>
+        <p><em>“ I swear, I did love them. But the fucking Bear stopped them seeing me as they got older. Thought he owned them. Thought they were his. I followed them that day. It was for you, wasn’t it? What they did. They wanted the same as Ella.”</em></p>
+        <p><em>“To traverse deeps? No, they just wanted access to one.”</em></p>
+        <p><em>“Well, they gave themselves. It looked like some ritual. The three of them, loose hands clasped as they lay at the river's edge. They had cut each other. When I went to them their blood was running out and away. I grabbed them, held them. But they - like that filthy hound - melted like ice and moved into me. I swear I didn’t mean anything to happen. I, I didn’t do it.”</em></p>
+        <p><em>“One eater indeed. They gave themselves to me, and you were there to gobble them up.”</em></p>
+
+                <div class="bottom-nav">
+                    <a href="../79/" class="nav-arrow">←</a>
+                    <a href="../81/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 80,
+            'part': 5
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 80,
+            part: 5,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

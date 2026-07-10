@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">39</a></h1>
+                <div class="nav-arrows">
+                    <a href="../40/" class="nav-arrow">→</a>
+                    <a href="../38/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Hours had passed since Bedgellert. Ella had sung a little - songs she knew Conor enjoyed - but none like Mr Bojangles, none that helped constitute who he was. He couldn’t help his thankfulness. Her gentlest mercies still giving rise to his detestable reverence.</p>
+        <p><em>“How much further is this place, Con?”</em> She asked.</p>
+        <p>Conor said nothing. Ella groaned. Her displeasure at his sulking made him furious. Sitting up from his make-shift bed across the back seats, he felt the blood drain from his head, dizzy, his brain pressed up against his skull until the fluid returned. He looked out the window. He could see the viaduct.</p>
+        <p>He ran through his plan again and realised it had one step. One step and no contingencies. He renamed the plan <em>‘shit-show’</em> and opted for prayer. He laid his elbows on his thighs and turned his hands upwards. He leant forward and pressed his face into his hands. His closed eyes pressed onto the hard, meaty section of his palm. He felt a suction on them, pressing harder until his vision shifted from complete black to flashes and rolls of light across his entombed field of vision. He released the pressure slightly, felt the suction click and listened to the noises as his soft eyes pressed inwards. He pushed again and made that simple request. He prayed he wouldn’t die.</p>
+        <p>Lifting his head, the light of the bus rushed in, and he saw nothing. His eyes adjusted as he looked out to see the vast arches of the viaduct rolling past. Here. The bus pulled in and under the next arch. Glancing ahead, they moved by parked buses in the bays, the bus from Bay 1 now reversing to commence its journey. The bus dipped as the absent driver hit the brakes, pulling into Bay Six. The doors opened, then the key turned as the engine clicked off. Ella’s shoulders were pumping, her whole body lightly reverberating. Not nerves - excitement. She saw him first. Stepping out from the bench where he’d been waiting. The bus was silent but for the creaking of Ella’s seat and the cold meeting of silver and plastic as the man dropped his payment and the coins wrestled to make their way into the slot.</p>
+
+                <div class="bottom-nav">
+                    <a href="../38/" class="nav-arrow">←</a>
+                    <a href="../40/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 39,
+            'part': 3
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 39,
+            part: 3,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

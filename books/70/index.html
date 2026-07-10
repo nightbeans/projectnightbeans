@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>70 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">70</a></h1>
+                <div class="nav-arrows">
+                    <a href="../71/" class="nav-arrow">→</a>
+                    <a href="../69/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>The space in the stairwell was growing increasingly cramped as they descended. They noticed just how bad it was getting when Ella made the move from crouching to bum-shuffling. Conor followed suit. Having felt cowardly when entering the stairwell, Conor felt unwilling to compound by suggesting they stop or turn back. So they contorted themselves further as they crawled deeper in. The stairs themselves began to lose all definition, growing shorter and closer, until the descent became sheer. They had flipped while they still could and were now both crawling head first, shimmying and elbowing their way down.</p>
+        <p><em>“This is fucking stupid Ella, seriously.”</em> His sister just laughed in agreement. He wasn’t wrong.  Bizarrely they were both thoroughly enjoying themselves. Neither party were claustrophobic, and this was precisely the rare brand of stupid and unwise thing that they loved doing together. The two of them were kind of like a pair of happy drunks in their best moments together. That sweet spot where there are no bad ideas, and before the consequences make their vain attempts to redefine the experience. They were the drunks now. They had managed to shimmy alongside one another, clamped between the two tightening slabs of rock at their front and back. They turned their heads to each other and howled laughing, filling their lungs they pressed hard against the rock. It hurt. That made them laugh more. Conor watched Ella’s eyes in the dim light and loved her despairingly. They were screaming the heart-laugh that only siblings know. This went on for some time, until the painful pressure from their full chests began to subside as the passage ahead seemed to widen slightly. This made the whole thing less funny, but at least they could move forwards again. They pressed their hands down and wriggled. Their toes pressing down and back as they moved forward, eventually cresting over the edge they reached their arms out and down. They emerged from the sliver of rock they’d crawled through and let themselves topple out and down. They stood on soil. They looked up from the pit. It was unbearably deep. They had no way of knowing how far down they had travelled through the tunnel. Far above them, towering over them from out the pit was an enormous tree. There was no way of knowing this from down here by looking up at it, but all around the pit wrapped great roots. Huge and white they twisted like bolts of lightning breaking through the edges of the earthen cylinder they were in. Conor opened his mouth wide and popped the seal on his ears. Ella did the same.</p>
+        <p><em>“I’ve never been this far down,”</em> said Ella. She was excited. <em>“I’ll wager our neighbour has never crawled down here either.”</em> Conor saw as soon as she placed her hands on the first of the white twisted roots above her and hauled herself up why she was so excited - she loved to climb.</p>
+
+                <div class="bottom-nav">
+                    <a href="../69/" class="nav-arrow">←</a>
+                    <a href="../71/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 70,
+            'part': 5
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 70,
+            part: 5,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

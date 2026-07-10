@@ -7,7 +7,7 @@ on:
     paths:
       - 'posts/*/index.html'
       - 'benedict/*/index.html'
-      - 'book/*/index.html'
+      - 'books/*/index.html'
       - 'build.py'
 
 jobs:

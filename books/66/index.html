@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>66 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">66</a></h1>
+                <div class="nav-arrows">
+                    <a href="../67/" class="nav-arrow">→</a>
+                    <a href="../65/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Part 5</p>
+        <p>The rental Dodge crunched as Mr Armitage passed too quickly from the smooth asphalt onto the dirt roads of the reserve. The sound and jolt woke Calum in time for him to glimpse the sign -</p>
+        <p><em>ONONDAGA NATION WELCOMES FRIENDS AND RESPECTFUL VISITORS</em></p>
+        <p>The reserve had these roads because the community owned pickup trucks, and the federal government had no right here to roll through and pave them. They had to be invited, and never had been, so the old Dodge jerked and bounced its way along the main street; past the school, fire station and the liquor store Mr Armitage had often frequented in the three years he’d lived here, usually with Sara’s father. They weren’t far now. He turned right onto Hemlock Drive. They made their way down the mile-long drive along the tributary. The two men had cast long shadows as they’d moved through town together years ago, he still did. The lights of the rental car slammed into the man as his shadow-frame split the house in two. <em>He’s grown,</em> thought Mr Armitage. He had played several greetings in his mind on the four-hour drive over from Toronto, typically settling on deferent, apologetic and respectful approaches. Seeing him now he knew exactly what he would do.</p>
+        <p>He hit the brakes, placed his hand on Calum’s chest and told him to wait there until he turned and told him to come out. He stepped out of the car. He started running, Calum watched as his shadow joined the first that had caused the house to split in two. Mr Armitage was running then. Right at him. A metre from him he dove forward, catching the second man's legs, wrapped around them and crashed him heavily into the ground. The second man howled a laugh and quickly rolled to take Mr Armitage’s back, but he scurried free. Mr Armitage went for the legs again but the second man just parried with his arms before ducking his own head down. He was fast, very fast and he had him now, gripping his side he twisted quickly and rolled him back down to the ground. In the sharp ice and mud at the bottom of the stairs, gazing back towards the lights, Calum watched Mr Armitage tap the man’s arm. Calum had enjoyed the show, never once feeling his guardian to be in any real danger. The men stood and Mr Armitage, still hunched slightly, gestured with his hand for him to come out and meet them. Calum leant over and flicked the lights off and took the key out of the car. Didn’t want them to end up locked out without a way back in.</p>
+        <p>Mr Armitage, still out of breath, tried to introduce Calum to the man, but failing to do so, the second man coolly held out his giant paw to him - <em>“Pleasure to meet ya - I’m Wesley”</em> he said.</p>
+
+                <div class="bottom-nav">
+                    <a href="../65/" class="nav-arrow">←</a>
+                    <a href="../67/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 66,
+            'part': 5
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 66,
+            part: 5,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>

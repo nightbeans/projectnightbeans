@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 - joeldelaney</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .post-content p {
+            text-align: justify;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h1 {
+            margin: 0;
+        }
+        .post-header h1 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .post-header h1 a:hover {
+            color: #7fc8e0;
+        }
+        .nav-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-arrow {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            font-size: 1.8rem;
+            line-height: 1;
+            border-bottom: none !important;
+        }
+        .nav-arrow:hover,
+        .nav-arrow:active,
+        .nav-arrow:focus {
+            text-decoration: none !important;
+            color: #7fc8e0;
+            border-bottom: none !important;
+            outline: none;
+        }
+        .nav-arrow.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-nav .nav-arrows {
+            flex-direction: row;
+        }
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="../../"><h1>joeldelaney</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../blog/">Blog</a></li>
+                <li><a href="../../benedict/">Benedict</a></li>
+                <li><a href="../../books/" class="active">Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1><a href="../parts/">18</a></h1>
+                <div class="nav-arrows">
+                    <a href="../19/" class="nav-arrow">→</a>
+                    <a href="../17/" class="nav-arrow">←</a>
+                </div>
+            </header>
+            <div class="post-content">
+        <p>Mrs Careen watched from her first-floor deck as the two of them passed through the field back towards Mr Armitage’s. Calum practically sprinting to keep up with Mr Armitage’s long, slow strides. She could see the glee with which Calum moved. It was the joy of the protected. It is a child's unearned right to come out from even the most horrific of torment into the arms of the good and find refuge, albeit fleeting. For even the truest of guardians must occasionally turn aside or lay them down to sleep at night. She had heard Calum crying for him as he looked around the house and garden. It was she who had told him he’d walked out to the sisters’ field. He’d run frantically after him. She’d still been able to see him and make out the moment when he’d spotted him in the distance and decided to slow to a walk, wanting to appear brave and well by the time he reached the great man.</p>
+        <p>They cast a funny pair in the dim light. Mr Armitage’s silhouette - known to her - cast the boy as being in the safest of company, though any outsider would no doubt imagine the boy to be in hideous peril from some man or beast. They saw her then, heads tilted in unison as they waved. She laughed quietly at how he had once again found himself a new shadow. She saw how Calum tried to get the swing of his arms to mirror him. He watched his hand as he mapped Mr Armitage’s wave onto his own before returning to their walk home. She even noticed his chin drooping lower down and into his chest. Though she reasoned perhaps that was just the result of the weight that had been flung upon him the day prior. But children aren’t like adults; they bend, they don’t break.</p>
+        <p>She watched as Mr Armitage stopped the boy, who immediately lost all his grace and composure when he instructed the boy inwards, gesturing towards the house. She then saw the cause of the commotion and the outburst of terrified emotion arising from the boy. He had pointed him toward the house alone.</p>
+        <p><em>“Good evening, Mr Armitage, Calum,”</em> she called loudly.</p>
+        <p>All she got in return was a firm and outstretched arm, palm facing her from Mr Armitage, who remained turned toward the boy.</p>
+        <p><em>“Can I help you with anything?”</em> she cried <em>“Some dinner?”</em></p>
+        <p>At that, Calum broke and ran to the hedge holes. Through Number Seven and on to her garden. He knew not to run through her garden and changed from his sprint to a calm stroll through her maze of flower beds, still vibrant with vigilant winter flowers. As the boy approached, she watched Mr Armitage press his body through the first hedge hole, before turning down the overrun rear of Number Seven.</p>
+
+                <div class="bottom-nav">
+                    <a href="../17/" class="nav-arrow">←</a>
+                    <a href="../19/" class="nav-arrow">→</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joel Delaney</p>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRT76XL460"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FRT76XL460');
+
+        // Track book page view with custom event
+        gtag('event', 'book_page_view', {
+            'page_number': 18,
+            'part': 2
+        });
+    </script>
+
+    <script>
+        // Save reading progress to localStorage
+        localStorage.setItem('bookProgress', JSON.stringify({
+            page: 18,
+            part: 2,
+            timestamp: new Date().toISOString()
+        }));
+    </script>
+</body>
+</html>
