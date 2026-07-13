@@ -4,6 +4,12 @@
 
 const workItems = [
     {
+        title: 'Parthian Shot — Full Audiobook',
+        url: '/work/parthian-shot-audiobook.html',
+        date: '2026-07-13',
+        description: 'The complete Parthian Shot novella narrated end to end with a local neural voice. Full manuscript — the public book page carries only the opening excerpt.'
+    },
+    {
         title: 'Proxy Microhub Trial',
         url: '/work/proxy_microhub_trial_v2.html',
         date: '2026-07-07',

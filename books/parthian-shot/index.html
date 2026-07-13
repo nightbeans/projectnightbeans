@@ -16,6 +16,9 @@
         .book-divider { border: none; border-top: 1px solid #2d6575; margin: 2.4em 0; width: 60px; }
         .back-link { display: inline-block; color: #7fc8e0; text-decoration: none; margin-bottom: 30px; font-size: 1rem; transition: color 0.3s ease; }
         .back-link:hover { color: #ffffff; }
+        .listen-block { background: rgba(127,200,224,0.07); border: 1px solid #2d6575; border-radius: 10px; padding: 18px 20px; margin: 0 0 48px; }
+        .listen-label { font-size: 0.8rem; color: #7fc8e0; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+        .listen-block audio { width: 100%; display: block; }
     </style>
 </head>
 <body>
@@ -36,6 +39,13 @@
             <a href="../" class="back-link">← All books</a>
             <h1 class="book-title">Parthian Shot</h1>
             <div class="book-label">Draft excerpt</div>
+            <div class="listen-block">
+                <p class="listen-label">🎧 Listen to the excerpt</p>
+                <audio controls preload="metadata">
+                    <source src="parthian-shot-excerpt.mp3" type="audio/mpeg">
+                    Your browser doesn't support audio playback.
+                </audio>
+            </div>
             <div class="book-text">
 
                 <p>She asked me to kill her often. Rather, she asked me to <em>switch off the machines</em>.</p>
