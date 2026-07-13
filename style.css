@@ -121,6 +121,7 @@ main {
     font-size: 0.9rem;
     color: #7fb3c4;
     margin-bottom: 1rem;
+    text-align: right;
 }
 
 .post-preview .excerpt {
@@ -198,8 +199,10 @@ main {
 }
 
 .post-header time {
+    display: block;
     font-size: 0.95rem;
     color: #7fb3c4;
+    text-align: right;
 }
 
 .post-content {
@@ -369,6 +372,7 @@ main {
     font-size: 0.95rem;
     color: #7fb3c4;
     margin-bottom: 2rem;
+    text-align: right;
 }
 
 .post-preview-content {
@@ -433,6 +437,14 @@ main {
     color: #b0d4dd;
     line-height: 1.7;
     margin-bottom: 0;
+}
+
+/* Book & manuscript prose — justified on every page */
+.book-text p,
+.book-text li,
+.book-note,
+.manuscript p {
+    text-align: justify;
 }
 
 /* Benedict reviews */
