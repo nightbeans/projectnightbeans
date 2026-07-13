@@ -4,6 +4,13 @@
 
 const blogPosts = [
     {
+        "title": "Parthian Shot",
+        "url": "/posts/parthian-shot/",
+        "date": "2026-07-13",
+        "dateDisplay": "July 13 2026",
+        "excerpt": "She asked me to kill her often. Rather, she asked me to switch off the machines."
+    },
+    {
         "title": "Needtoknowism",
         "url": "/posts/a-warning/",
         "date": "2025-09-24",
